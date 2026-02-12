@@ -46,3 +46,14 @@ model Record {
   @@index([date])
   @@index([machineId])
 }
+
+// イベント日管理テーブル
+// 将来の拡張: イベント種別、対象機種との紐付け等
+model EventDay {
+  id        String   @id @default(cuid())
+  date      DateTime @unique
+  label     String   @default("イベント") // イベント種別（将来拡張用）
+  note      String?  // メモ（任意）
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

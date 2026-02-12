@@ -267,12 +267,28 @@ export type AnalysisRecord = {
     hitProb: number   // 合算確率
     totalDiff: number
     days: number      // データ日数
+    payoutRate: number // 推定出玉率 (%)
+}
+
+export type DowSummary = {
+    dow: number        // 0=日, 1=月, ..., 6=土
+    dowLabel: string   // 日/月/火/水/木/金/土
+    totalGames: number
+    totalBig: number
+    totalReg: number
+    totalHits: number
+    hitProb: number
+    totalDiff: number
+    days: number
+    payoutRate: number
 }
 
 export type AnalysisResult = {
     machineName: string
     machineId: string
     records: AnalysisRecord[]
+    dowSummary: DowSummary[]
+    eventDayCount: number
     overall: {
         totalGames: number
         totalBig: number
@@ -283,29 +299,28 @@ export type AnalysisResult = {
         hitProb: number
         totalDiff: number
         days: number
+        payoutRate: number
     }
 }
+
 
 export async function getAnalysis(
     machineId: string,
     startDate?: Date,
     endDate?: Date,
+    dayFilter?: 'all' | 'event' | 'normal', // イベント日フィルタ
 ): Promise<AnalysisResult | null> {
     const machine = await prisma.machine.findUnique({
         where: { id: machineId },
     })
     if (!machine) return null
 
-    // BIG/Games/REGデータが存在するレコードのみ対象
+    // BIG/Gamesデータが存在するレコードのみ対象
     const where: any = {
         machineId,
-        big: { not: null, gt: 0 },
+        big: { not: null },
         games: { not: null, gt: 0 },
     }
-    // big=0 でも games>0 なら含めたいので、bigの条件を緩める
-    // ただし big=0, games=0 は除外（データなし）
-    where.big = { not: null }
-    where.games = { not: null, gt: 0 }
 
     if (startDate && endDate) {
         where.date = { gte: startDate, lte: endDate }
@@ -316,10 +331,25 @@ export async function getAnalysis(
         orderBy: [{ machineNo: 'asc' }, { date: 'asc' }],
     })
 
+    // イベント日フィルタ用: 対象期間のイベント日を取得
+    const eventDays = await prisma.eventDay.findMany({
+        where: startDate && endDate ? { date: { gte: startDate, lte: endDate } } : undefined,
+    })
+    const eventDateSet = new Set(eventDays.map(e => e.date.toISOString().split('T')[0]))
+
+    // フィルタ適用
+    const filteredRecords = dayFilter && dayFilter !== 'all'
+        ? records.filter(r => {
+            const dateStr = r.date.toISOString().split('T')[0]
+            const isEvent = eventDateSet.has(dateStr)
+            return dayFilter === 'event' ? isEvent : !isEvent
+        })
+        : records
+
     // 台番号ごとに集計
     const byNo = new Map<number, { games: number; big: number; reg: number; diff: number; days: number }>()
 
-    for (const r of records) {
+    for (const r of filteredRecords) {
         const current = byNo.get(r.machineNo) || { games: 0, big: 0, reg: 0, diff: 0, days: 0 }
         current.games += r.games || 0
         current.big += r.big || 0
@@ -329,8 +359,31 @@ export async function getAnalysis(
         byNo.set(r.machineNo, current)
     }
 
+    // 曜日別集計
+    const byDow = new Map<number, { games: number; big: number; reg: number; diff: number; days: number }>()
+    const dowDates = new Map<number, Set<string>>()
+    for (const r of filteredRecords) {
+        const dow = r.date.getUTCDay() // 0=日, 1=月, ...
+        const current = byDow.get(dow) || { games: 0, big: 0, reg: 0, diff: 0, days: 0 }
+        current.games += r.games || 0
+        current.big += r.big || 0
+        current.reg += r.reg || 0
+        current.diff += r.diff
+        byDow.set(dow, current)
+        // ユニーク日数
+        const dateStr = r.date.toISOString().split('T')[0]
+        if (!dowDates.has(dow)) dowDates.set(dow, new Set())
+        dowDates.get(dow)!.add(dateStr)
+    }
+
+    const calcProb = (games: number, count: number) => count > 0 ? Math.round(games / count) : 0
+    const calcPayout = (games: number, diff: number) => {
+        const invested = games * 3
+        return invested > 0 ? Math.round(((invested + diff) / invested) * 1000) / 10 : 0
+    }
+
     const analysisRecords: AnalysisRecord[] = []
-    let overallGames = 0, overallBig = 0, overallReg = 0, overallDiff = 0, overallDays = 0
+    let overallGames = 0, overallBig = 0, overallReg = 0, overallDiff = 0
 
     for (const [machineNo, data] of byNo) {
         const totalHits = data.big + data.reg
@@ -340,38 +393,84 @@ export async function getAnalysis(
             totalBig: data.big,
             totalReg: data.reg,
             totalHits,
-            bigProb: data.big > 0 ? Math.round(data.games / data.big) : 0,
-            regProb: data.reg > 0 ? Math.round(data.games / data.reg) : 0,
-            hitProb: totalHits > 0 ? Math.round(data.games / totalHits) : 0,
+            bigProb: calcProb(data.games, data.big),
+            regProb: calcProb(data.games, data.reg),
+            hitProb: calcProb(data.games, totalHits),
             totalDiff: data.diff,
             days: data.days,
+            payoutRate: calcPayout(data.games, data.diff),
         })
         overallGames += data.games
         overallBig += data.big
         overallReg += data.reg
         overallDiff += data.diff
-        overallDays = Math.max(overallDays, data.days) // 最大日数
     }
 
     const overallHits = overallBig + overallReg
-    // overallDays は全台の合計ではなくユニークな日数を出したい
-    const uniqueDates = new Set(records.map(r => r.date.toISOString().split('T')[0]))
+    const uniqueDates = new Set(filteredRecords.map(r => r.date.toISOString().split('T')[0]))
+
+    // 曜日別サマリー
+    const DOW_LABELS = ['日', '月', '火', '水', '木', '金', '土']
+    const dowSummary: DowSummary[] = []
+    for (const [dow, data] of byDow) {
+        const totalHits = data.big + data.reg
+        const days = dowDates.get(dow)?.size || 0
+        dowSummary.push({
+            dow,
+            dowLabel: DOW_LABELS[dow],
+            totalGames: data.games,
+            totalBig: data.big,
+            totalReg: data.reg,
+            totalHits,
+            hitProb: calcProb(data.games, totalHits),
+            totalDiff: data.diff,
+            days,
+            payoutRate: calcPayout(data.games, data.diff),
+        })
+    }
+    dowSummary.sort((a, b) => a.dow - b.dow)
 
     return {
         machineName: machine.name,
         machineId: machine.id,
         records: analysisRecords,
+        dowSummary,
+        eventDayCount: eventDateSet.size,
         overall: {
             totalGames: overallGames,
             totalBig: overallBig,
             totalReg: overallReg,
             totalHits: overallHits,
-            bigProb: overallBig > 0 ? Math.round(overallGames / overallBig) : 0,
-            regProb: overallReg > 0 ? Math.round(overallGames / overallReg) : 0,
-            hitProb: overallHits > 0 ? Math.round(overallGames / overallHits) : 0,
+            bigProb: calcProb(overallGames, overallBig),
+            regProb: calcProb(overallGames, overallReg),
+            hitProb: calcProb(overallGames, overallHits),
             totalDiff: overallDiff,
             days: uniqueDates.size,
+            payoutRate: calcPayout(overallGames, overallDiff),
         },
+    }
+}
+
+// === EventDay 管理 ===
+
+export async function getEventDays() {
+    return await prisma.eventDay.findMany({
+        orderBy: { date: 'desc' },
+    })
+}
+
+export async function toggleEventDay(date: Date) {
+    const existing = await prisma.eventDay.findUnique({
+        where: { date },
+    })
+    if (existing) {
+        await prisma.eventDay.delete({ where: { id: existing.id } })
+        return { added: false }
+    } else {
+        await prisma.eventDay.create({
+            data: { date },
+        })
+        return { added: true }
     }
 }
 
