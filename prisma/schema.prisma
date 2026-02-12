@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Machine {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  records   Record[]
+  numbers   MachineNumber[]
+}
+
+model MachineNumber {
+  id        String   @id @default(cuid())
+  machineId String
+  machine   Machine  @relation(fields: [machineId], references: [id], onDelete: Cascade)
+  machineNo Int
+  
+  @@unique([machineId, machineNo])
+  @@index([machineId])
+}
+
+model Record {
+  id        String   @id @default(cuid())
+  date      DateTime
+  machineId String
+  machine   Machine  @relation(fields: [machineId], references: [id])
+  machineNo Int
+  diff      Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([date, machineId, machineNo])
+  @@index([date])
+  @@index([machineId])
+}
