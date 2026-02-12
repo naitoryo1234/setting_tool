@@ -17,7 +17,7 @@ async function main() {
 
     for (const machineName of machines) {
         console.log(`\n### ${machineName}`)
-        const machine = await prisma.machine.findUnique({ where: { name: machineName } })
+        const machine = await prisma.machine.findFirst({ where: { name: machineName } })
         if (!machine) {
             console.log('Machine not found')
             continue
