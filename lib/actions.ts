@@ -10,8 +10,15 @@ export async function getStores() {
     })
 }
 
+import { Prisma } from '@prisma/client'
+
+// 型定義
+export type MachineWithNumbers = Prisma.MachineGetPayload<{
+    include: { numbers: true }
+}>
+
 // 機種一覧取得（店舗IDでフィルタ可能）
-export async function getMachines(storeId?: string) {
+export async function getMachines(storeId?: string): Promise<MachineWithNumbers[]> {
     return await prisma.machine.findMany({
         where: storeId ? { storeId } : undefined,
         orderBy: { name: 'asc' },
@@ -110,6 +117,9 @@ export async function updateRecord(id: string, data: {
     machineId: string
     machineNo: number
     diff: number
+    big?: number
+    reg?: number
+    games?: number
 }) {
     try {
         await prisma.record.update({
@@ -119,6 +129,9 @@ export async function updateRecord(id: string, data: {
                 machineId: data.machineId,
                 machineNo: data.machineNo,
                 diff: data.diff,
+                big: data.big,
+                reg: data.reg,
+                games: data.games,
             },
         })
         revalidatePath('/input')
@@ -182,6 +195,9 @@ export type MachineSummary = {
     machineId: string
     machineName: string
     totalDiff: number
+    totalBig: number
+    totalReg: number
+    totalGames: number
     count: number
 }
 
@@ -190,32 +206,34 @@ export type MachineNoSummary = {
     machineName: string
     machineNo: number
     totalDiff: number
+    totalBig: number
+    totalReg: number
+    totalGames: number
+    avgDiff: number
     count: number
 }
 
 export async function getSummary(start: Date, end: Date) {
-    // Machine Totals
+    // 機種別合計
     const machineAgg = await prisma.record.groupBy({
         by: ['machineId'],
         where: {
             date: { gte: start, lte: end },
         },
-        _sum: { diff: true },
+        _sum: { diff: true, big: true, reg: true, games: true },
         _count: { diff: true },
     })
 
-    // MachineNo Totals
+    // 台番号別合計
     const machineNoAgg = await prisma.record.groupBy({
         by: ['machineId', 'machineNo'],
         where: {
             date: { gte: start, lte: end },
         },
-        _sum: { diff: true },
+        _sum: { diff: true, big: true, reg: true, games: true },
         _count: { diff: true },
     })
 
-    // Need to fetch machine names manually or client-side join. 
-    // Prisma groupBy doesn't support include.
     const machines = await prisma.machine.findMany()
     const machineMap = new Map(machines.map(m => [m.id, m.name]))
 
@@ -223,16 +241,27 @@ export async function getSummary(start: Date, end: Date) {
         machineId: agg.machineId,
         machineName: machineMap.get(agg.machineId) || 'Unknown',
         totalDiff: agg._sum.diff || 0,
+        totalBig: agg._sum.big || 0,
+        totalReg: agg._sum.reg || 0,
+        totalGames: agg._sum.games || 0,
         count: agg._count.diff || 0,
-    })).sort((a, b) => b.totalDiff - a.totalDiff) // Default sort by diff desc
+    })).sort((a, b) => a.totalDiff - b.totalDiff) // マイナス順（昇順）
 
-    const machineNoSummary: MachineNoSummary[] = machineNoAgg.map(agg => ({
-        machineId: agg.machineId,
-        machineName: machineMap.get(agg.machineId) || 'Unknown',
-        machineNo: agg.machineNo,
-        totalDiff: agg._sum.diff || 0,
-        count: agg._count.diff || 0,
-    })).sort((a, b) => b.totalDiff - a.totalDiff)
+    const machineNoSummary: MachineNoSummary[] = machineNoAgg.map(agg => {
+        const totalDiff = agg._sum.diff || 0
+        const count = agg._count.diff || 0
+        return {
+            machineId: agg.machineId,
+            machineName: machineMap.get(agg.machineId) || 'Unknown',
+            machineNo: agg.machineNo,
+            totalDiff,
+            totalBig: agg._sum.big || 0,
+            totalReg: agg._sum.reg || 0,
+            totalGames: agg._sum.games || 0,
+            avgDiff: count > 0 ? Math.round(totalDiff / count) : 0,
+            count,
+        }
+    }).sort((a, b) => a.totalDiff - b.totalDiff) // マイナス順（昇順）
 
     return { machineSummary, machineNoSummary }
 }

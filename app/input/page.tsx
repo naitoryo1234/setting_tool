@@ -1,4 +1,4 @@
-import { getMachines, getRecords } from '@/lib/actions'
+import { getMachines, getRecords, MachineWithNumbers } from '@/lib/actions'
 import InputClient from './InputClient'
 
 // Force dynamic rendering to ensure fresh data
@@ -26,7 +26,9 @@ export default async function InputPage({
 
     return (
         <div>
-            <h1 className="text-2xl font-bold mb-6">稼働入力</h1>
+            <h1 className="text-xl font-bold mb-6 text-primary flex items-center gap-2">
+                <span className="text-2xl">📥</span> 稼働入力
+            </h1>
             <InputClient
                 machines={machines}
                 todayRecords={todayRecords}

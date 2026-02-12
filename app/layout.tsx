@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Setting Tool",
-  description: "Pachislot Setting Tool",
+  description: "パチスロ設定狙い分析ツール",
 };
 
 export default function RootLayout({
@@ -18,9 +18,9 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={inter.className}>
-        <div className="min-h-screen bg-gray-100 text-gray-900">
+        <div className="min-h-screen" style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
           <Navigation />
-          <main className="container mx-auto p-4">
+          <main className="main-content container mx-auto px-4 py-6 max-w-7xl">
             {children}
           </main>
         </div>
