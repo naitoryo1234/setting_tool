@@ -36,8 +36,9 @@ model Record {
   machine   Machine  @relation(fields: [machineId], references: [id])
   machineNo Int
   diff      Int
-  big       Int?      @default(0) // Added for reference
-  games     Int?      @default(0) // Added for reference
+  big       Int?      @default(0) // BIG回数
+  games     Int?      @default(0) // 累計ゲーム数
+  reg       Int?      @default(0) // REG(初当たり)回数
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

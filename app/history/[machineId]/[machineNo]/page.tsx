@@ -54,6 +54,7 @@ export default async function HistoryPage({ params }: Props) {
                             <th className="px-4 py-3">日付</th>
                             <th className="px-4 py-3 text-right">差枚</th>
                             <th className="px-4 py-3 text-right">BIG</th>
+                            <th className="px-4 py-3 text-right">REG</th>
                             <th className="px-4 py-3 text-right">G数</th>
                         </tr>
                     </thead>
@@ -71,13 +72,14 @@ export default async function HistoryPage({ params }: Props) {
                                         {r.diff > 0 ? '+' : ''}{r.diff}
                                     </td>
                                     <td className="px-4 py-3 text-right">{r.big ?? '-'}</td>
+                                    <td className="px-4 py-3 text-right">{r.reg ?? '-'}</td>
                                     <td className="px-4 py-3 text-right">{r.games ?? '-'}</td>
                                 </tr>
                             )
                         })}
                         {records.length === 0 && (
                             <tr>
-                                <td colSpan={4} className="px-4 py-8 text-center text-gray-400">
+                                <td colSpan={5} className="px-4 py-8 text-center text-gray-400">
                                     データがありません
                                 </td>
                             </tr>

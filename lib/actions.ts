@@ -250,6 +250,7 @@ export async function getMachineNoHistory(machineId: string, machineNo: number) 
             diff: r.diff,
             big: r.big,
             games: r.games,
+            reg: r.reg,
         })),
     }
 }
