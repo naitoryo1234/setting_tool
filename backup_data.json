@@ -1,0 +1,883 @@
+{
+  "timestamp": "2026-02-12T08:54:52.841Z",
+  "machines": [
+    {
+      "id": "cmlj5u7rm000072g9bayz8lo1",
+      "name": "マギレコ",
+      "createdAt": "2026-02-12T07:51:44.338Z",
+      "updatedAt": "2026-02-12T07:51:44.338Z",
+      "numbers": [
+        {
+          "id": "cmlj6qfpj0001cyrin0zlcvmk",
+          "machineId": "cmlj5u7rm000072g9bayz8lo1",
+          "machineNo": 299
+        },
+        {
+          "id": "cmlj6qfpq0003cyrir91el27n",
+          "machineId": "cmlj5u7rm000072g9bayz8lo1",
+          "machineNo": 300
+        },
+        {
+          "id": "cmlj6qfpx0005cyri4kj42r07",
+          "machineId": "cmlj5u7rm000072g9bayz8lo1",
+          "machineNo": 301
+        },
+        {
+          "id": "cmlj6qfq40007cyri1dam30by",
+          "machineId": "cmlj5u7rm000072g9bayz8lo1",
+          "machineNo": 302
+        }
+      ]
+    },
+    {
+      "id": "cmlj5u7rv000172g9pyrlc8tu",
+      "name": "北斗転生",
+      "createdAt": "2026-02-12T07:51:44.347Z",
+      "updatedAt": "2026-02-12T07:51:44.347Z",
+      "numbers": [
+        {
+          "id": "cmlj6qfqb0009cyriws7pdh7h",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 238
+        },
+        {
+          "id": "cmlj6qfqi000bcyriyvtq4w95",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 239
+        },
+        {
+          "id": "cmlj6qfqp000dcyrimbf43ura",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 240
+        },
+        {
+          "id": "cmlj6qfqv000fcyri86x74yna",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 241
+        },
+        {
+          "id": "cmlj6qfr3000hcyrik8ga4bgt",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 242
+        },
+        {
+          "id": "cmlj6qfr8000jcyri1paul64v",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 243
+        },
+        {
+          "id": "cmlj6qfre000lcyrid0fun28g",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 244
+        },
+        {
+          "id": "cmlj6qfrl000ncyri9onxif90",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 245
+        },
+        {
+          "id": "cmlj6qfrr000pcyritm3i2q58",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 246
+        },
+        {
+          "id": "cmlj6qfrx000rcyri2nzdusqr",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 247
+        },
+        {
+          "id": "cmlj6qfs4000tcyri1qo3xena",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 248
+        },
+        {
+          "id": "cmlj6qfs9000vcyrii68dge99",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 249
+        },
+        {
+          "id": "cmlj6qfsi000xcyri8vo5fkys",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 250
+        }
+      ]
+    },
+    {
+      "id": "cmlj5u7s1000272g9w1gibj3e",
+      "name": "化物語",
+      "createdAt": "2026-02-12T07:51:44.353Z",
+      "updatedAt": "2026-02-12T07:51:44.353Z",
+      "numbers": [
+        {
+          "id": "cmlj6qfsn000zcyrimk5y9vkf",
+          "machineId": "cmlj5u7s1000272g9w1gibj3e",
+          "machineNo": 296
+        },
+        {
+          "id": "cmlj6qfsu0011cyribkudgv6d",
+          "machineId": "cmlj5u7s1000272g9w1gibj3e",
+          "machineNo": 297
+        },
+        {
+          "id": "cmlj6qft10013cyri72usitti",
+          "machineId": "cmlj5u7s1000272g9w1gibj3e",
+          "machineNo": 298
+        }
+      ]
+    },
+    {
+      "id": "cmlj5u7s7000372g98xiq3bn9",
+      "name": "炎炎2",
+      "createdAt": "2026-02-12T07:51:44.360Z",
+      "updatedAt": "2026-02-12T07:51:44.360Z",
+      "numbers": [
+        {
+          "id": "cmlj6qft80015cyrive5n4tlp",
+          "machineId": "cmlj5u7s7000372g98xiq3bn9",
+          "machineNo": 257
+        },
+        {
+          "id": "cmlj6qftg0017cyrilpnnx8w2",
+          "machineId": "cmlj5u7s7000372g98xiq3bn9",
+          "machineNo": 294
+        },
+        {
+          "id": "cmlj6qftn0019cyrihh10augb",
+          "machineId": "cmlj5u7s7000372g98xiq3bn9",
+          "machineNo": 295
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "id": "cmlj687sq000712p2ti1dg5ww",
+      "date": "2026-02-15T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": 300,
+      "createdAt": "2026-02-12T08:02:37.563Z",
+      "updatedAt": "2026-02-12T08:02:37.563Z"
+    },
+    {
+      "id": "cmlj687u8000912p2pzkv4rwe",
+      "date": "2026-02-16T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": 0,
+      "createdAt": "2026-02-12T08:02:37.616Z",
+      "updatedAt": "2026-02-12T08:02:37.616Z"
+    },
+    {
+      "id": "cmlj687vd000b12p25gebpium",
+      "date": "2026-02-17T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": 0,
+      "createdAt": "2026-02-12T08:02:37.657Z",
+      "updatedAt": "2026-02-12T08:02:37.657Z"
+    },
+    {
+      "id": "cmlj687wp000d12p2ora5mv36",
+      "date": "2026-02-18T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": -2000,
+      "createdAt": "2026-02-12T08:02:37.705Z",
+      "updatedAt": "2026-02-12T08:02:37.705Z"
+    },
+    {
+      "id": "cmlj687y1000f12p2f2bgeq6i",
+      "date": "2026-02-19T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": 301,
+      "createdAt": "2026-02-12T08:02:37.753Z",
+      "updatedAt": "2026-02-12T08:02:37.753Z"
+    },
+    {
+      "id": "cmlj687za000h12p2sp8nxvl5",
+      "date": "2026-02-20T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": -1000,
+      "createdAt": "2026-02-12T08:02:37.798Z",
+      "updatedAt": "2026-02-12T08:02:37.798Z"
+    },
+    {
+      "id": "cmlj6880p000j12p2dxghgmds",
+      "date": "2026-02-21T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": -500,
+      "createdAt": "2026-02-12T08:02:37.849Z",
+      "updatedAt": "2026-02-12T08:02:37.849Z"
+    },
+    {
+      "id": "cmlj68827000l12p27t7shhp6",
+      "date": "2026-02-22T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": 1000,
+      "createdAt": "2026-02-12T08:02:37.903Z",
+      "updatedAt": "2026-02-12T08:02:37.903Z"
+    },
+    {
+      "id": "cmlj6883g000n12p2gftta47h",
+      "date": "2026-02-23T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": 302,
+      "createdAt": "2026-02-12T08:02:37.948Z",
+      "updatedAt": "2026-02-12T08:02:37.948Z"
+    },
+    {
+      "id": "cmlj6884n000p12p2o9ihhjcb",
+      "date": "2026-02-24T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": 0,
+      "createdAt": "2026-02-12T08:02:37.991Z",
+      "updatedAt": "2026-02-12T08:02:37.991Z"
+    },
+    {
+      "id": "cmlj6885w000r12p2v1c4vl4y",
+      "date": "2026-02-25T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": 8000,
+      "createdAt": "2026-02-12T08:02:38.037Z",
+      "updatedAt": "2026-02-12T08:02:38.037Z"
+    },
+    {
+      "id": "cmlj68873000t12p2g4ihdu2x",
+      "date": "2026-02-26T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": -500,
+      "createdAt": "2026-02-12T08:02:38.080Z",
+      "updatedAt": "2026-02-12T08:02:38.080Z"
+    },
+    {
+      "id": "cmlj6arxw001312p2zoztm4l8",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": 1500,
+      "createdAt": "2026-02-12T08:04:36.980Z",
+      "updatedAt": "2026-02-12T08:04:36.980Z"
+    },
+    {
+      "id": "cmlj6arzn001512p2drcsua6v",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 300,
+      "diff": 0,
+      "createdAt": "2026-02-12T08:04:37.043Z",
+      "updatedAt": "2026-02-12T08:04:37.043Z"
+    },
+    {
+      "id": "cmlj6as0y001712p228f42isy",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 301,
+      "diff": -1000,
+      "createdAt": "2026-02-12T08:04:37.090Z",
+      "updatedAt": "2026-02-12T08:04:37.090Z"
+    },
+    {
+      "id": "cmlj6as28001912p2t8bkkvxv",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 302,
+      "diff": 0,
+      "createdAt": "2026-02-12T08:04:37.137Z",
+      "updatedAt": "2026-02-12T08:04:37.137Z"
+    },
+    {
+      "id": "cmlj6b6zn001b12p22gvvosnq",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": 0,
+      "createdAt": "2026-02-12T08:04:56.483Z",
+      "updatedAt": "2026-02-12T08:04:56.483Z"
+    },
+    {
+      "id": "cmlj6b71g001d12p2nqd83shm",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 300,
+      "diff": 0,
+      "createdAt": "2026-02-12T08:04:56.549Z",
+      "updatedAt": "2026-02-12T08:04:56.549Z"
+    },
+    {
+      "id": "cmlj6b733001f12p2v417xe9z",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 301,
+      "diff": -500,
+      "createdAt": "2026-02-12T08:04:56.607Z",
+      "updatedAt": "2026-02-12T08:04:56.607Z"
+    },
+    {
+      "id": "cmlj6b749001h12p2u66t22ra",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 302,
+      "diff": 8000,
+      "createdAt": "2026-02-12T08:04:56.649Z",
+      "updatedAt": "2026-02-12T08:04:56.649Z"
+    },
+    {
+      "id": "cmlj6bn5n001j12p2vjzz36yq",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": 500,
+      "createdAt": "2026-02-12T08:05:17.436Z",
+      "updatedAt": "2026-02-12T08:05:17.436Z"
+    },
+    {
+      "id": "cmlj6bn7a001l12p26vy0c9mn",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 300,
+      "diff": -2000,
+      "createdAt": "2026-02-12T08:05:17.494Z",
+      "updatedAt": "2026-02-12T08:05:17.494Z"
+    },
+    {
+      "id": "cmlj6bn8o001n12p29l6tliii",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 301,
+      "diff": 1000,
+      "createdAt": "2026-02-12T08:05:17.544Z",
+      "updatedAt": "2026-02-12T08:05:17.544Z"
+    },
+    {
+      "id": "cmlj6bn9z001p12p2eichyf9v",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 302,
+      "diff": -500,
+      "createdAt": "2026-02-12T08:05:17.591Z",
+      "updatedAt": "2026-02-12T08:05:17.591Z"
+    },
+    {
+      "id": "cmlj6cq3u001r12p2qfu4flk4",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 238,
+      "diff": -4000,
+      "createdAt": "2026-02-12T08:06:07.914Z",
+      "updatedAt": "2026-02-12T08:06:07.914Z"
+    },
+    {
+      "id": "cmlj6cq59001t12p2bpuqq6nq",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 239,
+      "diff": -1000,
+      "createdAt": "2026-02-12T08:06:07.965Z",
+      "updatedAt": "2026-02-12T08:06:07.965Z"
+    },
+    {
+      "id": "cmlj6cq6h001v12p2xr4e3mrd",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 240,
+      "diff": -500,
+      "createdAt": "2026-02-12T08:06:08.009Z",
+      "updatedAt": "2026-02-12T08:06:08.009Z"
+    },
+    {
+      "id": "cmlj6cq7p001x12p28tii1y5z",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 241,
+      "diff": -750,
+      "createdAt": "2026-02-12T08:06:08.053Z",
+      "updatedAt": "2026-02-12T08:06:08.053Z"
+    },
+    {
+      "id": "cmlj6cq8v001z12p2merrs22l",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 242,
+      "diff": -500,
+      "createdAt": "2026-02-12T08:06:08.096Z",
+      "updatedAt": "2026-02-12T08:06:08.096Z"
+    },
+    {
+      "id": "cmlj6cqa2002112p2jo93qgym",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 243,
+      "diff": -2000,
+      "createdAt": "2026-02-12T08:06:08.138Z",
+      "updatedAt": "2026-02-12T08:06:08.138Z"
+    },
+    {
+      "id": "cmlj6cqbi002312p257e2vwo4",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 244,
+      "diff": 7000,
+      "createdAt": "2026-02-12T08:06:08.191Z",
+      "updatedAt": "2026-02-12T08:06:08.191Z"
+    },
+    {
+      "id": "cmlj6cqcp002512p2lfbldeuz",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 245,
+      "diff": 0,
+      "createdAt": "2026-02-12T08:06:08.233Z",
+      "updatedAt": "2026-02-12T08:06:08.233Z"
+    },
+    {
+      "id": "cmlj6cqdx002712p210m48kqx",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 246,
+      "diff": 0,
+      "createdAt": "2026-02-12T08:06:08.277Z",
+      "updatedAt": "2026-02-12T08:06:08.277Z"
+    },
+    {
+      "id": "cmlj6cqf6002912p2f3nw9i6q",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 247,
+      "diff": 1000,
+      "createdAt": "2026-02-12T08:06:08.322Z",
+      "updatedAt": "2026-02-12T08:06:08.322Z"
+    },
+    {
+      "id": "cmlj6cqgj002b12p2s2uyj7sr",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 248,
+      "diff": -500,
+      "createdAt": "2026-02-12T08:06:08.372Z",
+      "updatedAt": "2026-02-12T08:06:08.372Z"
+    },
+    {
+      "id": "cmlj6cqhu002d12p2t93c7559",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 249,
+      "diff": 0,
+      "createdAt": "2026-02-12T08:06:08.418Z",
+      "updatedAt": "2026-02-12T08:06:08.418Z"
+    },
+    {
+      "id": "cmlj6cqj4002f12p2hxt75d65",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 250,
+      "diff": 1000,
+      "createdAt": "2026-02-12T08:06:08.465Z",
+      "updatedAt": "2026-02-12T08:06:08.465Z"
+    },
+    {
+      "id": "cmlj6d3pm002h12p2l0c4r5ug",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 238,
+      "diff": -500,
+      "createdAt": "2026-02-12T08:06:25.546Z",
+      "updatedAt": "2026-02-12T08:06:25.546Z"
+    },
+    {
+      "id": "cmlj6d3r7002j12p2qfdll51r",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 239,
+      "diff": 500,
+      "createdAt": "2026-02-12T08:06:25.604Z",
+      "updatedAt": "2026-02-12T08:06:25.604Z"
+    },
+    {
+      "id": "cmlj6d3sf002l12p2ku2xkvmt",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 240,
+      "diff": -1000,
+      "createdAt": "2026-02-12T08:06:25.647Z",
+      "updatedAt": "2026-02-12T08:06:25.647Z"
+    },
+    {
+      "id": "cmlj6d3tt002n12p29dv0huz7",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 241,
+      "diff": -2000,
+      "createdAt": "2026-02-12T08:06:25.698Z",
+      "updatedAt": "2026-02-12T08:06:25.698Z"
+    },
+    {
+      "id": "cmlj6d3uw002p12p268hiyogc",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 242,
+      "diff": -500,
+      "createdAt": "2026-02-12T08:06:25.736Z",
+      "updatedAt": "2026-02-12T08:06:25.736Z"
+    },
+    {
+      "id": "cmlj6d3w2002r12p2h0kyeyt0",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 243,
+      "diff": -1000,
+      "createdAt": "2026-02-12T08:06:25.778Z",
+      "updatedAt": "2026-02-12T08:06:25.778Z"
+    },
+    {
+      "id": "cmlj6d3xc002t12p2423zsyag",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 244,
+      "diff": 0,
+      "createdAt": "2026-02-12T08:06:25.824Z",
+      "updatedAt": "2026-02-12T08:06:25.824Z"
+    },
+    {
+      "id": "cmlj6d3yq002v12p2kixamzg8",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 245,
+      "diff": 7500,
+      "createdAt": "2026-02-12T08:06:25.874Z",
+      "updatedAt": "2026-02-12T08:06:25.874Z"
+    },
+    {
+      "id": "cmlj6d401002x12p2rf0np54f",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 246,
+      "diff": -1500,
+      "createdAt": "2026-02-12T08:06:25.921Z",
+      "updatedAt": "2026-02-12T08:06:25.921Z"
+    },
+    {
+      "id": "cmlj6d41g002z12p2279yzuzx",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 247,
+      "diff": -1000,
+      "createdAt": "2026-02-12T08:06:25.972Z",
+      "updatedAt": "2026-02-12T08:06:25.972Z"
+    },
+    {
+      "id": "cmlj6d42n003112p2k1gcaoto",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 248,
+      "diff": -2000,
+      "createdAt": "2026-02-12T08:06:26.016Z",
+      "updatedAt": "2026-02-12T08:06:26.016Z"
+    },
+    {
+      "id": "cmlj6d43v003312p2z2l87jc5",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 249,
+      "diff": -1000,
+      "createdAt": "2026-02-12T08:06:26.059Z",
+      "updatedAt": "2026-02-12T08:06:26.059Z"
+    },
+    {
+      "id": "cmlj6d453003512p2fxzplwgg",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 250,
+      "diff": 1000,
+      "createdAt": "2026-02-12T08:06:26.103Z",
+      "updatedAt": "2026-02-12T08:06:26.103Z"
+    },
+    {
+      "id": "cmlj6dzii003712p2fycxt81w",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 238,
+      "diff": -2000,
+      "createdAt": "2026-02-12T08:07:06.763Z",
+      "updatedAt": "2026-02-12T08:07:06.763Z"
+    },
+    {
+      "id": "cmlj6dzjo003912p25jnmlzhd",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 239,
+      "diff": -1500,
+      "createdAt": "2026-02-12T08:07:06.805Z",
+      "updatedAt": "2026-02-12T08:07:06.805Z"
+    },
+    {
+      "id": "cmlj6dzl3003b12p29exyflbu",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 240,
+      "diff": -1500,
+      "createdAt": "2026-02-12T08:07:06.855Z",
+      "updatedAt": "2026-02-12T08:07:06.855Z"
+    },
+    {
+      "id": "cmlj6dzmc003d12p232nn44m4",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 241,
+      "diff": -1500,
+      "createdAt": "2026-02-12T08:07:06.900Z",
+      "updatedAt": "2026-02-12T08:07:06.900Z"
+    },
+    {
+      "id": "cmlj6dznu003f12p2fwa6yout",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 242,
+      "diff": -1750,
+      "createdAt": "2026-02-12T08:07:06.955Z",
+      "updatedAt": "2026-02-12T08:07:06.955Z"
+    },
+    {
+      "id": "cmlj6dzp4003h12p2p0i9pxad",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 243,
+      "diff": -2000,
+      "createdAt": "2026-02-12T08:07:07.000Z",
+      "updatedAt": "2026-02-12T08:07:07.000Z"
+    },
+    {
+      "id": "cmlj6dzqa003j12p2cpq9pfhh",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 244,
+      "diff": -500,
+      "createdAt": "2026-02-12T08:07:07.042Z",
+      "updatedAt": "2026-02-12T08:07:07.042Z"
+    },
+    {
+      "id": "cmlj6dzrm003l12p2k0vaove6",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 245,
+      "diff": -1000,
+      "createdAt": "2026-02-12T08:07:07.089Z",
+      "updatedAt": "2026-02-12T08:07:07.089Z"
+    },
+    {
+      "id": "cmlj6dzsr003n12p2jtkdws6r",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 246,
+      "diff": -3000,
+      "createdAt": "2026-02-12T08:07:07.131Z",
+      "updatedAt": "2026-02-12T08:07:07.131Z"
+    },
+    {
+      "id": "cmlj6dzty003p12p2y78we1gn",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 247,
+      "diff": -3000,
+      "createdAt": "2026-02-12T08:07:07.174Z",
+      "updatedAt": "2026-02-12T08:07:07.174Z"
+    },
+    {
+      "id": "cmlj6dzvb003r12p28qrpw80w",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 248,
+      "diff": -3000,
+      "createdAt": "2026-02-12T08:07:07.223Z",
+      "updatedAt": "2026-02-12T08:07:07.223Z"
+    },
+    {
+      "id": "cmlj6dzwo003t12p2dboggsot",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 249,
+      "diff": -1500,
+      "createdAt": "2026-02-12T08:07:07.272Z",
+      "updatedAt": "2026-02-12T08:07:07.272Z"
+    },
+    {
+      "id": "cmlj6dzxs003v12p25sjihln7",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 250,
+      "diff": -500,
+      "createdAt": "2026-02-12T08:07:07.313Z",
+      "updatedAt": "2026-02-12T08:07:07.313Z"
+    },
+    {
+      "id": "cmlj6egvx003x12p21irxoixl",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 296,
+      "diff": 0,
+      "createdAt": "2026-02-12T08:07:29.277Z",
+      "updatedAt": "2026-02-12T08:07:29.277Z"
+    },
+    {
+      "id": "cmlj6egxg003z12p2lsxfqo4i",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 297,
+      "diff": -750,
+      "createdAt": "2026-02-12T08:07:29.333Z",
+      "updatedAt": "2026-02-12T08:07:29.333Z"
+    },
+    {
+      "id": "cmlj6egyq004112p28xnrh3re",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 298,
+      "diff": 0,
+      "createdAt": "2026-02-12T08:07:29.378Z",
+      "updatedAt": "2026-02-12T08:07:29.378Z"
+    },
+    {
+      "id": "cmlj6ewof004312p2ggqcn0hw",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 296,
+      "diff": 2000,
+      "createdAt": "2026-02-12T08:07:49.743Z",
+      "updatedAt": "2026-02-12T08:07:49.743Z"
+    },
+    {
+      "id": "cmlj6ewpy004512p21ycs5zzm",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 297,
+      "diff": -500,
+      "createdAt": "2026-02-12T08:07:49.798Z",
+      "updatedAt": "2026-02-12T08:07:49.798Z"
+    },
+    {
+      "id": "cmlj6ewra004712p25crrasga",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 298,
+      "diff": -500,
+      "createdAt": "2026-02-12T08:07:49.846Z",
+      "updatedAt": "2026-02-12T08:07:49.846Z"
+    },
+    {
+      "id": "cmlj6f7gy004912p2hoafsins",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 296,
+      "diff": -1500,
+      "createdAt": "2026-02-12T08:08:03.730Z",
+      "updatedAt": "2026-02-12T08:08:03.730Z"
+    },
+    {
+      "id": "cmlj6f7i7004b12p2p96p64nx",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 297,
+      "diff": -1500,
+      "createdAt": "2026-02-12T08:08:03.775Z",
+      "updatedAt": "2026-02-12T08:08:03.775Z"
+    },
+    {
+      "id": "cmlj6f7jr004d12p2xluhpzmv",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 298,
+      "diff": 0,
+      "createdAt": "2026-02-12T08:08:03.831Z",
+      "updatedAt": "2026-02-12T08:08:03.831Z"
+    },
+    {
+      "id": "cmlj6fmgk004l12p2mcjo9qxn",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 257,
+      "diff": 0,
+      "createdAt": "2026-02-12T08:08:23.156Z",
+      "updatedAt": "2026-02-12T08:08:23.156Z"
+    },
+    {
+      "id": "cmlj6fmi1004n12p2nobgydqm",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 294,
+      "diff": -2500,
+      "createdAt": "2026-02-12T08:08:23.209Z",
+      "updatedAt": "2026-02-12T08:08:23.209Z"
+    },
+    {
+      "id": "cmlj6fmja004p12p28huhrxa1",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 295,
+      "diff": -3500,
+      "createdAt": "2026-02-12T08:08:23.254Z",
+      "updatedAt": "2026-02-12T08:08:23.254Z"
+    },
+    {
+      "id": "cmlj6fvgh004r12p2ap41okfv",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 257,
+      "diff": -2500,
+      "createdAt": "2026-02-12T08:08:34.817Z",
+      "updatedAt": "2026-02-12T08:08:34.817Z"
+    },
+    {
+      "id": "cmlj6fvi3004t12p2382tf34o",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 294,
+      "diff": -1000,
+      "createdAt": "2026-02-12T08:08:34.875Z",
+      "updatedAt": "2026-02-12T08:08:34.875Z"
+    },
+    {
+      "id": "cmlj6fvjp004v12p2zc2erfq7",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 295,
+      "diff": -4000,
+      "createdAt": "2026-02-12T08:08:34.933Z",
+      "updatedAt": "2026-02-12T08:08:34.933Z"
+    },
+    {
+      "id": "cmlj6gc8q004x12p2j91sm5wa",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 257,
+      "diff": -4000,
+      "createdAt": "2026-02-12T08:08:56.570Z",
+      "updatedAt": "2026-02-12T08:08:56.570Z"
+    },
+    {
+      "id": "cmlj6gcaf004z12p2to91l74q",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 294,
+      "diff": -5000,
+      "createdAt": "2026-02-12T08:08:56.631Z",
+      "updatedAt": "2026-02-12T08:08:56.631Z"
+    },
+    {
+      "id": "cmlj6gcbr005112p2optqqud9",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 295,
+      "diff": -3500,
+      "createdAt": "2026-02-12T08:08:56.679Z",
+      "updatedAt": "2026-02-12T08:08:56.679Z"
+    }
+  ]
+}

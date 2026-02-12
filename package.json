@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "backup": "tsx scripts/backup_data.ts",
+    "register-data": "tsx scripts/register-data.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -19,6 +21,7 @@
   "devDependencies": {
     "@prisma/client": "5.22.0",
     "@tailwindcss/postcss": "^4",
+    "@types/minimist": "^1.2.5",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -26,6 +29,7 @@
     "eslint-config-next": "16.1.6",
     "prisma": "5.22.0",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "^5"
   }
