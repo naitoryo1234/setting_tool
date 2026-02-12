@@ -2,17 +2,7 @@
 
 import { useState, useTransition } from 'react'
 import { Machine } from '@prisma/client'
-import { addMachineNumber, deleteMachineNumber } from '@/lib/actions'
-
-type MachineNumber = {
-    id: string
-    machineNo: number
-    machineId: string
-    createdAt: Date
-    updatedAt: Date
-}
-
-type MachineWithNumbers = Machine & { numbers: MachineNumber[] }
+import { addMachineNumber, deleteMachineNumber, MachineWithNumbers } from '@/lib/actions'
 
 type Props = {
     machines: MachineWithNumbers[]

@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "backup": "tsx scripts/backup_data.ts",
-    "register-data": "tsx scripts/register-data.ts"
+    "register-data": "tsx scripts/register-data.ts",
+    "postinstall": "prisma generate"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
