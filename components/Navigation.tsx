@@ -49,10 +49,22 @@ export default function Navigation() {
     return (
         <>
             {/* デスクトップ: 上部ナビゲーション */}
-            <nav className="hidden md:block" style={{ background: 'var(--bg-card)', borderBottom: '1px solid var(--border-color)' }}>
+            <nav className="hidden md:block" style={{
+                background: 'rgba(8, 12, 26, 0.8)',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+            }}>
                 <div className="container mx-auto max-w-5xl flex justify-between items-center px-4" style={{ height: 'var(--nav-height)' }}>
                     <Link href="/" className="flex items-center gap-2" style={{ color: 'var(--text-primary)', textDecoration: 'none' }}>
-                        <span style={{ fontSize: '1.25rem', fontWeight: 700, background: 'linear-gradient(135deg, var(--accent), #8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                        <span style={{
+                            fontSize: '1.25rem',
+                            fontWeight: 800,
+                            background: 'linear-gradient(135deg, #6366f1, #a78bfa, #22d3ee)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            letterSpacing: '-0.02em',
+                        }}>
                             ⚙ Setting Tool
                         </span>
                     </Link>
@@ -65,8 +77,9 @@ export default function Navigation() {
                                     href={link.href}
                                     className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all"
                                     style={{
-                                        color: isActive ? 'var(--accent)' : 'var(--text-secondary)',
-                                        background: isActive ? 'var(--accent-glow)' : 'transparent',
+                                        color: isActive ? '#a78bfa' : 'var(--text-secondary)',
+                                        background: isActive ? 'rgba(99, 102, 241, 0.1)' : 'transparent',
+                                        borderBottom: isActive ? '2px solid #6366f1' : '2px solid transparent',
                                     }}
                                 >
                                     <link.Icon active={isActive} />
@@ -83,10 +96,10 @@ export default function Navigation() {
                 className="md:hidden fixed bottom-0 left-0 right-0 z-50 grid grid-cols-4 items-center"
                 style={{
                     height: 'var(--mobile-nav-height)',
-                    background: 'var(--bg-card)',
-                    borderTop: '1px solid var(--border-color)',
-                    backdropFilter: 'blur(12px)',
-                    WebkitBackdropFilter: 'blur(12px)',
+                    background: 'rgba(8, 12, 26, 0.9)',
+                    borderTop: '1px solid rgba(255, 255, 255, 0.06)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
                 }}
             >
                 {links.map((link) => {
@@ -97,12 +110,33 @@ export default function Navigation() {
                             href={link.href}
                             className="flex flex-col items-center justify-center gap-1 flex-1 py-2 transition-all"
                             style={{
-                                color: isActive ? 'var(--accent)' : 'var(--text-muted)',
+                                color: isActive ? '#a78bfa' : 'var(--text-muted)',
                                 textDecoration: 'none',
+                                position: 'relative',
                             }}
                         >
-                            <link.Icon active={isActive} />
-                            <span style={{ fontSize: '0.65rem', fontWeight: isActive ? 600 : 400 }}>
+                            {/* アクティブタブのグロー背景 */}
+                            {isActive && (
+                                <div style={{
+                                    position: 'absolute',
+                                    inset: '4px 12px',
+                                    background: 'rgba(99, 102, 241, 0.1)',
+                                    borderRadius: '12px',
+                                    filter: 'blur(4px)',
+                                }} />
+                            )}
+                            <div style={{
+                                position: 'relative',
+                                transform: isActive ? 'scale(1.15)' : 'scale(1)',
+                                transition: 'transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                            }}>
+                                <link.Icon active={isActive} />
+                            </div>
+                            <span style={{
+                                fontSize: '0.65rem',
+                                fontWeight: isActive ? 700 : 400,
+                                position: 'relative',
+                            }}>
                                 {link.label}
                             </span>
                             {isActive && (
@@ -111,8 +145,9 @@ export default function Navigation() {
                                     top: 0,
                                     width: '24px',
                                     height: '2px',
-                                    background: 'var(--accent)',
+                                    background: 'linear-gradient(90deg, #6366f1, #a78bfa)',
                                     borderRadius: '0 0 2px 2px',
+                                    boxShadow: '0 0 8px rgba(99, 102, 241, 0.5)',
                                 }} />
                             )}
                         </Link>
