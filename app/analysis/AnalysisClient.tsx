@@ -1,21 +1,30 @@
 'use client'
 
-import { useState, useTransition } from 'react'
-import { getAnalysis, toggleEventDay, AnalysisResult, DowSummary } from '@/lib/actions'
+import { useState, useTransition, useEffect } from 'react'
+import { getAnalysis, getMachines, toggleEventDay, AnalysisResult } from '@/lib/actions'
 
-type Machine = {
+type Store = {
     id: string
     name: string
 }
 
-type Props = {
-    machines: Machine[]
+type Machine = {
+    id: string
+    name: string
+    storeId: string
 }
 
-type TabType = 'machine' | 'dow' | 'event'
+type Props = {
+    machines: Machine[]
+    stores: Store[]
+}
 
-export default function AnalysisClient({ machines }: Props) {
+type TabType = 'machine' | 'dow'
+
+export default function AnalysisClient({ machines: initialMachines, stores }: Props) {
+    const [storeId, setStoreId] = useState(stores[0]?.id || '')
     const [machineId, setMachineId] = useState('')
+    const [machines, setMachines] = useState(initialMachines)
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
     const [useRange, setUseRange] = useState(false)
@@ -31,6 +40,27 @@ export default function AnalysisClient({ machines }: Props) {
     const [eventDate, setEventDate] = useState('')
     const [eventMsg, setEventMsg] = useState('')
 
+    // 店舗変更時に機種リストを更新
+    useEffect(() => {
+        if (storeId) {
+            startTransition(async () => {
+                const m = await getMachines(storeId) as any as Machine[]
+                setMachines(m)
+                setMachineId('')
+                setResult(null)
+                setHasSearched(false)
+            })
+        }
+    }, [storeId])
+
+    // 初期表示: 最初の店舗の機種をフィルタ
+    useEffect(() => {
+        if (storeId && initialMachines.length > 0) {
+            const filtered = initialMachines.filter(m => m.storeId === storeId)
+            setMachines(filtered)
+        }
+    }, [])
+
     const handleSearch = () => {
         if (!machineId) return
         startTransition(async () => {
@@ -43,9 +73,9 @@ export default function AnalysisClient({ machines }: Props) {
     }
 
     const handleToggleEvent = () => {
-        if (!eventDate) return
+        if (!eventDate || !storeId) return
         startTransition(async () => {
-            const res = await toggleEventDay(new Date(eventDate))
+            const res = await toggleEventDay(new Date(eventDate), storeId)
             setEventMsg(res.added ? `${eventDate} をイベント日に登録しました` : `${eventDate} のイベント登録を解除しました`)
             // 結果があれば再検索
             if (machineId && hasSearched) {
@@ -98,6 +128,18 @@ export default function AnalysisClient({ machines }: Props) {
             {/* 検索条件 */}
             <div className="bg-white p-6 rounded shadow space-y-4">
                 <div className="flex gap-4 items-end flex-wrap">
+                    <div>
+                        <label className="block text-sm font-medium mb-1">店舗</label>
+                        <select
+                            value={storeId}
+                            onChange={(e) => setStoreId(e.target.value)}
+                            className="border p-2 rounded min-w-[180px]"
+                        >
+                            {stores.map(s => (
+                                <option key={s.id} value={s.id}>{s.name}</option>
+                            ))}
+                        </select>
+                    </div>
                     <div>
                         <label className="block text-sm font-medium mb-1">機種</label>
                         <select
@@ -170,7 +212,12 @@ export default function AnalysisClient({ machines }: Props) {
 
             {/* イベント日登録 */}
             <div className="bg-white p-4 rounded shadow">
-                <h3 className="text-sm font-bold mb-2">イベント日登録</h3>
+                <h3 className="text-sm font-bold mb-2">
+                    イベント日登録
+                    <span className="text-xs text-gray-400 ml-2">
+                        ({stores.find(s => s.id === storeId)?.name || '店舗未選択'})
+                    </span>
+                </h3>
                 <div className="flex gap-3 items-center flex-wrap">
                     <input
                         type="date"
@@ -180,7 +227,7 @@ export default function AnalysisClient({ machines }: Props) {
                     />
                     <button
                         onClick={handleToggleEvent}
-                        disabled={!eventDate || isPending}
+                        disabled={!eventDate || !storeId || isPending}
                         className="bg-green-600 text-white px-4 py-2 rounded text-sm hover:bg-green-700 disabled:opacity-50"
                     >
                         登録/解除
@@ -248,8 +295,8 @@ export default function AnalysisClient({ machines }: Props) {
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
                                     className={`px-6 py-3 text-sm font-medium border-b-2 transition-colors ${activeTab === tab.id
-                                            ? 'border-blue-600 text-blue-600'
-                                            : 'border-transparent text-gray-500 hover:text-gray-700'
+                                        ? 'border-blue-600 text-blue-600'
+                                        : 'border-transparent text-gray-500 hover:text-gray-700'
                                         }`}
                                 >
                                     {tab.label}

@@ -10,13 +10,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Machine {
+// 店舗
+model Store {
   id        String   @id @default(cuid())
   name      String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  machines  Machine[]
+  eventDays EventDay[]
+}
+
+model Machine {
+  id        String   @id @default(cuid())
+  name      String
+  storeId   String
+  store     Store    @relation(fields: [storeId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   records   Record[]
   numbers   MachineNumber[]
+
+  @@unique([storeId, name])
+  @@index([storeId])
 }
 
 model MachineNumber {
@@ -51,9 +66,14 @@ model Record {
 // 将来の拡張: イベント種別、対象機種との紐付け等
 model EventDay {
   id        String   @id @default(cuid())
-  date      DateTime @unique
+  date      DateTime
+  storeId   String
+  store     Store    @relation(fields: [storeId], references: [id])
   label     String   @default("イベント") // イベント種別（将来拡張用）
   note      String?  // メモ（任意）
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@unique([date, storeId])
+  @@index([storeId])
 }

@@ -3,8 +3,17 @@
 import prisma from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
 
-export async function getMachines() {
+// 店舗一覧取得
+export async function getStores() {
+    return await prisma.store.findMany({
+        orderBy: { name: 'asc' },
+    })
+}
+
+// 機種一覧取得（店舗IDでフィルタ可能）
+export async function getMachines(storeId?: string) {
     return await prisma.machine.findMany({
+        where: storeId ? { storeId } : undefined,
         orderBy: { name: 'asc' },
         include: {
             numbers: {
@@ -13,6 +22,7 @@ export async function getMachines() {
         },
     })
 }
+
 
 export async function addMachineNumber(machineId: string, machineNo: number) {
     try {
@@ -453,22 +463,23 @@ export async function getAnalysis(
 
 // === EventDay 管理 ===
 
-export async function getEventDays() {
+export async function getEventDays(storeId?: string) {
     return await prisma.eventDay.findMany({
+        where: storeId ? { storeId } : undefined,
         orderBy: { date: 'desc' },
     })
 }
 
-export async function toggleEventDay(date: Date) {
+export async function toggleEventDay(date: Date, storeId: string) {
     const existing = await prisma.eventDay.findUnique({
-        where: { date },
+        where: { date_storeId: { date, storeId } },
     })
     if (existing) {
         await prisma.eventDay.delete({ where: { id: existing.id } })
         return { added: false }
     } else {
         await prisma.eventDay.create({
-            data: { date },
+            data: { date, storeId },
         })
         return { added: true }
     }

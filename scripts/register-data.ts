@@ -20,21 +20,31 @@ async function registerData() {
     const dateStr = args['date'] // YYYY-MM-DD
     const machineName = args['machine'] // e.g., "北斗"
     const rawData = args['data'] // e.g., "238 26 2770, 245 62 2459 7500"
+    const storeName = args['store'] || '保土ヶ谷ガイア' // デフォルト: 保土ヶ谷ガイア
 
     if (!dateStr || !machineName || !rawData) {
-        console.error('Usage: npm run register-data -- --date=YYYY-MM-DD --machine="MachineName" --data="No BIG Games [Diff], ..."')
+        console.error('Usage: npm run register-data -- --date=YYYY-MM-DD --machine="MachineName" --data="No BIG Games [Diff], ..." [--store="StoreName"]')
         process.exit(1)
     }
 
-    console.log(`Processing data for: ${machineName} on ${dateStr}`)
+    console.log(`Processing data for: ${machineName} at ${storeName} on ${dateStr}`)
 
-    // 1. Find Machine
-    // Use explicit type casting if needed or let inference work
-    const machine = await prisma.machine.findFirst({
+    // 0. Find or Create Store
+    let store = await prisma.store.findFirst({
+        where: { name: { contains: storeName } }
+    })
+    if (!store) {
+        store = await prisma.store.create({
+            data: { name: storeName }
+        })
+        console.log(`Created new store: ${storeName}`)
+    }
+
+    // 1. Find Machine (within store)
+    let machine = await prisma.machine.findFirst({
         where: {
-            name: {
-                contains: machineName
-            }
+            name: { contains: machineName },
+            storeId: store.id,
         },
         include: {
             numbers: true
@@ -42,8 +52,12 @@ async function registerData() {
     })
 
     if (!machine) {
-        console.error(`Machine not found matching: ${machineName}`)
-        process.exit(1)
+        // 機種がこの店舗に登録されていない場合、自動作成
+        machine = await prisma.machine.create({
+            data: { name: machineName, storeId: store.id },
+            include: { numbers: true }
+        })
+        console.log(`Created new machine: ${machineName} at ${storeName}`)
     }
 
     // 2. Parse Data
