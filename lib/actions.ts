@@ -226,3 +226,30 @@ export async function getSummary(start: Date, end: Date) {
 
     return { machineSummary, machineNoSummary }
 }
+
+// 台番号別の日付ごと履歴を取得
+export async function getMachineNoHistory(machineId: string, machineNo: number) {
+    const machine = await prisma.machine.findUnique({
+        where: { id: machineId },
+    })
+
+    const records = await prisma.record.findMany({
+        where: {
+            machineId,
+            machineNo,
+        },
+        orderBy: { date: 'desc' },
+    })
+
+    return {
+        machineName: machine?.name || 'Unknown',
+        machineNo,
+        records: records.map(r => ({
+            id: r.id,
+            date: r.date,
+            diff: r.diff,
+            big: r.big,
+            games: r.games,
+        })),
+    }
+}

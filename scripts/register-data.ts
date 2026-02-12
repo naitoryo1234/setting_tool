@@ -118,13 +118,17 @@ async function registerData() {
                     }
                 },
                 update: {
-                    diff: finalDiff
+                    diff: finalDiff,
+                    big: item.big,
+                    games: item.games
                 },
                 create: {
                     machineId: machine.id,
                     machineNo: item.no,
                     date: targetDate,
-                    diff: finalDiff
+                    diff: finalDiff,
+                    big: item.big,
+                    games: item.games
                 }
             })
             successCount++

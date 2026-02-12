@@ -36,6 +36,8 @@ model Record {
   machine   Machine  @relation(fields: [machineId], references: [id])
   machineNo Int
   diff      Int
+  big       Int?      @default(0) // Added for reference
+  games     Int?      @default(0) // Added for reference
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

@@ -169,7 +169,14 @@ export default function SummaryClient({ machines }: Props) {
                                     {filteredMachineNoSummary.map((m) => (
                                         <tr key={`${m.machineId}-${m.machineNo}`} className="border-b">
                                             <td className="px-4 py-3">{m.machineName}</td>
-                                            <td className="px-4 py-3">{m.machineNo}</td>
+                                            <td className="px-4 py-3">
+                                                <a
+                                                    href={`/history/${m.machineId}/${m.machineNo}`}
+                                                    className="text-blue-600 hover:underline font-medium"
+                                                >
+                                                    {m.machineNo}
+                                                </a>
+                                            </td>
                                             <td className={`px-4 py-3 text-right font-bold ${m.totalDiff > 0 ? 'text-red-500' : m.totalDiff < 0 ? 'text-blue-500' : ''}`}>
                                                 {m.totalDiff > 0 ? '+' : ''}{m.totalDiff}
                                             </td>
