@@ -10,6 +10,7 @@ const COINS_PER_GAME = 1.52
 interface DataItem {
     no: number
     big: number
+    reg: number
     games: number
     diff?: number
 }
@@ -23,7 +24,7 @@ async function registerData() {
     const storeName = args['store'] || '保土ヶ谷ガイア' // デフォルト: 保土ヶ谷ガイア
 
     if (!dateStr || !machineName || !rawData) {
-        console.error('Usage: npm run register-data -- --date=YYYY-MM-DD --machine="MachineName" --data="No BIG Games [Diff], ..." [--store="StoreName"]')
+        console.error('Usage: npm run register-data -- --date=YYYY-MM-DD --machine="MachineName" --data="No BIG REG Games [Diff], ..." [--store="StoreName"]')
         process.exit(1)
     }
 
@@ -68,12 +69,14 @@ async function registerData() {
 
     for (const rawItem of rawItems) {
         const parts = rawItem.trim().split(/\s+/)
-        if (parts.length >= 3) {
+        if (parts.length >= 4) {
+            // フォーマット: No BIG REG Games [Diff]
             items.push({
                 no: parseInt(parts[0]),
                 big: parseInt(parts[1]),
-                games: parseInt(parts[2]),
-                diff: parts[3] ? parseInt(parts[3]) : undefined
+                reg: parseInt(parts[2]),
+                games: parseInt(parts[3]),
+                diff: parts[4] ? parseInt(parts[4]) : undefined
             })
         }
     }
@@ -134,6 +137,7 @@ async function registerData() {
                 update: {
                     diff: finalDiff,
                     big: item.big,
+                    reg: item.reg,
                     games: item.games
                 },
                 create: {
@@ -142,6 +146,7 @@ async function registerData() {
                     date: targetDate,
                     diff: finalDiff,
                     big: item.big,
+                    reg: item.reg,
                     games: item.games
                 }
             })
