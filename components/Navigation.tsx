@@ -7,9 +7,10 @@ export default function Navigation() {
     const pathname = usePathname()
 
     const links = [
-        { href: '/input', label: '入力 (Input)' },
-        { href: '/summary', label: '集計 (Summary)' },
-        { href: '/records', label: '記録 (Records)' },
+        { href: '/input', label: '入力' },
+        { href: '/summary', label: '集計' },
+        { href: '/analysis', label: '分析' },
+        { href: '/records', label: '記録' },
     ]
 
     return (
@@ -22,8 +23,8 @@ export default function Navigation() {
                             key={link.href}
                             href={link.href}
                             className={`px-3 py-2 rounded transition-colors ${pathname.startsWith(link.href)
-                                    ? 'bg-gray-700 font-semibold'
-                                    : 'hover:bg-gray-700'
+                                ? 'bg-gray-700 font-semibold'
+                                : 'hover:bg-gray-700'
                                 }`}
                         >
                             {link.label}

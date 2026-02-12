@@ -254,3 +254,124 @@ export async function getMachineNoHistory(machineId: string, machineNo: number) 
         })),
     }
 }
+
+// 初当たり確率分析用データ取得
+export type AnalysisRecord = {
+    machineNo: number
+    totalGames: number
+    totalBig: number
+    totalReg: number
+    totalHits: number // BIG + REG
+    bigProb: number   // 1/X形式のX
+    regProb: number
+    hitProb: number   // 合算確率
+    totalDiff: number
+    days: number      // データ日数
+}
+
+export type AnalysisResult = {
+    machineName: string
+    machineId: string
+    records: AnalysisRecord[]
+    overall: {
+        totalGames: number
+        totalBig: number
+        totalReg: number
+        totalHits: number
+        bigProb: number
+        regProb: number
+        hitProb: number
+        totalDiff: number
+        days: number
+    }
+}
+
+export async function getAnalysis(
+    machineId: string,
+    startDate?: Date,
+    endDate?: Date,
+): Promise<AnalysisResult | null> {
+    const machine = await prisma.machine.findUnique({
+        where: { id: machineId },
+    })
+    if (!machine) return null
+
+    // BIG/Games/REGデータが存在するレコードのみ対象
+    const where: any = {
+        machineId,
+        big: { not: null, gt: 0 },
+        games: { not: null, gt: 0 },
+    }
+    // big=0 でも games>0 なら含めたいので、bigの条件を緩める
+    // ただし big=0, games=0 は除外（データなし）
+    where.big = { not: null }
+    where.games = { not: null, gt: 0 }
+
+    if (startDate && endDate) {
+        where.date = { gte: startDate, lte: endDate }
+    }
+
+    const records = await prisma.record.findMany({
+        where,
+        orderBy: [{ machineNo: 'asc' }, { date: 'asc' }],
+    })
+
+    // 台番号ごとに集計
+    const byNo = new Map<number, { games: number; big: number; reg: number; diff: number; days: number }>()
+
+    for (const r of records) {
+        const current = byNo.get(r.machineNo) || { games: 0, big: 0, reg: 0, diff: 0, days: 0 }
+        current.games += r.games || 0
+        current.big += r.big || 0
+        current.reg += r.reg || 0
+        current.diff += r.diff
+        current.days += 1
+        byNo.set(r.machineNo, current)
+    }
+
+    const analysisRecords: AnalysisRecord[] = []
+    let overallGames = 0, overallBig = 0, overallReg = 0, overallDiff = 0, overallDays = 0
+
+    for (const [machineNo, data] of byNo) {
+        const totalHits = data.big + data.reg
+        analysisRecords.push({
+            machineNo,
+            totalGames: data.games,
+            totalBig: data.big,
+            totalReg: data.reg,
+            totalHits,
+            bigProb: data.big > 0 ? Math.round(data.games / data.big) : 0,
+            regProb: data.reg > 0 ? Math.round(data.games / data.reg) : 0,
+            hitProb: totalHits > 0 ? Math.round(data.games / totalHits) : 0,
+            totalDiff: data.diff,
+            days: data.days,
+        })
+        overallGames += data.games
+        overallBig += data.big
+        overallReg += data.reg
+        overallDiff += data.diff
+        overallDays = Math.max(overallDays, data.days) // 最大日数
+    }
+
+    const overallHits = overallBig + overallReg
+    // overallDays は全台の合計ではなくユニークな日数を出したい
+    const uniqueDates = new Set(records.map(r => r.date.toISOString().split('T')[0]))
+
+    return {
+        machineName: machine.name,
+        machineId: machine.id,
+        records: analysisRecords,
+        overall: {
+            totalGames: overallGames,
+            totalBig: overallBig,
+            totalReg: overallReg,
+            totalHits: overallHits,
+            bigProb: overallBig > 0 ? Math.round(overallGames / overallBig) : 0,
+            regProb: overallReg > 0 ? Math.round(overallGames / overallReg) : 0,
+            hitProb: overallHits > 0 ? Math.round(overallGames / overallHits) : 0,
+            totalDiff: overallDiff,
+            days: uniqueDates.size,
+        },
+    }
+}
+
