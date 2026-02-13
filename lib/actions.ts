@@ -165,7 +165,14 @@ export async function searchRecords(params: {
     const where: any = {}
 
     if (params.startDate && params.endDate) {
-        where.date = { gte: params.startDate, lte: params.endDate }
+        // 同じ日付の場合は、その日の終わりまでを検索範囲とする
+        if (params.startDate.getTime() === params.endDate.getTime()) {
+            const endOfDay = new Date(params.endDate)
+            endOfDay.setUTCHours(23, 59, 59, 999)
+            where.date = { gte: params.startDate, lte: endOfDay }
+        } else {
+            where.date = { gte: params.startDate, lte: params.endDate }
+        }
     }
     if (params.machineId) where.machineId = params.machineId
     if (params.machineNo) where.machineNo = params.machineNo

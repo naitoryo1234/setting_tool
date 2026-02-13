@@ -1,290 +1,280 @@
 'use client'
 
-import { useState, useTransition, useEffect } from 'react'
+import { useState, useTransition } from 'react'
+import { searchRecords, deleteRecord, upsertRecord, MachineWithNumbers } from '@/lib/actions'
+import { Record, Machine } from '@prisma/client'
 import Link from 'next/link'
-import { searchRecords, updateRecord, deleteRecord } from '@/lib/actions'
-import { Machine, Record } from '@prisma/client'
+import { DatabaseZap, Search, Calendar, Monitor, Hash, Edit2, Trash2, Save, X, RotateCw, ArrowUpDown, ArrowUp, ArrowDown, Inbox } from 'lucide-react'
 
 type Props = {
-    machines: Machine[]
+    initialRecords: (Record & { machine: Machine })[]
+    machines: MachineWithNumbers[]
 }
 
-type RecordWithMachine = Record & {
-    machine: Machine
-    big?: number | null
-    reg?: number | null
-    games?: number | null
-}
-
-export default function RecordsClient({ machines }: Props) {
-    const [startDate, setStartDate] = useState('')
-    const [endDate, setEndDate] = useState('')
+export default function RecordsClient({ initialRecords, machines }: Props) {
+    const [records, setRecords] = useState(initialRecords)
+    const [date, setDate] = useState('')
     const [machineId, setMachineId] = useState('')
     const [machineNo, setMachineNo] = useState('')
-
-    const [records, setRecords] = useState<RecordWithMachine[]>([])
+    const [sortKey, setSortKey] = useState<string>('date')
+    const [sortAsc, setSortAsc] = useState(false)
     const [isPending, startTransition] = useTransition()
 
+    // 編集用state
     const [editingId, setEditingId] = useState<string | null>(null)
-    const [editValues, setEditValues] = useState<{
-        date: string
-        machineId: string
-        machineNo: string
-        diff: string
-        big: string
-        reg: string
-        games: string
-    } | null>(null)
+    const [editDiff, setEditDiff] = useState<number>(0)
+
+    const fetchRecords = async () => {
+        const dateObj = date ? new Date(date) : undefined
+        const res = await searchRecords({
+            startDate: dateObj,
+            endDate: dateObj,
+            machineId: machineId || undefined,
+            machineNo: machineNo ? parseInt(machineNo) : undefined
+        })
+        setRecords(res)
+    }
 
     const handleSearch = () => {
         startTransition(async () => {
-            const res = await searchRecords({
-                startDate: startDate ? new Date(startDate) : undefined,
-                endDate: endDate ? new Date(endDate) : undefined,
-                machineId: machineId || undefined,
-                machineNo: machineNo ? parseInt(machineNo) : undefined,
-            })
-            setRecords(res)
-        })
-    }
-
-    // Initial load (last 7 days)
-    useEffect(() => {
-        const end = new Date()
-        const start = new Date()
-        start.setDate(start.getDate() - 7)
-        setStartDate(start.toISOString().split('T')[0])
-        setEndDate(end.toISOString().split('T')[0])
-    }, [])
-
-    const handleEditClick = (record: RecordWithMachine) => {
-        setEditingId(record.id)
-        setEditValues({
-            date: new Date(record.date).toISOString().split('T')[0],
-            machineId: record.machineId,
-            machineNo: record.machineNo.toString(),
-            diff: record.diff.toString(),
-            big: record.big?.toString() ?? '0',
-            reg: record.reg?.toString() ?? '0',
-            games: record.games?.toString() ?? '0',
-        })
-    }
-
-    const handleCancelEdit = () => {
-        setEditingId(null)
-        setEditValues(null)
-    }
-
-    const handleSaveEdit = async () => {
-        if (!editingId || !editValues) return
-
-        startTransition(async () => {
-            const res = await updateRecord(editingId, {
-                date: new Date(editValues.date),
-                machineId: editValues.machineId,
-                machineNo: parseInt(editValues.machineNo),
-                diff: parseInt(editValues.diff),
-                big: parseInt(editValues.big),
-                reg: parseInt(editValues.reg),
-                games: parseInt(editValues.games),
-            })
-
-            if (res.success) {
-                setEditingId(null)
-                setEditValues(null)
-                handleSearch()
-            } else {
-                alert(res.error)
-            }
+            await fetchRecords()
         })
     }
 
     const handleDelete = async (id: string) => {
-        if (!confirm('本当に削除しますか？')) return
+        if (!confirm('削除しますか？')) return
         startTransition(async () => {
             await deleteRecord(id)
-            handleSearch()
+            await fetchRecords()
         })
     }
 
+    const startEdit = (record: Record) => {
+        setEditingId(record.id)
+        setEditDiff(record.diff)
+    }
+
+    const cancelEdit = () => {
+        setEditingId(null)
+    }
+
+    const saveEdit = async (record: Record) => {
+        startTransition(async () => {
+            const result = await upsertRecord({
+                date: record.date,
+                machineId: record.machineId,
+                machineNo: record.machineNo,
+                diff: editDiff,
+            })
+
+            if (result.success) {
+                setEditingId(null)
+                await fetchRecords()
+            } else {
+                alert(result.error)
+            }
+        })
+    }
+
+    const handleSort = (key: string) => {
+        if (sortKey === key) {
+            setSortAsc(!sortAsc)
+        } else {
+            setSortKey(key)
+            setSortAsc(key === 'machineNo') // Default asc for machineNo
+        }
+    }
+
+    const sortedRecords = [...records].sort((a, b) => {
+        let va = (a as any)[sortKey]
+        let vb = (b as any)[sortKey]
+
+        if (sortKey === 'date') {
+            va = new Date(va).getTime()
+            vb = new Date(vb).getTime()
+        } else if (sortKey === 'machineName') {
+            va = a.machine.name
+            vb = b.machine.name
+        }
+
+        if (va < vb) return sortAsc ? -1 : 1
+        if (va > vb) return sortAsc ? 1 : -1
+        return 0
+    })
+
+    const SortHeader = ({ label, field, align = 'left', className = '' }: { label: string; field: string; align?: string, className?: string }) => (
+        <th
+            className={`cursor-pointer select-none hover:text-[var(--accent)] transition-colors group ${className}`}
+            style={{ textAlign: align as any }}
+            onClick={() => handleSort(field)}
+        >
+            <div className={`flex items-center ${align === 'right' ? 'justify-end' : align === 'center' ? 'justify-center' : 'justify-start'} gap-1`}>
+                {label}
+                <span className="text-[10px] text-[var(--text-muted)] group-hover:text-[var(--accent)]">
+                    {sortKey === field ? (sortAsc ? <ArrowUp size={10} /> : <ArrowDown size={10} />) : <ArrowUpDown size={10} />}
+                </span>
+            </div>
+        </th>
+    )
+
     return (
-        <div className="animate-fade-in">
+        <div className="animate-fade-in max-w-5xl mx-auto space-y-8">
             {/* ページヘッダー */}
-            <div className="page-header">
-                <h1 className="page-header-title">📋 記録管理</h1>
-                <p className="page-header-subtitle">過去のデータを検索・編集・削除</p>
+            <div className="page-header border-b border-white/5 pb-4">
+                <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-orange-500/10 text-orange-400">
+                        <DatabaseZap size={24} />
+                    </div>
+                    <div>
+                        <h1 className="page-header-title text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-500">記録管理</h1>
+                        <p className="page-header-subtitle text-sm text-[var(--text-muted)]">保存されたデータの確認・修正・削除</p>
+                    </div>
+                </div>
             </div>
 
             <div className="space-y-6">
-                {/* Search Filter */}
-                <div className="card-static stagger-item">
-                    <div className="flex flex-col gap-4">
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <div className="flex-1">
-                                <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--text-secondary)' }}>開始日</label>
-                                <input
-                                    type="date"
-                                    value={startDate}
-                                    onChange={e => setStartDate(e.target.value)}
-                                    className="input-modern w-full"
-                                />
-                            </div>
-                            <div className="flex-1">
-                                <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--text-secondary)' }}>終了日</label>
-                                <input
-                                    type="date"
-                                    value={endDate}
-                                    onChange={e => setEndDate(e.target.value)}
-                                    className="input-modern w-full"
-                                />
-                            </div>
+                {/* 検索・フィルター */}
+                <div className="card-static stagger-item p-6 border border-white/5 bg-slate-900/40 backdrop-blur-md">
+                    <div className="flex flex-col sm:flex-row gap-4 items-end">
+                        <div className="w-full sm:w-auto">
+                            <label className="flex items-center gap-1.5 text-xs font-semibold text-[var(--text-secondary)] mb-1.5">
+                                <Calendar size={12} /> 日付
+                            </label>
+                            <input
+                                type="date"
+                                value={date}
+                                onChange={(e) => setDate(e.target.value)}
+                                className="input-modern tabular-nums"
+                            />
                         </div>
-                        <div className="flex flex-col sm:flex-row gap-4 items-end">
-                            <div className="flex-1">
-                                <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--text-secondary)' }}>機種</label>
-                                <select
-                                    value={machineId}
-                                    onChange={e => setMachineId(e.target.value)}
-                                    className="select-modern w-full"
-                                >
-                                    <option value="">全て</option>
-                                    {machines.map(m => <option key={m.id} value={m.id}>{m.name}</option>)}
-                                </select>
-                            </div>
-                            <div className="w-24">
-                                <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--text-secondary)' }}>台番</label>
-                                <input
-                                    type="number"
-                                    value={machineNo}
-                                    onChange={e => setMachineNo(e.target.value)}
-                                    className="input-modern w-full"
-                                    placeholder="台番"
-                                />
-                            </div>
-                            <button
-                                onClick={handleSearch}
-                                disabled={isPending}
-                                className="btn-primary w-full sm:w-auto px-6"
+                        <div className="w-full sm:flex-1 min-w-[200px]">
+                            <label className="flex items-center gap-1.5 text-xs font-semibold text-[var(--text-secondary)] mb-1.5">
+                                <Monitor size={12} /> 機種
+                            </label>
+                            <select
+                                value={machineId}
+                                onChange={(e) => {
+                                    setMachineId(e.target.value)
+                                    setMachineNo('')
+                                }}
+                                className="select-modern w-full text-ellipsis"
                             >
-                                {isPending ? '⏳ 検索中...' : '🔍 検索'}
-                            </button>
+                                <option value="">すべて</option>
+                                {machines.map(m => (<option key={m.id} value={m.id}>{m.name}</option>))}
+                            </select>
                         </div>
+                        <div className="w-full sm:w-32">
+                            <label className="flex items-center gap-1.5 text-xs font-semibold text-[var(--text-secondary)] mb-1.5">
+                                <Hash size={12} /> 台番
+                            </label>
+                            <select
+                                value={machineNo}
+                                onChange={(e) => setMachineNo(e.target.value)}
+                                className="select-modern w-full tabular-nums"
+                                disabled={!machineId}
+                            >
+                                <option value="">すべて</option>
+                                {((machines.find(m => m.id === machineId)?.numbers || []) as any[]).map(n => (
+                                    <option key={n.id} value={n.machineNo}>{n.machineNo}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <button
+                            onClick={handleSearch}
+                            disabled={isPending}
+                            className="btn-primary w-full sm:w-auto h-[42px] px-6 flex items-center justify-center gap-2"
+                        >
+                            {isPending ? <RotateCw size={16} className="animate-spin" /> : <Search size={16} />}
+                            <span>検索</span>
+                        </button>
                     </div>
                 </div>
 
-                {/* Results Table */}
-                <div className="card-static stagger-item" style={{ padding: 0, overflow: 'hidden' }}>
+                {/* データ一覧テーブル */}
+                <div className="card-static stagger-item p-0 overflow-hidden border border-white/5">
+                    <div className="px-5 py-4 border-b border-white/5 bg-slate-900/50 flex justify-between items-center">
+                        <h2 className="text-sm font-bold text-[var(--text-primary)]">検索結果</h2>
+                        <span className="text-xs text-[var(--text-muted)] bg-white/5 px-2 py-0.5 rounded-full tabular-nums">
+                            {sortedRecords.length} records
+                        </span>
+                    </div>
                     <div className="overflow-x-auto">
-                        <table className="table-jat w-full">
+                        <table className="table-jat w-full text-sm">
                             <thead>
                                 <tr>
-                                    <th style={{ minWidth: '6rem' }}>日付</th>
-                                    <th style={{ minWidth: '8rem' }}>機種</th>
-                                    <th style={{ minWidth: '4rem', textAlign: 'center' }}>台番</th>
-                                    <th style={{ minWidth: '4rem', textAlign: 'center' }}>BIG</th>
-                                    <th style={{ minWidth: '4rem', textAlign: 'center' }}>REG</th>
-                                    <th style={{ minWidth: '5rem', textAlign: 'right' }}>G数</th>
-                                    <th style={{ minWidth: '6rem', textAlign: 'right' }}>差枚</th>
-                                    <th style={{ minWidth: '6rem', textAlign: 'center' }}>操作</th>
+                                    <SortHeader label="日付" field="date" className="pl-4" />
+                                    <SortHeader label="機種名" field="machineName" />
+                                    <SortHeader label="台番" field="machineNo" align="center" />
+                                    <SortHeader label="差枚" field="diff" align="right" />
+                                    <th className="text-center w-24">操作</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {records.map(r => {
-                                    const isEditing = editingId === r.id
-                                    const diff = r.diff
-                                    const diffClass = diff > 0 ? 'text-plus' : diff < 0 ? 'text-minus' : 'text-zero'
+                                {sortedRecords.length === 0 ? (
+                                    <tr>
+                                        <td colSpan={5} className="py-16 text-center text-[var(--text-muted)]">
+                                            <Inbox size={48} className="mx-auto mb-3 opacity-20" />
+                                            <div className="font-medium">データが見つかりません</div>
+                                        </td>
+                                    </tr>
+                                ) : (
+                                    sortedRecords.map((record) => {
+                                        const isEditing = editingId === record.id
+                                        const dateStr = new Date(record.date).toLocaleDateString('ja-JP')
 
-                                    if (isEditing) {
                                         return (
-                                            <tr key={r.id} style={{ background: 'rgba(99, 102, 241, 0.05)' }}>
-                                                <td className="p-2">
-                                                    <input
-                                                        type="date"
-                                                        value={editValues?.date}
-                                                        onChange={e => setEditValues(prev => ({ ...prev!, date: e.target.value }))}
-                                                        className="input-modern w-full p-1 text-sm"
-                                                    />
+                                            <tr key={record.id} className={`${isEditing ? 'bg-indigo-500/10' : 'group hover:bg-white/5'} transition-colors`}>
+                                                <td className="pl-4 py-3 tabular-nums text-[var(--text-secondary)]">{dateStr}</td>
+                                                <td className="py-3 font-medium text-[var(--text-primary)]">{record.machine.name}</td>
+                                                <td className="py-3 text-center">
+                                                    <Link href={`/history/${record.machineId}/${record.machineNo}`} className="text-indigo-400 hover:text-indigo-300 hover:underline decoration-indigo-500/30 tabular-nums font-bold">
+                                                        {record.machineNo}
+                                                    </Link>
                                                 </td>
-                                                <td className="p-2">
-                                                    <select
-                                                        value={editValues?.machineId}
-                                                        onChange={e => setEditValues(prev => ({ ...prev!, machineId: e.target.value }))}
-                                                        className="select-modern w-full p-1 text-sm"
-                                                    >
-                                                        {machines.map(m => <option key={m.id} value={m.id}>{m.name}</option>)}
-                                                    </select>
+
+                                                {/* 編集モード: 差枚 */}
+                                                <td className="py-3 text-right">
+                                                    {isEditing ? (
+                                                        <input
+                                                            type="number"
+                                                            value={editDiff}
+                                                            onChange={(e) => setEditDiff(Number(e.target.value))}
+                                                            className="input-modern py-1 px-2 text-right w-24 tabular-nums"
+                                                        />
+                                                    ) : (
+                                                        <span className={`tabular-nums font-bold ${record.diff > 0 ? 'text-plus' : record.diff < 0 ? 'text-minus' : 'text-zero'}`}>
+                                                            {record.diff > 0 ? '+' : ''}{record.diff.toLocaleString()}
+                                                        </span>
+                                                    )}
                                                 </td>
-                                                <td className="p-2">
-                                                    <input type="number" value={editValues?.machineNo} onChange={e => setEditValues(prev => ({ ...prev!, machineNo: e.target.value }))} className="input-modern w-full p-1 text-sm text-center" />
-                                                </td>
-                                                <td className="p-2">
-                                                    <input type="number" value={editValues?.big} onChange={e => setEditValues(prev => ({ ...prev!, big: e.target.value }))} className="input-modern w-full p-1 text-sm text-center" />
-                                                </td>
-                                                <td className="p-2">
-                                                    <input type="number" value={editValues?.reg} onChange={e => setEditValues(prev => ({ ...prev!, reg: e.target.value }))} className="input-modern w-full p-1 text-sm text-center" />
-                                                </td>
-                                                <td className="p-2">
-                                                    <input type="number" value={editValues?.games} onChange={e => setEditValues(prev => ({ ...prev!, games: e.target.value }))} className="input-modern w-full p-1 text-sm text-right" />
-                                                </td>
-                                                <td className="p-2">
-                                                    <input type="number" value={editValues?.diff} onChange={e => setEditValues(prev => ({ ...prev!, diff: e.target.value }))} className="input-modern w-full p-1 text-sm text-right" />
-                                                </td>
-                                                <td className="p-2 text-center">
-                                                    <div className="flex justify-center gap-2">
-                                                        <button onClick={handleSaveEdit} style={{ color: '#4ade80', fontWeight: 700, fontSize: '0.8rem' }}>
-                                                            保存
-                                                        </button>
-                                                        <button onClick={handleCancelEdit} style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
-                                                            取消
-                                                        </button>
+
+                                                {/* 操作ボタン */}
+                                                <td className="py-3 text-center">
+                                                    <div className="flex items-center justify-center gap-1">
+                                                        {isEditing ? (
+                                                            <>
+                                                                <button onClick={() => saveEdit(record)} className="p-1.5 text-emerald-400 hover:bg-emerald-500/20 rounded disabled:opacity-50" disabled={isPending}>
+                                                                    <Save size={14} />
+                                                                </button>
+                                                                <button onClick={cancelEdit} className="p-1.5 text-[var(--text-muted)] hover:bg-white/10 rounded" disabled={isPending}>
+                                                                    <X size={14} />
+                                                                </button>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <button onClick={() => startEdit(record)} className="p-1.5 text-indigo-400 hover:bg-indigo-500/20 rounded transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+                                                                    <Edit2 size={14} />
+                                                                </button>
+                                                                <button onClick={() => handleDelete(record.id)} className="p-1.5 text-red-400 hover:bg-red-500/20 rounded transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+                                                                    <Trash2 size={14} />
+                                                                </button>
+                                                            </>
+                                                        )}
                                                     </div>
                                                 </td>
                                             </tr>
                                         )
-                                    }
-
-                                    return (
-                                        <tr key={r.id}>
-                                            <td>{new Date(r.date).toLocaleDateString()}</td>
-                                            <td style={{ color: 'var(--text-secondary)' }}>{r.machine.name}</td>
-                                            <td style={{ textAlign: 'center', fontWeight: 600 }}>
-                                                <Link href={`/history/${r.machineId}/${r.machineNo}`} style={{ color: '#a78bfa', textDecoration: 'none' }}>
-                                                    {r.machineNo}
-                                                </Link>
-                                            </td>
-                                            <td style={{ textAlign: 'center' }}>{r.big ?? '-'}</td>
-                                            <td style={{ textAlign: 'center' }}>{r.reg ?? '-'}</td>
-                                            <td style={{ textAlign: 'right' }}>{r.games?.toLocaleString() ?? '-'}</td>
-                                            <td style={{ textAlign: 'right' }} className={diffClass}>
-                                                {diff > 0 ? `+${diff.toLocaleString()}` : diff.toLocaleString()}
-                                            </td>
-                                            <td style={{ textAlign: 'center' }}>
-                                                <div className="flex justify-center gap-3 text-sm">
-                                                    <button
-                                                        onClick={() => handleEditClick(r)}
-                                                        style={{ color: '#a78bfa', fontSize: '0.8rem' }}
-                                                    >
-                                                        編集
-                                                    </button>
-                                                    <button
-                                                        onClick={() => handleDelete(r.id)}
-                                                        style={{ color: '#f87171', fontSize: '0.8rem' }}
-                                                    >
-                                                        削除
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    )
-                                })}
-                                {records.length === 0 && (
-                                    <tr>
-                                        <td colSpan={8} style={{ textAlign: 'center', padding: '3rem' }}>
-                                            <div style={{ fontSize: '2rem', marginBottom: '0.5rem', color: 'var(--text-muted)' }}>🔍</div>
-                                            <div style={{ color: 'var(--text-muted)' }}>データが見つかりませんでした</div>
-                                            <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>条件を変更して再検索してみてください</div>
-                                        </td>
-                                    </tr>
+                                    })
                                 )}
                             </tbody>
                         </table>
@@ -294,3 +284,4 @@ export default function RecordsClient({ machines }: Props) {
         </div>
     )
 }
+

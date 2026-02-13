@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-12T23:23:24.704Z",
+  "timestamp": "2026-02-13T00:48:46.853Z",
   "version": 2,
   "stores": [
     {
@@ -121,6 +121,11 @@
       "updatedAt": "2026-02-12T07:51:44.353Z",
       "numbers": [
         {
+          "id": "cmlj6qft10013cyri72usitti",
+          "machineId": "cmlj5u7s1000272g9w1gibj3e",
+          "machineNo": 298
+        },
+        {
           "id": "cmlj6qfsn000zcyrimk5y9vkf",
           "machineId": "cmlj5u7s1000272g9w1gibj3e",
           "machineNo": 296
@@ -129,11 +134,6 @@
           "id": "cmlj6qfsu0011cyribkudgv6d",
           "machineId": "cmlj5u7s1000272g9w1gibj3e",
           "machineNo": 297
-        },
-        {
-          "id": "cmlj6qft10013cyri72usitti",
-          "machineId": "cmlj5u7s1000272g9w1gibj3e",
-          "machineNo": 298
         }
       ]
     },
@@ -164,148 +164,124 @@
   ],
   "records": [
     {
-      "id": "cmlj687sq000712p2ti1dg5ww",
-      "date": "2026-02-15T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": 300,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:02:37.563Z",
-      "updatedAt": "2026-02-12T08:02:37.563Z"
-    },
-    {
-      "id": "cmlj687u8000912p2pzkv4rwe",
-      "date": "2026-02-16T00:00:00.000Z",
+      "id": "cmlk5ybdz0001jt453r3tdc8p",
+      "date": "2026-02-12T00:00:00.000Z",
       "machineId": "cmlj5u7rm000072g9bayz8lo1",
       "machineNo": 299,
       "diff": 0,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:02:37.616Z",
-      "updatedAt": "2026-02-12T08:02:37.616Z"
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T00:42:41.614Z",
+      "updatedAt": "2026-02-13T00:42:41.614Z"
     },
     {
-      "id": "cmlj687vd000b12p25gebpium",
-      "date": "2026-02-17T00:00:00.000Z",
+      "id": "cmlk5yrmz0005jt45vchisio7",
+      "date": "2026-02-12T00:00:00.000Z",
       "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
+      "machineNo": 301,
       "diff": 0,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:02:37.657Z",
-      "updatedAt": "2026-02-12T08:02:37.657Z"
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T00:43:02.726Z",
+      "updatedAt": "2026-02-13T00:43:02.726Z"
     },
     {
-      "id": "cmlj687wp000d12p2ora5mv36",
-      "date": "2026-02-18T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": -2000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:02:37.705Z",
-      "updatedAt": "2026-02-12T08:02:37.705Z"
+      "id": "cmlk5zuaa0009jt451x1lmc3g",
+      "date": "2026-02-12T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 296,
+      "diff": -700,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T00:43:52.763Z",
+      "updatedAt": "2026-02-13T00:43:52.763Z"
     },
     {
-      "id": "cmlj687y1000f12p2f2bgeq6i",
-      "date": "2026-02-19T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": 301,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:02:37.753Z",
-      "updatedAt": "2026-02-12T08:02:37.753Z"
+      "id": "cmlk61a0k000fjt459sqpgr2x",
+      "date": "2026-02-12T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 257,
+      "diff": -2100,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T00:44:59.808Z",
+      "updatedAt": "2026-02-13T00:44:59.808Z"
     },
     {
-      "id": "cmlj687za000h12p2sp8nxvl5",
-      "date": "2026-02-20T00:00:00.000Z",
+      "id": "cmlk5yk360003jt45fr3d1qrl",
+      "date": "2026-02-12T00:00:00.000Z",
       "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": -1000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:02:37.798Z",
-      "updatedAt": "2026-02-12T08:02:37.798Z"
-    },
-    {
-      "id": "cmlj6880p000j12p2dxghgmds",
-      "date": "2026-02-21T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": -500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:02:37.849Z",
-      "updatedAt": "2026-02-12T08:02:37.849Z"
-    },
-    {
-      "id": "cmlj68827000l12p27t7shhp6",
-      "date": "2026-02-22T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": 1000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:02:37.903Z",
-      "updatedAt": "2026-02-12T08:02:37.903Z"
-    },
-    {
-      "id": "cmlj6883g000n12p2gftta47h",
-      "date": "2026-02-23T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": 302,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:02:37.948Z",
-      "updatedAt": "2026-02-12T08:02:37.948Z"
-    },
-    {
-      "id": "cmlj6884n000p12p2o9ihhjcb",
-      "date": "2026-02-24T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
+      "machineNo": 300,
       "diff": 0,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:02:37.991Z",
-      "updatedAt": "2026-02-12T08:02:37.991Z"
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T00:42:53.107Z",
+      "updatedAt": "2026-02-13T00:42:53.107Z"
     },
     {
-      "id": "cmlj6885w000r12p2v1c4vl4y",
-      "date": "2026-02-25T00:00:00.000Z",
+      "id": "cmlk5z44q0007jt45jp5s1law",
+      "date": "2026-02-12T00:00:00.000Z",
       "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": 8000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:02:38.037Z",
-      "updatedAt": "2026-02-12T08:02:38.037Z"
+      "machineNo": 302,
+      "diff": -300,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T00:43:18.871Z",
+      "updatedAt": "2026-02-13T00:43:18.871Z"
     },
     {
-      "id": "cmlj68873000t12p2g4ihdu2x",
-      "date": "2026-02-26T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": -500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:02:38.080Z",
-      "updatedAt": "2026-02-12T08:02:38.080Z"
+      "id": "cmlk609of000bjt4567vu4ciy",
+      "date": "2026-02-12T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 297,
+      "diff": 100,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T00:44:11.788Z",
+      "updatedAt": "2026-02-13T00:44:11.788Z"
+    },
+    {
+      "id": "cmlk60mur000djt45lgrovq0u",
+      "date": "2026-02-12T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 298,
+      "diff": -1100,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T00:44:29.788Z",
+      "updatedAt": "2026-02-13T00:44:29.788Z"
+    },
+    {
+      "id": "cmlk61lk7000hjt45qhk7q82y",
+      "date": "2026-02-12T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 294,
+      "diff": -2600,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T00:45:14.984Z",
+      "updatedAt": "2026-02-13T00:45:14.984Z"
+    },
+    {
+      "id": "cmlk61xmx000jjt45wxfqkoxn",
+      "date": "2026-02-12T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 295,
+      "diff": -1600,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T00:45:30.633Z",
+      "updatedAt": "2026-02-13T00:45:30.633Z"
     },
     {
       "id": "cmlj6arxw001312p2zoztm4l8",

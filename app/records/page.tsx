@@ -1,15 +1,15 @@
-import { getMachines } from '@/lib/actions'
+import { getMachines, searchRecords } from '@/lib/actions'
 import RecordsClient from './RecordsClient'
 
 export const dynamic = 'force-dynamic'
 
 export default async function RecordsPage() {
     const machines = await getMachines()
+    const initialRecords = await searchRecords({})
 
     return (
         <div>
-            <h1 className="text-2xl font-bold mb-6">記録一覧・編集</h1>
-            <RecordsClient machines={machines} />
+            <RecordsClient machines={machines} initialRecords={initialRecords} />
         </div>
     )
 }

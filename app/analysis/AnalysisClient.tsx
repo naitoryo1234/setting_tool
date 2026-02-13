@@ -2,6 +2,7 @@
 
 import { useState, useTransition, useEffect } from 'react'
 import { getAnalysis, getMachines, toggleEventDay, AnalysisResult } from '@/lib/actions'
+import { Microscope, Search, Calendar, CalendarCheck2, TrendingUp, AlertCircle, BarChart2, Hash, CalendarDays, ArrowUpDown, ArrowUp, ArrowDown, RotateCw, Sparkles, Coins, Inbox } from 'lucide-react'
 
 type Store = {
     id: string
@@ -105,14 +106,14 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
 
     const SortHeader = ({ label, field, align = 'right' }: { label: string; field: string; align?: string }) => (
         <th
-            className={`cursor-pointer select-none hover:text-[var(--accent)] transition-colors`}
+            className={`cursor-pointer select-none hover:text-[var(--accent)] transition-colors group`}
             style={{ textAlign: align as any }}
             onClick={() => handleSort(field)}
         >
             <div className={`flex items-center ${align === 'right' ? 'justify-end' : align === 'center' ? 'justify-center' : 'justify-start'} gap-1`}>
                 {label}
-                <span style={{ fontSize: '10px', color: 'var(--text-muted)' }}>
-                    {sortKey === field ? (sortAsc ? '▲' : '▼') : '⇅'}
+                <span className="text-[10px] text-[var(--text-muted)] group-hover:text-[var(--accent)]">
+                    {sortKey === field ? (sortAsc ? <ArrowUp size={10} /> : <ArrowDown size={10} />) : <ArrowUpDown size={10} />}
                 </span>
             </div>
         </th>
@@ -120,34 +121,41 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
 
     const PayoutBadge = ({ rate }: { rate: number }) => {
         let color = 'var(--text-muted)'
-        let glow = 'none'
-        if (rate >= 106) { color = '#f43f5e'; glow = '0 0 8px rgba(244,63,94,0.3)' }
-        else if (rate >= 100) { color = '#4ade80'; glow = '0 0 8px rgba(74,222,128,0.2)' }
+        let className = 'tabular-nums font-bold'
+        if (rate >= 106) { color = '#f43f5e'; className += ' text-rose-500 ai-pulse-bad px-2 py-0.5 rounded' }
+        else if (rate >= 100) { color = '#4ade80'; className += ' text-emerald-400 ai-pulse-good px-2 py-0.5 rounded' }
         else if (rate >= 97) { color = '#fbbf24' }
         else { color = '#38bdf8' }
-        return <span style={{ fontWeight: 700, color, textShadow: glow }}>{rate.toFixed(1)}%</span>
+        return <span className={className} style={{ color }}>{rate.toFixed(1)}%</span>
     }
 
     return (
-        <div className="animate-fade-in">
+        <div className="animate-fade-in max-w-6xl mx-auto space-y-8">
             {/* ページヘッダー */}
-            <div className="page-header">
-                <h1 className="page-header-title">🔍 深掘り分析</h1>
-                <p className="page-header-subtitle">台番・曜日・イベント日別の傾向を探る</p>
+            <div className="page-header border-b border-white/5 pb-4">
+                <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-400">
+                        <Microscope size={24} />
+                    </div>
+                    <div>
+                        <h1 className="page-header-title text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">深掘り分析</h1>
+                        <p className="page-header-subtitle text-sm text-[var(--text-muted)]">台番・曜日・イベント日別の傾向を探る</p>
+                    </div>
+                </div>
             </div>
 
             <div className="space-y-6">
                 {/* 検索条件 */}
-                <div className="card-static stagger-item">
+                <div className="card-static stagger-item p-6 border border-white/5 bg-slate-900/40 backdrop-blur-md">
                     <div className="flex gap-4 items-end flex-wrap">
                         <div className="flex-1 min-w-[180px]">
-                            <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--text-secondary)' }}>店舗</label>
+                            <label className="text-xs font-semibold text-[var(--text-secondary)] mb-1.5 block">店舗</label>
                             <select value={storeId} onChange={(e) => setStoreId(e.target.value)} className="select-modern w-full">
                                 {stores.map(s => (<option key={s.id} value={s.id}>{s.name}</option>))}
                             </select>
                         </div>
                         <div className="flex-1 min-w-[200px]">
-                            <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--text-secondary)' }}>機種</label>
+                            <label className="text-xs font-semibold text-[var(--text-secondary)] mb-1.5 block">機種</label>
                             <select value={machineId} onChange={(e) => setMachineId(e.target.value)} className="select-modern w-full">
                                 <option value="">選択してください</option>
                                 {machines.map(m => (<option key={m.id} value={m.id}>{m.name}</option>))}
@@ -157,22 +165,21 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                         <div className="w-full sm:w-auto flex flex-col gap-2">
                             <div className="flex items-center gap-2 mb-1 h-6">
                                 <input type="checkbox" id="useRange" checked={useRange} onChange={(e) => setUseRange(e.target.checked)}
-                                    className="w-4 h-4 rounded"
-                                    style={{ accentColor: 'var(--accent)' }}
+                                    className="w-4 h-4 rounded border-slate-600 bg-slate-800 text-indigo-500 focus:ring-offset-0 focus:ring-indigo-500"
                                 />
-                                <label htmlFor="useRange" className="text-sm cursor-pointer select-none" style={{ color: 'var(--text-secondary)' }}>期間指定</label>
+                                <label htmlFor="useRange" className="text-sm cursor-pointer select-none font-medium text-[var(--text-secondary)]">期間指定</label>
                             </div>
                             {useRange && (
-                                <div className="flex gap-2">
-                                    <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="input-modern" />
-                                    <span className="self-center" style={{ color: 'var(--text-muted)' }}>～</span>
-                                    <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="input-modern" />
+                                <div className="flex gap-2 items-center">
+                                    <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="input-modern tabular-nums text-xs py-1.5" />
+                                    <span className="text-[var(--text-muted)]">～</span>
+                                    <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="input-modern tabular-nums text-xs py-1.5" />
                                 </div>
                             )}
                         </div>
 
                         <div className="min-w-[140px]">
-                            <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--text-secondary)' }}>日種別</label>
+                            <label className="text-xs font-semibold text-[var(--text-secondary)] mb-1.5 block">日種別</label>
                             <select value={dayFilter} onChange={(e) => setDayFilter(e.target.value as any)} className="select-modern w-full">
                                 <option value="all">全日</option>
                                 <option value="event">イベント日のみ</option>
@@ -181,35 +188,33 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                         </div>
 
                         <div className="w-full sm:w-auto">
-                            <button onClick={handleSearch} disabled={!machineId || isPending} className="btn-primary w-full sm:w-auto px-6">
-                                {isPending ? '⏳ 分析中...' : '🔍 分析'}
+                            <button onClick={handleSearch} disabled={!machineId || isPending} className="btn-primary w-full sm:w-auto px-6 flex items-center justify-center gap-2">
+                                {isPending ? <span className="animate-spin">⏳</span> : <Search size={16} />}
+                                <span>{isPending ? '分析中...' : '分析実行'}</span>
                             </button>
                         </div>
                     </div>
-                    {!useRange && (
-                        <p className="text-xs mt-2" style={{ color: 'var(--text-muted)' }}>※ 期間未指定の場合、データが存在する全期間が対象</p>
-                    )}
                 </div>
 
                 {/* イベント日登録 */}
-                <div className="card-static stagger-item">
-                    <h3 className="text-sm font-bold mb-3 flex items-center gap-2">
-                        📅 イベント日登録
-                        <span className="text-xs font-normal" style={{ color: 'var(--text-muted)' }}>
+                <div className="card-static stagger-item p-4 border border-white/5 bg-slate-900/30">
+                    <h3 className="text-xs font-bold mb-3 flex items-center gap-2 text-[var(--text-secondary)] uppercase tracking-wider">
+                        <CalendarCheck2 size={14} className="text-[var(--accent)]" />
+                        イベント日登録
+                        <span className="text-[10px] font-normal text-[var(--text-muted)] NormalCase tracking-normal">
                             ({stores.find(s => s.id === storeId)?.name || '店舗未選択'})
                         </span>
                     </h3>
                     <div className="flex gap-3 items-center flex-wrap">
-                        <input type="date" value={eventDate} onChange={(e) => setEventDate(e.target.value)} className="input-modern w-40" />
+                        <input type="date" value={eventDate} onChange={(e) => setEventDate(e.target.value)} className="input-modern w-36 tabular-nums text-xs" />
                         <button
                             onClick={handleToggleEvent}
                             disabled={!eventDate || !storeId || isPending}
-                            className="btn-primary"
-                            style={{ background: 'linear-gradient(135deg, #059669, #10b981)' }}
+                            className="btn-primary py-1.5 px-3 text-xs bg-emerald-600 hover:bg-emerald-500 border-none shadow-lg shadow-emerald-500/20"
                         >
-                            登録/解除
+                            登録 / 解除
                         </button>
-                        {eventMsg && <span className="text-sm animate-success" style={{ color: '#4ade80' }}>{eventMsg}</span>}
+                        {eventMsg && <span className="text-xs animate-success text-emerald-400 flex items-center gap-1"><AlertCircle size={12} /> {eventMsg}</span>}
                     </div>
                 </div>
 
@@ -218,9 +223,9 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                     <div className="space-y-4">
                         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                             {[...Array(5)].map((_, i) => (
-                                <div key={i} className="card-static" style={{ padding: '1.5rem' }}>
-                                    <div className="skeleton" style={{ height: '12px', width: '50%', marginBottom: '0.75rem' }} />
-                                    <div className="skeleton" style={{ height: '28px', width: '70%' }} />
+                                <div key={i} className="card-static p-6">
+                                    <div className="skeleton h-3 w-1/2 mb-3" />
+                                    <div className="skeleton h-8 w-3/4" />
                                 </div>
                             ))}
                         </div>
@@ -231,75 +236,60 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                 {hasSearched && !isPending && result && (
                     <>
                         {/* 全体サマリー */}
-                        <div className="card-static stagger-item">
-                            <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
-                                <span style={{ background: 'var(--accent-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                        <div className="card-static stagger-item border border-white/10 bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/30">
+                            <h2 className="text-lg font-bold mb-6 flex items-center gap-3 border-b border-white/5 pb-4">
+                                <BarChart2 size={20} className="text-indigo-400" />
+                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 to-purple-300">
                                     {result.machineName}
                                 </span>
-                                <span className="text-sm font-normal" style={{ color: 'var(--text-muted)' }}>
-                                    ({result.overall.days}日間 / イベント日: {result.eventDayCount}日)
+                                <span className="text-xs font-normal text-[var(--text-muted)] bg-white/5 px-2 py-0.5 rounded-full tabular-nums">
+                                    Total: {result.overall.days}days (Events: {result.eventDayCount})
                                 </span>
                             </h2>
-                            <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+                            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                                 {[
-                                    { label: '総回転数', value: result.overall.totalGames.toLocaleString(), color: 'var(--text-primary)' },
-                                    { label: '合計差枚', value: `${result.overall.totalDiff > 0 ? '+' : ''}${result.overall.totalDiff.toLocaleString()}`, color: result.overall.totalDiff > 0 ? 'var(--color-plus)' : 'var(--color-minus)' },
-                                    { label: 'BIG回数', value: result.overall.totalBig.toString(), sub: `1/${result.overall.bigProb}`, color: '#f43f5e' },
-                                    { label: 'REG回数', value: result.overall.totalReg.toString(), sub: `1/${result.overall.regProb}`, color: '#38bdf8' },
-                                    { label: '推定出玉率', value: `${result.overall.payoutRate.toFixed(1)}%`, color: result.overall.payoutRate >= 100 ? '#4ade80' : '#fbbf24' },
+                                    { label: '総回転数', value: result.overall.totalGames.toLocaleString(), color: 'var(--text-primary)', icon: <RotateCw size={14} className="opacity-50" /> },
+                                    { label: '合計差枚', value: `${result.overall.totalDiff > 0 ? '+' : ''}${result.overall.totalDiff.toLocaleString()}`, color: result.overall.totalDiff > 0 ? 'var(--color-plus)' : 'var(--color-minus)', icon: <Coins size={14} className="opacity-50" /> },
+                                    { label: 'BIG回数', value: result.overall.totalBig.toString(), sub: `1/${result.overall.bigProb}`, color: '#f43f5e', icon: <ArrowUp size={14} className="opacity-50" /> },
+                                    { label: 'REG回数', value: result.overall.totalReg.toString(), sub: `1/${result.overall.regProb}`, color: '#38bdf8', icon: <ArrowDown size={14} className="opacity-50" /> },
+                                    { label: '推定出玉率', value: `${result.overall.payoutRate.toFixed(1)}%`, color: result.overall.payoutRate >= 100 ? '#4ade80' : '#fbbf24', icon: <TrendingUp size={14} className="opacity-50" />, isRate: true },
                                 ].map((stat, i) => (
-                                    <div key={i} style={{
-                                        background: 'rgba(15, 23, 42, 0.5)',
-                                        border: '1px solid rgba(255,255,255,0.06)',
-                                        borderRadius: 'var(--radius-sm)',
-                                        padding: '1rem',
-                                        textAlign: 'center',
-                                    }}>
-                                        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{stat.label}</div>
-                                        <div className="stat-value glow-value" style={{ fontSize: '1.25rem', fontWeight: 700, color: stat.color }}>{stat.value}</div>
-                                        {(stat as any).sub && <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>{(stat as any).sub}</div>}
+                                    <div key={i} className={`card p-4 text-center relative overflow-hidden group border border-white/5 bg-slate-900/50 ${(stat as any).isRate && parseFloat(stat.value) >= 106 ? 'ai-pulse-bad' : (stat as any).isRate && parseFloat(stat.value) >= 100 ? 'ai-pulse-good' : ''}`}>
+                                        <div className="text-[10px] text-[var(--text-muted)] mb-2 uppercase tracking-wider flex justify-center items-center gap-1">
+                                            {(stat as any).icon} {stat.label}
+                                        </div>
+                                        <div className="stat-value glow-value text-xl md:text-2xl font-bold tabular-nums" style={{ color: stat.color }}>{stat.value}</div>
+                                        {(stat as any).sub && <div className="text-[10px] text-[var(--text-muted)] mt-1 tabular-nums">{(stat as any).sub}</div>}
                                     </div>
                                 ))}
                             </div>
-                            <div style={{
-                                marginTop: '1rem',
-                                background: 'rgba(15, 23, 42, 0.5)',
-                                border: '1px solid rgba(234, 179, 8, 0.15)',
-                                borderRadius: 'var(--radius-sm)',
-                                padding: '1rem',
-                                textAlign: 'center',
-                            }}>
-                                <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '0.25rem' }}>合算確率 (BIG+REG)</div>
-                                <div className="stat-value glow-value" style={{ fontSize: '1.75rem', fontWeight: 800, color: '#fbbf24' }}>
+                            <div className="mt-4 p-4 rounded-lg bg-yellow-500/5 border border-yellow-500/10 text-center flex flex-col items-center justify-center relative overflow-hidden">
+                                <div className="absolute top-0 right-0 p-2 text-yellow-500/10"><Sparkles size={48} /></div>
+                                <div className="text-[10px] text-yellow-500/70 mb-1 uppercase tracking-wider font-semibold">Combined Probability (BIG+REG)</div>
+                                <div className="stat-value glow-value text-3xl font-black text-yellow-400 tabular-nums z-10">
                                     1/{result.overall.hitProb}
                                 </div>
-                                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                                    ({result.overall.totalHits}回 / {result.overall.totalGames.toLocaleString()}G)
+                                <div className="text-xs text-[var(--text-muted)] mt-1 tabular-nums z-10">
+                                    ({result.overall.totalHits} hits / {result.overall.totalGames.toLocaleString()}G)
                                 </div>
                             </div>
                         </div>
 
                         {/* タブ */}
-                        <div className="card-static stagger-item" style={{ padding: 0, overflow: 'hidden' }}>
-                            <div className="flex" style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', background: 'rgba(15, 23, 42, 0.5)' }}>
+                        <div className="card-static stagger-item p-0 overflow-hidden border border-white/5">
+                            <div className="flex border-b border-white/5 bg-slate-900/50">
                                 {[
-                                    { id: 'machine' as TabType, label: '📊 台番別' },
-                                    { id: 'dow' as TabType, label: '📅 曜日別' },
+                                    { id: 'machine' as TabType, label: '台番別解析', icon: <Hash size={14} /> },
+                                    { id: 'dow' as TabType, label: '曜日別解析', icon: <CalendarDays size={14} /> },
                                 ].map(tab => (
                                     <button
                                         key={tab.id}
                                         onClick={() => setActiveTab(tab.id)}
-                                        style={{
-                                            padding: '1rem 2rem',
-                                            fontSize: '0.875rem',
-                                            fontWeight: 700,
-                                            transition: 'all 0.25s ease',
-                                            borderBottom: activeTab === tab.id ? '2px solid var(--accent)' : '2px solid transparent',
-                                            color: activeTab === tab.id ? '#a78bfa' : 'var(--text-muted)',
-                                            background: activeTab === tab.id ? 'rgba(99, 102, 241, 0.05)' : 'transparent',
-                                        }}
+                                        className={`flex items-center gap-2 px-6 py-4 text-sm font-bold transition-all relative ${activeTab === tab.id ? 'text-indigo-400 bg-indigo-500/5' : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:bg-white/5'}`}
                                     >
+                                        {tab.icon}
                                         {tab.label}
+                                        {activeTab === tab.id && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]" />}
                                     </button>
                                 ))}
                             </div>
@@ -326,41 +316,45 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                                             </thead>
                                             <tbody>
                                                 {sortedRecords.map((r) => (
-                                                    <tr key={r.machineNo}>
-                                                        <td style={{ fontWeight: 700 }}>
-                                                            <a href={`/history/${result.machineId}/${r.machineNo}`} style={{ color: '#a78bfa', textDecoration: 'none' }}>
+                                                    <tr key={r.machineNo} className="group hover:bg-white/5 transition-colors">
+                                                        <td className="pl-4 py-3 font-bold tabular-nums">
+                                                            <a href={`/history/${result.machineId}/${r.machineNo}`} className="text-indigo-400 hover:text-indigo-300 hover:underline underline-offset-4 decoration-indigo-500/30">
                                                                 {r.machineNo}
                                                             </a>
                                                         </td>
-                                                        <td style={{ textAlign: 'right' }}>{r.days}</td>
-                                                        <td style={{ textAlign: 'right' }}>{r.totalGames.toLocaleString()}</td>
-                                                        <td style={{ textAlign: 'right', color: '#f43f5e' }}>{r.totalBig}</td>
-                                                        <td style={{ textAlign: 'right', color: '#38bdf8' }}>{r.totalReg}</td>
-                                                        <td style={{ textAlign: 'right' }}>{r.totalHits}</td>
-                                                        <td style={{ textAlign: 'right', color: 'var(--text-muted)' }}>1/{r.bigProb}</td>
-                                                        <td style={{ textAlign: 'right', color: 'var(--text-muted)' }}>1/{r.regProb}</td>
-                                                        <td style={{ textAlign: 'right', fontWeight: 700 }}>1/{r.hitProb}</td>
-                                                        <td style={{ textAlign: 'right' }}><PayoutBadge rate={r.payoutRate} /></td>
-                                                        <td style={{ textAlign: 'right', fontWeight: 700 }} className={r.totalDiff > 0 ? 'text-plus' : r.totalDiff < 0 ? 'text-minus' : 'text-zero'}>
-                                                            {r.totalDiff > 0 ? '+' : ''}{r.totalDiff.toLocaleString()}
+                                                        <td className="text-right py-3 tabular-nums">{r.days}</td>
+                                                        <td className="text-right py-3 tabular-nums text-[var(--text-secondary)]">{r.totalGames.toLocaleString()}</td>
+                                                        <td className="text-right py-3 tabular-nums text-rose-400">{r.totalBig}</td>
+                                                        <td className="text-right py-3 tabular-nums text-sky-400">{r.totalReg}</td>
+                                                        <td className="text-right py-3 tabular-nums">{r.totalHits}</td>
+                                                        <td className="text-right py-3 tabular-nums text-[var(--text-muted)]">1/{r.bigProb}</td>
+                                                        <td className="text-right py-3 tabular-nums text-[var(--text-muted)]">1/{r.regProb}</td>
+                                                        <td className="text-right py-3 tabular-nums font-medium">1/{r.hitProb}</td>
+                                                        <td className="text-right py-3"><PayoutBadge rate={r.payoutRate} /></td>
+                                                        <td className="text-right py-3 pr-4 tabular-nums font-bold">
+                                                            <span className={r.totalDiff > 0 ? 'text-plus' : r.totalDiff < 0 ? 'text-minus' : 'text-zero'}>
+                                                                {r.totalDiff > 0 ? '+' : ''}{r.totalDiff.toLocaleString()}
+                                                            </span>
                                                         </td>
                                                     </tr>
                                                 ))}
                                             </tbody>
                                             <tfoot>
-                                                <tr style={{ fontWeight: 700, background: 'rgba(15, 23, 42, 0.5)', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-                                                    <td style={{ padding: '0.75rem' }}>全体</td>
-                                                    <td style={{ textAlign: 'right', padding: '0.75rem' }}>{result.overall.days}</td>
-                                                    <td style={{ textAlign: 'right', padding: '0.75rem' }}>{result.overall.totalGames.toLocaleString()}</td>
-                                                    <td style={{ textAlign: 'right', padding: '0.75rem', color: '#f43f5e' }}>{result.overall.totalBig}</td>
-                                                    <td style={{ textAlign: 'right', padding: '0.75rem', color: '#38bdf8' }}>{result.overall.totalReg}</td>
-                                                    <td style={{ textAlign: 'right', padding: '0.75rem' }}>{result.overall.totalHits}</td>
-                                                    <td style={{ textAlign: 'right', padding: '0.75rem', color: 'var(--text-muted)' }}>1/{result.overall.bigProb}</td>
-                                                    <td style={{ textAlign: 'right', padding: '0.75rem', color: 'var(--text-muted)' }}>1/{result.overall.regProb}</td>
-                                                    <td style={{ textAlign: 'right', padding: '0.75rem' }}>1/{result.overall.hitProb}</td>
-                                                    <td style={{ textAlign: 'right', padding: '0.75rem' }}><PayoutBadge rate={result.overall.payoutRate} /></td>
-                                                    <td style={{ textAlign: 'right', padding: '0.75rem' }} className={result.overall.totalDiff > 0 ? 'text-plus' : 'text-minus'}>
-                                                        {result.overall.totalDiff > 0 ? '+' : ''}{result.overall.totalDiff.toLocaleString()}
+                                                <tr className="bg-slate-900/80 font-bold border-t border-white/10">
+                                                    <td className="pl-4 py-4">全体</td>
+                                                    <td className="text-right py-4 tabular-nums">{result.overall.days}</td>
+                                                    <td className="text-right py-4 tabular-nums">{result.overall.totalGames.toLocaleString()}</td>
+                                                    <td className="text-right py-4 tabular-nums text-rose-400">{result.overall.totalBig}</td>
+                                                    <td className="text-right py-4 tabular-nums text-sky-400">{result.overall.totalReg}</td>
+                                                    <td className="text-right py-4 tabular-nums">{result.overall.totalHits}</td>
+                                                    <td className="text-right py-4 tabular-nums text-[var(--text-muted)]">1/{result.overall.bigProb}</td>
+                                                    <td className="text-right py-4 tabular-nums text-[var(--text-muted)]">1/{result.overall.regProb}</td>
+                                                    <td className="text-right py-4 tabular-nums">1/{result.overall.hitProb}</td>
+                                                    <td className="text-right py-4"><PayoutBadge rate={result.overall.payoutRate} /></td>
+                                                    <td className="text-right py-4 pr-4 tabular-nums">
+                                                        <span className={result.overall.totalDiff > 0 ? 'text-plus' : 'text-minus'}>
+                                                            {result.overall.totalDiff > 0 ? '+' : ''}{result.overall.totalDiff.toLocaleString()}
+                                                        </span>
                                                     </td>
                                                 </tr>
                                             </tfoot>
@@ -374,40 +368,42 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                                         <table className="table-jat w-full">
                                             <thead>
                                                 <tr>
-                                                    <th>曜日</th>
-                                                    <th style={{ textAlign: 'right' }}>日数</th>
-                                                    <th style={{ textAlign: 'right' }}>総G数</th>
-                                                    <th style={{ textAlign: 'right' }}>BIG</th>
-                                                    <th style={{ textAlign: 'right' }}>REG</th>
-                                                    <th style={{ textAlign: 'right' }}>合算</th>
-                                                    <th style={{ textAlign: 'right' }}>合算確率</th>
-                                                    <th style={{ textAlign: 'right' }}>出玉率</th>
-                                                    <th style={{ textAlign: 'right' }}>差枚</th>
+                                                    <th className="pl-4">曜日</th>
+                                                    <th className="text-right">日数</th>
+                                                    <th className="text-right">総G数</th>
+                                                    <th className="text-right">BIG</th>
+                                                    <th className="text-right">REG</th>
+                                                    <th className="text-right">合算</th>
+                                                    <th className="text-right">合算確率</th>
+                                                    <th className="text-right">出玉率</th>
+                                                    <th className="text-right pr-4">差枚</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {result.dowSummary.map((d) => (
-                                                    <tr key={d.dow}>
-                                                        <td style={{ fontWeight: 700, color: d.dow === 0 ? '#f43f5e' : d.dow === 6 ? '#38bdf8' : 'var(--text-primary)' }}>
+                                                    <tr key={d.dow} className="group hover:bg-white/5 transition-colors">
+                                                        <td className="pl-4 py-3 font-bold" style={{ color: d.dow === 0 ? '#f43f5e' : d.dow === 6 ? '#38bdf8' : 'var(--text-primary)' }}>
                                                             {d.dowLabel}
                                                         </td>
-                                                        <td style={{ textAlign: 'right' }}>{d.days}</td>
-                                                        <td style={{ textAlign: 'right' }}>{d.totalGames.toLocaleString()}</td>
-                                                        <td style={{ textAlign: 'right', color: '#f43f5e' }}>{d.totalBig}</td>
-                                                        <td style={{ textAlign: 'right', color: '#38bdf8' }}>{d.totalReg}</td>
-                                                        <td style={{ textAlign: 'right' }}>{d.totalHits}</td>
-                                                        <td style={{ textAlign: 'right', fontWeight: 700 }}>1/{d.hitProb}</td>
-                                                        <td style={{ textAlign: 'right' }}><PayoutBadge rate={d.payoutRate} /></td>
-                                                        <td style={{ textAlign: 'right', fontWeight: 700 }} className={d.totalDiff > 0 ? 'text-plus' : d.totalDiff < 0 ? 'text-minus' : 'text-zero'}>
-                                                            {d.totalDiff > 0 ? '+' : ''}{d.totalDiff.toLocaleString()}
+                                                        <td className="text-right py-3 tabular-nums">{d.days}</td>
+                                                        <td className="text-right py-3 tabular-nums text-[var(--text-secondary)]">{d.totalGames.toLocaleString()}</td>
+                                                        <td className="text-right py-3 tabular-nums text-rose-400">{d.totalBig}</td>
+                                                        <td className="text-right py-3 tabular-nums text-sky-400">{d.totalReg}</td>
+                                                        <td className="text-right py-3 tabular-nums">{d.totalHits}</td>
+                                                        <td className="text-right py-3 tabular-nums font-medium">1/{d.hitProb}</td>
+                                                        <td className="text-right py-3"><PayoutBadge rate={d.payoutRate} /></td>
+                                                        <td className="text-right py-3 pr-4 tabular-nums font-bold">
+                                                            <span className={d.totalDiff > 0 ? 'text-plus' : d.totalDiff < 0 ? 'text-minus' : 'text-zero'}>
+                                                                {d.totalDiff > 0 ? '+' : ''}{d.totalDiff.toLocaleString()}
+                                                            </span>
                                                         </td>
                                                     </tr>
                                                 ))}
                                             </tbody>
                                         </table>
                                         {result.dowSummary.length === 0 && (
-                                            <div style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-muted)' }}>
-                                                <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📭</div>
+                                            <div className="py-16 text-center text-[var(--text-muted)]">
+                                                <Inbox size={48} className="mx-auto mb-3 opacity-20" />
                                                 データがありません
                                             </div>
                                         )}
@@ -419,24 +415,28 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                 )}
 
                 {hasSearched && !isPending && !result && (
-                    <div className="card-static" style={{ textAlign: 'center', padding: '3rem' }}>
-                        <div style={{ fontSize: '2rem', marginBottom: '0.5rem', color: 'var(--text-muted)' }}>🔍</div>
-                        <div style={{ color: 'var(--text-muted)' }}>データが見つかりませんでした</div>
+                    <div className="card-static text-center py-16">
+                        <Search size={48} className="mx-auto mb-3 opacity-20" />
+                        <div className="text-[var(--text-muted)] font-medium">データが見つかりませんでした</div>
                     </div>
                 )}
 
                 {!hasSearched && !isPending && (
-                    <div className="card-static stagger-item" style={{ textAlign: 'center', padding: '4rem 1rem' }}>
-                        <div style={{ fontSize: '3rem', marginBottom: '1rem', filter: 'drop-shadow(0 0 20px rgba(99, 102, 241, 0.3))' }}>🔍</div>
-                        <div style={{ color: 'var(--text-secondary)', fontSize: '1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-                            分析を始めましょう
+                    <div className="card-static stagger-item text-center py-20 px-4">
+                        <div className="inline-flex p-6 rounded-full bg-indigo-500/5 mb-6 animate-pulse">
+                            <Microscope size={64} className="text-indigo-500/40" />
                         </div>
-                        <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
-                            機種を選んで「分析」ボタンを押してください
-                        </div>
+                        <h2 className="text-lg font-bold text-[var(--text-secondary)] mb-2">
+                            分析を開始
+                        </h2>
+                        <p className="text-sm text-[var(--text-muted)] mb-8 max-w-sm mx-auto">
+                            機種を選んで、台ごとの詳細なデータ傾向やイベント日の信頼度を分析します。
+                        </p>
                     </div>
                 )}
             </div>
         </div>
     )
 }
+
+

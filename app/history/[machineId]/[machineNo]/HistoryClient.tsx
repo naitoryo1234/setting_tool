@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts'
+import { History, ArrowLeft, BarChart2, Calendar, Coins, TrendingUp, Inbox } from 'lucide-react'
 
 type HistoryRecord = {
     id: string
@@ -39,31 +40,26 @@ export default function HistoryClient({ machineName, machineNo, records, machine
     })
 
     return (
-        <div className="animate-fade-in">
+        <div className="animate-fade-in max-w-5xl mx-auto space-y-8">
             {/* ページヘッダー */}
-            <div className="page-header">
+            <div className="page-header border-b border-white/5 pb-4">
                 <div className="flex items-center gap-4 flex-wrap">
                     <Link
                         href="/summary"
-                        className="transition-all"
-                        style={{
-                            padding: '0.4rem 0.75rem',
-                            borderRadius: '8px',
-                            background: 'rgba(99, 102, 241, 0.1)',
-                            border: '1px solid rgba(99, 102, 241, 0.2)',
-                            color: '#a78bfa',
-                            fontSize: '0.8rem',
-                            fontWeight: 600,
-                            textDecoration: 'none',
-                        }}
+                        className="transition-all p-2 rounded-lg bg-white/5 hover:bg-white/10 text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                     >
-                        ← 集計に戻る
+                        <ArrowLeft size={20} />
                     </Link>
-                    <div>
-                        <h1 className="page-header-title" style={{ fontSize: '1.25rem' }}>
-                            📜 {machineName} - No.{machineNo}
-                        </h1>
-                        <p className="page-header-subtitle">台番別の履歴データ</p>
+                    <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-pink-500/10 text-pink-400">
+                            <History size={24} />
+                        </div>
+                        <div>
+                            <h1 className="page-header-title text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-rose-500">
+                                {machineName} <span className="text-[var(--text-muted)] text-lg font-normal">No.{machineNo}</span>
+                            </h1>
+                            <p className="page-header-subtitle text-sm text-[var(--text-muted)]">台番別履歴データ・スランプグラフ</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -71,32 +67,30 @@ export default function HistoryClient({ machineName, machineNo, records, machine
             <div className="space-y-6">
                 {/* サマリーカード */}
                 <div className="grid grid-cols-3 gap-4 stagger-item">
-                    <div className="card-static text-center">
-                        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                            データ件数
+                    <div className="card-static text-center p-4 border border-white/5 bg-slate-900/40">
+                        <div className="text-[10px] text-[var(--text-muted)] mb-1 uppercase tracking-wider flex justify-center items-center gap-1">
+                            <Calendar size={12} /> データ件数
                         </div>
-                        <div className="stat-value" style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)' }}>
+                        <div className="stat-value text-xl font-bold text-[var(--text-primary)] tabular-nums">
                             {records.length}
                         </div>
                     </div>
-                    <div className="card-static text-center">
-                        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                            合計差枚
+                    <div className="card-static text-center p-4 border border-white/5 bg-slate-900/40">
+                        <div className="text-[10px] text-[var(--text-muted)] mb-1 uppercase tracking-wider flex justify-center items-center gap-1">
+                            <Coins size={12} /> 合計差枚
                         </div>
                         <div
-                            className={`stat-value glow-value ${totalDiff > 0 ? 'diff-plus' : totalDiff < 0 ? 'diff-minus' : 'diff-zero'}`}
-                            style={{ fontSize: '1.75rem', fontWeight: 800 }}
+                            className={`stat-value glow-value text-xl font-bold tabular-nums ${totalDiff > 0 ? 'diff-plus' : totalDiff < 0 ? 'diff-minus' : 'diff-zero'}`}
                         >
                             {totalDiff > 0 ? '+' : ''}{totalDiff.toLocaleString()}
                         </div>
                     </div>
-                    <div className="card-static text-center">
-                        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                            平均差枚
+                    <div className="card-static text-center p-4 border border-white/5 bg-slate-900/40">
+                        <div className="text-[10px] text-[var(--text-muted)] mb-1 uppercase tracking-wider flex justify-center items-center gap-1">
+                            <TrendingUp size={12} /> 平均差枚
                         </div>
                         <div
-                            className={`stat-value glow-value ${avgDiff > 0 ? 'diff-plus' : avgDiff < 0 ? 'diff-minus' : 'diff-zero'}`}
-                            style={{ fontSize: '1.75rem', fontWeight: 800 }}
+                            className={`stat-value glow-value text-xl font-bold tabular-nums ${avgDiff > 0 ? 'diff-plus' : avgDiff < 0 ? 'diff-minus' : 'diff-zero'}`}
                         >
                             {avgDiff > 0 ? '+' : ''}{avgDiff.toLocaleString()}
                         </div>
@@ -105,31 +99,49 @@ export default function HistoryClient({ machineName, machineNo, records, machine
 
                 {/* 累積差枚グラフ */}
                 {chartData.length > 1 && (
-                    <div className="card-static stagger-item" style={{ padding: '1.25rem' }}>
-                        <h3 style={{ fontSize: '0.875rem', fontWeight: 700, marginBottom: '1rem', color: 'var(--text-secondary)' }}>
-                            📈 差枚推移
+                    <div className="card-static stagger-item p-6 border border-white/5 bg-slate-900/40 backdrop-blur-md">
+                        <h3 className="text-sm font-bold mb-4 flex items-center gap-2 text-[var(--text-secondary)]">
+                            <BarChart2 size={16} className="text-[var(--accent)]" />
+                            差枚推移 (Slump Graph)
                         </h3>
-                        <div style={{ width: '100%', height: 220 }}>
+                        <div className="w-full h-[250px]">
                             <ResponsiveContainer width="100%" height="100%">
-                                <AreaChart data={chartData} margin={{ left: 0, right: 10, top: 5, bottom: 5 }}>
+                                <AreaChart data={chartData} margin={{ left: 0, right: 10, top: 10, bottom: 0 }}>
                                     <defs>
                                         <linearGradient id="colorCumulative" x1="0" y1="0" x2="0" y2="1">
-                                            <stop offset="5%" stopColor="#6366f1" stopOpacity={0.3} />
-                                            <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
+                                            <stop offset="5%" stopColor="#ec4899" stopOpacity={0.3} />
+                                            <stop offset="95%" stopColor="#ec4899" stopOpacity={0} />
                                         </linearGradient>
                                     </defs>
-                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(51,65,85,0.3)" />
-                                    <XAxis dataKey="date" stroke="#64748b" fontSize={11} />
-                                    <YAxis stroke="#64748b" fontSize={11} tickFormatter={(v) => v.toLocaleString()} />
+                                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+                                    <XAxis
+                                        dataKey="date"
+                                        stroke="#64748b"
+                                        fontSize={10}
+                                        tickLine={false}
+                                        axisLine={false}
+                                        tickMargin={10}
+                                    />
+                                    <YAxis
+                                        stroke="#64748b"
+                                        fontSize={10}
+                                        tickFormatter={(v) => v.toLocaleString()}
+                                        tickLine={false}
+                                        axisLine={false}
+                                        tickMargin={10}
+                                    />
                                     <Tooltip
                                         contentStyle={{
-                                            background: 'rgba(15, 23, 42, 0.95)',
-                                            border: '1px solid rgba(99, 102, 241, 0.3)',
-                                            borderRadius: '10px',
-                                            backdropFilter: 'blur(12px)',
-                                            color: '#f1f5f9',
-                                            fontSize: '0.8rem',
+                                            background: 'rgba(15, 23, 42, 0.9)',
+                                            border: '1px solid rgba(255, 255, 255, 0.1)',
+                                            borderRadius: '8px',
+                                            padding: '8px 12px',
+                                            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                                            fontSize: '12px',
+                                            color: '#f8fafc'
                                         }}
+                                        itemStyle={{ padding: 0 }}
+                                        labelStyle={{ marginBottom: '4px', color: '#94a3b8' }}
                                         formatter={(value: any, name: any) => {
                                             const v = Number(value)
                                             const label = name === 'cumulative' ? '累積差枚' : '当日差枚'
@@ -139,10 +151,11 @@ export default function HistoryClient({ machineName, machineNo, records, machine
                                     <Area
                                         type="monotone"
                                         dataKey="cumulative"
-                                        stroke="#6366f1"
+                                        stroke="#ec4899"
                                         strokeWidth={2}
                                         fillOpacity={1}
                                         fill="url(#colorCumulative)"
+                                        activeDot={{ r: 4, strokeWidth: 0, fill: '#fff' }}
                                     />
                                 </AreaChart>
                             </ResponsiveContainer>
@@ -151,16 +164,19 @@ export default function HistoryClient({ machineName, machineNo, records, machine
                 )}
 
                 {/* 履歴テーブル */}
-                <div className="card-static stagger-item" style={{ padding: 0, overflow: 'hidden' }}>
+                <div className="card-static stagger-item p-0 overflow-hidden border border-white/5">
+                    <div className="px-5 py-4 border-b border-white/5 bg-slate-900/50">
+                        <h2 className="text-sm font-bold text-[var(--text-primary)]">詳細履歴</h2>
+                    </div>
                     <div className="overflow-x-auto">
                         <table className="table-jat w-full text-sm text-left">
                             <thead>
                                 <tr>
-                                    <th className="px-4 py-3">日付</th>
-                                    <th className="px-4 py-3 text-right">差枚</th>
-                                    <th className="px-4 py-3 text-right">BIG</th>
-                                    <th className="px-4 py-3 text-right">REG</th>
-                                    <th className="px-4 py-3 text-right">G数</th>
+                                    <th className="pl-5 py-3 w-32">日付</th>
+                                    <th className="py-3 text-right">差枚</th>
+                                    <th className="py-3 text-right">BIG</th>
+                                    <th className="py-3 text-right">REG</th>
+                                    <th className="py-3 text-right pr-5">G数</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -171,21 +187,21 @@ export default function HistoryClient({ machineName, machineNo, records, machine
                                         day: '2-digit',
                                     })
                                     return (
-                                        <tr key={r.id}>
-                                            <td className="px-4 py-3">{dateStr}</td>
-                                            <td className={`px-4 py-3 text-right font-bold ${r.diff > 0 ? 'text-plus' : r.diff < 0 ? 'text-minus' : 'text-zero'}`}>
+                                        <tr key={r.id} className="group hover:bg-white/5 transition-colors">
+                                            <td className="pl-5 py-3 tabular-nums text-[var(--text-secondary)]">{dateStr}</td>
+                                            <td className={`py-3 text-right tabular-nums font-bold ${r.diff > 0 ? 'text-plus' : r.diff < 0 ? 'text-minus' : 'text-zero'}`}>
                                                 {r.diff > 0 ? '+' : ''}{r.diff.toLocaleString()}
                                             </td>
-                                            <td className="px-4 py-3 text-right" style={{ color: '#f43f5e' }}>{r.big ?? '-'}</td>
-                                            <td className="px-4 py-3 text-right" style={{ color: '#38bdf8' }}>{r.reg ?? '-'}</td>
-                                            <td className="px-4 py-3 text-right">{r.games?.toLocaleString() ?? '-'}</td>
+                                            <td className="py-3 text-right tabular-nums text-rose-400">{r.big ?? '-'}</td>
+                                            <td className="py-3 text-right tabular-nums text-sky-400">{r.reg ?? '-'}</td>
+                                            <td className="py-3 text-right pr-5 tabular-nums text-[var(--text-muted)]">{r.games?.toLocaleString() ?? '-'}</td>
                                         </tr>
                                     )
                                 })}
                                 {records.length === 0 && (
                                     <tr>
-                                        <td colSpan={5} style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-muted)' }}>
-                                            <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>📭</div>
+                                        <td colSpan={5} className="py-16 text-center text-[var(--text-muted)]">
+                                            <Inbox size={48} className="mx-auto mb-3 opacity-20" />
                                             データがありません
                                         </td>
                                     </tr>
