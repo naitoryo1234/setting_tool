@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts'
 import { History, ArrowLeft, BarChart2, Calendar, Coins, TrendingUp, Inbox } from 'lucide-react'
+import { PageHeader } from '@/components/PageHeader'
 
 type HistoryRecord = {
     id: string
@@ -42,27 +43,17 @@ export default function HistoryClient({ machineName, machineNo, records, machine
     return (
         <div className="animate-fade-in max-w-5xl mx-auto space-y-8">
             {/* ページヘッダー */}
-            <div className="page-header border-b border-white/5 pb-4">
-                <div className="flex items-center gap-4 flex-wrap">
-                    <Link
-                        href="/summary"
-                        className="transition-all p-2 rounded-lg bg-white/5 hover:bg-white/10 text-[var(--text-muted)] hover:text-[var(--text-primary)]"
-                    >
-                        <ArrowLeft size={20} />
-                    </Link>
-                    <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-lg bg-pink-500/10 text-pink-400">
-                            <History size={24} />
-                        </div>
-                        <div>
-                            <h1 className="page-header-title text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-rose-500">
-                                {machineName} <span className="text-[var(--text-muted)] text-lg font-normal">No.{machineNo}</span>
-                            </h1>
-                            <p className="page-header-subtitle text-sm text-[var(--text-muted)]">台番別履歴データ・スランプグラフ</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {/* ページヘッダー */}
+            <PageHeader
+                title={
+                    <span>
+                        {machineName} <span className="text-muted-foreground text-lg font-normal">No.{machineNo}</span>
+                    </span>
+                }
+                subtitle="台番別履歴データ・スランプグラフ"
+                startAdornment={<History size={20} />}
+                backHref="/summary"
+            />
 
             <div className="space-y-6">
                 {/* サマリーカード */}

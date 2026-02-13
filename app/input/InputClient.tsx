@@ -4,6 +4,7 @@ import { useState, useTransition, useRef, useEffect } from 'react'
 import { upsertRecord, deleteRecord, getRecords, MachineWithNumbers } from '@/lib/actions'
 import { Machine, Record } from '@prisma/client'
 import { PenLine, Calendar, Monitor, Hash, Coins, Save, FileJson, PackagePlus, ListCheck, Inbox, Trash2, RotateCw } from 'lucide-react'
+import { PageHeader } from '@/components/PageHeader'
 
 type Props = {
     machines: MachineWithNumbers[]
@@ -123,17 +124,13 @@ export default function InputClient({ machines, todayRecords: initialRecords, cu
     return (
         <div className="animate-fade-in max-w-4xl mx-auto space-y-8">
             {/* ページヘッダー */}
-            <div className="page-header border-b border-white/5 pb-4 mb-6">
-                <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
-                        <PenLine size={24} />
-                    </div>
-                    <div>
-                        <h1 className="page-header-title text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500">データ入力</h1>
-                        <p className="page-header-subtitle text-sm text-[var(--text-muted)]">日々の稼働データを記録・デジタイズ</p>
-                    </div>
-                </div>
-            </div>
+            {/* ページヘッダー */}
+            <PageHeader
+                title="データ入力"
+                subtitle="日々の稼働データを記録・デジタイズ"
+                startAdornment={<PenLine size={20} />}
+                className="mb-8"
+            />
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* 個別入力 */}

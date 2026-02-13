@@ -2,6 +2,7 @@
 
 import prisma from '@/lib/prisma'
 import { revalidatePath } from 'next/cache'
+import { toJstStartOfDay, getNextJstDayStart, formatJstDate } from '@/lib/dateUtils'
 
 // 店舗一覧取得
 export async function getStores() {
@@ -222,10 +223,13 @@ export type MachineNoSummary = {
 
 export async function getSummary(start: Date, end: Date) {
     // 機種別合計
+    const startJst = toJstStartOfDay(start)
+    const endJstNextDay = getNextJstDayStart(end instanceof Date ? formatJstDate(end) : end)
+
     const machineAgg = await prisma.record.groupBy({
         by: ['machineId'],
         where: {
-            date: { gte: start, lte: end },
+            date: { gte: startJst, lt: endJstNextDay },
         },
         _sum: { diff: true, big: true, reg: true, games: true },
         _count: { diff: true },
@@ -235,7 +239,7 @@ export async function getSummary(start: Date, end: Date) {
     const machineNoAgg = await prisma.record.groupBy({
         by: ['machineId', 'machineNo'],
         where: {
-            date: { gte: start, lte: end },
+            date: { gte: startJst, lt: endJstNextDay },
         },
         _sum: { diff: true, big: true, reg: true, games: true },
         _count: { diff: true },

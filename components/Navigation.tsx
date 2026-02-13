@@ -2,45 +2,15 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-
-// アイコンコンポーネント（SVGインライン）
-function IconInput({ active }: { active: boolean }) {
-    return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={active ? 'var(--accent)' : 'currentColor'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-        </svg>
-    )
-}
-
-function IconSummary({ active }: { active: boolean }) {
-    return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={active ? 'var(--accent)' : 'currentColor'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M18 20V10" /><path d="M12 20V4" /><path d="M6 20v-6" />
-        </svg>
-    )
-}
-
-function IconAnalysis({ active }: { active: boolean }) {
-    return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={active ? 'var(--accent)' : 'currentColor'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="11" cy="11" r="8" /><path d="m21 21-4.3-4.3" />
-        </svg>
-    )
-}
-
-function IconRecords({ active }: { active: boolean }) {
-    return (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={active ? 'var(--accent)' : 'currentColor'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" />
-        </svg>
-    )
-}
+import { PenLine, PieChart, BarChart2, List, Settings } from 'lucide-react'
+import { cn } from '@/lib/utils'
+import { buttonVariants } from '@/components/ui/button'
 
 const links = [
-    { href: '/input', label: '入力', Icon: IconInput },
-    { href: '/summary', label: '集計', Icon: IconSummary },
-    { href: '/analysis', label: '分析', Icon: IconAnalysis },
-    { href: '/records', label: '記録', Icon: IconRecords },
+    { href: '/input', label: '入力', Icon: PenLine },
+    { href: '/summary', label: '集計', Icon: PieChart },
+    { href: '/analysis', label: '分析', Icon: BarChart2 },
+    { href: '/records', label: '記録', Icon: List },
 ]
 
 export default function Navigation() {
@@ -49,22 +19,10 @@ export default function Navigation() {
     return (
         <>
             {/* デスクトップ: 上部ナビゲーション */}
-            <nav className="hidden md:block" style={{
-                background: 'rgba(8, 12, 26, 0.8)',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
-            }}>
-                <div className="container mx-auto max-w-5xl flex justify-between items-center px-4" style={{ height: 'var(--nav-height)' }}>
-                    <Link href="/" className="flex items-center gap-2" style={{ color: 'var(--text-primary)', textDecoration: 'none' }}>
-                        <span style={{
-                            fontSize: '1.25rem',
-                            fontWeight: 800,
-                            background: 'linear-gradient(135deg, #6366f1, #a78bfa, #22d3ee)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            letterSpacing: '-0.02em',
-                        }}>
+            <nav className="hidden md:block sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
+                <div className="container h-[var(--nav-height)] flex items-center justify-between px-4">
+                    <Link href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
+                        <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
                             ⚙ Setting Tool
                         </span>
                     </Link>
@@ -75,15 +33,18 @@ export default function Navigation() {
                                 <Link
                                     key={link.href}
                                     href={link.href}
-                                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                                    style={{
-                                        color: isActive ? '#a78bfa' : 'var(--text-secondary)',
-                                        background: isActive ? 'rgba(99, 102, 241, 0.1)' : 'transparent',
-                                        borderBottom: isActive ? '2px solid #6366f1' : '2px solid transparent',
-                                    }}
+                                    className={cn(
+                                        "flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors relative",
+                                        isActive
+                                            ? "text-primary bg-primary/10"
+                                            : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                                    )}
                                 >
-                                    <link.Icon active={isActive} />
+                                    <link.Icon size={18} />
                                     {link.label}
+                                    {isActive && (
+                                        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-primary rounded-full mx-2" />
+                                    )}
                                 </Link>
                             )
                         })}
@@ -92,64 +53,27 @@ export default function Navigation() {
             </nav>
 
             {/* モバイル: 下部タブバー */}
-            <nav
-                className="md:hidden fixed bottom-0 left-0 right-0 z-50 grid grid-cols-4 items-center"
-                style={{
-                    height: 'var(--mobile-nav-height)',
-                    background: 'rgba(8, 12, 26, 0.9)',
-                    borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                }}
-            >
+            <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 h-[var(--mobile-nav-height)] bg-background/90 backdrop-blur-xl border-t grid grid-cols-4 items-center pb-safe">
                 {links.map((link) => {
                     const isActive = pathname.startsWith(link.href)
                     return (
                         <Link
                             key={link.href}
                             href={link.href}
-                            className="flex flex-col items-center justify-center gap-1 flex-1 py-2 transition-all"
-                            style={{
-                                color: isActive ? '#a78bfa' : 'var(--text-muted)',
-                                textDecoration: 'none',
-                                position: 'relative',
-                            }}
-                        >
-                            {/* アクティブタブのグロー背景 */}
-                            {isActive && (
-                                <div style={{
-                                    position: 'absolute',
-                                    inset: '4px 12px',
-                                    background: 'rgba(99, 102, 241, 0.1)',
-                                    borderRadius: '12px',
-                                    filter: 'blur(4px)',
-                                }} />
+                            className={cn(
+                                "flex flex-col items-center justify-center gap-1 h-full w-full transition-colors relative",
+                                isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
                             )}
-                            <div style={{
-                                position: 'relative',
-                                transform: isActive ? 'scale(1.15)' : 'scale(1)',
-                                transition: 'transform 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
-                            }}>
-                                <link.Icon active={isActive} />
+                        >
+                            {isActive && (
+                                <div className="absolute top-0 w-8 h-[2px] bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-b-sm shadow-[0_0_8px_rgba(99,102,241,0.5)]" />
+                            )}
+                            <div className={cn("transition-transform duration-200", isActive && "scale-110")}>
+                                <link.Icon size={20} className={cn(isActive && "drop-shadow-[0_0_8px_rgba(99,102,241,0.3)]")} />
                             </div>
-                            <span style={{
-                                fontSize: '0.65rem',
-                                fontWeight: isActive ? 700 : 400,
-                                position: 'relative',
-                            }}>
+                            <span className={cn("text-[10px] font-medium transition-all", isActive && "font-bold")}>
                                 {link.label}
                             </span>
-                            {isActive && (
-                                <div style={{
-                                    position: 'absolute',
-                                    top: 0,
-                                    width: '24px',
-                                    height: '2px',
-                                    background: 'linear-gradient(90deg, #6366f1, #a78bfa)',
-                                    borderRadius: '0 0 2px 2px',
-                                    boxShadow: '0 0 8px rgba(99, 102, 241, 0.5)',
-                                }} />
-                            )}
                         </Link>
                     )
                 })}
@@ -157,3 +81,4 @@ export default function Navigation() {
         </>
     )
 }
+

@@ -5,6 +5,8 @@ import { searchRecords, deleteRecord, upsertRecord, MachineWithNumbers } from '@
 import { Record, Machine } from '@prisma/client'
 import Link from 'next/link'
 import { DatabaseZap, Search, Calendar, Monitor, Hash, Edit2, Trash2, Save, X, RotateCw, ArrowUpDown, ArrowUp, ArrowDown, Inbox } from 'lucide-react'
+import { PageHeader } from '@/components/PageHeader'
+import { EmptyState } from '@/components/ui/empty-state'
 
 type Props = {
     initialRecords: (Record & { machine: Machine })[]
@@ -120,17 +122,12 @@ export default function RecordsClient({ initialRecords, machines }: Props) {
     return (
         <div className="animate-fade-in max-w-5xl mx-auto space-y-8">
             {/* ページヘッダー */}
-            <div className="page-header border-b border-white/5 pb-4">
-                <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-orange-500/10 text-orange-400">
-                        <DatabaseZap size={24} />
-                    </div>
-                    <div>
-                        <h1 className="page-header-title text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-500">記録管理</h1>
-                        <p className="page-header-subtitle text-sm text-[var(--text-muted)]">保存されたデータの確認・修正・削除</p>
-                    </div>
-                </div>
-            </div>
+            {/* ページヘッダー */}
+            <PageHeader
+                title="記録管理"
+                subtitle="保存されたデータの確認・修正・削除"
+                startAdornment={<DatabaseZap size={20} />}
+            />
 
             <div className="space-y-6">
                 {/* 検索・フィルター */}
@@ -212,9 +209,13 @@ export default function RecordsClient({ initialRecords, machines }: Props) {
                             <tbody>
                                 {sortedRecords.length === 0 ? (
                                     <tr>
-                                        <td colSpan={5} className="py-16 text-center text-[var(--text-muted)]">
-                                            <Inbox size={48} className="mx-auto mb-3 opacity-20" />
-                                            <div className="font-medium">データが見つかりません</div>
+                                        <td colSpan={5} className="py-24">
+                                            <EmptyState
+                                                icon={Inbox}
+                                                title="データが見つかりません"
+                                                description="条件を変更して再度検索してください。"
+                                                className="border-none bg-transparent"
+                                            />
                                         </td>
                                     </tr>
                                 ) : (

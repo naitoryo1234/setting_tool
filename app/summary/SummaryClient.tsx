@@ -2,7 +2,11 @@
 
 import { useState, useTransition } from 'react'
 import { getSummary, MachineSummary, MachineNoSummary } from '@/lib/actions'
+import { getTodayJst, getPastDateJst } from '@/lib/dateUtils'
+import { PageHeader } from '@/components/PageHeader'
 import { BarChart3, Search, PieChart, ArrowUpDown, ArrowUp, ArrowDown, Sparkles } from 'lucide-react'
+import { EmptyState } from '@/components/ui/empty-state'
+import { Skeleton } from '@/components/ui/skeleton'
 
 type Props = {
     machines: { id: string; name: string }[]
@@ -15,12 +19,8 @@ function formatDiff(diff: number): string {
 }
 
 export default function SummaryClient({ machines }: Props) {
-    const now = new Date()
-    const offset = 9 * 60 * 60 * 1000
-    const jstNow = new Date(now.getTime() + offset)
-    const todayStr = jstNow.toISOString().split('T')[0]
-    const weekAgo = new Date(jstNow.getTime() - 7 * 24 * 60 * 60 * 1000)
-    const weekAgoStr = weekAgo.toISOString().split('T')[0]
+    const todayStr = getTodayJst()
+    const weekAgoStr = getPastDateJst(14) // Default to 2 weeks for better visibility
 
     const [startDate, setStartDate] = useState(weekAgoStr)
     const [endDate, setEndDate] = useState(todayStr)
@@ -67,17 +67,12 @@ export default function SummaryClient({ machines }: Props) {
     return (
         <div className="animate-fade-in max-w-6xl mx-auto">
             {/* ページヘッダー */}
-            <div className="page-header">
-                <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-400">
-                        <PieChart size={24} />
-                    </div>
-                    <div>
-                        <h1 className="page-header-title" style={{ marginBottom: 0 }}>集計ダッシュボード</h1>
-                        <p className="page-header-subtitle">期間別パフォーマンス分析とインサイト</p>
-                    </div>
-                </div>
-            </div>
+            {/* ページヘッダー */}
+            <PageHeader
+                title="集計ダッシュボード"
+                subtitle="期間別パフォーマンス分析とインサイト"
+                startAdornment={<PieChart size={20} />}
+            />
 
             <div className="space-y-6">
                 {/* 検索バー */}
@@ -125,14 +120,14 @@ export default function SummaryClient({ machines }: Props) {
                     <div className="space-y-4">
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                             {[...Array(4)].map((_, i) => (
-                                <div key={i} className="card-static p-6">
-                                    <div className="skeleton h-3 w-1/2 mb-3" />
-                                    <div className="skeleton h-8 w-3/4" />
+                                <div key={i} className="card-static p-6 space-y-3">
+                                    <Skeleton className="h-3 w-1/2" />
+                                    <Skeleton className="h-8 w-3/4" />
                                 </div>
                             ))}
                         </div>
                         <div className="card-static p-8">
-                            <div className="skeleton h-64 w-full" />
+                            <Skeleton className="h-64 w-full" />
                         </div>
                     </div>
                 )}
@@ -305,9 +300,13 @@ export default function SummaryClient({ machines }: Props) {
                             </div>
 
                             {sortedMachineNo.length === 0 && (
-                                <div className="py-16 text-center text-[var(--text-muted)]">
-                                    <BarChart3 size={48} className="mx-auto mb-3 opacity-20" />
-                                    <p>データがありません</p>
+                                <div className="py-8">
+                                    <EmptyState
+                                        icon={BarChart3}
+                                        title="データがありません"
+                                        description="表示するデータが見つかりませんでした。"
+                                        className="border-none bg-transparent"
+                                    />
                                 </div>
                             )}
                         </div>

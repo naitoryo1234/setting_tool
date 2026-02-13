@@ -3,6 +3,9 @@
 import { useState, useTransition, useEffect } from 'react'
 import { getAnalysis, getMachines, toggleEventDay, AnalysisResult } from '@/lib/actions'
 import { Microscope, Search, Calendar, CalendarCheck2, TrendingUp, AlertCircle, BarChart2, Hash, CalendarDays, ArrowUpDown, ArrowUp, ArrowDown, RotateCw, Sparkles, Coins, Inbox } from 'lucide-react'
+import { PageHeader } from '@/components/PageHeader'
+import { EmptyState } from '@/components/ui/empty-state'
+import { Skeleton } from '@/components/ui/skeleton'
 
 type Store = {
     id: string
@@ -132,17 +135,12 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
     return (
         <div className="animate-fade-in max-w-6xl mx-auto space-y-8">
             {/* ページヘッダー */}
-            <div className="page-header border-b border-white/5 pb-4">
-                <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-400">
-                        <Microscope size={24} />
-                    </div>
-                    <div>
-                        <h1 className="page-header-title text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">深掘り分析</h1>
-                        <p className="page-header-subtitle text-sm text-[var(--text-muted)]">台番・曜日・イベント日別の傾向を探る</p>
-                    </div>
-                </div>
-            </div>
+            {/* ページヘッダー */}
+            <PageHeader
+                title="深掘り分析"
+                subtitle="台番・曜日・イベント日別の傾向を探る"
+                startAdornment={<Microscope size={20} />}
+            />
 
             <div className="space-y-6">
                 {/* 検索条件 */}
@@ -223,9 +221,9 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                     <div className="space-y-4">
                         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                             {[...Array(5)].map((_, i) => (
-                                <div key={i} className="card-static p-6">
-                                    <div className="skeleton h-3 w-1/2 mb-3" />
-                                    <div className="skeleton h-8 w-3/4" />
+                                <div key={i} className="card-static p-6 space-y-3">
+                                    <Skeleton className="h-4 w-1/2" />
+                                    <Skeleton className="h-8 w-3/4" />
                                 </div>
                             ))}
                         </div>
@@ -415,10 +413,11 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                 )}
 
                 {hasSearched && !isPending && !result && (
-                    <div className="card-static text-center py-16">
-                        <Search size={48} className="mx-auto mb-3 opacity-20" />
-                        <div className="text-[var(--text-muted)] font-medium">データが見つかりませんでした</div>
-                    </div>
+                    <EmptyState
+                        icon={Search}
+                        title="データが見つかりませんでした"
+                        description="指定条件のデータが存在しないか、集計期間外です。"
+                    />
                 )}
 
                 {!hasSearched && !isPending && (
