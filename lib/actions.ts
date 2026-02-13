@@ -525,3 +525,97 @@ export async function toggleEventDay(date: Date, storeId: string) {
     }
 }
 
+
+export type TargetRanking = {
+    rank: number
+    machineNo: number
+    totalDiff: number
+    totalGames: number
+    days: number
+}
+
+export type MachineTargetData = {
+    machineId: string
+    machineName: string
+    rankings: TargetRanking[]
+}
+
+export async function getTargetMachines(startDate: Date, endDate: Date): Promise<MachineTargetData[]> {
+    const startJst = toJstStartOfDay(startDate)
+    const endJstNextDay = getNextJstDayStart(endDate instanceof Date ? formatJstDate(endDate) : endDate)
+
+    // 1. Fetch all records in range
+    const records = await prisma.record.findMany({
+        where: {
+            date: { gte: startJst, lt: endJstNextDay },
+        },
+        include: { machine: true },
+    })
+
+    // 2. Group by Machine & MachineNo
+    const machineMap = new Map<string, string>() // id -> name
+    const calcMap = new Map<string, { // machineId_machineNo -> data
+        machineId: string
+        machineNo: number
+        diff: number
+        games: number
+        days: number
+    }>()
+
+    for (const r of records) {
+        if (!machineMap.has(r.machineId)) {
+            machineMap.set(r.machineId, r.machine.name)
+        }
+        const key = `${r.machineId}_${r.machineNo}`
+        const current = calcMap.get(key) || {
+            machineId: r.machineId,
+            machineNo: r.machineNo,
+            diff: 0,
+            games: 0,
+            days: 0
+        }
+        current.diff += r.diff
+        current.games += r.games || 0
+        current.days += 1
+        calcMap.set(key, current)
+    }
+
+    // 3. Group by MachineId and Sort
+    const byMachine = new Map<string, typeof calcMap extends Map<any, infer V> ? V[] : never>()
+
+    for (const item of calcMap.values()) {
+        const list = byMachine.get(item.machineId) || []
+        list.push(item)
+        byMachine.set(item.machineId, list)
+    }
+
+    const result: MachineTargetData[] = []
+
+    for (const [machineId, list] of byMachine) {
+        // Sort by diff asc (most negative first)
+        const sorted = list.sort((a, b) => a.diff - b.diff)
+
+        // Take top 3
+        const top3 = sorted.slice(0, 3).map((item, index) => ({
+            rank: index + 1,
+            machineNo: item.machineNo,
+            totalDiff: item.diff,
+            totalGames: item.games,
+            days: item.days
+        }))
+
+        result.push({
+            machineId,
+            machineName: machineMap.get(machineId) || 'Unknown',
+            rankings: top3
+        })
+    }
+
+    // Sort machines by their top 1 diff (optional: or by machine name?)
+    // User probably wants to see machines with huge dips first
+    return result.sort((a, b) => {
+        const aBest = a.rankings[0]?.totalDiff || 0
+        const bBest = b.rankings[0]?.totalDiff || 0
+        return aBest - bBest
+    })
+}

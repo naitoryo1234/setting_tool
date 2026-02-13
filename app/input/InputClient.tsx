@@ -236,17 +236,17 @@ export default function InputClient({ machines, todayRecords: initialRecords, cu
                 </section>
 
                 {/* 一括入力 */}
-                <section className="card-static stagger-item p-6 border border-white/5 bg-slate-900/40 backdrop-blur-md">
-                    <h2 className="text-sm font-bold mb-5 flex items-center gap-2 text-[var(--text-primary)]">
+                <section className="card-static stagger-item p-6 border border-white/5 bg-slate-900/40 backdrop-blur-md flex flex-col">
+                    <h2 className="text-sm font-bold mb-5 flex items-center gap-2 text-[var(--text-primary)] flex-none">
                         <FileJson size={16} className="text-[var(--accent-secondary)]" />
                         バルクインポート
                     </h2>
-                    <div className="space-y-4 h-full flex flex-col">
-                        <div className="flex-1 relative">
+                    <div className="space-y-4 flex-1 flex flex-col min-h-0">
+                        <div className="flex-1 relative min-h-[140px]">
                             <textarea
                                 value={bulkText}
                                 onChange={(e) => setBulkText(e.target.value)}
-                                className="input-modern font-mono text-sm h-full w-full min-h-[140px] resize-none p-4 leading-relaxed"
+                                className="input-modern font-mono text-sm h-full w-full resize-none p-4 leading-relaxed"
                                 placeholder={`238 1500\n239 -500 2000`}
                                 style={{ background: 'rgba(15, 23, 42, 0.6)' }}
                             />
@@ -254,7 +254,7 @@ export default function InputClient({ machines, todayRecords: initialRecords, cu
                                 形式: 台番 差枚...
                             </div>
                         </div>
-                        <div className="flex justify-between items-center pt-2">
+                        <div className="flex justify-between items-center pt-2 flex-none">
                             <span className="text-xs text-[var(--text-muted)] flex items-center gap-1">
                                 <Calendar size={10} /> 開始日: <span className="text-[var(--text-primary)] tabular-nums">{date}</span>
                             </span>
