@@ -44,7 +44,6 @@ export default function MachineModelSummaryClient({ analysis }: Props) {
         let valB = 0
 
         switch (sortKey) {
-            case 'cardinality': // Fallback
             case 'machineNo': valA = a.machineNo; valB = b.machineNo; break;
             case 'totalGames': valA = a.totalGames; valB = b.totalGames; break;
             case 'totalDiff': valA = a.totalDiff; valB = b.totalDiff; break;
