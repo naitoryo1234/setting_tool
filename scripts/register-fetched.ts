@@ -1,12 +1,16 @@
 /**
  * 確認済みMarkdownファイルからDBに登録するスクリプト
  *
+ * - 登録前にバックアップを自動取得
+ * - 登録後にMarkdownのステータスを自動更新
+ *
  * 使い方:
  *   npx ts-node scripts/register-fetched.ts --file=data/fetched/2026-02-28_北斗転生.md
  */
 
 import { PrismaClient } from '@prisma/client'
 import * as fs from 'fs'
+import { execSync } from 'child_process'
 import minimist from 'minimist'
 
 const prisma = new PrismaClient()
@@ -53,6 +57,37 @@ function parseMarkdown(filePath: string): { date: string; machineName: string; r
     return { date, machineName, records }
 }
 
+/**
+ * バックアップを実行
+ */
+function runBackup(): void {
+    console.log('=== バックアップ実行中 ===')
+    try {
+        execSync('npm run backup', { stdio: 'inherit', cwd: process.cwd() })
+        console.log('バックアップ完了\n')
+    } catch (e: any) {
+        console.error('バックアップに失敗しました:', e.message)
+        throw new Error('バックアップ失敗のため登録を中止します')
+    }
+}
+
+/**
+ * Markdownファイルのステータスを更新
+ */
+function updateMarkdownStatus(filePath: string): void {
+    let content = fs.readFileSync(filePath, 'utf-8')
+    const now = new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })
+
+    // 「DB登録済み」チェックボックスを更新
+    content = content.replace(
+        /- \[ \] DB登録済み/,
+        `- [x] DB登録済み (${now})`
+    )
+
+    fs.writeFileSync(filePath, content, 'utf-8')
+    console.log(`ステータス更新: ${filePath}`)
+}
+
 async function main() {
     const args = minimist(process.argv.slice(2))
     const filePath = args['file']
@@ -77,6 +112,9 @@ async function main() {
         console.error('ファイルのパースに失敗しました')
         process.exit(1)
     }
+
+    // バックアップを自動実行
+    runBackup()
 
     // DB上の機種を検索
     const machine = await prisma.machine.findFirst({
@@ -121,6 +159,9 @@ async function main() {
     }
 
     console.log(`\n${records.length}件のレコードを登録しました。`)
+
+    // ステータスを更新
+    updateMarkdownStatus(filePath)
 }
 
 main()

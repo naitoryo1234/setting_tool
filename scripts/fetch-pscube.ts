@@ -1,337 +1,197 @@
 /**
- * P's CUBE データ自動取得スクリプト
+ * P's CUBE データ自動取得スクリプト v6
+ *
+ * 設定を pscube-config.ts から読み込み、データを取得してMarkdownに出力する。
  *
  * 使い方:
- *   npx ts-node scripts/fetch-pscube.ts --machine=北斗転生
- *   npx ts-node scripts/fetch-pscube.ts --machine=北斗転生 --days-ago=1
- *
- * 出力:
- *   data/fetched/YYYY-MM-DD_機種名.md
+ *   npx ts-node scripts/fetch-pscube.ts --date=2026-02-28
+ *   npx ts-node scripts/fetch-pscube.ts --days-ago=1
+ *   npx ts-node scripts/fetch-pscube.ts               # 本日のデータ
  */
 
-import { chromium } from 'playwright'
-import * as fs from 'fs'
-import * as path from 'path'
-import minimist from 'minimist'
-import { DEFAULT_STORE, calculateDiff, MachineConfig } from '../lib/pscube-config'
+const { chromium } = require('playwright')
+const fs = require('fs')
+const pathModule = require('path')
+
+// 設定を読み込み（ts-nodeから実行するためrequireを使用）
+const config = require('../lib/pscube-config')
+const { DEFAULT_STORE, calculateDiff, buildMachinePageUrl } = config
+
+// デフォルトの機種（北斗転生）
+const STORE = DEFAULT_STORE
+const MACHINE = STORE.machines[0]
+
+function parseArgs(): { targetDate: string } {
+    const args = process.argv.slice(2)
+    let dateStr = ''
+    let daysAgo = 0
+
+    for (const arg of args) {
+        if (arg.startsWith('--date=')) {
+            dateStr = arg.split('=')[1]
+        }
+        if (arg.startsWith('--days-ago=')) {
+            daysAgo = parseInt(arg.split('=')[1])
+        }
+    }
+
+    // --date が指定されていればそのまま使用
+    if (dateStr) return { targetDate: dateStr }
+
+    // --days-ago または未指定の場合、JSTで計算
+    return { targetDate: getJSTDateStr(daysAgo) }
+}
+
+/**
+ * JST基準で日付文字列を生成
+ */
+function getJSTDateStr(daysAgo: number): string {
+    const now = new Date()
+    // UTC+9のオフセットを加算
+    const jstMs = now.getTime() + (9 * 60 * 60 * 1000)
+    const jstDate = new Date(jstMs)
+    jstDate.setDate(jstDate.getDate() - daysAgo)
+    return jstDate.toISOString().split('T')[0] // YYYY-MM-DD
+}
 
 interface FetchedRecord {
     machineNo: number
     big: number
     reg: number
     games: number
-    diffCalc: number // 計算式による推定差枚
+    diffCalc: number
 }
 
-async function fetchPsCubeData(
-    machineConfig: MachineConfig,
-    daysAgo: number = 0
-): Promise<FetchedRecord[]> {
+// === メインスクレイピング処理 ===
+async function fetchData(dateStr: string): Promise<FetchedRecord[]> {
+    // ワイド画面で全カードが表示されるように設定
     const browser = await chromium.launch({ headless: true })
-    const context = await browser.newContext({
-        viewport: { width: 1024, height: 768 },
-    })
+    const context = await browser.newContext({ viewport: { width: 1920, height: 1080 } })
     const page = await context.newPage()
     const results: FetchedRecord[] = []
+    const debugDir = pathModule.join(__dirname, '..', 'data', 'fetched')
+    fs.mkdirSync(debugDir, { recursive: true })
 
     try {
-        // 1. 機種一覧ページにアクセス
-        const listUrl = `${DEFAULT_STORE.baseUrl}/nc-v03-001.php?cd_ps=2&bai=21.7391`
-        console.log(`Accessing: ${listUrl}`)
-        await page.goto(listUrl, { waitUntil: 'networkidle', timeout: 30000 })
-        await page.waitForTimeout(2000) // JS描画待ち
+        const url = buildMachinePageUrl(STORE, MACHINE, dateStr)
+        console.log(`[1/2] ページにアクセス中...`)
+        console.log(`  URL: ${url.substring(0, 100)}...`)
 
-        // 2. 機種名で検索
-        console.log(`Searching for: ${machineConfig.searchName}`)
+        await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 })
+        // JS描画完了を待つ
+        await page.waitForTimeout(5000)
 
-        // 検索フィールドに入力
-        const searchInput = page.locator('input[type="text"], input[placeholder*="機種名"]').first()
-        await searchInput.fill(machineConfig.searchName)
-        await page.waitForTimeout(500)
+        // デバッグスクリーンショット
+        await page.screenshot({ path: pathModule.join(debugDir, 'debug_all_machines.png'), fullPage: true })
 
-        // 検索ボタンをクリック
-        const searchButton = page.locator('button:has(svg), .btn-search, [type="submit"]').first()
-        await searchButton.click()
-        await page.waitForTimeout(3000) // 検索結果の描画待ち
+        // [2/2] 全カードからデータ抽出
+        console.log(`[2/2] データ抽出中...`)
 
-        // 3. 検索結果から対象機種を探してクリック
-        // 「転生」を含むリンクを探す
-        const machineLink = page.locator(`a:has-text("転生"), a:has-text("${machineConfig.dbName}")`).first()
-        if (await machineLink.isVisible()) {
-            await machineLink.click()
-            await page.waitForTimeout(3000)
-        } else {
-            console.error('機種が見つかりませんでした。ページ内リンクを探索します...')
-            // フォールバック: 全リンクから探す
-            const links = await page.locator('a').all()
-            for (const link of links) {
-                const text = await link.textContent()
-                if (text && (text.includes('転生') || text.includes('北斗'))) {
-                    console.log(`Found link: ${text}`)
-                    await link.click()
-                    await page.waitForTimeout(3000)
-                    break
-                }
-            }
-        }
+        const rangeStart = MACHINE.machineNoRange.start
+        const rangeEnd = MACHINE.machineNoRange.end
 
-        // 4. 過去データへの切り替え（n日前ボタン）
-        if (daysAgo > 0) {
-            console.log(`Switching to ${daysAgo} day(s) ago...`)
-            const dayButton = page.locator(`text="${daysAgo}日前"`).first()
-            if (await dayButton.isVisible()) {
-                await dayButton.click()
-                await page.waitForTimeout(3000)
-            }
-        }
+        // ページ全体のテキストから各台番号のデータをパースする
+        const allData = await page.evaluate((range: { start: number; end: number }) => {
+            const results: Array<{ machineNo: number; big: number; reg: number; games: number }> = []
 
-        // 5. 各台番号のデータを取得
-        console.log('Extracting machine data...')
-        const { start, end } = machineConfig.machineNoRange
+            // テキストを行に分解
+            const bodyText = document.body.innerText || ''
+            const lines = bodyText.split('\n').map((l: string) => l.trim()).filter((l: string) => l)
 
-        for (let no = start; no <= end; no++) {
-            try {
-                // 台番号のリンクまたはセルを探す
-                const noStr = String(no).padStart(4, '0')
-                const noCell = page.locator(`text="${noStr}", text="${no}"`).first()
+            let currentNo = 0
+            let currentBig = 0
+            let currentReg = 0
+            let currentGames = 0
+            let foundData = false
 
-                if (await noCell.isVisible({ timeout: 1000 })) {
-                    // 台番号の行からデータを取得
-                    const row = noCell.locator('..')
-                    const cells = await row.locator('td, span, div').allTextContents()
-
-                    // テーブルからBIG/REG/G数を抽出（セル構造に依存）
-                    let big = 0, reg = 0, games = 0
-                    for (const cell of cells) {
-                        const trimmed = cell.trim()
-                        // 数値のみのセルをパース（位置ベースで判定）
-                        if (/^\d+$/.test(trimmed)) {
-                            const num = parseInt(trimmed)
-                            if (num === no || num === parseInt(noStr)) continue
+            for (const line of lines) {
+                // 4桁の台番号を検出
+                const noMatch = line.match(/^0(\d{3})$/)
+                if (noMatch) {
+                    const no = parseInt(noMatch[0])
+                    if (no >= range.start && no <= range.end) {
+                        // 前の台のデータを保存
+                        if (currentNo > 0 && foundData) {
+                            results.push({
+                                machineNo: currentNo,
+                                big: currentBig,
+                                reg: currentReg,
+                                games: currentGames,
+                            })
                         }
-                    }
-
-                    // 個別ページにアクセスして確実にデータを取得
-                    await noCell.click()
-                    await page.waitForTimeout(2000)
-
-                    // 個別ページからデータ読み取り
-                    const pageText = await page.textContent('body') || ''
-
-                    // BIG, REG, 累計ゲーム を正規表現で抽出
-                    const bigMatch = pageText.match(/BIG\s*(\d+)/)
-                    const regMatch = pageText.match(/REG\s*(\d+)/)
-                    const gamesMatch = pageText.match(/累計ゲーム\s*(\d+)/)
-
-                    big = bigMatch ? parseInt(bigMatch[1]) : 0
-                    reg = regMatch ? parseInt(regMatch[1]) : 0
-                    games = gamesMatch ? parseInt(gamesMatch[1]) : 0
-
-                    if (games > 0) {
-                        const diffCalc = calculateDiff(big, games, machineConfig.diffCalc)
-                        results.push({ machineNo: no, big, reg, games, diffCalc })
-                        console.log(`  No.${no}: BIG=${big} REG=${reg} G=${games} Diff=${diffCalc}`)
-                    } else {
-                        console.log(`  No.${no}: データなし（未稼働?）`)
-                    }
-
-                    // 一覧に戻る
-                    await page.goBack()
-                    await page.waitForTimeout(2000)
-                } else {
-                    console.log(`  No.${no}: 見つかりません`)
-                }
-            } catch (e: any) {
-                console.error(`  No.${no}: 取得エラー - ${e.message}`)
-            }
-        }
-
-    } catch (e: any) {
-        console.error(`Fatal error: ${e.message}`)
-
-        // デバッグ用スクリーンショット保存
-        const debugPath = path.join(__dirname, '..', 'data', 'fetched', 'debug_screenshot.png')
-        await page.screenshot({ path: debugPath, fullPage: true })
-        console.log(`Debug screenshot saved: ${debugPath}`)
-    } finally {
-        await browser.close()
-    }
-
-    return results
-}
-
-/**
- * 一括取得: テーブルから全台データを一度に読み取る（高速版）
- */
-async function fetchAllFromTable(
-    machineConfig: MachineConfig,
-    daysAgo: number = 0
-): Promise<FetchedRecord[]> {
-    const browser = await chromium.launch({ headless: true })
-    const context = await browser.newContext({
-        viewport: { width: 1024, height: 768 },
-    })
-    const page = await context.newPage()
-    const results: FetchedRecord[] = []
-
-    try {
-        // 1. 機種一覧ページにアクセス
-        const listUrl = `${DEFAULT_STORE.baseUrl}/nc-v03-001.php?cd_ps=2&bai=21.7391`
-        console.log(`Accessing: ${listUrl}`)
-        await page.goto(listUrl, { waitUntil: 'networkidle', timeout: 30000 })
-        await page.waitForTimeout(3000)
-
-        // 2. 機種名で検索（JavaScriptで入力）
-        console.log(`Searching for: ${machineConfig.searchName}`)
-        await page.evaluate((name: string) => {
-            const inputs = document.querySelectorAll('input[type="text"]')
-            inputs.forEach(input => {
-                (input as HTMLInputElement).value = name
-                input.dispatchEvent(new Event('input', { bubbles: true }))
-            })
-        }, machineConfig.searchName)
-        await page.waitForTimeout(500)
-
-        // 検索ボタンクリック
-        await page.evaluate(() => {
-            const buttons = document.querySelectorAll('button, [role="button"]')
-            buttons.forEach(btn => {
-                if (btn.querySelector('svg') || btn.textContent?.includes('検索')) {
-                    (btn as HTMLElement).click()
-                }
-            })
-        })
-        await page.waitForTimeout(3000)
-
-        // 3. 検索結果から対象機種をクリック
-        const found = await page.evaluate((keyword: string) => {
-            const links = document.querySelectorAll('a')
-            for (const link of links) {
-                if (link.textContent?.includes('転生')) {
-                    (link as HTMLElement).click()
-                    return true
-                }
-            }
-            return false
-        }, machineConfig.searchName)
-
-        if (!found) {
-            console.error('機種リンクが見つかりませんでした')
-            // スクリーンショットを保存
-            const debugDir = path.join(__dirname, '..', 'data', 'fetched')
-            fs.mkdirSync(debugDir, { recursive: true })
-            await page.screenshot({ path: path.join(debugDir, 'debug_search.png'), fullPage: true })
-            await browser.close()
-            return results
-        }
-
-        await page.waitForTimeout(3000)
-
-        // 4. 過去データへの切り替え
-        if (daysAgo > 0) {
-            console.log(`Switching to ${daysAgo} day(s) ago...`)
-            await page.evaluate((days: number) => {
-                const buttons = document.querySelectorAll('button, a, [role="button"], span')
-                for (const btn of buttons) {
-                    if (btn.textContent?.trim() === `${days}日前`) {
-                        (btn as HTMLElement).click()
-                        return
+                        currentNo = no
+                        currentBig = 0
+                        currentReg = 0
+                        currentGames = 0
+                        foundData = false
+                        continue
                     }
                 }
-            }, daysAgo)
-            await page.waitForTimeout(3000)
-        }
 
-        // 5. ページ全体のテキストからデータ抽出
-        console.log('Extracting data from page...')
+                if (currentNo === 0) continue
 
-        // スクリーンショット保存（デバッグ用）
-        const debugDir = path.join(__dirname, '..', 'data', 'fetched')
-        fs.mkdirSync(debugDir, { recursive: true })
-        await page.screenshot({ path: path.join(debugDir, 'debug_data_page.png'), fullPage: true })
-
-        // HTML全体を取得して解析
-        const pageContent = await page.content()
-        const bodyText = await page.textContent('body') || ''
-
-        // 各台番号のデータを抽出
-        const { start, end } = machineConfig.machineNoRange
-
-        // 個別台ページにアクセスしてデータ取得
-        for (let no = start; no <= end; no++) {
-            const noStr = String(no).padStart(4, '0')
-
-            try {
-                // 台番号をクリック
-                const clicked = await page.evaluate((targetNo: string) => {
-                    const elements = document.querySelectorAll('a, td, span, div')
-                    for (const el of elements) {
-                        const text = el.textContent?.trim()
-                        if (text === targetNo || text === String(parseInt(targetNo))) {
-                            (el as HTMLElement).click()
-                            return true
-                        }
-                    }
-                    return false
-                }, noStr)
-
-                if (!clicked) {
-                    console.log(`  No.${no}: 台番号が見つかりません`)
+                // BIG行を検出
+                const bigMatch = line.match(/^BIG\s+(\d+)/)
+                if (bigMatch) {
+                    currentBig = parseInt(bigMatch[1])
+                    foundData = true
                     continue
                 }
 
-                await page.waitForTimeout(2000)
-
-                // 個別台ページのデータを取得
-                const machineData = await page.evaluate(() => {
-                    const text = document.body.textContent || ''
-                    const bigMatch = text.match(/BIG\s*(\d+)/)
-                    const regMatch = text.match(/REG\s*(\d+)/)
-                    const gamesMatch = text.match(/累計ゲーム\s*(\d+)/)
-                    return {
-                        big: bigMatch ? parseInt(bigMatch[1]) : 0,
-                        reg: regMatch ? parseInt(regMatch[1]) : 0,
-                        games: gamesMatch ? parseInt(gamesMatch[1]) : 0,
-                    }
-                })
-
-                if (machineData.games > 0) {
-                    const diffCalc = calculateDiff(
-                        machineData.big,
-                        machineData.games,
-                        machineConfig.diffCalc
-                    )
-                    results.push({
-                        machineNo: no,
-                        big: machineData.big,
-                        reg: machineData.reg,
-                        games: machineData.games,
-                        diffCalc,
-                    })
-                    console.log(`  No.${no}: BIG=${machineData.big} REG=${machineData.reg} G=${machineData.games} Diff=${diffCalc}`)
-                } else {
-                    console.log(`  No.${no}: データなし`)
+                // REG行を検出
+                const regMatch = line.match(/^REG\s+(\d+)/)
+                if (regMatch) {
+                    currentReg = parseInt(regMatch[1])
+                    continue
                 }
 
-                // 一覧に戻る
-                await page.goBack()
-                await page.waitForTimeout(1500)
-
-            } catch (e: any) {
-                console.log(`  No.${no}: エラー (${e.message})`)
-                // エラー時はページをリロードして続行
-                try {
-                    await page.goBack()
-                    await page.waitForTimeout(1500)
-                } catch { }
+                // 累計ゲーム行を検出
+                const gamesMatch = line.match(/^累計ゲーム\s+(\d+)/)
+                if (gamesMatch) {
+                    currentGames = parseInt(gamesMatch[1])
+                    continue
+                }
             }
+
+            // 最後の台のデータ保存
+            if (currentNo > 0 && foundData) {
+                results.push({
+                    machineNo: currentNo,
+                    big: currentBig,
+                    reg: currentReg,
+                    games: currentGames,
+                })
+            }
+
+            return results
+        }, { start: rangeStart, end: rangeEnd })
+
+        // 取得結果を処理
+        for (const data of allData) {
+            const diffCalc = calculateDiff(data.big, data.games, MACHINE.diffCalc)
+            results.push({
+                machineNo: data.machineNo,
+                big: data.big,
+                reg: data.reg,
+                games: data.games,
+                diffCalc,
+            })
+            const sign = diffCalc > 0 ? '+' : ''
+            console.log(`  No.${data.machineNo}: BIG=${data.big} REG=${data.reg} G=${data.games} Diff=${sign}${diffCalc}`)
+        }
+
+        if (results.length === 0) {
+            console.log('\n  カードデータが見つかりません。ページの構造を確認中...')
+            // ページ全体のテキストの先頭500文字をデバッグ出力
+            const debugText = await page.evaluate(() => {
+                return (document.body.innerText || '').substring(0, 500)
+            })
+            console.log(`  ページテキスト (先頭500文字):\n${debugText}`)
         }
 
     } catch (e: any) {
         console.error(`Fatal error: ${e.message}`)
-        const debugDir = path.join(__dirname, '..', 'data', 'fetched')
-        fs.mkdirSync(debugDir, { recursive: true })
-        await page.screenshot({ path: path.join(debugDir, 'debug_fatal.png'), fullPage: true })
+        await page.screenshot({ path: pathModule.join(debugDir, 'debug_fatal.png'), fullPage: true }).catch(() => { })
     } finally {
         await browser.close()
     }
@@ -339,84 +199,65 @@ async function fetchAllFromTable(
     return results
 }
 
-/**
- * Markdown形式で出力
- */
-function outputMarkdown(
-    records: FetchedRecord[],
-    machineName: string,
-    dateStr: string,
-    outputPath: string
-): void {
+// === Markdown出力 ===
+function outputMarkdown(records: FetchedRecord[], dateStr: string): string {
     const now = new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })
+    const outputDir = pathModule.join(__dirname, '..', 'data', 'fetched')
+    const outputPath = pathModule.join(outputDir, `${dateStr}_${MACHINE.dbName}.md`)
 
-    let md = `# ${machineName} ${dateStr}\n`
-    md += `店舗: ${DEFAULT_STORE.name} | 取得: ${now}\n\n`
+    let md = `# ${MACHINE.dbName} ${dateStr}\n`
+    md += `店舗: ${STORE.name} | 取得: ${now}\n\n`
     md += `| 台番号 | G数 | BIG | REG | 差枚(計算) | 差枚(確定) | 備考 |\n`
     md += `|:---:|:---:|:---:|:---:|:---:|:---:|:---|\n`
 
     for (const r of records) {
-        md += `| ${r.machineNo} | ${r.games} | ${r.big} | ${r.reg} | ${r.diffCalc > 0 ? '+' : ''}${r.diffCalc} | | |\n`
+        if (r.games > 0) {
+            md += `| ${r.machineNo} | ${r.games} | ${r.big} | ${r.reg} | ${r.diffCalc > 0 ? '+' : ''}${r.diffCalc} | | |\n`
+        } else {
+            md += `| ${r.machineNo} | - | - | - | - | | 未稼働 |\n`
+        }
     }
 
-    md += `\nステータス: [ ] 未確認\n`
+    md += `\n## ステータス\n`
+    md += `- [x] 取得完了 (${now})\n`
+    md += `- [ ] データ確認済み\n`
+    md += `- [ ] DB登録済み\n`
 
-    // ディレクトリ作成
-    const dir = path.dirname(outputPath)
-    fs.mkdirSync(dir, { recursive: true })
-
-    // ファイル出力
+    fs.mkdirSync(outputDir, { recursive: true })
     fs.writeFileSync(outputPath, md, 'utf-8')
-    console.log(`\nOutput saved to: ${outputPath}`)
+    console.log(`\n出力: ${outputPath}`)
+    return outputPath
 }
 
 // === Main ===
 async function main() {
-    const args = minimist(process.argv.slice(2))
-    const machineName = args['machine'] || '北斗転生'
-    const daysAgo = parseInt(args['days-ago'] || '0')
-
-    // 機種設定を検索
-    const machineConfig = DEFAULT_STORE.machines.find(
-        m => m.dbName.includes(machineName) || m.searchName.includes(machineName)
-    )
-    if (!machineConfig) {
-        console.error(`機種 "${machineName}" が設定に見つかりません`)
-        process.exit(1)
-    }
-
-    // 日付の計算
-    const targetDate = new Date()
-    targetDate.setDate(targetDate.getDate() - daysAgo)
-    const dateStr = targetDate.toLocaleDateString('sv-SE') // YYYY-MM-DD
+    const { targetDate } = parseArgs()
 
     console.log(`=== P's CUBE データ取得 ===`)
-    console.log(`機種: ${machineConfig.dbName}`)
-    console.log(`日付: ${dateStr} (${daysAgo}日前)`)
-    console.log(`店舗: ${DEFAULT_STORE.name}`)
+    console.log(`機種: ${MACHINE.dbName}`)
+    console.log(`日付: ${targetDate}`)
+    console.log(`店舗: ${STORE.name}`)
     console.log(`========================\n`)
 
-    // データ取得
-    const records = await fetchAllFromTable(machineConfig, daysAgo)
+    const records = await fetchData(targetDate)
 
     if (records.length === 0) {
         console.error('\nデータが取得できませんでした。')
-        console.log('debug_*.png を確認してください。')
+        console.log('data/fetched/debug_all_machines.png を確認してください。')
         process.exit(1)
     }
 
-    // データ出力
-    const outputDir = path.join(__dirname, '..', 'data', 'fetched')
-    const outputPath = path.join(outputDir, `${dateStr}_${machineConfig.dbName}.md`)
-    outputMarkdown(records, machineConfig.dbName, dateStr, outputPath)
+    outputMarkdown(records, targetDate)
 
     // サマリー
     console.log(`\n=== サマリー ===`)
     console.log(`取得台数: ${records.length}`)
-    const totalDiff = records.reduce((sum, r) => sum + r.diffCalc, 0)
+    const activeRecords = records.filter(r => r.games > 0)
+    const totalDiff = activeRecords.reduce((sum, r) => sum + r.diffCalc, 0)
+    console.log(`稼働台: ${activeRecords.length} / ${records.length}`)
     console.log(`合計差枚(計算): ${totalDiff > 0 ? '+' : ''}${totalDiff}`)
-    const plusCount = records.filter(r => r.diffCalc > 0).length
-    console.log(`プラス台: ${plusCount} / ${records.length}`)
+    const plusCount = activeRecords.filter(r => r.diffCalc > 0).length
+    console.log(`プラス台: ${plusCount} / ${activeRecords.length}`)
 }
 
 main().catch(e => {
