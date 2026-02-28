@@ -10,6 +10,8 @@
     "backup": "tsx scripts/backup_data.ts",
     "restore": "tsx scripts/restore_data.ts",
     "register-data": "tsx scripts/register-data.ts",
+    "fetch-pscube": "npx ts-node scripts/fetch-pscube.ts",
+    "register-fetched": "npx ts-node scripts/register-fetched.ts",
     "postinstall": "prisma generate"
   },
   "prisma": {
@@ -39,6 +41,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "playwright": "^1.58.2",
     "prisma": "5.22.0",
     "shadcn": "^3.8.4",
     "tailwindcss": "^4",

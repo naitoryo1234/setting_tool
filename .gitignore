@@ -44,3 +44,6 @@ next-env.d.ts
 
 *.db
 *.db-journal
+
+# P's CUBE fetched data (local only)
+/data/fetched/debug_*.png
