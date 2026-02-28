@@ -1,30 +1,34 @@
 # Project Status
 
-**Date:** 2026-02-17
-**Current Phase:** Phase 2.5: Analysis & Visualization (Enhanced)
+**Date:** 2026-03-01
+**Current Phase:** Phase 2.5: Analysis & Visualization (Enhanced) + Data Automation
 
 ## Overview
-ユーザー要望に基づき、分析・統計機能の大幅な強化を実施しました。
-特に「北斗転生」などの高稼働機種に向けた詳細データ分析（ベイズ推定による設定推測）と、全機種へのアクセシビリティ向上（トップページ改修）が完了しています。
+データ自動取得スキルの整備が完了。P's CUBEからの北斗転生データをワークフロー経由で取得・確認・DB登録する仕組みが稼働中。
+分析・統計機能（ベイズ推定、機種別サマリー等）は引き続き運用中。
 
 ## Completed Tasks (Recent)
-- [x] **Machine Stats Summary**:
-    - 機種別サマリーページ (`/history/[machineId]`) の新設。平均RB確率、機械割などの一覧表示。
-    - 台別詳細ページ (`/history/[machineId]/[machineNo]`) の機能強化。
-- [x] **Setting Estimation (Bayesian)**:
-    - 北斗転生のスペック（REG確率＝AT初当り）をベースにした設定推測機能の実装。
-    - 期待度グラフ、推定機械割の表示。
-- [x] **Navigation**:
-    - トップページ (`/`) に「機種別データ一覧」セクションを追加し、導線を強化。
-    - 詳細ページヘッダーからのパンくずリスト的遷移の実装。
-- [x] **UI improvements**:
-    - グラフのツールチップ修正、不要な項目の削除（合算確率など）、ラベルの適正化（BB表記）。
+- [x] **データ自動取得スキル整備**:
+    - `pscube-config.ts` にURL構築パラメータ統合
+    - `fetch-pscube.ts` リファクタリング（`--date` パラメータ対応、3段階ステータス）
+    - `register-fetched.ts` にバックアップ自動実行・ステータス自動更新を追加
+    - ワークフロー `/fetch-hodogaya-tensei-data` 新設
+    - `package.json` に `fetch-hodogaya-tensei-data` コマンド追加
+- [x] **データ登録**: 2026-02-28 北斗転生 13台分のデータをDB登録
 
 ## Unresolved Issues / Pending Tasks
 - **Phase 2: Stress-Free Input**:
     - `react-hook-form` 導入とバリデーション強化（継続課題）。
     - インラインエラー表示とトースト通知。
+- **将来課題**:
+    - Windowsタスクスケジューラによる毎日0時の自動取得
+    - 他機種への自動取得対応
 
 ## Next Steps
-- User verification of new analysis features in actual operation.
-- Proceed with Input Form improvements (Phase 2 original plan).
+- ユーザーからの日次データ取得依頼に対応（`/fetch-hodogaya-tensei-data`）
+- Input Formの改善（Phase 2）
+
+## Session Handover Notes
+- **運用方法**: ユーザーがチャットで `/fetch-hodogaya-tensei-data` + 日付を指定 → データ取得 → 確認 → DB登録
+- **P's CUBEのデータ閲覧期限**: 当日〜翌朝9時まで
+- **ブランチ**: `feature/auto-fetch-pscube` → `main` にマージ済み

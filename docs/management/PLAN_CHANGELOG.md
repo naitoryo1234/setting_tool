@@ -1,5 +1,26 @@
 # Session Handover Plan Changelog
 
+## Session: 2026-03-01 (データ自動取得スキル整備)
+
+### Changes
+- **データ自動取得スキル整備**:
+    - `pscube-config.ts` にURL構築パラメータ（encodedName, machinePageUrl等）を統合し、`buildMachinePageUrl()` 関数を追加。
+    - `fetch-pscube.ts` をリファクタリング: config活用によるハードコード排除、`--date=YYYY-MM-DD` パラメータ対応、3段階ステータス（取得完了/確認済み/登録済み）。
+    - `register-fetched.ts` にバックアップ自動実行（`npm run backup`）とMarkdownステータス自動更新機能を追加。
+    - ワークフロー `/fetch-hodogaya-tensei-data` を新設（`.agent/workflows/fetch-hodogaya-tensei-data.md`）。
+    - `package.json` に `fetch-hodogaya-tensei-data` コマンドを追加。
+- **データ登録**: 2026-02-28 北斗転生 13台分のデータをDB登録。
+
+### 意思決定
+- スケジューリング自動化（タスクスケジューラ/GitHub Actions）は将来課題として後回し。
+- 当面はチャットで `/fetch-hodogaya-tensei-data` + 日付指定で手動運用。
+- データはMarkdownファイルとしてリポジトリに蓄積し、確認後にDB登録する方式を採用。
+- P's CUBEのスクレイピングはテキストパース方式（画像認識ではない）のため、ダブルフェッチは不要と確認。
+
+### Next Steps (次回予定)
+- ユーザーからの日次データ取得依頼に `/fetch-hodogaya-tensei-data` で対応
+- Phase 2: Stress-Free Input（`react-hook-form` + `zod` によるフォーム刷新）
+
 ## Session: 2026-02-13 (Data Restoration & Environment Fix)
 
 ### Changes
