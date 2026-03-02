@@ -134,9 +134,9 @@ export default function InputClient({ machines, todayRecords: initialRecords, cu
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* 個別入力 */}
-                <section className="card-static stagger-item p-6 border border-white/5 bg-slate-900/40 backdrop-blur-md">
+                <section className="card-static stagger-item border-[var(--border-color)]">
                     <h2 className="text-sm font-bold mb-5 flex items-center gap-2 text-[var(--text-primary)]">
-                        <PenLine size={16} className="text-[var(--accent)]" />
+                        <PenLine size={16} className="text-[var(--primary)]" />
                         個別エントリー
                     </h2>
                     <form onSubmit={handleSubmit} className="space-y-5">
@@ -194,7 +194,7 @@ export default function InputClient({ machines, todayRecords: initialRecords, cu
                                         ))}
                                     </select>
                                 ) : (
-                                    <div className="input-modern h-[42px] flex items-center justify-center text-xs text-[var(--text-muted)] bg-slate-800/30 border-dashed">
+                                    <div className="input-modern h-[42px] flex items-center justify-center text-xs text-[var(--text-muted)] bg-[var(--bg-elevated)] border-dashed">
                                         機種未選択
                                     </div>
                                 )}
@@ -224,8 +224,8 @@ export default function InputClient({ machines, todayRecords: initialRecords, cu
                         </button>
 
                         {lastSaved && (
-                            <div className="animate-success flex items-center gap-3 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 p-3 rounded-lg text-xs font-medium">
-                                <div className="p-1 bg-emerald-500/20 rounded-full"><Save size={12} /></div>
+                            <div className="animate-success flex items-center gap-3 bg-[var(--primary)]/10 border border-[var(--primary)]/20 text-[var(--primary)] p-3 rounded-lg text-xs font-medium">
+                                <div className="p-1 bg-[var(--primary)]/20 rounded-full"><Save size={12} /></div>
                                 <div>
                                     <div className="opacity-70 text-[10px] uppercase tracking-wider">Saved Successfully</div>
                                     <div className="tabular-nums">No.{lastSaved.machineNo} / {lastSaved.diff}枚</div>
@@ -236,9 +236,9 @@ export default function InputClient({ machines, todayRecords: initialRecords, cu
                 </section>
 
                 {/* 一括入力 */}
-                <section className="card-static stagger-item p-6 border border-white/5 bg-slate-900/40 backdrop-blur-md flex flex-col">
+                <section className="card-static stagger-item flex flex-col border-[var(--border-color)]">
                     <h2 className="text-sm font-bold mb-5 flex items-center gap-2 text-[var(--text-primary)] flex-none">
-                        <FileJson size={16} className="text-[var(--accent-secondary)]" />
+                        <FileJson size={16} className="text-[var(--primary)]" />
                         バルクインポート
                     </h2>
                     <div className="space-y-4 flex-1 flex flex-col min-h-0">
@@ -246,11 +246,10 @@ export default function InputClient({ machines, todayRecords: initialRecords, cu
                             <textarea
                                 value={bulkText}
                                 onChange={(e) => setBulkText(e.target.value)}
-                                className="input-modern font-mono text-sm h-full w-full resize-none p-4 leading-relaxed"
+                                className="input-modern font-mono text-sm h-full w-full resize-none p-4 leading-relaxed bg-[var(--bg-card-solid)] border-[var(--border-color)]"
                                 placeholder={`238 1500\n239 -500 2000`}
-                                style={{ background: 'rgba(15, 23, 42, 0.6)' }}
                             />
-                            <div className="absolute top-2 right-2 text-[10px] text-[var(--text-muted)] bg-black/20 px-2 py-1 rounded backdrop-blur">
+                            <div className="absolute top-2 right-2 text-[10px] text-[var(--text-muted)] bg-[var(--bg-card)] px-2 py-1 border border-[var(--border-color)] rounded">
                                 形式: 台番 差枚...
                             </div>
                         </div>
@@ -261,7 +260,7 @@ export default function InputClient({ machines, todayRecords: initialRecords, cu
                             <button
                                 onClick={handleBulkSubmit}
                                 disabled={isPending || !bulkText}
-                                className="btn-primary flex items-center gap-2 bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 border-none shadow-lg shadow-teal-500/20"
+                                className="btn-primary flex items-center gap-2 bg-[var(--primary)] hover:bg-blue-600 border-none"
                             >
                                 <PackagePlus size={16} />
                                 一括実行
@@ -272,14 +271,14 @@ export default function InputClient({ machines, todayRecords: initialRecords, cu
             </div>
 
             {/* 入力済み一覧 */}
-            <section className="card-static stagger-item p-0 overflow-hidden border border-white/5">
-                <div className="px-5 py-4 border-b border-white/5 bg-slate-900/50 flex justify-between items-center">
+            <section className="card-static stagger-item p-0 overflow-hidden border border-[var(--border-color)]">
+                <div className="px-5 py-4 border-b border-[var(--border-color)] bg-[var(--bg-card-solid)] flex justify-between items-center">
                     <div className="flex items-center gap-2 text-[var(--text-secondary)]">
                         <ListCheck size={18} />
                         <h2 className="text-sm font-bold">データリスト</h2>
-                        <span className="text-xs text-[var(--text-muted)] ml-2 tabular-nums bg-white/5 px-2 py-0.5 rounded-full">{date}</span>
+                        <span className="text-xs text-[var(--text-muted)] ml-2 tabular-nums px-2 py-0.5 rounded-full border border-[var(--border-color)]">{date}</span>
                     </div>
-                    <div className={`text-sm font-bold glow-value tabular-nums px-3 py-1 rounded-full border ${totalDiff > 0 ? 'border-rose-500/30 bg-rose-500/10 text-rose-400' : totalDiff < 0 ? 'border-sky-500/30 bg-sky-500/10 text-sky-400' : 'border-slate-500/30 bg-slate-500/10 text-slate-400'}`}>
+                    <div className={`text-sm font-bold tabular-nums px-3 py-1 rounded-full border ${totalDiff > 0 ? 'border-[var(--color-plus)] text-[var(--color-plus)]' : totalDiff < 0 ? 'border-[var(--color-minus)] text-[var(--color-minus)]' : 'border-[var(--text-muted)] text-[var(--text-muted)]'}`}>
                         Total: {totalDiff > 0 ? '+' : ''}{totalDiff.toLocaleString()}
                     </div>
                 </div>

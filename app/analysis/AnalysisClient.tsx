@@ -1,8 +1,9 @@
 'use client'
 
 import { useState, useTransition, useEffect } from 'react'
-import { getAnalysis, getMachines, toggleEventDay, AnalysisResult } from '@/lib/actions'
-import { Microscope, Search, Calendar, CalendarCheck2, TrendingUp, AlertCircle, BarChart2, Hash, CalendarDays, ArrowUpDown, ArrowUp, ArrowDown, RotateCw, Sparkles, Coins, Inbox } from 'lucide-react'
+import { getAnalysis, getMachines, toggleEventDay, AnalysisResult, getSummary, MachineSummary, MachineNoSummary } from '@/lib/actions'
+import { getTodayJst, getPastDateJst } from '@/lib/dateUtils'
+import { Microscope, Search, Calendar, CalendarCheck2, TrendingUp, AlertCircle, BarChart2, Hash, CalendarDays, ArrowUpDown, ArrowUp, ArrowDown, RotateCw, Sparkles, Coins, Inbox, PieChart } from 'lucide-react'
 import { PageHeader } from '@/components/PageHeader'
 import { EmptyState } from '@/components/ui/empty-state'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -30,7 +31,7 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
     const [machineId, setMachineId] = useState('')
     const [machines, setMachines] = useState(initialMachines)
     const [startDate, setStartDate] = useState('')
-    const [endDate, setEndDate] = useState('')
+    const [endDate, setEndDate] = useState(getTodayJst())
     const [useRange, setUseRange] = useState(false)
     const [dayFilter, setDayFilter] = useState<'all' | 'event' | 'normal'>('all')
     const [result, setResult] = useState<AnalysisResult | null>(null)
@@ -43,6 +44,12 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
     // イベント日登録用
     const [eventDate, setEventDate] = useState('')
     const [eventMsg, setEventMsg] = useState('')
+
+    // 全機種集計用
+    const [machineSummary, setMachineSummary] = useState<MachineSummary[]>([])
+    const [machineNoSummary, setMachineNoSummary] = useState<MachineNoSummary[]>([])
+    const [selectedSummaryMachineId, setSelectedSummaryMachineId] = useState('')
+    const isSummaryMode = machineId === '__all__'
 
     // 店舗変更時に機種リストを更新
     useEffect(() => {
@@ -68,10 +75,27 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
     const handleSearch = () => {
         if (!machineId) return
         startTransition(async () => {
-            const start = useRange && startDate ? new Date(startDate) : undefined
-            const end = useRange && endDate ? new Date(endDate) : undefined
-            const data = await getAnalysis(machineId, start, end, dayFilter)
-            setResult(data)
+            if (machineId === '__all__') {
+                // 全機種集計モード
+                const s = useRange && startDate && endDate
+                    ? new Date(startDate)
+                    : new Date('2020-01-01')
+                const e = useRange && startDate && endDate
+                    ? new Date(endDate)
+                    : new Date(getTodayJst())
+                const summaryResult = await getSummary(s, e)
+                setMachineSummary(summaryResult.machineSummary)
+                setMachineNoSummary(summaryResult.machineNoSummary)
+                setResult(null)
+            } else {
+                // 単一機種分析モード
+                const start = useRange && startDate ? new Date(startDate) : undefined
+                const end = useRange && endDate ? new Date(endDate) : undefined
+                const data = await getAnalysis(machineId, start, end, dayFilter)
+                setResult(data)
+                setMachineSummary([])
+                setMachineNoSummary([])
+            }
             setHasSearched(true)
         })
     }
@@ -144,7 +168,7 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
 
             <div className="space-y-6">
                 {/* 検索条件 */}
-                <div className="card-static stagger-item p-6 border border-white/5 bg-slate-900/40 backdrop-blur-md">
+                <div className="card-static stagger-item p-6 border border-[var(--border-color)] bg-[var(--bg-card)]">
                     <div className="flex gap-4 items-end flex-wrap">
                         <div className="flex-1 min-w-[180px]">
                             <label className="text-xs font-semibold text-[var(--text-secondary)] mb-1.5 block">店舗</label>
@@ -156,6 +180,7 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                             <label className="text-xs font-semibold text-[var(--text-secondary)] mb-1.5 block">機種</label>
                             <select value={machineId} onChange={(e) => setMachineId(e.target.value)} className="select-modern w-full">
                                 <option value="">選択してください</option>
+                                <option value="__all__">── 全機種集計 ──</option>
                                 {machines.map(m => (<option key={m.id} value={m.id}>{m.name}</option>))}
                             </select>
                         </div>
@@ -163,7 +188,7 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                         <div className="w-full sm:w-auto flex flex-col gap-2">
                             <div className="flex items-center gap-2 mb-1 h-6">
                                 <input type="checkbox" id="useRange" checked={useRange} onChange={(e) => setUseRange(e.target.checked)}
-                                    className="w-4 h-4 rounded border-slate-600 bg-slate-800 text-indigo-500 focus:ring-offset-0 focus:ring-indigo-500"
+                                    className="w-4 h-4 rounded border-[var(--border-color)] bg-[var(--bg-card-solid)] text-[var(--primary)] focus:ring-offset-0 focus:ring-[var(--primary)]"
                                 />
                                 <label htmlFor="useRange" className="text-sm cursor-pointer select-none font-medium text-[var(--text-secondary)]">期間指定</label>
                             </div>
@@ -188,14 +213,14 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                         <div className="w-full sm:w-auto">
                             <button onClick={handleSearch} disabled={!machineId || isPending} className="btn-primary w-full sm:w-auto px-6 flex items-center justify-center gap-2">
                                 {isPending ? <span className="animate-spin">⏳</span> : <Search size={16} />}
-                                <span>{isPending ? '分析中...' : '分析実行'}</span>
+                                <span>{isPending ? '分析中...' : isSummaryMode ? '集計実行' : '分析実行'}</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
                 {/* イベント日登録 */}
-                <div className="card-static stagger-item p-4 border border-white/5 bg-slate-900/30">
+                <div className="card-static stagger-item p-4 border border-[var(--border-color)] bg-[var(--bg-card)]">
                     <h3 className="text-xs font-bold mb-3 flex items-center gap-2 text-[var(--text-secondary)] uppercase tracking-wider">
                         <CalendarCheck2 size={14} className="text-[var(--accent)]" />
                         イベント日登録
@@ -208,11 +233,11 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                         <button
                             onClick={handleToggleEvent}
                             disabled={!eventDate || !storeId || isPending}
-                            className="btn-primary py-1.5 px-3 text-xs bg-emerald-600 hover:bg-emerald-500 border-none shadow-lg shadow-emerald-500/20"
+                            className="btn-primary py-1.5 px-3 text-xs border-none shadow-lg"
                         >
                             登録 / 解除
                         </button>
-                        {eventMsg && <span className="text-xs animate-success text-emerald-400 flex items-center gap-1"><AlertCircle size={12} /> {eventMsg}</span>}
+                        {eventMsg && <span className="text-xs animate-success text-[var(--primary)] flex items-center gap-1"><AlertCircle size={12} /> {eventMsg}</span>}
                     </div>
                 </div>
 
@@ -234,10 +259,10 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                 {hasSearched && !isPending && result && (
                     <>
                         {/* 全体サマリー */}
-                        <div className="card-static stagger-item border border-white/10 bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950/30">
-                            <h2 className="text-lg font-bold mb-6 flex items-center gap-3 border-b border-white/5 pb-4">
-                                <BarChart2 size={20} className="text-indigo-400" />
-                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 to-purple-300">
+                        <div className="card-static stagger-item border border-[var(--border-color)] bg-[var(--bg-card)]">
+                            <h2 className="text-lg font-bold mb-6 flex items-center gap-3 border-b border-[var(--border-color)] pb-4">
+                                <BarChart2 size={20} className="text-[var(--primary)]" />
+                                <span className="text-[var(--text-primary)] font-bold">
                                     {result.machineName}
                                 </span>
                                 <span className="text-xs font-normal text-[var(--text-muted)] bg-white/5 px-2 py-0.5 rounded-full tabular-nums">
@@ -248,11 +273,11 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                                 {[
                                     { label: '総回転数', value: result.overall.totalGames.toLocaleString(), color: 'var(--text-primary)', icon: <RotateCw size={14} className="opacity-50" /> },
                                     { label: '合計差枚', value: `${result.overall.totalDiff > 0 ? '+' : ''}${result.overall.totalDiff.toLocaleString()}`, color: result.overall.totalDiff > 0 ? 'var(--color-plus)' : 'var(--color-minus)', icon: <Coins size={14} className="opacity-50" /> },
-                                    { label: 'BIG回数', value: result.overall.totalBig.toString(), sub: `1/${result.overall.bigProb}`, color: '#f43f5e', icon: <ArrowUp size={14} className="opacity-50" /> },
-                                    { label: 'REG回数', value: result.overall.totalReg.toString(), sub: `1/${result.overall.regProb}`, color: '#38bdf8', icon: <ArrowDown size={14} className="opacity-50" /> },
-                                    { label: '推定出玉率', value: `${result.overall.payoutRate.toFixed(1)}%`, color: result.overall.payoutRate >= 100 ? '#4ade80' : '#fbbf24', icon: <TrendingUp size={14} className="opacity-50" />, isRate: true },
+                                    { label: 'BIG回数', value: result.overall.totalBig.toString(), sub: `1/${result.overall.bigProb}`, color: 'var(--color-plus)', icon: <ArrowUp size={14} className="opacity-50" /> },
+                                    { label: 'REG回数', value: result.overall.totalReg.toString(), sub: `1/${result.overall.regProb}`, color: 'var(--accent-secondary)', icon: <ArrowDown size={14} className="opacity-50" /> },
+                                    { label: '推定出玉率', value: `${result.overall.payoutRate.toFixed(1)}%`, color: result.overall.payoutRate >= 100 ? 'var(--color-plus)' : 'var(--text-muted)', icon: <TrendingUp size={14} className="opacity-50" />, isRate: true },
                                 ].map((stat, i) => (
-                                    <div key={i} className={`card p-4 text-center relative overflow-hidden group border border-white/5 bg-slate-900/50 ${(stat as any).isRate && parseFloat(stat.value) >= 106 ? 'ai-pulse-bad' : (stat as any).isRate && parseFloat(stat.value) >= 100 ? 'ai-pulse-good' : ''}`}>
+                                    <div key={i} className={`card p-4 text-center relative overflow-hidden group border border-[var(--border-color)] bg-[var(--bg-card)] ${(stat as any).isRate && parseFloat(stat.value) >= 106 ? 'ai-pulse-bad' : (stat as any).isRate && parseFloat(stat.value) >= 100 ? 'ai-pulse-good' : ''}`}>
                                         <div className="text-[10px] text-[var(--text-muted)] mb-2 uppercase tracking-wider flex justify-center items-center gap-1">
                                             {(stat as any).icon} {stat.label}
                                         </div>
@@ -261,10 +286,10 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                                     </div>
                                 ))}
                             </div>
-                            <div className="mt-4 p-4 rounded-lg bg-yellow-500/5 border border-yellow-500/10 text-center flex flex-col items-center justify-center relative overflow-hidden">
-                                <div className="absolute top-0 right-0 p-2 text-yellow-500/10"><Sparkles size={48} /></div>
-                                <div className="text-[10px] text-yellow-500/70 mb-1 uppercase tracking-wider font-semibold">Combined Probability (BIG+REG)</div>
-                                <div className="stat-value glow-value text-3xl font-black text-yellow-400 tabular-nums z-10">
+                            <div className="mt-4 p-4 rounded-lg bg-[var(--primary)]/5 border border-[var(--primary)]/15 text-center flex flex-col items-center justify-center relative overflow-hidden">
+                                <div className="absolute top-0 right-0 p-2 text-[var(--primary)]/10"><Sparkles size={48} /></div>
+                                <div className="text-[10px] text-[var(--primary)]/70 mb-1 uppercase tracking-wider font-semibold">合算確率 (BIG+REG)</div>
+                                <div className="stat-value glow-value text-3xl font-black text-[var(--primary)] tabular-nums z-10">
                                     1/{result.overall.hitProb}
                                 </div>
                                 <div className="text-xs text-[var(--text-muted)] mt-1 tabular-nums z-10">
@@ -274,8 +299,8 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                         </div>
 
                         {/* タブ */}
-                        <div className="card-static stagger-item p-0 overflow-hidden border border-white/5">
-                            <div className="flex border-b border-white/5 bg-slate-900/50">
+                        <div className="card-static stagger-item p-0 overflow-hidden border border-[var(--border-color)]">
+                            <div className="flex border-b border-[var(--border-color)] bg-[var(--bg-elevated)]">
                                 {[
                                     { id: 'machine' as TabType, label: '台番別解析', icon: <Hash size={14} /> },
                                     { id: 'dow' as TabType, label: '曜日別解析', icon: <CalendarDays size={14} /> },
@@ -283,11 +308,11 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                                     <button
                                         key={tab.id}
                                         onClick={() => setActiveTab(tab.id)}
-                                        className={`flex items-center gap-2 px-6 py-4 text-sm font-bold transition-all relative ${activeTab === tab.id ? 'text-indigo-400 bg-indigo-500/5' : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:bg-white/5'}`}
+                                        className={`flex items-center gap-2 px-6 py-4 text-sm font-bold transition-all relative ${activeTab === tab.id ? 'text-[var(--primary)] bg-[var(--primary)]/5' : 'text-[var(--text-muted)] hover:text-[var(--text-secondary)] hover:bg-white/5'}`}
                                     >
                                         {tab.icon}
                                         {tab.label}
-                                        {activeTab === tab.id && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]" />}
+                                        {activeTab === tab.id && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--primary)]" />}
                                     </button>
                                 ))}
                             </div>
@@ -316,14 +341,14 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                                                 {sortedRecords.map((r) => (
                                                     <tr key={r.machineNo} className="group hover:bg-white/5 transition-colors">
                                                         <td className="pl-4 py-3 font-bold tabular-nums">
-                                                            <a href={`/history/${result.machineId}/${r.machineNo}`} className="text-indigo-400 hover:text-indigo-300 hover:underline underline-offset-4 decoration-indigo-500/30">
+                                                            <a href={`/history/${result.machineId}/${r.machineNo}`} className="text-[var(--primary)] hover:text-[var(--primary-hover)] hover:underline underline-offset-4 decoration-[var(--primary)]/30">
                                                                 {r.machineNo}
                                                             </a>
                                                         </td>
                                                         <td className="text-right py-3 tabular-nums">{r.days}</td>
                                                         <td className="text-right py-3 tabular-nums text-[var(--text-secondary)]">{r.totalGames.toLocaleString()}</td>
                                                         <td className="text-right py-3 tabular-nums text-rose-400">{r.totalBig}</td>
-                                                        <td className="text-right py-3 tabular-nums text-sky-400">{r.totalReg}</td>
+                                                        <td className="text-right py-3 tabular-nums text-[var(--accent-secondary)]">{r.totalReg}</td>
                                                         <td className="text-right py-3 tabular-nums">{r.totalHits}</td>
                                                         <td className="text-right py-3 tabular-nums text-[var(--text-muted)]">1/{r.bigProb}</td>
                                                         <td className="text-right py-3 tabular-nums text-[var(--text-muted)]">1/{r.regProb}</td>
@@ -338,12 +363,12 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                                                 ))}
                                             </tbody>
                                             <tfoot>
-                                                <tr className="bg-slate-900/80 font-bold border-t border-white/10">
+                                                <tr className="bg-[var(--bg-elevated)] font-bold border-t border-[var(--border-color)]">
                                                     <td className="pl-4 py-4">全体</td>
                                                     <td className="text-right py-4 tabular-nums">{result.overall.days}</td>
                                                     <td className="text-right py-4 tabular-nums">{result.overall.totalGames.toLocaleString()}</td>
                                                     <td className="text-right py-4 tabular-nums text-rose-400">{result.overall.totalBig}</td>
-                                                    <td className="text-right py-4 tabular-nums text-sky-400">{result.overall.totalReg}</td>
+                                                    <td className="text-right py-4 tabular-nums text-[var(--accent-secondary)]">{result.overall.totalReg}</td>
                                                     <td className="text-right py-4 tabular-nums">{result.overall.totalHits}</td>
                                                     <td className="text-right py-4 tabular-nums text-[var(--text-muted)]">1/{result.overall.bigProb}</td>
                                                     <td className="text-right py-4 tabular-nums text-[var(--text-muted)]">1/{result.overall.regProb}</td>
@@ -386,7 +411,7 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                                                         <td className="text-right py-3 tabular-nums">{d.days}</td>
                                                         <td className="text-right py-3 tabular-nums text-[var(--text-secondary)]">{d.totalGames.toLocaleString()}</td>
                                                         <td className="text-right py-3 tabular-nums text-rose-400">{d.totalBig}</td>
-                                                        <td className="text-right py-3 tabular-nums text-sky-400">{d.totalReg}</td>
+                                                        <td className="text-right py-3 tabular-nums text-[var(--accent-secondary)]">{d.totalReg}</td>
                                                         <td className="text-right py-3 tabular-nums">{d.totalHits}</td>
                                                         <td className="text-right py-3 tabular-nums font-medium">1/{d.hitProb}</td>
                                                         <td className="text-right py-3"><PayoutBadge rate={d.payoutRate} /></td>
@@ -412,7 +437,7 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                     </>
                 )}
 
-                {hasSearched && !isPending && !result && (
+                {hasSearched && !isPending && !result && machineSummary.length === 0 && (
                     <EmptyState
                         icon={Search}
                         title="データが見つかりませんでした"
@@ -420,21 +445,119 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
                     />
                 )}
 
+                {/* 全機種集計結果 */}
+                {hasSearched && !isPending && machineSummary.length > 0 && (
+                    <>
+                        {/* 機種サマリーカード */}
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                            {machineSummary.map((m) => (
+                                <button
+                                    key={m.machineId}
+                                    onClick={() => setSelectedSummaryMachineId(selectedSummaryMachineId === m.machineId ? '' : m.machineId)}
+                                    className={`card text-left stagger-item relative overflow-hidden group ${selectedSummaryMachineId === m.machineId ? 'border-[var(--primary)] bg-[var(--bg-card-solid)]' : ''}`}
+                                >
+                                    <div className="text-xs font-semibold text-[var(--text-secondary)] mb-2 group-hover:text-[var(--text-primary)] transition-colors">
+                                        {m.machineName}
+                                    </div>
+                                    <div className={`stat-value text-xl sm:text-2xl tabular-nums ${m.totalDiff > 0 ? 'diff-plus' : m.totalDiff < 0 ? 'diff-minus' : 'diff-zero'}`}>
+                                        {m.totalDiff > 0 ? '+' : ''}{m.totalDiff.toLocaleString()}
+                                    </div>
+                                    <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-2 flex justify-between items-center">
+                                        <span>{m.count}件</span>
+                                        <span className="opacity-70">B{m.totalBig} R{m.totalReg}</span>
+                                    </div>
+                                </button>
+                            ))}
+                            {/* 合計カード */}
+                            <button
+                                onClick={() => setSelectedSummaryMachineId('')}
+                                className={`card text-left stagger-item relative overflow-hidden group ${selectedSummaryMachineId === '' ? 'border-[var(--primary)] bg-[var(--bg-card-solid)]' : ''}`}
+                            >
+                                <div className="text-xs font-semibold text-[var(--primary)] mb-2">全機種合計</div>
+                                <div className={`stat-value text-xl sm:text-2xl tabular-nums ${machineSummary.reduce((a, b) => a + b.totalDiff, 0) > 0 ? 'diff-plus' : 'diff-minus'}`}>
+                                    {machineSummary.reduce((a, b) => a + b.totalDiff, 0) > 0 ? '+' : ''}{machineSummary.reduce((a, b) => a + b.totalDiff, 0).toLocaleString()}
+                                </div>
+                                <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-2">
+                                    合計 {machineSummary.reduce((a, b) => a + b.count, 0)}件
+                                </div>
+                            </button>
+                        </div>
+
+                        {/* 台別テーブル */}
+                        <div className="card-static stagger-item p-0 overflow-hidden">
+                            <div className="px-5 py-4 border-b border-[var(--border-color)] bg-[var(--bg-elevated)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <h2 className="text-sm font-bold text-[var(--text-primary)]">
+                                    台別パフォーマンス詳細
+                                </h2>
+                                <select
+                                    value={selectedSummaryMachineId}
+                                    onChange={(e) => setSelectedSummaryMachineId(e.target.value)}
+                                    className="select-modern text-xs w-auto"
+                                >
+                                    <option value="">全機種</option>
+                                    {machineSummary.map(m => (
+                                        <option key={m.machineId} value={m.machineId}>{m.machineName}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="overflow-x-auto">
+                                <table className="table-jat w-full text-sm">
+                                    <thead>
+                                        <tr>
+                                            <th className="pl-5 text-left">No</th>
+                                            <th className="text-center">BIG</th>
+                                            <th className="text-center">REG</th>
+                                            <th className="text-center">G数</th>
+                                            <th className="text-right pr-5">差枚</th>
+                                            {!selectedSummaryMachineId && <th className="text-left pl-4">機種名</th>}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {machineNoSummary
+                                            .filter(m => selectedSummaryMachineId ? m.machineId === selectedSummaryMachineId : true)
+                                            .sort((a, b) => b.totalDiff - a.totalDiff)
+                                            .map((m) => (
+                                                <tr key={`${m.machineId}-${m.machineNo}`} className="group hover:bg-white/5 transition-colors">
+                                                    <td className="pl-5 py-3 font-semibold tabular-nums">
+                                                        <a href={`/history/${m.machineId}/${m.machineNo}`} className="text-[var(--primary)] hover:text-[var(--primary-hover)] hover:underline">
+                                                            {m.machineNo}
+                                                        </a>
+                                                    </td>
+                                                    <td className="text-center py-3 tabular-nums text-rose-400/90 font-medium">{m.totalBig || '-'}</td>
+                                                    <td className="text-center py-3 tabular-nums text-[var(--accent-secondary)] font-medium">{m.totalReg || '-'}</td>
+                                                    <td className="text-center py-3 tabular-nums text-[var(--text-secondary)]">{m.totalGames ? m.totalGames.toLocaleString() : '-'}</td>
+                                                    <td className="text-right py-3 pr-5 tabular-nums">
+                                                        <span className={`font-bold ${m.totalDiff > 0 ? 'text-plus' : m.totalDiff < 0 ? 'text-minus' : 'text-zero'}`}>
+                                                            {m.totalDiff > 0 ? '+' : ''}{m.totalDiff.toLocaleString()}
+                                                        </span>
+                                                    </td>
+                                                    {!selectedSummaryMachineId && (
+                                                        <td className="text-left pl-4 py-3 text-xs text-[var(--text-muted)]">{m.machineName}</td>
+                                                    )}
+                                                </tr>
+                                            ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </>
+                )}
+
                 {!hasSearched && !isPending && (
                     <div className="card-static stagger-item text-center py-20 px-4">
-                        <div className="inline-flex p-6 rounded-full bg-indigo-500/5 mb-6 animate-pulse">
-                            <Microscope size={64} className="text-indigo-500/40" />
+                        <div className="inline-flex p-6 rounded-full bg-[var(--primary)]/5 mb-6 animate-pulse">
+                            <Microscope size={64} className="text-[var(--primary)]/40" />
                         </div>
                         <h2 className="text-lg font-bold text-[var(--text-secondary)] mb-2">
                             分析を開始
                         </h2>
                         <p className="text-sm text-[var(--text-muted)] mb-8 max-w-sm mx-auto">
-                            機種を選んで、台ごとの詳細なデータ傾向やイベント日の信頼度を分析します。
+                            機種を選んで詳細分析、または「全機種集計」で店舗全体の傾向を確認できます。
                         </p>
                     </div>
                 )}
             </div>
-        </div>
+        </div >
     )
 }
 

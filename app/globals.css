@@ -3,68 +3,120 @@
 @import "shadcn/tailwind.css";
 
 /* ==========================================
-   ダークテーマ カラーパレット (ネオン配色)
+   設鑑 — 墨 × 朱 テーマ (Japanese Ink & Vermillion)
    ========================================== */
 :root {
-  /* 背景 */
-  --bg-primary: #080c1a;
-  --bg-card: rgba(15, 23, 42, 0.65);
-  --bg-card-solid: #0f172a;
-  --bg-card-hover: rgba(30, 41, 59, 0.8);
-  --bg-elevated: rgba(30, 41, 59, 0.5);
+  /* 背景 — 深墨 */
+  --bg-primary: #13100e;
+  --bg-card: rgba(28, 22, 18, 0.8);
+  --bg-card-solid: #1c1612;
+  --bg-card-hover: rgba(38, 30, 24, 0.9);
+  --bg-elevated: rgba(38, 30, 24, 0.6);
 
-  /* テキスト */
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  /* テキスト — 生成り */
+  --text-primary: #f0ebe2;
+  --text-secondary: #b8a898;
+  --text-muted: #7a6a5a;
 
-  /* ボーダー */
-  --border-color: rgba(51, 65, 85, 0.6);
-  --border-subtle: rgba(30, 41, 59, 0.5);
+  /* ボーダー — 和紙の縁 */
+  --border-color: rgba(90, 72, 58, 0.5);
+  --border-subtle: rgba(60, 45, 35, 0.4);
 
-  /* アクセント（ネオンブルー〜パープル） */
-  --accent: oklch(0.97 0 0);
-  --accent-hover: #818cf8;
-  --accent-glow: rgba(99, 102, 241, 0.2);
-  --accent-gradient: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
+  /* メインアクセント — 朱 (Vermillion) */
+  --primary: #c0392b;
+  --primary-hover: #e74c3c;
+  --primary-light: rgba(192, 57, 43, 0.15);
+  --accent: #c0392b;
+  --accent-hover: #e74c3c;
+  --accent-glow: rgba(192, 57, 43, 0.2);
+  --accent-gradient: linear-gradient(135deg, #c0392b, #e74c3c);
 
-  /* セカンダリアクセント（シアン） */
-  --accent-secondary: #22d3ee;
-  --accent-secondary-glow: rgba(34, 211, 238, 0.15);
+  /* セカンダリアクセント — 薄朱 */
+  --accent-secondary: #d4846a;
+  --accent-secondary-glow: rgba(212, 132, 106, 0.15);
 
   /* 差枚カラー */
-  --color-plus: #f43f5e;
-  --color-plus-light: #fb7185;
-  --color-minus: #38bdf8;
-  --color-minus-light: #7dd3fc;
-  --color-zero: #64748b;
+  --color-plus: #c0392b;
+  --color-plus-light: #e74c3c;
+  --color-minus: #5b8fa8;
+  --color-minus-light: #7aaec4;
+  --color-zero: #7a6a5a;
 
   /* サイズ */
   --nav-height: 56px;
   --mobile-nav-height: 64px;
-  --radius: 0.625rem;
-  --radius-sm: 10px;
+  --radius: 0.375rem;
+  --radius-sm: 6px;
 
-  /* グラスモーフィズム */
-  --glass-blur: 16px;
-  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  /* グラスモーフィズム (控えめに) */
+  --glass-blur: 12px;
+  --glass-border: 1px solid rgba(240, 235, 226, 0.06);
+}
+
+@layer base {
+  :root {
+    /* 設鑑 — 和風ダークテーマ */
+    --background: 22 20% 7%;
+    --foreground: 30 22% 92%;
+
+    --card: 20 20% 10%;
+    --card-foreground: 30 22% 92%;
+
+    --popover: 20 20% 10%;
+    --popover-foreground: 30 22% 92%;
+
+    /* Primary — 朱 */
+    --primary: 5 63% 47%;
+    --primary-foreground: 30 22% 92%;
+
+    /* Secondary */
+    --secondary: 20 15% 16%;
+    --secondary-foreground: 30 22% 92%;
+
+    /* Muted */
+    --muted: 20 15% 16%;
+    --muted-foreground: 25 15% 48%;
+
+    /* Accent */
+    --accent: 20 15% 16%;
+    --accent-foreground: 30 22% 92%;
+
+    /* Destructive */
+    --destructive: 5 63% 47%;
+    --destructive-foreground: 30 22% 92%;
+
+    /* Borders */
+    --border: 20 18% 20%;
+    --input: 20 18% 20%;
+    --ring: 5 63% 47%;
+
+    --radius: 0.375rem;
+  }
+
+  .dark {
+    --background: 22 20% 7%;
+    --foreground: 30 22% 92%;
+    --card: 20 20% 10%;
+    --card-foreground: 30 22% 92%;
+    --popover: 20 20% 10%;
+    --popover-foreground: 30 22% 92%;
+    --primary: 5 63% 47%;
+    --primary-foreground: 30 22% 92%;
+    --secondary: 20 15% 16%;
+    --secondary-foreground: 30 22% 92%;
+    --muted: 20 15% 16%;
+    --muted-foreground: 25 15% 48%;
+    --accent: 20 15% 16%;
+    --accent-foreground: 30 22% 92%;
+    --destructive: 5 63% 47%;
+    --destructive-foreground: 30 22% 92%;
+    --border: 20 18% 20%;
+    --input: 20 18% 20%;
+    --ring: 5 63% 47%;
+  }
+}
+
+:root {
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -182,22 +234,6 @@ body {
   background: rgba(74, 222, 128, 0.1);
 }
 
-/* 背景グラデーション（メッシュ風） */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 10% 20%, rgba(99, 102, 241, 0.08), transparent 50%),
-    radial-gradient(ellipse 60% 80% at 90% 80%, rgba(139, 92, 246, 0.06), transparent 50%),
-    radial-gradient(ellipse 50% 50% at 50% 0%, rgba(34, 211, 238, 0.04), transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-}
-
 body>* {
   position: relative;
   z-index: 1;
@@ -215,10 +251,7 @@ body>* {
 .page-header-title {
   font-size: 1.5rem;
   font-weight: 800;
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -232,55 +265,41 @@ body>* {
 }
 
 /* ==========================================
-   カードコンポーネント（グラスモーフィズム）
+   カードコンポーネント（クリーン）
    ========================================== */
-.card {
-  background: var(--bg-card);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: var(--glass-border);
+.card,
+.card-static {
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius);
   padding: 1.25rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .card:hover {
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow:
-    0 0 0 1px rgba(99, 102, 241, 0.3),
-    0 8px 32px rgba(99, 102, 241, 0.12);
-  transform: translateY(-2px);
-}
-
-.card-static {
-  background: var(--bg-card);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border: var(--glass-border);
-  border-radius: var(--radius);
-  padding: 1.25rem;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 /* ==========================================
-   JATテーブル（洗練版）
+   JATテーブル（洗練版・フィンテック風）
    ========================================== */
 .table-jat {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   font-size: 0.875rem;
-  background-color: rgba(8, 12, 26, 0.6);
-  border: 1px solid rgba(51, 65, 85, 0.4);
+  background-color: transparent;
 }
 
 .table-jat thead th {
-  background-color: rgba(15, 23, 42, 0.8);
-  color: #9ca3af;
-  font-weight: 600;
-  padding: 0.75rem 0.5rem;
-  border: 1px solid rgba(51, 65, 85, 0.4);
-  text-align: center;
+  background-color: rgba(255, 255, 255, 0.02);
+  color: var(--text-muted);
+  font-weight: 500;
+  padding: 0.875rem 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  text-align: left;
   white-space: nowrap;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -293,29 +312,33 @@ body>* {
 }
 
 .table-jat tbody tr:hover {
-  background-color: rgba(99, 102, 241, 0.06);
+  background-color: rgba(255, 255, 255, 0.02);
 }
 
 .table-jat tbody td {
-  padding: 0.75rem 0.5rem;
-  border: 1px solid rgba(51, 65, 85, 0.3);
-  color: #f3f4f6;
+  padding: 1rem 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
   white-space: nowrap;
+}
+
+.table-jat tbody tr:last-child td {
+  border-bottom: none;
 }
 
 /* 差枚の色 */
 .text-plus {
   color: var(--color-plus);
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .text-minus {
   color: var(--color-minus);
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .text-zero {
-  color: #9ca3af;
+  color: var(--text-muted);
 }
 
 /* ==========================================
@@ -323,12 +346,12 @@ body>* {
    ========================================== */
 .diff-plus {
   color: var(--color-plus);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .diff-minus {
   color: var(--color-minus);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .diff-zero {
@@ -336,7 +359,7 @@ body>* {
 }
 
 /* ==========================================
-   差枚バーグラフ
+   差枚バーグラフ (フラット化)
    ========================================== */
 .diff-bar-container {
   display: flex;
@@ -345,24 +368,22 @@ body>* {
 }
 
 .diff-bar {
-  height: 6px;
-  border-radius: 3px;
+  height: 4px;
+  border-radius: 2px;
   transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   min-width: 2px;
 }
 
 .diff-bar-plus {
-  background: linear-gradient(90deg, var(--color-plus), var(--color-plus-light));
-  box-shadow: 0 0 8px rgba(244, 63, 94, 0.4);
+  background: var(--color-plus);
 }
 
 .diff-bar-minus {
-  background: linear-gradient(90deg, var(--color-minus), var(--color-minus-light));
-  box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+  background: var(--color-minus);
 }
 
 /* ==========================================
-   バッジ
+   バッジ (ソリッドなデザイン)
    ========================================== */
 .badge {
   display: inline-flex;
@@ -370,38 +391,37 @@ body>* {
   gap: 0.25rem;
   font-size: 0.7rem;
   font-weight: 600;
-  padding: 0.2rem 0.5rem;
-  border-radius: 9999px;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
   letter-spacing: 0.02em;
 }
 
 .badge-rank-1 {
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
-  color: #1e293b;
-  box-shadow: 0 0 12px rgba(251, 191, 36, 0.3);
+  background: #F59E0B;
+  color: #fff;
 }
 
 .badge-rank-2 {
-  background: linear-gradient(135deg, #d1d5db, #9ca3af);
-  color: #1e293b;
+  background: #9CA3AF;
+  color: #fff;
 }
 
 .badge-rank-3 {
-  background: linear-gradient(135deg, #d97706, #b45309);
-  color: #fef3c7;
+  background: #D97706;
+  color: #fff;
 }
 
 /* ==========================================
    フォームコントロール
    ========================================== */
 .input-modern {
-  background: rgba(8, 12, 26, 0.6);
-  border: 1px solid rgba(51, 65, 85, 0.6);
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   color: var(--text-primary);
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
   width: 100%;
   max-width: 100%;
   appearance: none;
@@ -411,18 +431,18 @@ body>* {
 
 .input-modern:focus {
   outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow), 0 0 20px rgba(99, 102, 241, 0.1);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
 }
 
 .select-modern {
-  background: rgba(8, 12, 26, 0.6);
-  border: 1px solid rgba(51, 65, 85, 0.6);
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   color: var(--text-primary);
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
   width: 100%;
   max-width: 100%;
   appearance: none;
@@ -433,54 +453,41 @@ body>* {
 
 .select-modern:focus {
   outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow), 0 0 20px rgba(99, 102, 241, 0.1);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
 }
 
 /* ==========================================
    ボタン
    ========================================== */
 .btn-primary {
-  background: var(--accent-gradient);
+  background: var(--primary);
   color: white;
-  font-weight: 600;
+  font-weight: 500;
   padding: 0.5rem 1.25rem;
   border-radius: var(--radius-sm);
   border: none;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
   font-size: 0.875rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
-  opacity: 0;
-  transition: opacity 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4), 0 0 40px rgba(99, 102, 241, 0.15);
-  transform: translateY(-2px);
-}
-
-.btn-primary:hover::before {
-  opacity: 1;
+  background: #2563EB;
+  /* Slightly darker/more saturated blue */
 }
 
 .btn-primary:active {
-  transform: translateY(0);
+  transform: translateY(1px);
 }
 
 .btn-primary:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
-  box-shadow: none;
 }
 
 /* ==========================================
@@ -718,39 +725,7 @@ body>* {
   }
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-}
+
 
 @layer base {
   * {

@@ -1,10 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useTransition } from 'react'
 import Link from 'next/link'
 import { PageHeader } from '@/components/PageHeader'
-import { AnalysisResult } from '@/lib/actions'
-import { ArrowUpDown, ArrowUp, ArrowDown, LayoutGrid, Info } from 'lucide-react'
+import { getAnalysis, AnalysisResult } from '@/lib/actions'
+import { getTodayJst } from '@/lib/dateUtils'
+import { ArrowUpDown, ArrowUp, ArrowDown, LayoutGrid, Info, Calendar, Filter, X } from 'lucide-react'
 
 type Props = {
     analysis: AnalysisResult
@@ -12,34 +13,57 @@ type Props = {
 
 type SortKey = 'machineNo' | 'totalGames' | 'totalDiff' | 'bigProb' | 'regProb' | 'hitProb' | 'payoutRate' | 'winRate'
 
-export default function MachineModelSummaryClient({ analysis }: Props) {
+export default function MachineModelSummaryClient({ analysis: initialAnalysis }: Props) {
+    const [analysis, setAnalysis] = useState(initialAnalysis)
     const [sortKey, setSortKey] = useState<SortKey>('machineNo')
     const [sortAsc, setSortAsc] = useState(true)
+    const [showFilter, setShowFilter] = useState(false)
+    const [startDate, setStartDate] = useState('')
+    const [endDate, setEndDate] = useState(getTodayJst())
+    const [isFiltered, setIsFiltered] = useState(false)
+    const [isPending, startTransition] = useTransition()
 
     const handleSort = (key: SortKey) => {
         if (sortKey === key) {
             setSortAsc(!sortAsc)
         } else {
             setSortKey(key)
-            // Default sort directions
             if (key === 'totalDiff' || key === 'payoutRate' || key === 'winRate' || key === 'totalGames') {
-                setSortAsc(false) // Descending for metrics where higher is better/bigger
+                setSortAsc(false)
             } else if (key === 'bigProb' || key === 'regProb' || key === 'hitProb') {
-                setSortAsc(true) // Ascending for probabilities (1/100 is better than 1/200, so smaller denominator is better)
+                setSortAsc(true)
             } else {
-                setSortAsc(true) // Default ascending for others (like machineNo)
+                setSortAsc(true)
             }
         }
     }
 
+    const handleFilterApply = () => {
+        if (!startDate || !endDate) return
+        startTransition(async () => {
+            const result = await getAnalysis(analysis.machineId, new Date(startDate), new Date(endDate))
+            if (result) {
+                setAnalysis(result)
+                setIsFiltered(true)
+                setShowFilter(false)
+            }
+        })
+    }
+
+    const handleFilterClear = () => {
+        startTransition(async () => {
+            const result = await getAnalysis(analysis.machineId)
+            if (result) {
+                setAnalysis(result)
+                setIsFiltered(false)
+                setStartDate('')
+                setEndDate('')
+            }
+        })
+    }
+
     // Clone and sort
-    const sortedRecords = [...analysis.records].map(r => {
-        // Calculate win rate for sorting
-        const winRate = r.days > 0 ? (analysis.records.find(rec => rec.machineNo === r.machineNo)?.totalDiff || 0) > 0 ? 1 : 0 : 0 // *Simplified for now, as AnalysisRecord doesn't have winRate directly yet. 
-        // Wait, AnalysisRecord doesn't have winCount. I need to rely on what's available or accept I can't sort by WinRate perfectly without filtering logs again.
-        // Actually, let's just stick to what AnalysisRecord has.
-        return r
-    }).sort((a, b) => {
+    const sortedRecords = [...analysis.records].sort((a, b) => {
         let valA = 0
         let valB = 0
 
@@ -51,7 +75,6 @@ export default function MachineModelSummaryClient({ analysis }: Props) {
             case 'regProb': valA = a.regProb || 9999; valB = b.regProb || 9999; break;
             case 'hitProb': valA = a.hitProb || 9999; valB = b.hitProb || 9999; break;
             case 'payoutRate': valA = a.payoutRate; valB = b.payoutRate; break;
-            // case 'winRate': ... // Skipping detailed win rate sorting for now if not in data
         }
 
         if (valA === valB) return 0
@@ -64,25 +87,80 @@ export default function MachineModelSummaryClient({ analysis }: Props) {
                 title={`${analysis.machineName} 全台データ一覧`}
                 subtitle="台番号別 パフォーマンス比較・分析"
                 startAdornment={<LayoutGrid size={20} />}
-                backHref="/summary"
+                backHref="/machines"
             />
 
-            <div className="card-static p-0 overflow-hidden border border-white/5">
-                <div className="px-5 py-4 border-b border-white/5 bg-slate-900/50 flex justify-between items-center">
-                    <h2 className="text-sm font-bold text-[var(--text-primary)]">
-                        パフォーマンス一覧 ({analysis.records.length}台)
-                    </h2>
-                    <div className="text-xs text-[var(--text-muted)] flex gap-4">
-                        <span>総稼働: {analysis.overall.totalGames.toLocaleString()}G</span>
-                        <span>平均RB: 1/{analysis.overall.regProb}</span>
-                        <span>平均機械割: {analysis.overall.payoutRate}%</span>
+            <div className="card-static p-0 overflow-hidden border border-[var(--border-color)]">
+                <div className="px-5 py-4 border-b border-[var(--border-color)] bg-[var(--bg-elevated)]">
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-sm font-bold text-[var(--text-primary)]">
+                            パフォーマンス一覧 ({analysis.records.length}台)
+                        </h2>
+                        <div className="flex items-center gap-3">
+                            <div className="text-xs text-[var(--text-muted)] hidden sm:flex gap-4">
+                                <span>総稼働: {analysis.overall.totalGames.toLocaleString()}G</span>
+                                <span>平均RB: 1/{analysis.overall.regProb}</span>
+                                <span>機械割: {analysis.overall.payoutRate}%</span>
+                            </div>
+                            <button
+                                onClick={() => setShowFilter(!showFilter)}
+                                className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md border transition-colors ${isFiltered
+                                    ? 'border-[var(--primary)] text-[var(--primary)] bg-[var(--primary)]/10'
+                                    : 'border-[var(--border-color)] text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-[var(--text-muted)]'
+                                    }`}
+                            >
+                                <Filter size={12} />
+                                {isFiltered ? '期間指定中' : '期間指定'}
+                            </button>
+                        </div>
                     </div>
+
+                    {/* 期間フィルターパネル */}
+                    {showFilter && (
+                        <div className="mt-4 pt-4 border-t border-[var(--border-color)] flex flex-wrap items-end gap-3">
+                            <div>
+                                <label className="text-[10px] text-[var(--text-muted)] mb-1 block">開始日</label>
+                                <input
+                                    type="date"
+                                    value={startDate}
+                                    onChange={(e) => setStartDate(e.target.value)}
+                                    className="input-modern text-xs tabular-nums"
+                                />
+                            </div>
+                            <div>
+                                <label className="text-[10px] text-[var(--text-muted)] mb-1 block">終了日</label>
+                                <input
+                                    type="date"
+                                    value={endDate}
+                                    onChange={(e) => setEndDate(e.target.value)}
+                                    className="input-modern text-xs tabular-nums"
+                                />
+                            </div>
+                            <button
+                                onClick={handleFilterApply}
+                                disabled={!startDate || !endDate || isPending}
+                                className="btn-primary text-xs px-4 py-2 disabled:opacity-50"
+                            >
+                                {isPending ? '読込中...' : '適用'}
+                            </button>
+                            {isFiltered && (
+                                <button
+                                    onClick={handleFilterClear}
+                                    disabled={isPending}
+                                    className="flex items-center gap-1 text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors px-2 py-2"
+                                >
+                                    <X size={12} />
+                                    全期間に戻す
+                                </button>
+                            )}
+                        </div>
+                    )}
                 </div>
 
                 <div className="overflow-x-auto">
                     <table className="table-jat w-full text-sm">
                         <thead>
-                            <tr className="text-xs text-[var(--text-muted)] border-b border-white/5">
+                            <tr className="text-xs text-[var(--text-muted)] border-b border-[var(--border-color)]">
                                 <th className="pl-5 py-3 w-20 cursor-pointer hover:text-white transition-colors" onClick={() => handleSort('machineNo')}>
                                     <div className="flex items-center gap-1">
                                         No
@@ -129,7 +207,7 @@ export default function MachineModelSummaryClient({ analysis }: Props) {
                         </thead>
                         <tbody>
                             {sortedRecords.map((r) => (
-                                <tr key={r.machineNo} className="group hover:bg-white/5 transition-colors border-b border-white/5 last:border-0">
+                                <tr key={r.machineNo} className="group hover:bg-white/5 transition-colors border-b border-[var(--border-color)] last:border-0">
                                     <td className="pl-5 py-3 font-bold tabular-nums relative">
                                         <Link
                                             href={`/history/${analysis.machineId}/${r.machineNo}`}
@@ -150,7 +228,7 @@ export default function MachineModelSummaryClient({ analysis }: Props) {
                                     </td>
                                     <td className="py-3 text-right tabular-nums">
                                         <div className="text-xs text-[var(--text-muted)] leading-none mb-0.5">{r.totalReg}回</div>
-                                        <div className="text-sky-400 font-medium">1/{r.regProb}</div>
+                                        <div className="text-[var(--accent-secondary)] font-medium">1/{r.regProb}</div>
                                     </td>
                                     <td className="py-3 text-right tabular-nums">
                                         <div className="text-xs text-[var(--text-muted)] leading-none mb-0.5">{r.totalHits}回</div>

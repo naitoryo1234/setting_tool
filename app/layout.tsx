@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 
-const inter = Inter({ subsets: ["latin"] });
+const notoSerifJP = Noto_Serif_JP({
+  subsets: ["latin"],
+  weight: ["400", "500", "700", "900"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Setting Tool",
-  description: "パチスロ設定狙い分析ツール",
+  title: "設鑑 | SEKKAN",
+  description: "パチスロ稼働データ蓄積・設定分析ツール",
 };
 
 export default function RootLayout({
@@ -17,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={inter.className}>
+      <body className={notoSerifJP.className}>
         <div className="min-h-screen" style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
           <Navigation />
           <main className="main-content container mx-auto px-4 py-6 max-w-7xl">

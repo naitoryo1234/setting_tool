@@ -34,16 +34,16 @@ export function PageHeader({
                         </Button>
                     )}
                     {startAdornment && (
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent shrink-0">
+                        <div className="flex h-10 w-10 items-center justify-center text-[var(--primary)] shrink-0">
                             {startAdornment}
                         </div>
                     )}
-                    <div className="space-y-1">
-                        <h1 className="text-2xl font-bold tracking-tight text-foreground bg-gradient-to-r from-indigo-400 to-cyan-400 bg-clip-text text-transparent">
+                    <div className="space-y-0.5 border-l-2 border-[var(--primary)] pl-3">
+                        <h1 className="text-xl font-bold tracking-tight text-[var(--text-primary)]">
                             {title}
                         </h1>
                         {subtitle && (
-                            <p className="text-sm text-muted-foreground font-medium">
+                            <p className="text-xs text-[var(--text-muted)] font-medium tracking-wider">
                                 {subtitle}
                             </p>
                         )}

@@ -140,18 +140,13 @@ export default function SummaryClient({ machines }: Props) {
                                 <button
                                     key={m.machineId}
                                     onClick={() => setSelectedMachineId(selectedMachineId === m.machineId ? '' : m.machineId)}
-                                    className="card text-left stagger-item relative overflow-hidden group"
-                                    style={{
-                                        cursor: 'pointer',
-                                        borderColor: selectedMachineId === m.machineId ? 'var(--accent)' : undefined,
-                                        background: selectedMachineId === m.machineId ? 'rgba(99, 102, 241, 0.15)' : undefined,
-                                    }}
+                                    className={`card text-left stagger-item relative overflow-hidden group ${selectedMachineId === m.machineId ? 'border-[var(--primary)] bg-[var(--bg-card-solid)]' : ''}`}
                                 >
                                     <div className="text-xs font-semibold text-[var(--text-secondary)] mb-2 group-hover:text-[var(--text-primary)] transition-colors">
                                         {m.machineName}
                                     </div>
                                     <div
-                                        className={`stat-value glow-value text-xl sm:text-2xl tabular-nums ${m.totalDiff > 0 ? 'diff-plus' : m.totalDiff < 0 ? 'diff-minus' : 'diff-zero'}`}
+                                        className={`stat-value text-xl sm:text-2xl tabular-nums ${m.totalDiff > 0 ? 'diff-plus' : m.totalDiff < 0 ? 'diff-minus' : 'diff-zero'}`}
                                     >
                                         {formatDiff(m.totalDiff)}
                                     </div>
@@ -163,43 +158,32 @@ export default function SummaryClient({ machines }: Props) {
                                             </span>
                                         )}
                                     </div>
-                                    {selectedMachineId === m.machineId && (
-                                        <div className="absolute inset-0 border-2 border-[var(--accent)] rounded-2xl pointer-events-none" />
-                                    )}
                                 </button>
                             ))}
                             {/* 合計カード */}
                             <button
                                 onClick={() => setSelectedMachineId('')}
-                                className="card text-left stagger-item relative overflow-hidden group"
-                                style={{
-                                    cursor: 'pointer',
-                                    borderColor: selectedMachineId === '' ? 'var(--accent-secondary)' : undefined,
-                                    background: selectedMachineId === '' ? 'rgba(34, 211, 238, 0.1)' : undefined,
-                                }}
+                                className={`card text-left stagger-item relative overflow-hidden group ${selectedMachineId === '' ? 'border-[var(--primary)] bg-[var(--bg-card-solid)]' : ''}`}
                             >
-                                <div className="text-xs font-semibold text-[var(--accent-secondary)] mb-2">
+                                <div className="text-xs font-semibold text-[var(--primary)] mb-2 group-hover:text-[var(--text-primary)] transition-colors">
                                     全機種合計
                                 </div>
                                 <div
-                                    className={`stat-value glow-value text-xl sm:text-2xl tabular-nums ${grandTotal > 0 ? 'diff-plus' : grandTotal < 0 ? 'diff-minus' : 'diff-zero'}`}
+                                    className={`stat-value text-xl sm:text-2xl tabular-nums ${grandTotal > 0 ? 'diff-plus' : grandTotal < 0 ? 'diff-minus' : 'diff-zero'}`}
                                 >
                                     {formatDiff(grandTotal)}
                                 </div>
                                 <div className="text-[10px] sm:text-xs text-[var(--text-muted)] mt-2">
                                     合計 {machineSummary.reduce((a, b) => a + b.count, 0)}件
                                 </div>
-                                {selectedMachineId === '' && (
-                                    <div className="absolute inset-0 border-2 border-[var(--accent-secondary)] rounded-2xl pointer-events-none" />
-                                )}
                             </button>
                         </div>
 
                         {/* 台別テーブル */}
                         <div className="card-static stagger-item p-0 overflow-hidden">
-                            <div className="px-5 py-4 border-b border-white/5 bg-slate-900/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <div className="px-5 py-4 border-b border-[var(--border-color)] bg-[var(--bg-card-solid)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                                 <div className="flex items-center gap-3">
-                                    <div className="bg-indigo-500/10 p-1.5 rounded text-indigo-400">
+                                    <div className="bg-[var(--primary)]/10 p-1.5 rounded text-[var(--primary)]">
                                         <ArrowUpDown size={16} />
                                     </div>
                                     <div>
@@ -265,7 +249,7 @@ export default function SummaryClient({ machines }: Props) {
                                                 <td className="pl-5 py-3 font-semibold tabular-nums">
                                                     <a
                                                         href={`/history/${m.machineId}/${m.machineNo}`}
-                                                        className="text-indigo-400 hover:text-indigo-300 hover:underline underline-offset-4 decoration-indigo-500/30"
+                                                        className="text-[var(--primary)] hover:text-[var(--primary-hover)] hover:underline underline-offset-4 decoration-[var(--primary)]/30"
                                                     >
                                                         {m.machineNo}
                                                     </a>
@@ -275,7 +259,7 @@ export default function SummaryClient({ machines }: Props) {
                                                         <td className="text-center py-3 tabular-nums text-rose-400/90 font-medium">
                                                             {m.totalBig || '-'}
                                                         </td>
-                                                        <td className="text-center py-3 tabular-nums text-sky-400/90 font-medium">
+                                                        <td className="text-center py-3 tabular-nums text-[var(--accent-secondary)] font-medium">
                                                             {m.totalReg || '-'}
                                                         </td>
                                                         <td className="text-center py-3 tabular-nums text-[var(--text-secondary)]">
@@ -299,24 +283,26 @@ export default function SummaryClient({ machines }: Props) {
                                 </table>
                             </div>
 
-                            {sortedMachineNo.length === 0 && (
-                                <div className="py-8">
-                                    <EmptyState
-                                        icon={BarChart3}
-                                        title="データがありません"
-                                        description="表示するデータが見つかりませんでした。"
-                                        className="border-none bg-transparent"
-                                    />
-                                </div>
-                            )}
+                            {
+                                sortedMachineNo.length === 0 && (
+                                    <div className="py-8">
+                                        <EmptyState
+                                            icon={BarChart3}
+                                            title="データがありません"
+                                            description="表示するデータが見つかりませんでした。"
+                                            className="border-none bg-transparent"
+                                        />
+                                    </div>
+                                )
+                            }
                         </div>
                     </>
                 )}
 
                 {!hasSearched && !isPending && (
                     <div className="card-static stagger-item text-center py-20 px-4">
-                        <div className="inline-flex p-6 rounded-full bg-indigo-500/5 mb-6 animate-pulse">
-                            <BarChart3 size={64} className="text-indigo-500/40" />
+                        <div className="inline-flex p-6 rounded-full bg-[var(--primary)]/5 mb-6 animate-pulse">
+                            <BarChart3 size={64} className="text-[var(--primary)]/40" />
                         </div>
                         <h2 className="text-lg font-bold text-[var(--text-secondary)] mb-2">
                             集計分析を開始

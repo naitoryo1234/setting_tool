@@ -131,7 +131,7 @@ export default function RecordsClient({ initialRecords, machines }: Props) {
 
             <div className="space-y-6">
                 {/* 検索・フィルター */}
-                <div className="card-static stagger-item p-6 border border-white/5 bg-slate-900/40 backdrop-blur-md">
+                <div className="card-static stagger-item p-6 border border-[var(--border-color)] bg-[var(--bg-card)]">
                     <div className="flex flex-col sm:flex-row gap-4 items-end">
                         <div className="w-full sm:w-auto">
                             <label className="flex items-center gap-1.5 text-xs font-semibold text-[var(--text-secondary)] mb-1.5">
@@ -188,8 +188,8 @@ export default function RecordsClient({ initialRecords, machines }: Props) {
                 </div>
 
                 {/* データ一覧テーブル */}
-                <div className="card-static stagger-item p-0 overflow-hidden border border-white/5">
-                    <div className="px-5 py-4 border-b border-white/5 bg-slate-900/50 flex justify-between items-center">
+                <div className="card-static stagger-item p-0 overflow-hidden border border-[var(--border-color)]">
+                    <div className="px-5 py-4 border-b border-[var(--border-color)] bg-[var(--bg-elevated)] flex justify-between items-center">
                         <h2 className="text-sm font-bold text-[var(--text-primary)]">検索結果</h2>
                         <span className="text-xs text-[var(--text-muted)] bg-white/5 px-2 py-0.5 rounded-full tabular-nums">
                             {sortedRecords.length} records
@@ -224,11 +224,11 @@ export default function RecordsClient({ initialRecords, machines }: Props) {
                                         const dateStr = new Date(record.date).toLocaleDateString('ja-JP')
 
                                         return (
-                                            <tr key={record.id} className={`${isEditing ? 'bg-indigo-500/10' : 'group hover:bg-white/5'} transition-colors`}>
+                                            <tr key={record.id} className={`${isEditing ? 'bg-[var(--primary)]/10' : 'group hover:bg-white/5'} transition-colors`}>
                                                 <td className="pl-4 py-3 tabular-nums text-[var(--text-secondary)]">{dateStr}</td>
                                                 <td className="py-3 font-medium text-[var(--text-primary)]">{record.machine.name}</td>
                                                 <td className="py-3 text-center">
-                                                    <Link href={`/history/${record.machineId}/${record.machineNo}`} className="text-indigo-400 hover:text-indigo-300 hover:underline decoration-indigo-500/30 tabular-nums font-bold">
+                                                    <Link href={`/history/${record.machineId}/${record.machineNo}`} className="text-[var(--primary)] hover:text-[var(--primary-hover)] hover:underline decoration-[var(--primary)]/30 tabular-nums font-bold">
                                                         {record.machineNo}
                                                     </Link>
                                                 </td>
@@ -254,7 +254,7 @@ export default function RecordsClient({ initialRecords, machines }: Props) {
                                                     <div className="flex items-center justify-center gap-1">
                                                         {isEditing ? (
                                                             <>
-                                                                <button onClick={() => saveEdit(record)} className="p-1.5 text-emerald-400 hover:bg-emerald-500/20 rounded disabled:opacity-50" disabled={isPending}>
+                                                                <button onClick={() => saveEdit(record)} className="p-1.5 text-[var(--primary)] hover:bg-[var(--primary)]/20 rounded disabled:opacity-50" disabled={isPending}>
                                                                     <Save size={14} />
                                                                 </button>
                                                                 <button onClick={cancelEdit} className="p-1.5 text-[var(--text-muted)] hover:bg-white/10 rounded" disabled={isPending}>
@@ -263,7 +263,7 @@ export default function RecordsClient({ initialRecords, machines }: Props) {
                                                             </>
                                                         ) : (
                                                             <>
-                                                                <button onClick={() => startEdit(record)} className="p-1.5 text-indigo-400 hover:bg-indigo-500/20 rounded transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+                                                                <button onClick={() => startEdit(record)} className="p-1.5 text-[var(--text-secondary)] hover:bg-[var(--primary)]/20 rounded transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
                                                                     <Edit2 size={14} />
                                                                 </button>
                                                                 <button onClick={() => handleDelete(record.id)} className="p-1.5 text-red-400 hover:bg-red-500/20 rounded transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">

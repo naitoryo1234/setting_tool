@@ -97,7 +97,7 @@ export default function HistoryClient({ machineName, machineNo, records, machine
                 {/* 統計カードグリッド */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 stagger-item">
                     {/* 1. 稼働実績 */}
-                    <div className="card-static p-4 border border-white/5 bg-slate-900/40">
+                    <div className="card-static p-4 border border-[var(--border-color)] bg-[var(--bg-card)]">
                         <div className="text-[10px] text-[var(--text-muted)] mb-1 uppercase tracking-wider flex items-center gap-1">
                             <Timer size={12} /> 総ゲーム数
                         </div>
@@ -110,7 +110,7 @@ export default function HistoryClient({ machineName, machineNo, records, machine
                     </div>
 
                     {/* 2. 収支実績 */}
-                    <div className="card-static p-4 border border-white/5 bg-slate-900/40">
+                    <div className="card-static p-4 border border-[var(--border-color)] bg-[var(--bg-card)]">
                         <div className="text-[10px] text-[var(--text-muted)] mb-1 uppercase tracking-wider flex items-center gap-1">
                             <Coins size={12} /> 総差枚
                         </div>
@@ -123,7 +123,7 @@ export default function HistoryClient({ machineName, machineNo, records, machine
                     </div>
 
                     {/* 3. 確率実績 */}
-                    <div className="card-static p-4 border border-white/5 bg-slate-900/40">
+                    <div className="card-static p-4 border border-[var(--border-color)] bg-[var(--bg-card)]">
                         <div className="text-[10px] text-[var(--text-muted)] mb-1 uppercase tracking-wider flex items-center gap-1">
                             <Activity size={12} /> ボーナス確率
                         </div>
@@ -132,7 +132,7 @@ export default function HistoryClient({ machineName, machineNo, records, machine
                             <span className="font-bold tabular-nums">1/{bigProb || '-'}</span>
                         </div>
                         <div className="flex justify-between items-baseline">
-                            <span className="text-xs text-sky-400">RB (AT)</span>
+                            <span className="text-xs text-[var(--accent-secondary)]">RB (AT)</span>
                             <span className="font-bold tabular-nums">1/{regProb || '-'}</span>
                         </div>
                     </div>
@@ -153,9 +153,9 @@ export default function HistoryClient({ machineName, machineNo, records, machine
 
                 {/* 設定推測セクション (Available only if spec exists) */}
                 {estimationResults.length > 0 && (
-                    <div className="card-static stagger-item p-6 border border-white/5 bg-slate-900/40 backdrop-blur-md">
+                    <div className="card-static stagger-item p-6 border border-[var(--border-color)] bg-[var(--bg-card)]">
                         <h3 className="text-sm font-bold mb-4 flex items-center gap-2 text-[var(--text-secondary)]">
-                            <BrainCircuit size={16} className="text-emerald-400" />
+                            <BrainCircuit size={16} className="text-[var(--primary)]" />
                             設定推測 (Based on RB/AT Prob)
                         </h3>
                         <div className="flex flex-col md:flex-row gap-6">
@@ -201,7 +201,7 @@ export default function HistoryClient({ machineName, machineNo, records, machine
                             </div>
                             <div className="w-full md:w-48 flex flex-col justify-center space-y-2">
                                 <div className="text-xs text-[var(--text-muted)] mb-2">高設定期待度 (設定4以上)</div>
-                                <div className="text-3xl font-bold tabular-nums text-emerald-400">
+                                <div className="text-3xl font-bold tabular-nums text-[var(--primary)]">
                                     {(estimationResults.filter(r => r.setting >= 4).reduce((sum, r) => sum + r.probability, 0)).toFixed(1)}%
                                 </div>
                                 <div className="text-xs text-[var(--text-muted)] mt-4">
@@ -214,7 +214,7 @@ export default function HistoryClient({ machineName, machineNo, records, machine
 
                 {/* 累積差枚グラフ */}
                 {chartData.length > 1 && (
-                    <div className="card-static stagger-item p-6 border border-white/5 bg-slate-900/40 backdrop-blur-md">
+                    <div className="card-static stagger-item p-6 border border-[var(--border-color)] bg-[var(--bg-card)]">
                         <h3 className="text-sm font-bold mb-4 flex items-center gap-2 text-[var(--text-secondary)]">
                             <BarChart2 size={16} className="text-[var(--accent)]" />
                             差枚推移 (Slump Graph)
@@ -281,7 +281,7 @@ export default function HistoryClient({ machineName, machineNo, records, machine
 
                 {/* 履歴テーブル */}
                 <div className="card-static stagger-item p-0 overflow-hidden border border-white/5">
-                    <div className="px-5 py-4 border-b border-white/5 bg-slate-900/50">
+                    <div className="px-5 py-4 border-b border-[var(--border-color)] bg-[var(--bg-elevated)]">
                         <h2 className="text-sm font-bold text-[var(--text-primary)]">詳細履歴</h2>
                     </div>
                     <div className="overflow-x-auto">
@@ -309,7 +309,7 @@ export default function HistoryClient({ machineName, machineNo, records, machine
                                                 {r.diff > 0 ? '+' : ''}{r.diff.toLocaleString()}
                                             </td>
                                             <td className="py-3 text-right tabular-nums text-rose-400">{r.big ?? '-'}</td>
-                                            <td className="py-3 text-right tabular-nums text-sky-400">{r.reg ?? '-'}</td>
+                                            <td className="py-3 text-right tabular-nums text-[var(--accent-secondary)]">{r.reg ?? '-'}</td>
                                             <td className="py-3 text-right pr-5 tabular-nums text-[var(--text-muted)]">{r.games?.toLocaleString() ?? '-'}</td>
                                         </tr>
                                     )
