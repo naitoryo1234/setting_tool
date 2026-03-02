@@ -157,7 +157,74 @@ export default function MachineModelSummaryClient({ analysis: initialAnalysis }:
                     )}
                 </div>
 
-                <div className="overflow-x-auto">
+                {/* ===== モバイル: 2段組みリスト ===== */}
+                <div className="md:hidden">
+                    {/* モバイル用ソートボタン */}
+                    <div className="px-4 py-2 border-b border-[var(--border-color)] flex gap-2 overflow-x-auto">
+                        {([
+                            { key: 'machineNo', label: 'No' },
+                            { key: 'totalDiff', label: '差枚' },
+                            { key: 'payoutRate', label: '機械割' },
+                            { key: 'hitProb', label: '合算' },
+                        ] as { key: SortKey; label: string }[]).map((s) => (
+                            <button
+                                key={s.key}
+                                onClick={() => handleSort(s.key)}
+                                className={`text-[10px] px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors ${sortKey === s.key
+                                        ? 'border-[var(--primary)] text-[var(--primary)] bg-[var(--primary)]/10'
+                                        : 'border-[var(--border-color)] text-[var(--text-muted)]'
+                                    }`}
+                            >
+                                {s.label} {sortKey === s.key && (sortAsc ? '↑' : '↓')}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* 2段組みロウ */}
+                    <div className="divide-y divide-[var(--border-color)]">
+                        {sortedRecords.map((r) => (
+                            <Link
+                                key={r.machineNo}
+                                href={`/history/${analysis.machineId}/${r.machineNo}`}
+                                className="block px-4 py-3 active:bg-white/5 transition-colors"
+                            >
+                                {/* 1段目: No + 差枚 + 機械割 */}
+                                <div className="flex items-center justify-between mb-1.5">
+                                    <div className="flex items-baseline gap-2">
+                                        <span className="text-base font-bold tabular-nums text-[var(--text-primary)]">{r.machineNo}</span>
+                                        <span className="text-[10px] text-[var(--text-muted)]">番台</span>
+                                    </div>
+                                    <div className="flex items-baseline gap-3">
+                                        <span className={`text-sm font-bold tabular-nums ${r.totalDiff > 0 ? 'diff-plus' : r.totalDiff < 0 ? 'diff-minus' : 'diff-zero'}`}>
+                                            {r.totalDiff > 0 ? '+' : ''}{r.totalDiff.toLocaleString()}
+                                        </span>
+                                        <span className={`text-xs font-bold tabular-nums min-w-[48px] text-right ${r.payoutRate >= 105 ? 'text-rose-400' : r.payoutRate >= 100 ? 'text-white' : 'text-blue-400'}`}>
+                                            {r.payoutRate}%
+                                        </span>
+                                    </div>
+                                </div>
+                                {/* 2段目: BB / RB / 合算 */}
+                                <div className="flex items-center gap-4 text-[11px] tabular-nums">
+                                    <span className="text-[var(--text-muted)]">
+                                        BB <span className="text-rose-400/90 font-medium">1/{r.bigProb}</span>
+                                    </span>
+                                    <span className="text-[var(--text-muted)]">
+                                        RB <span className="text-[var(--accent-secondary)] font-medium">1/{r.regProb}</span>
+                                    </span>
+                                    <span className="text-[var(--text-muted)]">
+                                        合算 <span className="text-[var(--accent)] font-medium">1/{r.hitProb}</span>
+                                    </span>
+                                    <span className="text-[var(--text-muted)] ml-auto text-[10px]">
+                                        {r.totalGames.toLocaleString()}G
+                                    </span>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+
+                {/* ===== PC: テーブル表示 ===== */}
+                <div className="hidden md:block overflow-x-auto">
                     <table className="table-jat w-full text-sm">
                         <thead>
                             <tr className="text-xs text-[var(--text-muted)] border-b border-[var(--border-color)]">
