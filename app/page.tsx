@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { PenLine, BarChart2, List, Crosshair, MonitorPlay, LayoutGrid } from 'lucide-react'
+import { PenLine, BarChart2, List, Crosshair, MonitorPlay, LayoutGrid, ChevronRight } from 'lucide-react'
 import { getMachines } from '@/lib/actions'
 
 const menuItems = [
@@ -17,8 +17,93 @@ export default async function Home() {
 
   return (
     <div className="animate-fade-in pb-12">
-      {/* Hero Section */}
-      <div className="relative w-full h-[320px] md:h-[400px] mb-12 flex items-center justify-center overflow-hidden">
+
+      {/* ===== モバイル: コンパクトヘッダー ===== */}
+      <div className="md:hidden px-4 pt-6 pb-4">
+        <div className="flex items-center gap-3 mb-1">
+          <div className="text-3xl font-black text-[var(--text-primary)] tracking-widest"
+            style={{ fontFamily: 'serif', letterSpacing: '0.1em' }}>
+            設鑑
+          </div>
+          <div className="flex flex-col justify-center">
+            <div className="text-[9px] tracking-[0.4em] text-[var(--primary)] font-medium uppercase leading-none">SEKKAN</div>
+            <div className="text-[10px] text-[var(--text-muted)] mt-0.5">設定分析ツール</div>
+          </div>
+        </div>
+      </div>
+
+      {/* ===== モバイル: コンパクトメニューグリッド ===== */}
+      <div className="md:hidden px-4 mb-6">
+        <div className="grid grid-cols-3 gap-2">
+          {menuItems.slice(0, 3).map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="flex flex-col items-center justify-center p-3 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] active:bg-[var(--bg-card-solid)] transition-all"
+            >
+              <div className={`p-2 rounded-full mb-2 ${item.color} ${item.bg}`}>
+                <item.Icon size={20} />
+              </div>
+              <span className="text-xs font-bold text-[var(--text-primary)]">{item.label}</span>
+            </Link>
+          ))}
+        </div>
+        <div className="grid grid-cols-2 gap-2 mt-2">
+          {menuItems.slice(3).map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="flex items-center gap-2.5 p-3 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] active:bg-[var(--bg-card-solid)] transition-all"
+            >
+              <div className={`p-1.5 rounded-full ${item.color} ${item.bg}`}>
+                <item.Icon size={16} />
+              </div>
+              <span className="text-xs font-bold text-[var(--text-primary)]">{item.label}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* ===== モバイル: 機種クイックアクセス ===== */}
+      <div className="md:hidden px-4 mb-6">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-sm font-bold flex items-center gap-1.5 text-[var(--text-secondary)]">
+            <MonitorPlay size={16} className="text-[var(--primary)]" />
+            機種データ
+          </h2>
+          <Link href="/machines" className="text-[10px] text-[var(--primary)] font-medium">
+            すべて →
+          </Link>
+        </div>
+        {machines.length > 0 ? (
+          <div className="space-y-1.5">
+            {machines.map((machine) => (
+              <Link
+                key={machine.id}
+                href={`/history/${machine.id}`}
+                className="flex items-center justify-between p-3 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] active:bg-[var(--bg-card-solid)] transition-all"
+              >
+                <span className="font-bold text-sm text-[var(--text-primary)]">
+                  {machine.name}
+                </span>
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] text-[var(--text-muted)]">
+                    {machine.numbers.length}台
+                  </span>
+                  <ChevronRight size={14} className="text-[var(--text-muted)]" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-8 text-[var(--text-muted)] text-xs">
+            登録されている機種がありません
+          </div>
+        )}
+      </div>
+
+      {/* ===== PC: フルヒーローセクション ===== */}
+      <div className="hidden md:flex relative w-full h-[400px] mb-12 items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div
           className="absolute inset-0 z-0 opacity-25 bg-cover bg-center"
@@ -35,7 +120,7 @@ export default async function Home() {
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 pt-8">
           <div className="inline-flex flex-col items-center mb-6">
-            <div className="text-6xl md:text-7xl font-black tracking-widest text-[var(--text-primary)] drop-shadow-md mb-1"
+            <div className="text-7xl font-black tracking-widest text-[var(--text-primary)] drop-shadow-md mb-1"
               style={{ fontFamily: 'serif', letterSpacing: '0.15em' }}>
               設鑑
             </div>
@@ -43,15 +128,15 @@ export default async function Home() {
               SEKKAN
             </div>
           </div>
-          <p className="text-sm md:text-base font-medium text-[var(--text-secondary)] tracking-wider">
+          <p className="text-base font-medium text-[var(--text-secondary)] tracking-wider">
             パチスロ稼働データ蓄積・設定分析ツール
           </p>
         </div>
       </div>
 
-      <div className="container mx-auto px-4">
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto mb-16">
+      {/* ===== PC: メニューカード & 機種リンク ===== */}
+      <div className="hidden md:block container mx-auto px-4">
+        <div className="grid grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto mb-16">
           {menuItems.map((item) => (
             <Link
               key={item.href}
@@ -84,7 +169,7 @@ export default async function Home() {
           </div>
 
           {machines.length > 0 ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
               {machines.map((machine) => (
                 <Link
                   key={machine.id}
