@@ -43,7 +43,7 @@ export function TargetsClient({ machines }: Props) {
     }
 
     return (
-        <div className="animate-fade-in max-w-5xl mx-auto space-y-8">
+        <div className="animate-fade-in max-w-5xl mx-auto space-y-4 md:space-y-8">
             <PageHeader
                 title="狙い台分析"
                 subtitle="指定期間の差枚データから、最も凹んでいる（狙い目）台を抽出します"

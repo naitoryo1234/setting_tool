@@ -82,7 +82,7 @@ export default function MachineModelSummaryClient({ analysis: initialAnalysis }:
     })
 
     return (
-        <div className="animate-fade-in max-w-5xl mx-auto space-y-8">
+        <div className="animate-fade-in max-w-5xl mx-auto space-y-4 md:space-y-8">
             <PageHeader
                 title={`${analysis.machineName} 全台データ一覧`}
                 subtitle="台番号別 パフォーマンス比較・分析"
@@ -171,8 +171,8 @@ export default function MachineModelSummaryClient({ analysis: initialAnalysis }:
                                 key={s.key}
                                 onClick={() => handleSort(s.key)}
                                 className={`text-[10px] px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors ${sortKey === s.key
-                                        ? 'border-[var(--primary)] text-[var(--primary)] bg-[var(--primary)]/10'
-                                        : 'border-[var(--border-color)] text-[var(--text-muted)]'
+                                    ? 'border-[var(--primary)] text-[var(--primary)] bg-[var(--primary)]/10'
+                                    : 'border-[var(--border-color)] text-[var(--text-muted)]'
                                     }`}
                             >
                                 {s.label} {sortKey === s.key && (sortAsc ? '↑' : '↓')}

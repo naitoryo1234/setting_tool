@@ -9,7 +9,7 @@ export default async function MachinesDataPage() {
     const machines = await getMachines()
 
     return (
-        <div className="animate-fade-in max-w-5xl mx-auto space-y-8">
+        <div className="animate-fade-in max-w-5xl mx-auto space-y-4 md:space-y-8">
             <PageHeader
                 title="機種データ"
                 subtitle="機種ごとの稼働実績・台番別データの閲覧"

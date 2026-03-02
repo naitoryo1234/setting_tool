@@ -23,7 +23,7 @@ export function PageHeader({
     backHref
 }: PageHeaderProps) {
     return (
-        <div className={cn("space-y-4 pb-6", className)}>
+        <div className={cn("space-y-3 md:space-y-4 pb-4 md:pb-6", className)}>
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                 <div className="flex items-center gap-4">
                     {backHref && (

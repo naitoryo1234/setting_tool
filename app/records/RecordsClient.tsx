@@ -120,7 +120,7 @@ export default function RecordsClient({ initialRecords, machines }: Props) {
     )
 
     return (
-        <div className="animate-fade-in max-w-5xl mx-auto space-y-8">
+        <div className="animate-fade-in max-w-5xl mx-auto space-y-4 md:space-y-8">
             {/* ページヘッダー */}
             {/* ページヘッダー */}
             <PageHeader

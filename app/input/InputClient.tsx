@@ -122,7 +122,7 @@ export default function InputClient({ machines, todayRecords: initialRecords, cu
     const totalDiff = records.reduce((acc, r) => acc + r.diff, 0)
 
     return (
-        <div className="animate-fade-in max-w-4xl mx-auto space-y-8">
+        <div className="animate-fade-in max-w-4xl mx-auto space-y-4 md:space-y-8">
             {/* ページヘッダー */}
             {/* ページヘッダー */}
             <PageHeader

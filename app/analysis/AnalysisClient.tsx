@@ -157,7 +157,7 @@ export default function AnalysisClient({ machines: initialMachines, stores }: Pr
     }
 
     return (
-        <div className="animate-fade-in max-w-6xl mx-auto space-y-8">
+        <div className="animate-fade-in max-w-6xl mx-auto space-y-4 md:space-y-8">
             {/* ページヘッダー */}
             {/* ページヘッダー */}
             <PageHeader
