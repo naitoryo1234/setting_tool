@@ -69,15 +69,17 @@ export async function upsertRecord(data: {
     machineId: string
     machineNo: number
     diff: number
+    season?: number
 }) {
-    const { date, machineId, machineNo, diff } = data
+    const { date, machineId, machineNo, diff, season = 1 } = data
     try {
         await prisma.record.upsert({
             where: {
-                date_machineId_machineNo: {
+                date_machineId_machineNo_season: {
                     date,
                     machineId,
                     machineNo,
+                    season,
                 },
             },
             update: { diff },
@@ -85,6 +87,7 @@ export async function upsertRecord(data: {
                 date,
                 machineId,
                 machineNo,
+                season,
                 diff,
             },
         })
@@ -226,8 +229,8 @@ export async function getSummary(start: Date, end: Date) {
     const startJst = toJstStartOfDay(start)
     const endJstNextDay = getNextJstDayStart(end instanceof Date ? formatJstDate(end) : end)
 
-    const machineAgg = await prisma.record.groupBy({
-        by: ['machineId'],
+    const machineAggRaw = await prisma.record.groupBy({
+        by: ['machineId', 'machineNo', 'season'],
         where: {
             date: { gte: startJst, lt: endJstNextDay },
         },
@@ -235,15 +238,24 @@ export async function getSummary(start: Date, end: Date) {
         _count: { diff: true },
     })
 
-    // 台番号別合計
-    const machineNoAgg = await prisma.record.groupBy({
-        by: ['machineId', 'machineNo'],
-        where: {
-            date: { gte: startJst, lt: endJstNextDay },
-        },
-        _sum: { diff: true, big: true, reg: true, games: true },
-        _count: { diff: true },
-    })
+    const machineNoAgg = machineAggRaw // フィルタリング処理を削除し、結果をそのまま利用
+
+    // 機種別合計（抽出後のデータからJSで合算）
+    const machineAggMap = new Map<string, any>()
+    for (const agg of machineNoAgg) {
+        const cur = machineAggMap.get(agg.machineId) || {
+            machineId: agg.machineId,
+            _sum: { diff: 0, big: 0, reg: 0, games: 0 },
+            _count: { diff: 0 }
+        }
+        cur._sum.diff += (agg._sum?.diff || 0)
+        cur._sum.big += (agg._sum?.big || 0)
+        cur._sum.reg += (agg._sum?.reg || 0)
+        cur._sum.games += (agg._sum?.games || 0)
+        cur._count.diff += (agg._count?.diff || 0)
+        machineAggMap.set(agg.machineId, cur)
+    }
+    const machineAgg = Array.from(machineAggMap.values())
 
     const machines = await prisma.machine.findMany()
     const machineMap = new Map(machines.map(m => [m.id, m.name]))
@@ -259,16 +271,17 @@ export async function getSummary(start: Date, end: Date) {
     })).sort((a, b) => a.totalDiff - b.totalDiff) // マイナス順（昇順）
 
     const machineNoSummary: MachineNoSummary[] = machineNoAgg.map(agg => {
-        const totalDiff = agg._sum.diff || 0
-        const count = agg._count.diff || 0
+        const totalDiff = agg._sum?.diff || 0
+        const count = agg._count?.diff || 0
         return {
             machineId: agg.machineId,
             machineName: machineMap.get(agg.machineId) || 'Unknown',
             machineNo: agg.machineNo,
+            season: agg.season,
             totalDiff,
-            totalBig: agg._sum.big || 0,
-            totalReg: agg._sum.reg || 0,
-            totalGames: agg._sum.games || 0,
+            totalBig: agg._sum?.big || 0,
+            totalReg: agg._sum?.reg || 0,
+            totalGames: agg._sum?.games || 0,
             avgDiff: count > 0 ? Math.round(totalDiff / count) : 0,
             count,
         }
@@ -283,10 +296,18 @@ export async function getMachineNoHistory(machineId: string, machineNo: number) 
         where: { id: machineId },
     })
 
+    // 該当機種・台番の最新seasonを取得
+    const maxSeasonAgg = await prisma.machineNumber.aggregate({
+        where: { machineId, machineNo },
+        _max: { season: true }
+    })
+    const latestSeason = maxSeasonAgg._max.season || 1
+
     const records = await prisma.record.findMany({
         where: {
             machineId,
             machineNo,
+            season: latestSeason,
         },
         orderBy: { date: 'desc' },
     })
@@ -351,6 +372,7 @@ export type AnalysisResult = {
         days: number
         payoutRate: number
     }
+    availableSeasons: number[]
 }
 
 
@@ -359,6 +381,7 @@ export async function getAnalysis(
     startDate?: Date,
     endDate?: Date,
     dayFilter?: 'all' | 'event' | 'normal', // イベント日フィルタ
+    season?: number, // Season指定 (未指定時は最新Season)
 ): Promise<AnalysisResult | null> {
     const machine = await prisma.machine.findUnique({
         where: { id: machineId },
@@ -376,10 +399,31 @@ export async function getAnalysis(
         where.date = { gte: startDate, lte: endDate }
     }
 
-    const records = await prisma.record.findMany({
+    // 1. レコード全体を取得
+    const allRecords = await prisma.record.findMany({
         where,
         orderBy: [{ machineNo: 'asc' }, { date: 'asc' }],
     })
+
+    // 2. 利用可能な全Seasonのリストを取得し、抽出のためのベースSeasonを決定
+    const recordsByMachineNo = new Map<number, typeof allRecords>()
+    const availableSeasonSet = new Set<number>()
+
+    for (const r of allRecords) {
+        const list = recordsByMachineNo.get(r.machineNo) || []
+        list.push(r)
+        recordsByMachineNo.set(r.machineNo, list)
+        availableSeasonSet.add(r.season)
+    }
+
+    const availableSeasons = Array.from(availableSeasonSet).sort((a, b) => b - a) // 降順 (新しい順)
+
+    // 指定season または検索期間内の最新seasonを持つレコードだけを抽出
+    const records: typeof allRecords = []
+    for (const [machineNo, list] of recordsByMachineNo.entries()) {
+        const targetSeason = season ?? Math.max(...list.map(r => r.season))
+        records.push(...list.filter(r => r.season === targetSeason))
+    }
 
     // イベント日フィルタ用: 対象期間のイベント日を取得
     const eventDays = await prisma.eventDay.findMany({
@@ -498,6 +542,7 @@ export async function getAnalysis(
             days: uniqueDates.size,
             payoutRate: calcPayout(overallGames, overallDiff),
         },
+        availableSeasons,
     }
 }
 
@@ -529,6 +574,7 @@ export async function toggleEventDay(date: Date, storeId: string) {
 export type TargetRanking = {
     rank: number
     machineNo: number
+    season: number
     totalDiff: number
     totalGames: number
     days: number
@@ -552,11 +598,12 @@ export async function getTargetMachines(startDate: Date, endDate: Date): Promise
         include: { machine: true },
     })
 
-    // 2. Group by Machine & MachineNo
+    // 2. Group by Machine, MachineNo & Season
     const machineMap = new Map<string, string>() // id -> name
-    const calcMap = new Map<string, { // machineId_machineNo -> data
+    const calcMap = new Map<string, { // machineId_machineNo_season -> data
         machineId: string
         machineNo: number
+        season: number
         diff: number
         games: number
         days: number
@@ -566,10 +613,11 @@ export async function getTargetMachines(startDate: Date, endDate: Date): Promise
         if (!machineMap.has(r.machineId)) {
             machineMap.set(r.machineId, r.machine.name)
         }
-        const key = `${r.machineId}_${r.machineNo}`
+        const key = `${r.machineId}_${r.machineNo}_${r.season}`
         const current = calcMap.get(key) || {
             machineId: r.machineId,
             machineNo: r.machineNo,
+            season: r.season,
             diff: 0,
             games: 0,
             days: 0
@@ -599,6 +647,7 @@ export async function getTargetMachines(startDate: Date, endDate: Date): Promise
         const top3 = sorted.slice(0, 3).map((item, index) => ({
             rank: index + 1,
             machineNo: item.machineNo,
+            season: item.season,
             totalDiff: item.diff,
             totalGames: item.games,
             days: item.days

@@ -1,5 +1,62 @@
 # Session Handover Plan Changelog
 
+## Session: 2026-03-03 (Kabaneri Scraping Integration & UI Refinements)
+
+### Changes
+- **カバネリ海門XX スクレイピングデータの統合**:
+  - `pscube-config.ts` に「カバネリ海門XX (season: 1)」の `MachineConfig` を追加し、DB上の機種マスタと接続できるように構成。
+  - P's CUBEからのデータ取得スクリプト (`register-fetched.ts`) を改修。カバネリ固有の「最大放出」列が含まれるMarkdown形式に対応し、差枚計算を無効化した上で、「差枚(確定)」列の値のみをDBへ安全に登録するパース分岐ロジックを実装。
+  - ユーザー提供の差枚数データを元に、カバネリ（3月2日分）の初期データをDB（`Machine`, `MachineNumber`, `Record`）へ一括登録し、統合テストを完了。
+- **分析ページ (Analysis) UI/UXの微調整**:
+  - 「合算確率」カードから、サイトデザインにそぐわない `Sparkles` アイコン等の過剰な装飾を撤去し、シンプルで視認性の高いUIに修正。
+  - 数値表示に適用されていた過度なドロップシャドウ(`glow-value`)のぼかし範囲を `20px` から `5px` に削減し、見やすさを向上。
+- **機種別全台データ一覧 (MachineModelSummary) の強化**:
+  - Prismaスキーマの `season` を活用し、`getAnalysis` アクションにて当該機種に存在する全てのSeason（設置世代）のリストを取得する処理を実装。
+  - UI側に「Season選択ドロップダウン」を追加し、過去の配置データ（第1期など）へ動的に切り替えて集計・表示できる機能を導入。
+  - ドロップダウン追加に伴うモバイル表示時のヘッダーレイアウト崩れ（要素の重なりや縦伸び）を解消するため、Flexboxを利用してPC/SPの両方で最適に要素が並ぶようレスポンシブな画面構造へ改修（さらにJSXの空白除去を回避する物理スペースの挿入も実施）。
+
+### Next Steps (次回予定)
+- 継続的なデータ取得フロー (`/fetch-hodogaya-tensei-data` 等) の運用。
+- Input Formのさらなる改善（Phase 2: Stress-Free Input）。
+
+## Session: 2026-03-03 (Season Tracking Integration & Data Aggregation Fix)
+
+### Changes
+- **Season（設置世代）モデルの導入**:
+  - Prismaスキーマの `MachineNumber` と `Record` モデルに `season` カラムを追加し複合ユニーク制約を更新。
+  - 既存データ全件の `season` をデフォルトの `1` に設定し、構成変更データの分離基盤を構築。
+  - `lib/pscube-config.ts` で店舗・機種ごとに `season` (現在バージョン) を指定できるようにインターフェースを拡張（北斗転生を `season: 2` に設定）。
+- **データ取得スクリプトの改修**:
+  - `register-fetched.ts` にて、`pscube-config.ts` の `season` 値を読み込み、upsert検索時および作成時のキーとして正しく利用するよう修正（Nodeモジュール解決エラー等も解消）。
+- **分析機能（API/UI）のSeason対応とバグ修正**:
+  - 「狙い台分析」 (`TargetsClient`, `getTargetMachines`)、および 機種別履歴/サマリー (`getSummary`, `getMachineNoHistory`) において、「全体での最新Season」ではなく「該当データの持つSeason」をグループの基準とし、Season 1（過去の配備）と Season 2（現在の配備）が別台として独立集計されるよう修正。
+  - `getAnalysis` (機種固有詳細分析) では、確率計算のノイズを防ぐため「指定検索期間内に存在する最新のSeason」のみを抽出して分析するロジックに変更。
+  - UI上で、Season 2以降のデータが含まれる場合は台番号の横に「第2期」のようなバッジを表示し、視覚的な識別を可能にした。
+
+### Next Steps (次回予定)
+- 継続的なデータ取得フロー (`/fetch-hodogaya-tensei-data` 等) の運用。
+- データの精度確認およびPhase 2: Stress-Free Input (`react-hook-form` + `zod` によるフォーム・UX刷新) の着手。
+
+## Session: 2026-03-02 (UI/UX Refinement & Targets Page Enhancement)
+
+### Changes
+- **狙い目ページ（/targets）機能改善**:
+  - ワンタップで期間指定（前日、直近2日・3日・7日）が可能なプリセットボタンを追加。
+  - `localStorage` による選択条件の記憶と、ページ読み込み時・プリセット変更時の自動集計機能を実装。
+  - UTCとJSTのタイムゾーンのズレに起因するデータ取得漏れバグを特定し、前日（昨日）を基準日とする正確な期間算出ロジックへ修正。
+- **モバイルレイアウト最適化**: 分析ページ、記録管理ページ、機種履歴ページのデータテーブルをスマホ向けに「2段組みカードレイアウト」へ改修し、横スクロールを完全に撤廃。
+- **UI改善**: スマホ向けのソートボタンに対し、データ種別に応じた動的カラーリング（プラス/好調=赤, マイナス/不調=青）を実装し視認性を向上。
+- **コンテンツ構造の再編成**:
+  - トップページのメニューカード並び替え（「機種データ」を最優先化）。
+  - 単独の「集計」ページを廃止し、分析ページ（`/analysis`）内の「全機種」オプションとしてシームレスに統合。
+  - 新規に機種一覧ページ（`/machines`）を新設し、UIを強化。
+- **トップページUIについて**: 新レイアウト（作戦司令室レイアウト）を検証後、均等なフラットグリッドのバランスが優れていたためユーザー判断でロールバックを実施。
+
+### Next Steps (次回予定)
+- 継続的なデータ取得・蓄積フローの運用
+- 最新データソースを用いた分析結果の評価と追加修正
+- Phase 2: Stress-Free Input (`react-hook-form` + `zod` によるフォーム・UX刷新)
+
 ## Session: 2026-03-01 (データ自動取得スキル整備)
 
 ### Changes

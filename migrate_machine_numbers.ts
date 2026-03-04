@@ -21,15 +21,17 @@ async function main() {
         try {
             await prisma.machineNumber.upsert({
                 where: {
-                    machineId_machineNo: {
+                    machineId_machineNo_season: {
                         machineId: r.machineId,
                         machineNo: r.machineNo,
+                        season: 1,
                     },
                 },
                 update: {},
                 create: {
                     machineId: r.machineId,
                     machineNo: r.machineNo,
+                    season: 1,
                 },
             })
             count++

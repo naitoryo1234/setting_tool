@@ -40,8 +40,9 @@ model MachineNumber {
   machineId String
   machine   Machine  @relation(fields: [machineId], references: [id], onDelete: Cascade)
   machineNo Int
+  season    Int      @default(1) // 設置期間（世代）を区別するためのID。新台入替等で番号が変わった場合はインクリメントする
   
-  @@unique([machineId, machineNo])
+  @@unique([machineId, machineNo, season])
   @@index([machineId])
 }
 
@@ -57,8 +58,9 @@ model Record {
   reg       Int?      @default(0) // REG(初当たり)回数
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  season    Int      @default(1)
 
-  @@unique([date, machineId, machineNo])
+  @@unique([date, machineId, machineNo, season])
   @@index([date])
   @@index([machineId])
 }

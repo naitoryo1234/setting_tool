@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T22:44:25.840Z",
+  "timestamp": "2026-03-03T15:06:27.525Z",
   "version": 2,
   "stores": [
     {
@@ -20,22 +20,26 @@
         {
           "id": "cmlj6qfpj0001cyrin0zlcvmk",
           "machineId": "cmlj5u7rm000072g9bayz8lo1",
-          "machineNo": 299
+          "machineNo": 299,
+          "season": 1
         },
         {
           "id": "cmlj6qfpq0003cyrir91el27n",
           "machineId": "cmlj5u7rm000072g9bayz8lo1",
-          "machineNo": 300
+          "machineNo": 300,
+          "season": 1
         },
         {
           "id": "cmlj6qfpx0005cyri4kj42r07",
           "machineId": "cmlj5u7rm000072g9bayz8lo1",
-          "machineNo": 301
+          "machineNo": 301,
+          "season": 1
         },
         {
           "id": "cmlj6qfq40007cyri1dam30by",
           "machineId": "cmlj5u7rm000072g9bayz8lo1",
-          "machineNo": 302
+          "machineNo": 302,
+          "season": 1
         }
       ]
     },
@@ -47,69 +51,148 @@
       "updatedAt": "2026-02-12T07:51:44.347Z",
       "numbers": [
         {
+          "id": "cmm9d4hbx000x109zn75j77f9",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 254,
+          "season": 2
+        },
+        {
+          "id": "cmm9d4ie30011109zn5k5v8dd",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 255,
+          "season": 2
+        },
+        {
+          "id": "cmm9d4j4y0015109z64egoy71",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 256,
+          "season": 2
+        },
+        {
           "id": "cmlj6qfqb0009cyriws7pdh7h",
           "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-          "machineNo": 238
+          "machineNo": 238,
+          "season": 1
         },
         {
           "id": "cmlj6qfqi000bcyriyvtq4w95",
           "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-          "machineNo": 239
+          "machineNo": 239,
+          "season": 1
         },
         {
           "id": "cmlj6qfqp000dcyrimbf43ura",
           "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-          "machineNo": 240
+          "machineNo": 240,
+          "season": 1
         },
         {
           "id": "cmlj6qfqv000fcyri86x74yna",
           "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-          "machineNo": 241
+          "machineNo": 241,
+          "season": 1
         },
         {
           "id": "cmlj6qfr3000hcyrik8ga4bgt",
           "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-          "machineNo": 242
+          "machineNo": 242,
+          "season": 1
         },
         {
           "id": "cmlj6qfr8000jcyri1paul64v",
           "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-          "machineNo": 243
+          "machineNo": 243,
+          "season": 1
         },
         {
           "id": "cmlj6qfre000lcyrid0fun28g",
           "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-          "machineNo": 244
+          "machineNo": 244,
+          "season": 1
         },
         {
           "id": "cmlj6qfrl000ncyri9onxif90",
           "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-          "machineNo": 245
+          "machineNo": 245,
+          "season": 1
         },
         {
           "id": "cmlj6qfrr000pcyritm3i2q58",
           "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-          "machineNo": 246
+          "machineNo": 246,
+          "season": 1
         },
         {
           "id": "cmlj6qfrx000rcyri2nzdusqr",
           "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-          "machineNo": 247
+          "machineNo": 247,
+          "season": 1
         },
         {
           "id": "cmlj6qfs4000tcyri1qo3xena",
           "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-          "machineNo": 248
+          "machineNo": 248,
+          "season": 1
         },
         {
           "id": "cmlj6qfs9000vcyrii68dge99",
           "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-          "machineNo": 249
+          "machineNo": 249,
+          "season": 1
         },
         {
           "id": "cmlj6qfsi000xcyri8vo5fkys",
           "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-          "machineNo": 250
+          "machineNo": 250,
+          "season": 1
+        },
+        {
+          "id": "cmm9d4atu0001109z6cnxgvbo",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 246,
+          "season": 2
+        },
+        {
+          "id": "cmm9d4c2o0005109zdelqiiq9",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 247,
+          "season": 2
+        },
+        {
+          "id": "cmm9d4cto0009109zhsfo7dl0",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 248,
+          "season": 2
+        },
+        {
+          "id": "cmm9d4dkl000d109zvo00a2q8",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 249,
+          "season": 2
+        },
+        {
+          "id": "cmm9d4ecf000h109znjm9pryv",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 250,
+          "season": 2
+        },
+        {
+          "id": "cmm9d4f3d000l109z6u30k59z",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 251,
+          "season": 2
+        },
+        {
+          "id": "cmm9d4fu8000p109zc1xaaf7j",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 252,
+          "season": 2
+        },
+        {
+          "id": "cmm9d4gkz000t109z4qigx697",
+          "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+          "machineNo": 253,
+          "season": 2
         }
       ]
     },
@@ -123,17 +206,20 @@
         {
           "id": "cmlj6qft10013cyri72usitti",
           "machineId": "cmlj5u7s1000272g9w1gibj3e",
-          "machineNo": 298
+          "machineNo": 298,
+          "season": 1
         },
         {
           "id": "cmlj6qfsn000zcyrimk5y9vkf",
           "machineId": "cmlj5u7s1000272g9w1gibj3e",
-          "machineNo": 296
+          "machineNo": 296,
+          "season": 1
         },
         {
           "id": "cmlj6qfsu0011cyribkudgv6d",
           "machineId": "cmlj5u7s1000272g9w1gibj3e",
-          "machineNo": 297
+          "machineNo": 297,
+          "season": 1
         }
       ]
     },
@@ -147,22 +233,134 @@
         {
           "id": "cmlj6qft80015cyrive5n4tlp",
           "machineId": "cmlj5u7s7000372g98xiq3bn9",
-          "machineNo": 257
+          "machineNo": 257,
+          "season": 1
         },
         {
           "id": "cmlj6qftg0017cyrilpnnx8w2",
           "machineId": "cmlj5u7s7000372g98xiq3bn9",
-          "machineNo": 294
+          "machineNo": 294,
+          "season": 1
         },
         {
           "id": "cmlj6qftn0019cyrihh10augb",
           "machineId": "cmlj5u7s7000372g98xiq3bn9",
-          "machineNo": 295
+          "machineNo": 295,
+          "season": 1
+        }
+      ]
+    },
+    {
+      "id": "cmma7t1lw0001xururqu3pjty",
+      "name": "カバネリ海門XX",
+      "storeId": "store_hodogaya_gaia",
+      "createdAt": "2026-03-03T06:16:35.684Z",
+      "updatedAt": "2026-03-03T06:16:35.684Z",
+      "numbers": [
+        {
+          "id": "cmma9k2ng00013ji3tke8boxs",
+          "machineId": "cmma7t1lw0001xururqu3pjty",
+          "machineNo": 238,
+          "season": 1
+        },
+        {
+          "id": "cmma9k3x400053ji348h49w33",
+          "machineId": "cmma7t1lw0001xururqu3pjty",
+          "machineNo": 239,
+          "season": 1
+        },
+        {
+          "id": "cmma9k4o900093ji3pyhr4fkt",
+          "machineId": "cmma7t1lw0001xururqu3pjty",
+          "machineNo": 240,
+          "season": 1
+        },
+        {
+          "id": "cmma9k5f4000d3ji3nfzhl4p0",
+          "machineId": "cmma7t1lw0001xururqu3pjty",
+          "machineNo": 241,
+          "season": 1
+        },
+        {
+          "id": "cmma9k65r000h3ji36zd8rb6v",
+          "machineId": "cmma7t1lw0001xururqu3pjty",
+          "machineNo": 242,
+          "season": 1
+        },
+        {
+          "id": "cmma9k8dt000l3ji3bqafxqxy",
+          "machineId": "cmma7t1lw0001xururqu3pjty",
+          "machineNo": 243,
+          "season": 1
+        },
+        {
+          "id": "cmma9k955000p3ji3jckyd785",
+          "machineId": "cmma7t1lw0001xururqu3pjty",
+          "machineNo": 244,
+          "season": 1
+        },
+        {
+          "id": "cmma9k9w0000t3ji35jymfdu2",
+          "machineId": "cmma7t1lw0001xururqu3pjty",
+          "machineNo": 245,
+          "season": 1
         }
       ]
     }
   ],
   "records": [
+    {
+      "id": "cmm9d4h7c000v109zoo8miolt",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 253,
+      "diff": -1246,
+      "big": 14,
+      "games": 2054,
+      "reg": 7,
+      "createdAt": "2026-03-02T15:57:41.016Z",
+      "updatedAt": "2026-03-02T15:57:41.016Z",
+      "season": 2
+    },
+    {
+      "id": "cmm9d4hyd000z109zeelljgv2",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 254,
+      "diff": 4426,
+      "big": 45,
+      "games": 1055,
+      "reg": 4,
+      "createdAt": "2026-03-02T15:57:41.989Z",
+      "updatedAt": "2026-03-02T15:57:41.989Z",
+      "season": 2
+    },
+    {
+      "id": "cmm9d4j0c0013109zlsofhweq",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 255,
+      "diff": 10399,
+      "big": 97,
+      "games": 1710,
+      "reg": 9,
+      "createdAt": "2026-03-02T15:57:43.357Z",
+      "updatedAt": "2026-03-02T15:57:43.357Z",
+      "season": 2
+    },
+    {
+      "id": "cmm9d4jr50017109z9fzqqp9e",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 256,
+      "diff": -1808,
+      "big": 4,
+      "games": 1542,
+      "reg": 4,
+      "createdAt": "2026-03-02T15:57:44.322Z",
+      "updatedAt": "2026-03-02T15:57:44.322Z",
+      "season": 2
+    },
     {
       "id": "cmlk5ybdz0001jt453r3tdc8p",
       "date": "2026-02-12T00:00:00.000Z",
@@ -173,7 +371,8 @@
       "games": 0,
       "reg": 0,
       "createdAt": "2026-02-13T00:42:41.614Z",
-      "updatedAt": "2026-02-13T00:42:41.614Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk5yrmz0005jt45vchisio7",
@@ -185,7 +384,8 @@
       "games": 0,
       "reg": 0,
       "createdAt": "2026-02-13T00:43:02.726Z",
-      "updatedAt": "2026-02-13T00:43:02.726Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk5zuaa0009jt451x1lmc3g",
@@ -197,7 +397,8 @@
       "games": 0,
       "reg": 0,
       "createdAt": "2026-02-13T00:43:52.763Z",
-      "updatedAt": "2026-02-13T00:43:52.763Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk61a0k000fjt459sqpgr2x",
@@ -209,643 +410,112 @@
       "games": 0,
       "reg": 0,
       "createdAt": "2026-02-13T00:44:59.808Z",
-      "updatedAt": "2026-02-13T00:44:59.808Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
-      "id": "cmll0nqyt0001q195vhptgf7g",
-      "date": "2026-02-13T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": -200,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-13T15:02:16.546Z",
-      "updatedAt": "2026-02-13T15:02:16.546Z"
-    },
-    {
-      "id": "cmll0pgbf0007q195vntfxgbz",
-      "date": "2026-02-13T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 302,
-      "diff": -3300,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-13T15:03:36.055Z",
-      "updatedAt": "2026-02-13T15:03:36.055Z"
-    },
-    {
-      "id": "cmlqks48x000d7gsm18766zho",
-      "date": "2026-02-15T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 244,
-      "diff": -2921,
-      "big": 19,
-      "games": 3597,
-      "reg": 8,
-      "createdAt": "2026-02-17T12:24:23.938Z",
-      "updatedAt": "2026-02-17T12:24:23.938Z"
-    },
-    {
-      "id": "cmlqks4dl000f7gsm4w1kgo1d",
-      "date": "2026-02-15T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 245,
-      "diff": -2961,
-      "big": 11,
-      "games": 2918,
-      "reg": 5,
-      "createdAt": "2026-02-17T12:24:24.105Z",
-      "updatedAt": "2026-02-17T12:24:24.105Z"
-    },
-    {
-      "id": "cmlqks4i7000h7gsmgq4cuqh8",
-      "date": "2026-02-15T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 246,
-      "diff": 750,
-      "big": 75,
-      "games": 6245,
-      "reg": 24,
-      "createdAt": "2026-02-17T12:24:24.272Z",
-      "updatedAt": "2026-02-17T12:24:24.272Z"
-    },
-    {
-      "id": "cmlqks4mw000j7gsmwcauwoba",
-      "date": "2026-02-15T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 247,
-      "diff": -8,
-      "big": 37,
-      "games": 3267,
-      "reg": 10,
-      "createdAt": "2026-02-17T12:24:24.440Z",
-      "updatedAt": "2026-02-17T12:24:24.440Z"
-    },
-    {
-      "id": "cmlqks4rj000l7gsm2jzscpiv",
-      "date": "2026-02-15T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 248,
-      "diff": -190,
-      "big": 49,
-      "games": 4445,
+      "id": "cmma9k3o200033ji3x38zbb31",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmma7t1lw0001xururqu3pjty",
+      "machineNo": 238,
+      "diff": -3700,
+      "big": 20,
+      "games": 3974,
       "reg": 12,
-      "createdAt": "2026-02-17T12:24:24.607Z",
-      "updatedAt": "2026-02-17T12:24:24.607Z"
+      "createdAt": "2026-03-03T07:05:37.682Z",
+      "updatedAt": "2026-03-03T13:21:39.462Z",
+      "season": 1
     },
     {
-      "id": "cmlqks58f000n7gsmq8yrzw92",
-      "date": "2026-02-15T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 249,
-      "diff": -528,
-      "big": 5,
-      "games": 788,
-      "reg": 2,
-      "createdAt": "2026-02-17T12:24:25.215Z",
-      "updatedAt": "2026-02-17T12:24:25.215Z"
-    },
-    {
-      "id": "cmlqks5f1000p7gsm6sultfk1",
-      "date": "2026-02-15T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 250,
-      "diff": 5700,
-      "big": 92,
-      "games": 5264,
-      "reg": 17,
-      "createdAt": "2026-02-17T12:24:25.453Z",
-      "updatedAt": "2026-02-17T12:24:25.453Z"
-    },
-    {
-      "id": "cmlvfsapb0009wo2wvsrmpk6d",
-      "date": "2026-02-16T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 242,
-      "diff": 195,
-      "big": 13,
-      "games": 1018,
-      "reg": 4,
-      "createdAt": "2026-02-20T22:03:25.104Z",
-      "updatedAt": "2026-02-20T22:03:25.104Z"
-    },
-    {
-      "id": "cmlvfsauh000bwo2wsxlo5ntc",
-      "date": "2026-02-16T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 243,
-      "diff": -756,
-      "big": 15,
-      "games": 1820,
-      "reg": 5,
-      "createdAt": "2026-02-20T22:03:25.290Z",
-      "updatedAt": "2026-02-20T22:03:25.290Z"
-    },
-    {
-      "id": "cmlvfsazm000dwo2wix08dggn",
-      "date": "2026-02-16T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 244,
-      "diff": 818,
-      "big": 33,
-      "games": 2371,
-      "reg": 8,
-      "createdAt": "2026-02-20T22:03:25.474Z",
-      "updatedAt": "2026-02-20T22:03:25.474Z"
-    },
-    {
-      "id": "cmlvfsb4t000fwo2w0hntq2ru",
-      "date": "2026-02-16T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 245,
-      "diff": -229,
-      "big": 4,
-      "games": 503,
-      "reg": 1,
-      "createdAt": "2026-02-20T22:03:25.661Z",
-      "updatedAt": "2026-02-20T22:03:25.661Z"
-    },
-    {
-      "id": "cmlvfsba1000hwo2w4t3ui8ie",
-      "date": "2026-02-16T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 246,
-      "diff": -312,
-      "big": 9,
-      "games": 999,
-      "reg": 2,
-      "createdAt": "2026-02-20T22:03:25.849Z",
-      "updatedAt": "2026-02-20T22:03:25.849Z"
-    },
-    {
-      "id": "cmlvfsbf7000jwo2wfhj15dkh",
-      "date": "2026-02-16T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 247,
-      "diff": -438,
-      "big": 4,
-      "games": 641,
-      "reg": 1,
-      "createdAt": "2026-02-20T22:03:26.035Z",
-      "updatedAt": "2026-02-20T22:03:26.035Z"
-    },
-    {
-      "id": "cmlvfsbkc000lwo2w5a7cgtb4",
-      "date": "2026-02-16T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 248,
-      "diff": 7200,
-      "big": 73,
-      "games": 1810,
-      "reg": 4,
-      "createdAt": "2026-02-20T22:03:26.220Z",
-      "updatedAt": "2026-02-20T22:03:26.220Z"
-    },
-    {
-      "id": "cmlvfsbph000nwo2wvg1showq",
-      "date": "2026-02-16T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 249,
-      "diff": -353,
-      "big": 6,
-      "games": 761,
-      "reg": 1,
-      "createdAt": "2026-02-20T22:03:26.405Z",
-      "updatedAt": "2026-02-20T22:03:26.405Z"
-    },
-    {
-      "id": "cmlvfsbum000pwo2wn0edspws",
-      "date": "2026-02-16T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 250,
-      "diff": -1509,
-      "big": 15,
-      "games": 2315,
-      "reg": 7,
-      "createdAt": "2026-02-20T22:03:26.591Z",
-      "updatedAt": "2026-02-20T22:03:26.591Z"
-    },
-    {
-      "id": "cmlvi3dnr000130z1vo67nuwa",
-      "date": "2026-02-18T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 238,
-      "diff": -5350,
-      "big": 9,
-      "games": 4313,
-      "reg": 5,
-      "createdAt": "2026-02-20T23:08:01.383Z",
-      "updatedAt": "2026-02-20T23:08:01.383Z"
-    },
-    {
-      "id": "cmlvi3dx0000330z1nw2igsos",
-      "date": "2026-02-18T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "id": "cmma9k4jo00073ji3u6ssyi1f",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmma7t1lw0001xururqu3pjty",
       "machineNo": 239,
-      "diff": -751,
-      "big": 6,
-      "games": 1023,
-      "reg": 1,
-      "createdAt": "2026-02-20T23:08:01.717Z",
-      "updatedAt": "2026-02-20T23:08:01.717Z"
-    },
-    {
-      "id": "cmlvi3e1o000530z1baxu4eoz",
-      "date": "2026-02-18T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 240,
-      "diff": -993,
-      "big": 18,
-      "games": 2240,
-      "reg": 8,
-      "createdAt": "2026-02-20T23:08:01.884Z",
-      "updatedAt": "2026-02-20T23:08:01.884Z"
-    },
-    {
-      "id": "cmlvi3e6a000730z1pxsd77z1",
-      "date": "2026-02-18T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 241,
-      "diff": 400,
-      "big": 92,
-      "games": 7902,
-      "reg": 29,
-      "createdAt": "2026-02-20T23:08:02.051Z",
-      "updatedAt": "2026-02-20T23:08:02.051Z"
-    },
-    {
-      "id": "cmlvi3eax000930z1mrpt6xtc",
-      "date": "2026-02-18T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 242,
-      "diff": -3023,
-      "big": 9,
-      "games": 2782,
-      "reg": 4,
-      "createdAt": "2026-02-20T23:08:02.217Z",
-      "updatedAt": "2026-02-20T23:08:02.217Z"
-    },
-    {
-      "id": "cmlvi3efj000b30z1v66smz76",
-      "date": "2026-02-18T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 243,
-      "diff": -1639,
-      "big": 4,
-      "games": 1431,
-      "reg": 2,
-      "createdAt": "2026-02-20T23:08:02.384Z",
-      "updatedAt": "2026-02-20T23:08:02.384Z"
-    },
-    {
-      "id": "cmlvi3ek7000d30z1ksddwf1l",
-      "date": "2026-02-18T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 244,
-      "diff": -2994,
-      "big": 6,
-      "games": 2499,
-      "reg": 3,
-      "createdAt": "2026-02-20T23:08:02.551Z",
-      "updatedAt": "2026-02-20T23:08:02.551Z"
-    },
-    {
-      "id": "cmlvi3eou000f30z1ld5eqsvf",
-      "date": "2026-02-18T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 245,
-      "diff": -1414,
-      "big": 5,
-      "games": 1371,
-      "reg": 3,
-      "createdAt": "2026-02-20T23:08:02.718Z",
-      "updatedAt": "2026-02-20T23:08:02.718Z"
-    },
-    {
-      "id": "cmlvi3etj000h30z19gj3adx5",
-      "date": "2026-02-18T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 246,
-      "diff": -32,
-      "big": 14,
-      "games": 1255,
-      "reg": 2,
-      "createdAt": "2026-02-20T23:08:02.888Z",
-      "updatedAt": "2026-02-20T23:08:02.888Z"
-    },
-    {
-      "id": "cmlvi3ey7000j30z112eit9yh",
-      "date": "2026-02-18T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 247,
-      "diff": -197,
-      "big": 34,
-      "games": 3127,
-      "reg": 9,
-      "createdAt": "2026-02-20T23:08:03.055Z",
-      "updatedAt": "2026-02-20T23:08:03.055Z"
-    },
-    {
-      "id": "cmlvi3f2u000l30z1js4539e1",
-      "date": "2026-02-18T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 248,
-      "diff": 2200,
-      "big": 47,
-      "games": 2264,
-      "reg": 8,
-      "createdAt": "2026-02-20T23:08:03.222Z",
-      "updatedAt": "2026-02-20T23:08:03.222Z"
-    },
-    {
-      "id": "cmlvi3f7i000n30z1838gr34x",
-      "date": "2026-02-18T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 249,
-      "diff": -923,
-      "big": 3,
-      "games": 872,
-      "reg": 1,
-      "createdAt": "2026-02-20T23:08:03.390Z",
-      "updatedAt": "2026-02-20T23:08:03.390Z"
-    },
-    {
-      "id": "cmlvi3fc6000p30z1gpm5f2tw",
-      "date": "2026-02-18T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 250,
-      "diff": -810,
-      "big": 52,
-      "games": 5117,
-      "reg": 11,
-      "createdAt": "2026-02-20T23:08:03.559Z",
-      "updatedAt": "2026-02-20T23:08:03.559Z"
-    },
-    {
-      "id": "cmlvi951e00011hk6b73k6o49",
-      "date": "2026-02-18T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": -500,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-20T23:12:30.079Z",
-      "updatedAt": "2026-02-20T23:12:30.079Z"
-    },
-    {
-      "id": "cmlvi9nbn00031hk6yxcrhn7q",
-      "date": "2026-02-18T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 300,
-      "diff": 5300,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-20T23:12:53.779Z",
-      "updatedAt": "2026-02-20T23:12:53.779Z"
-    },
-    {
-      "id": "cmlviae8x00011c8vn5m58wfx",
-      "date": "2026-02-18T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 302,
-      "diff": -200,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-20T23:13:28.734Z",
-      "updatedAt": "2026-02-20T23:13:28.734Z"
-    },
-    {
-      "id": "cmlviczia00031c8v8lpfigx4",
-      "date": "2026-02-20T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 301,
-      "diff": -500,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-20T23:15:29.550Z",
-      "updatedAt": "2026-02-20T23:15:29.550Z"
-    },
-    {
-      "id": "cmlvidb8f0009ccfmmf3bwy6r",
-      "date": "2026-02-20T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 302,
-      "diff": -600,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-20T23:15:44.685Z",
-      "updatedAt": "2026-02-20T23:15:44.685Z"
-    },
-    {
-      "id": "cmlwxhc3c000f128mzp4vwlet",
-      "date": "2026-02-20T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 245,
-      "diff": -1462,
-      "big": 6,
-      "games": 1491,
-      "reg": 2,
-      "createdAt": "2026-02-21T23:06:32.953Z",
-      "updatedAt": "2026-02-21T23:06:32.953Z"
-    },
-    {
-      "id": "cmlwxhc81000h128mki60k3m8",
-      "date": "2026-02-20T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 246,
-      "diff": -1370,
-      "big": 15,
-      "games": 2224,
-      "reg": 6,
-      "createdAt": "2026-02-21T23:06:33.122Z",
-      "updatedAt": "2026-02-21T23:06:33.122Z"
-    },
-    {
-      "id": "cmlwxhccr000j128m5i3dkoo0",
-      "date": "2026-02-20T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 247,
-      "diff": 1900,
-      "big": 60,
-      "games": 4886,
-      "reg": 11,
-      "createdAt": "2026-02-21T23:06:33.291Z",
-      "updatedAt": "2026-02-21T23:06:33.291Z"
-    },
-    {
-      "id": "cmlwxhchh000l128mwyxc4fhg",
-      "date": "2026-02-20T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 248,
-      "diff": -1024,
-      "big": 26,
-      "games": 2966,
-      "reg": 8,
-      "createdAt": "2026-02-21T23:06:33.462Z",
-      "updatedAt": "2026-02-21T23:06:33.462Z"
-    },
-    {
-      "id": "cmlwxhcm7000n128mnq49no8e",
-      "date": "2026-02-20T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 249,
-      "diff": -2089,
-      "big": 10,
-      "games": 2256,
-      "reg": 3,
-      "createdAt": "2026-02-21T23:06:33.631Z",
-      "updatedAt": "2026-02-21T23:06:33.631Z"
-    },
-    {
-      "id": "cmlwxhcqv000p128metd98xuk",
-      "date": "2026-02-20T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 250,
-      "diff": -1034,
-      "big": 37,
-      "games": 3942,
-      "reg": 7,
-      "createdAt": "2026-02-21T23:06:33.800Z",
-      "updatedAt": "2026-02-21T23:06:33.800Z"
-    },
-    {
-      "id": "cmm5j2xyn0001wj7swudf8j7l",
-      "date": "2026-02-24T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 238,
-      "diff": -1935,
-      "big": 18,
+      "diff": 1800,
+      "big": 46,
       "games": 2860,
-      "reg": 8,
-      "createdAt": "2026-02-27T23:33:22.415Z",
-      "updatedAt": "2026-02-27T23:33:22.415Z"
+      "reg": 20,
+      "createdAt": "2026-03-03T07:05:38.820Z",
+      "updatedAt": "2026-03-03T13:21:41.541Z",
+      "season": 1
     },
     {
-      "id": "cmm5j2y7t0003wj7so2dtgflz",
-      "date": "2026-02-24T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 239,
-      "diff": -1725,
-      "big": 34,
-      "games": 4132,
-      "reg": 13,
-      "createdAt": "2026-02-27T23:33:22.746Z",
-      "updatedAt": "2026-02-27T23:33:22.746Z"
-    },
-    {
-      "id": "cmm5j2ycf0005wj7s4pk7jeel",
-      "date": "2026-02-24T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "id": "cmma9k5an000b3ji376h7zrrt",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmma7t1lw0001xururqu3pjty",
       "machineNo": 240,
-      "diff": 1475,
-      "big": 23,
-      "games": 1057,
-      "reg": 2,
-      "createdAt": "2026-02-27T23:33:22.911Z",
-      "updatedAt": "2026-02-27T23:33:22.911Z"
+      "diff": 5800,
+      "big": 49,
+      "games": 2067,
+      "reg": 8,
+      "createdAt": "2026-03-03T07:05:39.791Z",
+      "updatedAt": "2026-03-03T13:21:43.322Z",
+      "season": 1
     },
     {
-      "id": "cmm5j2yh00007wj7szc91oij4",
-      "date": "2026-02-24T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "id": "cmma9k61a000f3ji3w6f14x3d",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmma7t1lw0001xururqu3pjty",
       "machineNo": 241,
-      "diff": -1383,
-      "big": 21,
-      "games": 2761,
-      "reg": 7,
-      "createdAt": "2026-02-27T23:33:23.077Z",
-      "updatedAt": "2026-02-27T23:33:23.077Z"
+      "diff": -4300,
+      "big": 22,
+      "games": 4402,
+      "reg": 15,
+      "createdAt": "2026-03-03T07:05:40.750Z",
+      "updatedAt": "2026-03-03T13:21:46.590Z",
+      "season": 1
     },
     {
-      "id": "cmm5j2ylm0009wj7s62jifnv9",
-      "date": "2026-02-24T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "id": "cmma9k899000j3ji3jro8gd3d",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmma7t1lw0001xururqu3pjty",
       "machineNo": 242,
-      "diff": 389,
-      "big": 42,
-      "games": 3447,
-      "reg": 11,
-      "createdAt": "2026-02-27T23:33:23.242Z",
-      "updatedAt": "2026-02-27T23:33:23.242Z"
+      "diff": -1500,
+      "big": 28,
+      "games": 3616,
+      "reg": 9,
+      "createdAt": "2026-03-03T07:05:43.630Z",
+      "updatedAt": "2026-03-03T13:21:48.442Z",
+      "season": 1
     },
     {
-      "id": "cmm5j2yq8000bwj7sogvrclyn",
-      "date": "2026-02-24T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "id": "cmma9k90o000n3ji30jo1e9pj",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmma7t1lw0001xururqu3pjty",
       "machineNo": 243,
-      "diff": -1199,
-      "big": 6,
-      "games": 1318,
-      "reg": 3,
-      "createdAt": "2026-02-27T23:33:23.408Z",
-      "updatedAt": "2026-02-27T23:33:23.408Z"
+      "diff": -4800,
+      "big": 18,
+      "games": 4431,
+      "reg": 14,
+      "createdAt": "2026-03-03T07:05:44.616Z",
+      "updatedAt": "2026-03-03T13:21:50.977Z",
+      "season": 1
     },
     {
-      "id": "cmm5j2yut000dwj7sk3pzmp1o",
-      "date": "2026-02-24T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "id": "cmma9k9rj000r3ji3czjeq8ud",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmma7t1lw0001xururqu3pjty",
       "machineNo": 244,
-      "diff": -1400,
-      "big": 7,
-      "games": 1538,
-      "reg": 3,
-      "createdAt": "2026-02-27T23:33:23.574Z",
-      "updatedAt": "2026-02-27T23:33:23.574Z"
-    },
-    {
-      "id": "cmm5j2yzh000fwj7s200lnneg",
-      "date": "2026-02-24T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 245,
-      "diff": -1186,
-      "big": 5,
-      "games": 1221,
-      "reg": 2,
-      "createdAt": "2026-02-27T23:33:23.742Z",
-      "updatedAt": "2026-02-27T23:33:23.742Z"
-    },
-    {
-      "id": "cmm5j2zdw000hwj7shx6jbca0",
-      "date": "2026-02-24T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 246,
-      "diff": 920,
-      "big": 38,
-      "games": 2745,
-      "reg": 6,
-      "createdAt": "2026-02-27T23:33:24.260Z",
-      "updatedAt": "2026-02-27T23:33:24.260Z"
-    },
-    {
-      "id": "cmm5j2zlm000jwj7sheszqnug",
-      "date": "2026-02-24T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 247,
-      "diff": -967,
-      "big": 25,
-      "games": 2840,
+      "diff": 2000,
+      "big": 46,
+      "games": 2859,
       "reg": 11,
-      "createdAt": "2026-02-27T23:33:24.539Z",
-      "updatedAt": "2026-02-27T23:33:24.539Z"
+      "createdAt": "2026-03-03T07:05:45.583Z",
+      "updatedAt": "2026-03-03T13:21:55.441Z",
+      "season": 1
     },
     {
-      "id": "cmm5j2zq9000lwj7stx6pbw4x",
-      "date": "2026-02-24T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 248,
-      "diff": 739,
-      "big": 27,
-      "games": 1894,
-      "reg": 5,
-      "createdAt": "2026-02-27T23:33:24.705Z",
-      "updatedAt": "2026-02-27T23:33:24.705Z"
+      "id": "cmma9kaic000v3ji3y187o72p",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmma7t1lw0001xururqu3pjty",
+      "machineNo": 245,
+      "diff": 1300,
+      "big": 50,
+      "games": 3282,
+      "reg": 18,
+      "createdAt": "2026-03-03T07:05:46.548Z",
+      "updatedAt": "2026-03-03T13:21:57.990Z",
+      "season": 1
     },
     {
       "id": "cmlk5yk360003jt45fr3d1qrl",
@@ -857,7 +527,8 @@
       "games": 0,
       "reg": 0,
       "createdAt": "2026-02-13T00:42:53.107Z",
-      "updatedAt": "2026-02-13T00:42:53.107Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk5z44q0007jt45jp5s1law",
@@ -869,1399 +540,151 @@
       "games": 0,
       "reg": 0,
       "createdAt": "2026-02-13T00:43:18.871Z",
-      "updatedAt": "2026-02-13T00:43:18.871Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
-      "id": "cmll0odln0003q1957kxswfze",
-      "date": "2026-02-13T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 300,
-      "diff": 1800,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-13T15:02:45.866Z",
-      "updatedAt": "2026-02-13T15:02:45.866Z"
-    },
-    {
-      "id": "cmll0oxml0005q195dv49wwwh",
-      "date": "2026-02-13T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 301,
-      "diff": -800,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-13T15:03:11.822Z",
-      "updatedAt": "2026-02-13T15:03:11.822Z"
-    },
-    {
-      "id": "cmll0q75c0009q195lektybno",
-      "date": "2026-02-13T00:00:00.000Z",
-      "machineId": "cmlj5u7s7000372g98xiq3bn9",
-      "machineNo": 257,
-      "diff": 200,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-13T15:04:10.816Z",
-      "updatedAt": "2026-02-13T15:04:10.816Z"
-    },
-    {
-      "id": "cmll0rr9v000hq195cugr6yae",
-      "date": "2026-02-13T00:00:00.000Z",
-      "machineId": "cmlj5u7s1000272g9w1gibj3e",
-      "machineNo": 297,
-      "diff": -1700,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-13T15:05:23.923Z",
-      "updatedAt": "2026-02-13T15:05:23.923Z"
-    },
-    {
-      "id": "cmlqkz3yn0001gwo1ehd35hsg",
-      "date": "2026-02-16T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 238,
-      "diff": -1240,
-      "big": 34,
-      "games": 3813,
-      "reg": 9,
-      "createdAt": "2026-02-17T12:29:50.159Z",
-      "updatedAt": "2026-02-17T12:29:50.159Z"
-    },
-    {
-      "id": "cmlqkz47s0003gwo1fk1tofdt",
-      "date": "2026-02-16T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 239,
-      "diff": -1197,
-      "big": 9,
-      "games": 1581,
-      "reg": 4,
-      "createdAt": "2026-02-17T12:29:50.489Z",
-      "updatedAt": "2026-02-17T12:29:50.489Z"
-    },
-    {
-      "id": "cmlqkz4cd0005gwo1zcs8q5eo",
-      "date": "2026-02-16T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 240,
-      "diff": 77,
-      "big": 6,
-      "games": 478,
-      "reg": 1,
-      "createdAt": "2026-02-17T12:29:50.654Z",
-      "updatedAt": "2026-02-17T12:29:50.654Z"
-    },
-    {
-      "id": "cmlqkz4gz0007gwo10ztjre6g",
-      "date": "2026-02-16T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 241,
-      "diff": -1792,
-      "big": 15,
-      "games": 2501,
-      "reg": 5,
-      "createdAt": "2026-02-17T12:29:50.819Z",
-      "updatedAt": "2026-02-17T12:29:50.819Z"
-    },
-    {
-      "id": "cmlqkz4li0009gwo1jib4iqsj",
-      "date": "2026-02-16T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 242,
-      "diff": 1018,
-      "big": 19,
-      "games": 1005,
-      "reg": 4,
-      "createdAt": "2026-02-17T12:29:50.982Z",
-      "updatedAt": "2026-02-17T12:29:50.982Z"
-    },
-    {
-      "id": "cmlqkz4q2000bgwo1h78f5zvc",
-      "date": "2026-02-16T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 243,
-      "diff": -1789,
-      "big": 19,
-      "games": 2852,
-      "reg": 6,
-      "createdAt": "2026-02-17T12:29:51.146Z",
-      "updatedAt": "2026-02-17T12:29:51.146Z"
-    },
-    {
-      "id": "cmlqkz4ul000dgwo12kcibr00",
-      "date": "2026-02-16T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 244,
-      "diff": -1572,
-      "big": 4,
-      "games": 1387,
-      "reg": 3,
-      "createdAt": "2026-02-17T12:29:51.309Z",
-      "updatedAt": "2026-02-17T12:29:51.309Z"
-    },
-    {
-      "id": "cmlqkz4z5000fgwo1luy8f6to",
-      "date": "2026-02-16T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 245,
-      "diff": 3900,
-      "big": 27,
-      "games": 855,
-      "reg": 2,
-      "createdAt": "2026-02-17T12:29:51.473Z",
-      "updatedAt": "2026-02-17T12:29:51.473Z"
-    },
-    {
-      "id": "cmlqkz53o000hgwo120te92im",
-      "date": "2026-02-16T00:00:00.000Z",
+      "id": "cmmaq5h2h0003gb864b5cdmf7",
+      "date": "2026-03-02T15:00:00.000Z",
       "machineId": "cmlj5u7rv000172g9pyrlc8tu",
       "machineNo": 246,
-      "diff": 5300,
-      "big": 52,
-      "games": 805,
-      "reg": 2,
-      "createdAt": "2026-02-17T12:29:51.636Z",
-      "updatedAt": "2026-02-17T12:29:51.636Z"
-    },
-    {
-      "id": "cmlqkz587000jgwo1jazcfoem",
-      "date": "2026-02-16T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 247,
-      "diff": -1953,
-      "big": 7,
-      "games": 1902,
-      "reg": 5,
-      "createdAt": "2026-02-17T12:29:51.800Z",
-      "updatedAt": "2026-02-17T12:29:51.800Z"
-    },
-    {
-      "id": "cmlqkz5cr000lgwo1syxpsp73",
-      "date": "2026-02-16T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 248,
-      "diff": -2167,
-      "big": 8,
-      "games": 2131,
-      "reg": 4,
-      "createdAt": "2026-02-17T12:29:51.964Z",
-      "updatedAt": "2026-02-17T12:29:51.964Z"
-    },
-    {
-      "id": "cmlqkz5ha000ngwo17ohhddku",
-      "date": "2026-02-16T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 249,
-      "diff": 741,
-      "big": 8,
-      "games": 218,
-      "reg": 1,
-      "createdAt": "2026-02-17T12:29:52.127Z",
-      "updatedAt": "2026-02-17T12:29:52.127Z"
-    },
-    {
-      "id": "cmlqkz5lu000pgwo1t1yg2khu",
-      "date": "2026-02-16T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 250,
-      "diff": 5000,
-      "big": 47,
-      "games": 1728,
-      "reg": 6,
-      "createdAt": "2026-02-17T12:29:52.290Z",
-      "updatedAt": "2026-02-17T12:29:52.290Z"
-    },
-    {
-      "id": "cmlvfsn4y0001nvx2yfgqkyr9",
-      "date": "2026-02-17T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 238,
-      "diff": 376,
-      "big": 16,
-      "games": 1163,
-      "reg": 4,
-      "createdAt": "2026-02-20T22:03:41.218Z",
-      "updatedAt": "2026-02-20T22:03:41.218Z"
-    },
-    {
-      "id": "cmlvfsnlf0003nvx2hwsbdisz",
-      "date": "2026-02-17T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 239,
-      "diff": 1400,
-      "big": 28,
-      "games": 677,
-      "reg": 3,
-      "createdAt": "2026-02-20T22:03:41.812Z",
-      "updatedAt": "2026-02-20T22:03:41.812Z"
-    },
-    {
-      "id": "cmlvfsnto0005nvx22b21ccao",
-      "date": "2026-02-17T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 240,
-      "diff": -644,
-      "big": 8,
-      "games": 1129,
-      "reg": 4,
-      "createdAt": "2026-02-20T22:03:42.109Z",
-      "updatedAt": "2026-02-20T22:03:42.109Z"
-    },
-    {
-      "id": "cmlvfso1z0007nvx20q9pgjcx",
-      "date": "2026-02-17T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 241,
-      "diff": 121,
-      "big": 4,
-      "games": 273,
-      "reg": 1,
-      "createdAt": "2026-02-20T22:03:42.407Z",
-      "updatedAt": "2026-02-20T22:03:42.407Z"
-    },
-    {
-      "id": "cmlvfsoa60009nvx22r19psbn",
-      "date": "2026-02-17T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 242,
-      "diff": -609,
-      "big": 10,
-      "games": 1282,
-      "reg": 2,
-      "createdAt": "2026-02-20T22:03:42.703Z",
-      "updatedAt": "2026-02-20T22:03:42.703Z"
-    },
-    {
-      "id": "cmlvfsoif000bnvx2f1phsxx2",
-      "date": "2026-02-17T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 243,
-      "diff": -371,
-      "big": 5,
-      "games": 685,
-      "reg": 2,
-      "createdAt": "2026-02-20T22:03:42.999Z",
-      "updatedAt": "2026-02-20T22:03:42.999Z"
-    },
-    {
-      "id": "cmlvfsoqp000dnvx28tuh0y5q",
-      "date": "2026-02-17T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 244,
-      "diff": 4600,
+      "diff": 569,
       "big": 33,
-      "games": 785,
-      "reg": 4,
-      "createdAt": "2026-02-20T22:03:43.298Z",
-      "updatedAt": "2026-02-20T22:03:43.298Z"
+      "games": 2535,
+      "reg": 8,
+      "createdAt": "2026-03-03T14:50:08.681Z",
+      "updatedAt": "2026-03-03T14:50:08.681Z",
+      "season": 2
     },
     {
-      "id": "cmlvfsoyx000fnvx28dk6lhcg",
-      "date": "2026-02-17T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 245,
-      "diff": 1000,
-      "big": 52,
-      "games": 3210,
-      "reg": 17,
-      "createdAt": "2026-02-20T22:03:43.594Z",
-      "updatedAt": "2026-02-20T22:03:43.594Z"
-    },
-    {
-      "id": "cmlvfsp77000hnvx2iudai9ch",
-      "date": "2026-02-17T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 246,
-      "diff": 2200,
-      "big": 24,
-      "games": 675,
-      "reg": 4,
-      "createdAt": "2026-02-20T22:03:43.892Z",
-      "updatedAt": "2026-02-20T22:03:43.892Z"
-    },
-    {
-      "id": "cmlvfspff000jnvx2t20fh0vb",
-      "date": "2026-02-17T15:00:00.000Z",
+      "id": "cmmaq5i3q0007gb86xqsu4iwr",
+      "date": "2026-03-02T15:00:00.000Z",
       "machineId": "cmlj5u7rv000172g9pyrlc8tu",
       "machineNo": 247,
-      "diff": -188,
-      "big": 2,
-      "games": 300,
-      "reg": 1,
-      "createdAt": "2026-02-20T22:03:44.188Z",
-      "updatedAt": "2026-02-20T22:03:44.188Z"
-    },
-    {
-      "id": "cmlvfspns000lnvx2zefa6u1y",
-      "date": "2026-02-17T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 248,
-      "diff": -620,
-      "big": 43,
-      "games": 4199,
-      "reg": 10,
-      "createdAt": "2026-02-20T22:03:44.489Z",
-      "updatedAt": "2026-02-20T22:03:44.489Z"
-    },
-    {
-      "id": "cmlvfsqpf000nnvx2mfmrp8j6",
-      "date": "2026-02-17T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 249,
-      "diff": -968,
-      "big": 8,
-      "games": 1342,
-      "reg": 4,
-      "createdAt": "2026-02-20T22:03:45.843Z",
-      "updatedAt": "2026-02-20T22:03:45.843Z"
-    },
-    {
-      "id": "cmlvfsqxo000pnvx2gjgzkv9i",
-      "date": "2026-02-17T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 250,
-      "diff": 700,
-      "big": 41,
-      "games": 3413,
-      "reg": 12,
-      "createdAt": "2026-02-20T22:03:46.140Z",
-      "updatedAt": "2026-02-20T22:03:46.140Z"
-    },
-    {
-      "id": "cmlvi6pj80001kx5u7kg8tqpm",
-      "date": "2026-02-19T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 238,
-      "diff": -2496,
-      "big": 5,
-      "games": 2083,
-      "reg": 3,
-      "createdAt": "2026-02-20T23:10:36.740Z",
-      "updatedAt": "2026-02-20T23:10:36.740Z"
-    },
-    {
-      "id": "cmlvi6psk0003kx5u8ztpn91s",
-      "date": "2026-02-19T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 239,
-      "diff": 2000,
-      "big": 31,
-      "games": 1572,
-      "reg": 6,
-      "createdAt": "2026-02-20T23:10:37.076Z",
-      "updatedAt": "2026-02-20T23:10:37.076Z"
-    },
-    {
-      "id": "cmlvi6px70005kx5urwwiot3t",
-      "date": "2026-02-19T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 240,
-      "diff": -61,
+      "diff": -1129,
       "big": 1,
-      "games": 128,
+      "games": 831,
       "reg": 1,
-      "createdAt": "2026-02-20T23:10:37.244Z",
-      "updatedAt": "2026-02-20T23:10:37.244Z"
+      "createdAt": "2026-03-03T14:50:10.022Z",
+      "updatedAt": "2026-03-03T14:50:10.022Z",
+      "season": 2
     },
     {
-      "id": "cmlvi6q1t0007kx5u0bgfug6t",
-      "date": "2026-02-19T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 241,
-      "diff": 6500,
-      "big": 47,
-      "games": 1180,
-      "reg": 4,
-      "createdAt": "2026-02-20T23:10:37.410Z",
-      "updatedAt": "2026-02-20T23:10:37.410Z"
-    },
-    {
-      "id": "cmlvi6q6e0009kx5ub3frody2",
-      "date": "2026-02-19T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 242,
-      "diff": -534,
-      "big": 4,
-      "games": 704,
-      "reg": 1,
-      "createdAt": "2026-02-20T23:10:37.574Z",
-      "updatedAt": "2026-02-20T23:10:37.574Z"
-    },
-    {
-      "id": "cmlvi6qay000bkx5uiwtk15rj",
-      "date": "2026-02-19T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 243,
-      "diff": 92,
-      "big": 27,
-      "games": 2320,
-      "reg": 7,
-      "createdAt": "2026-02-20T23:10:37.739Z",
-      "updatedAt": "2026-02-20T23:10:37.739Z"
-    },
-    {
-      "id": "cmlvi6qfj000dkx5unghl1zf4",
-      "date": "2026-02-19T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 244,
-      "diff": -40,
-      "big": 19,
-      "games": 1701,
-      "reg": 4,
-      "createdAt": "2026-02-20T23:10:37.903Z",
-      "updatedAt": "2026-02-20T23:10:37.903Z"
-    },
-    {
-      "id": "cmlvi6qk4000fkx5ul8bwwtm2",
-      "date": "2026-02-19T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 245,
-      "diff": -1220,
-      "big": 4,
-      "games": 1155,
-      "reg": 3,
-      "createdAt": "2026-02-20T23:10:38.068Z",
-      "updatedAt": "2026-02-20T23:10:38.068Z"
-    },
-    {
-      "id": "cmlvi6qop000hkx5u9cheow78",
-      "date": "2026-02-19T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 246,
-      "diff": -413,
-      "big": 22,
-      "games": 2211,
-      "reg": 6,
-      "createdAt": "2026-02-20T23:10:38.233Z",
-      "updatedAt": "2026-02-20T23:10:38.233Z"
-    },
-    {
-      "id": "cmlvi6qta000jkx5u2twp2p3v",
-      "date": "2026-02-19T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 247,
-      "diff": -794,
-      "big": 12,
-      "games": 1580,
-      "reg": 4,
-      "createdAt": "2026-02-20T23:10:38.398Z",
-      "updatedAt": "2026-02-20T23:10:38.398Z"
-    },
-    {
-      "id": "cmlvi6qxu000lkx5uiitvjacr",
-      "date": "2026-02-19T15:00:00.000Z",
+      "id": "cmmaq5izs000bgb86wpkds35k",
+      "date": "2026-03-02T15:00:00.000Z",
       "machineId": "cmlj5u7rv000172g9pyrlc8tu",
       "machineNo": 248,
-      "diff": 3000,
-      "big": 58,
-      "games": 2934,
-      "reg": 6,
-      "createdAt": "2026-02-20T23:10:38.562Z",
-      "updatedAt": "2026-02-20T23:10:38.562Z"
-    },
-    {
-      "id": "cmlvi6r2e000nkx5u90tkr1g0",
-      "date": "2026-02-19T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 249,
-      "diff": -480,
-      "big": 3,
-      "games": 580,
-      "reg": 1,
-      "createdAt": "2026-02-20T23:10:38.727Z",
-      "updatedAt": "2026-02-20T23:10:38.727Z"
-    },
-    {
-      "id": "cmlvi6r6x000pkx5utjvo70mr",
-      "date": "2026-02-19T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 250,
-      "diff": 38,
-      "big": 33,
-      "games": 2884,
-      "reg": 7,
-      "createdAt": "2026-02-20T23:10:38.890Z",
-      "updatedAt": "2026-02-20T23:10:38.890Z"
-    },
-    {
-      "id": "cmlvia0zi0001l4ija6r4l2bd",
-      "date": "2026-02-18T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 301,
-      "diff": 100,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-20T23:13:11.547Z",
-      "updatedAt": "2026-02-20T23:13:11.547Z"
-    },
-    {
-      "id": "cmlviaqoc0001ccfmctte25mg",
-      "date": "2026-02-19T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 302,
-      "diff": 1000,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-20T23:13:44.844Z",
-      "updatedAt": "2026-02-20T23:13:44.844Z"
-    },
-    {
-      "id": "cmlvib3jy0003l4ij118xxoaz",
-      "date": "2026-02-19T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 301,
-      "diff": 200,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-20T23:14:01.463Z",
-      "updatedAt": "2026-02-20T23:14:01.463Z"
-    },
-    {
-      "id": "cmlvibhlr0005l4ijqg3zfoc5",
-      "date": "2026-02-19T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 300,
-      "diff": 650,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-20T23:14:19.638Z",
-      "updatedAt": "2026-02-20T23:14:19.638Z"
-    },
-    {
-      "id": "cmlvibvxj0003ccfmibwwaquf",
-      "date": "2026-02-19T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": -50,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-20T23:14:38.246Z",
-      "updatedAt": "2026-02-20T23:14:38.246Z"
-    },
-    {
-      "id": "cmlvic7p70005ccfmn5ce0nh9",
-      "date": "2026-02-20T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": 400,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-20T23:14:53.499Z",
-      "updatedAt": "2026-02-20T23:14:53.499Z"
-    },
-    {
-      "id": "cmlvicjvk0007ccfmnacaamge",
-      "date": "2026-02-20T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 300,
-      "diff": -150,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-20T23:15:09.276Z",
-      "updatedAt": "2026-02-20T23:15:09.276Z"
-    },
-    {
-      "id": "cmlwxhb1d0001128mul1wovft",
-      "date": "2026-02-20T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 238,
-      "diff": 4400,
-      "big": 93,
-      "games": 5194,
-      "reg": 21,
-      "createdAt": "2026-02-21T23:06:31.585Z",
-      "updatedAt": "2026-02-21T23:06:31.585Z"
-    },
-    {
-      "id": "cmlwxhbas0003128ml7uze6lw",
-      "date": "2026-02-20T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 239,
-      "diff": -1821,
-      "big": 44,
-      "games": 5077,
-      "reg": 13,
-      "createdAt": "2026-02-21T23:06:31.924Z",
-      "updatedAt": "2026-02-21T23:06:31.924Z"
-    },
-    {
-      "id": "cmlwxhbfi0005128mub3ycztm",
-      "date": "2026-02-20T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 240,
-      "diff": -1508,
-      "big": 61,
-      "games": 6370,
-      "reg": 22,
-      "createdAt": "2026-02-21T23:06:32.095Z",
-      "updatedAt": "2026-02-21T23:06:32.095Z"
-    },
-    {
-      "id": "cmlwxhbk70007128myb4xt1yo",
-      "date": "2026-02-20T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 241,
-      "diff": -104,
-      "big": 10,
-      "games": 950,
-      "reg": 2,
-      "createdAt": "2026-02-21T23:06:32.264Z",
-      "updatedAt": "2026-02-21T23:06:32.264Z"
-    },
-    {
-      "id": "cmlwxhbox0009128mpc35km0f",
-      "date": "2026-02-20T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 242,
-      "diff": 7500,
-      "big": 94,
-      "games": 5932,
-      "reg": 19,
-      "createdAt": "2026-02-21T23:06:32.433Z",
-      "updatedAt": "2026-02-21T23:06:32.433Z"
-    },
-    {
-      "id": "cmlwxhbts000b128mb2lzp2v0",
-      "date": "2026-02-20T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 243,
-      "diff": -2206,
+      "diff": -208,
       "big": 41,
-      "games": 5066,
-      "reg": 16,
-      "createdAt": "2026-02-21T23:06:32.608Z",
-      "updatedAt": "2026-02-21T23:06:32.608Z"
+      "games": 3751,
+      "reg": 12,
+      "createdAt": "2026-03-03T14:50:11.176Z",
+      "updatedAt": "2026-03-03T14:50:11.176Z",
+      "season": 2
     },
     {
-      "id": "cmlwxhbyh000d128mkvofjovb",
-      "date": "2026-02-20T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 244,
-      "diff": 14500,
-      "big": 118,
-      "games": 4139,
-      "reg": 20,
-      "createdAt": "2026-02-21T23:06:32.777Z",
-      "updatedAt": "2026-02-21T23:06:32.777Z"
-    },
-    {
-      "id": "cmlk609of000bjt4567vu4ciy",
-      "date": "2026-02-12T00:00:00.000Z",
-      "machineId": "cmlj5u7s1000272g9w1gibj3e",
-      "machineNo": 297,
-      "diff": 100,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-13T00:44:11.788Z",
-      "updatedAt": "2026-02-13T00:44:11.788Z"
-    },
-    {
-      "id": "cmlk60mur000djt45lgrovq0u",
-      "date": "2026-02-12T00:00:00.000Z",
-      "machineId": "cmlj5u7s1000272g9w1gibj3e",
-      "machineNo": 298,
-      "diff": -1100,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-13T00:44:29.788Z",
-      "updatedAt": "2026-02-13T00:44:29.788Z"
-    },
-    {
-      "id": "cmlk61lk7000hjt45qhk7q82y",
-      "date": "2026-02-12T00:00:00.000Z",
-      "machineId": "cmlj5u7s7000372g98xiq3bn9",
-      "machineNo": 294,
-      "diff": -2600,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-13T00:45:14.984Z",
-      "updatedAt": "2026-02-13T00:45:14.984Z"
-    },
-    {
-      "id": "cmlk61xmx000jjt45wxfqkoxn",
-      "date": "2026-02-12T00:00:00.000Z",
-      "machineId": "cmlj5u7s7000372g98xiq3bn9",
-      "machineNo": 295,
-      "diff": -1600,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-13T00:45:30.633Z",
-      "updatedAt": "2026-02-13T00:45:30.633Z"
-    },
-    {
-      "id": "cmlj6arxw001312p2zoztm4l8",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": 1500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:04:36.980Z",
-      "updatedAt": "2026-02-12T08:04:36.980Z"
-    },
-    {
-      "id": "cmlj6arzn001512p2drcsua6v",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 300,
-      "diff": 0,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:04:37.043Z",
-      "updatedAt": "2026-02-12T08:04:37.043Z"
-    },
-    {
-      "id": "cmlj6as0y001712p228f42isy",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 301,
-      "diff": -1000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:04:37.090Z",
-      "updatedAt": "2026-02-12T08:04:37.090Z"
-    },
-    {
-      "id": "cmlj6as28001912p2t8bkkvxv",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 302,
-      "diff": 0,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:04:37.137Z",
-      "updatedAt": "2026-02-12T08:04:37.137Z"
-    },
-    {
-      "id": "cmlj6b6zn001b12p22gvvosnq",
-      "date": "2026-02-10T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": 0,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:04:56.483Z",
-      "updatedAt": "2026-02-12T08:04:56.483Z"
-    },
-    {
-      "id": "cmlj6b71g001d12p2nqd83shm",
-      "date": "2026-02-10T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 300,
-      "diff": 0,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:04:56.549Z",
-      "updatedAt": "2026-02-12T08:04:56.549Z"
-    },
-    {
-      "id": "cmlj6b733001f12p2v417xe9z",
-      "date": "2026-02-10T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 301,
-      "diff": -500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:04:56.607Z",
-      "updatedAt": "2026-02-12T08:04:56.607Z"
-    },
-    {
-      "id": "cmlj6b749001h12p2u66t22ra",
-      "date": "2026-02-10T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 302,
-      "diff": 8000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:04:56.649Z",
-      "updatedAt": "2026-02-12T08:04:56.649Z"
-    },
-    {
-      "id": "cmlj6bn5n001j12p2vjzz36yq",
-      "date": "2026-02-11T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 299,
-      "diff": 500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:05:17.436Z",
-      "updatedAt": "2026-02-12T08:05:17.436Z"
-    },
-    {
-      "id": "cmlj6bn7a001l12p26vy0c9mn",
-      "date": "2026-02-11T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 300,
-      "diff": -2000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:05:17.494Z",
-      "updatedAt": "2026-02-12T08:05:17.494Z"
-    },
-    {
-      "id": "cmlj6bn8o001n12p29l6tliii",
-      "date": "2026-02-11T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 301,
-      "diff": 1000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:05:17.544Z",
-      "updatedAt": "2026-02-12T08:05:17.544Z"
-    },
-    {
-      "id": "cmlj6bn9z001p12p2eichyf9v",
-      "date": "2026-02-11T00:00:00.000Z",
-      "machineId": "cmlj5u7rm000072g9bayz8lo1",
-      "machineNo": 302,
-      "diff": -500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:05:17.591Z",
-      "updatedAt": "2026-02-12T08:05:17.591Z"
-    },
-    {
-      "id": "cmlj6cq3u001r12p2qfu4flk4",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 238,
-      "diff": -4000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:06:07.914Z",
-      "updatedAt": "2026-02-12T08:06:07.914Z"
-    },
-    {
-      "id": "cmlj6cq59001t12p2bpuqq6nq",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 239,
-      "diff": -1000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:06:07.965Z",
-      "updatedAt": "2026-02-12T08:06:07.965Z"
-    },
-    {
-      "id": "cmlj6cq6h001v12p2xr4e3mrd",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 240,
-      "diff": -500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:06:08.009Z",
-      "updatedAt": "2026-02-12T08:06:08.009Z"
-    },
-    {
-      "id": "cmlj6cq7p001x12p28tii1y5z",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 241,
-      "diff": -750,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:06:08.053Z",
-      "updatedAt": "2026-02-12T08:06:08.053Z"
-    },
-    {
-      "id": "cmlj6cq8v001z12p2merrs22l",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 242,
-      "diff": -500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:06:08.096Z",
-      "updatedAt": "2026-02-12T08:06:08.096Z"
-    },
-    {
-      "id": "cmlj6cqa2002112p2jo93qgym",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 243,
-      "diff": -2000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:06:08.138Z",
-      "updatedAt": "2026-02-12T08:06:08.138Z"
-    },
-    {
-      "id": "cmlj6cqbi002312p257e2vwo4",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 244,
-      "diff": 7000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:06:08.191Z",
-      "updatedAt": "2026-02-12T08:06:08.191Z"
-    },
-    {
-      "id": "cmlj6cqcp002512p2lfbldeuz",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 245,
-      "diff": 0,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:06:08.233Z",
-      "updatedAt": "2026-02-12T08:06:08.233Z"
-    },
-    {
-      "id": "cmlj6cqdx002712p210m48kqx",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 246,
-      "diff": 0,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:06:08.277Z",
-      "updatedAt": "2026-02-12T08:06:08.277Z"
-    },
-    {
-      "id": "cmlj6cqf6002912p2f3nw9i6q",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 247,
-      "diff": 1000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:06:08.322Z",
-      "updatedAt": "2026-02-12T08:06:08.322Z"
-    },
-    {
-      "id": "cmlj6cqgj002b12p2s2uyj7sr",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 248,
-      "diff": -500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:06:08.372Z",
-      "updatedAt": "2026-02-12T08:06:08.372Z"
-    },
-    {
-      "id": "cmlj6cqhu002d12p2t93c7559",
-      "date": "2026-02-09T00:00:00.000Z",
+      "id": "cmmaq5jvq000fgb86d6x33xet",
+      "date": "2026-03-02T15:00:00.000Z",
       "machineId": "cmlj5u7rv000172g9pyrlc8tu",
       "machineNo": 249,
-      "diff": 0,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:06:08.418Z",
-      "updatedAt": "2026-02-12T08:06:08.418Z"
+      "diff": 2444,
+      "big": 88,
+      "games": 6150,
+      "reg": 19,
+      "createdAt": "2026-03-03T14:50:12.326Z",
+      "updatedAt": "2026-03-03T14:50:12.326Z",
+      "season": 2
     },
     {
-      "id": "cmlj6cqj4002f12p2hxt75d65",
-      "date": "2026-02-09T00:00:00.000Z",
+      "id": "cmmaq5krq000jgb8667frj43l",
+      "date": "2026-03-02T15:00:00.000Z",
       "machineId": "cmlj5u7rv000172g9pyrlc8tu",
       "machineNo": 250,
-      "diff": 1000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:06:08.465Z",
-      "updatedAt": "2026-02-12T08:06:08.465Z"
-    },
-    {
-      "id": "cmlj6egvx003x12p21irxoixl",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7s1000272g9w1gibj3e",
-      "machineNo": 296,
-      "diff": 0,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:07:29.277Z",
-      "updatedAt": "2026-02-12T08:07:29.277Z"
-    },
-    {
-      "id": "cmlj6egxg003z12p2lsxfqo4i",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7s1000272g9w1gibj3e",
-      "machineNo": 297,
-      "diff": -750,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:07:29.333Z",
-      "updatedAt": "2026-02-12T08:07:29.333Z"
-    },
-    {
-      "id": "cmlj6egyq004112p28xnrh3re",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7s1000272g9w1gibj3e",
-      "machineNo": 298,
-      "diff": 0,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:07:29.378Z",
-      "updatedAt": "2026-02-12T08:07:29.378Z"
-    },
-    {
-      "id": "cmlj6ewof004312p2ggqcn0hw",
-      "date": "2026-02-10T00:00:00.000Z",
-      "machineId": "cmlj5u7s1000272g9w1gibj3e",
-      "machineNo": 296,
-      "diff": 2000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:07:49.743Z",
-      "updatedAt": "2026-02-12T08:07:49.743Z"
-    },
-    {
-      "id": "cmlj6ewpy004512p21ycs5zzm",
-      "date": "2026-02-10T00:00:00.000Z",
-      "machineId": "cmlj5u7s1000272g9w1gibj3e",
-      "machineNo": 297,
-      "diff": -500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:07:49.798Z",
-      "updatedAt": "2026-02-12T08:07:49.798Z"
-    },
-    {
-      "id": "cmlj6ewra004712p25crrasga",
-      "date": "2026-02-10T00:00:00.000Z",
-      "machineId": "cmlj5u7s1000272g9w1gibj3e",
-      "machineNo": 298,
-      "diff": -500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:07:49.846Z",
-      "updatedAt": "2026-02-12T08:07:49.846Z"
-    },
-    {
-      "id": "cmlj6f7gy004912p2hoafsins",
-      "date": "2026-02-11T00:00:00.000Z",
-      "machineId": "cmlj5u7s1000272g9w1gibj3e",
-      "machineNo": 296,
-      "diff": -1500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:08:03.730Z",
-      "updatedAt": "2026-02-12T08:08:03.730Z"
-    },
-    {
-      "id": "cmlj6f7i7004b12p2p96p64nx",
-      "date": "2026-02-11T00:00:00.000Z",
-      "machineId": "cmlj5u7s1000272g9w1gibj3e",
-      "machineNo": 297,
-      "diff": -1500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:08:03.775Z",
-      "updatedAt": "2026-02-12T08:08:03.775Z"
-    },
-    {
-      "id": "cmlj6f7jr004d12p2xluhpzmv",
-      "date": "2026-02-11T00:00:00.000Z",
-      "machineId": "cmlj5u7s1000272g9w1gibj3e",
-      "machineNo": 298,
-      "diff": 0,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:08:03.831Z",
-      "updatedAt": "2026-02-12T08:08:03.831Z"
-    },
-    {
-      "id": "cmlj6fmgk004l12p2mcjo9qxn",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7s7000372g98xiq3bn9",
-      "machineNo": 257,
-      "diff": 0,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:08:23.156Z",
-      "updatedAt": "2026-02-12T08:08:23.156Z"
-    },
-    {
-      "id": "cmlj6fmi1004n12p2nobgydqm",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7s7000372g98xiq3bn9",
-      "machineNo": 294,
-      "diff": -2500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:08:23.209Z",
-      "updatedAt": "2026-02-12T08:08:23.209Z"
-    },
-    {
-      "id": "cmlj6fmja004p12p28huhrxa1",
-      "date": "2026-02-09T00:00:00.000Z",
-      "machineId": "cmlj5u7s7000372g98xiq3bn9",
-      "machineNo": 295,
-      "diff": -3500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:08:23.254Z",
-      "updatedAt": "2026-02-12T08:08:23.254Z"
-    },
-    {
-      "id": "cmlj6fvgh004r12p2ap41okfv",
-      "date": "2026-02-10T00:00:00.000Z",
-      "machineId": "cmlj5u7s7000372g98xiq3bn9",
-      "machineNo": 257,
-      "diff": -2500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:08:34.817Z",
-      "updatedAt": "2026-02-12T08:08:34.817Z"
-    },
-    {
-      "id": "cmlj6fvi3004t12p2382tf34o",
-      "date": "2026-02-10T00:00:00.000Z",
-      "machineId": "cmlj5u7s7000372g98xiq3bn9",
-      "machineNo": 294,
-      "diff": -1000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:08:34.875Z",
-      "updatedAt": "2026-02-12T08:08:34.875Z"
-    },
-    {
-      "id": "cmlj6fvjp004v12p2zc2erfq7",
-      "date": "2026-02-10T00:00:00.000Z",
-      "machineId": "cmlj5u7s7000372g98xiq3bn9",
-      "machineNo": 295,
-      "diff": -4000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:08:34.933Z",
-      "updatedAt": "2026-02-12T08:08:34.933Z"
-    },
-    {
-      "id": "cmlj6gc8q004x12p2j91sm5wa",
-      "date": "2026-02-11T00:00:00.000Z",
-      "machineId": "cmlj5u7s7000372g98xiq3bn9",
-      "machineNo": 257,
-      "diff": -4000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:08:56.570Z",
-      "updatedAt": "2026-02-12T08:08:56.570Z"
-    },
-    {
-      "id": "cmlj6gcaf004z12p2to91l74q",
-      "date": "2026-02-11T00:00:00.000Z",
-      "machineId": "cmlj5u7s7000372g98xiq3bn9",
-      "machineNo": 294,
-      "diff": -5000,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:08:56.631Z",
-      "updatedAt": "2026-02-12T08:08:56.631Z"
-    },
-    {
-      "id": "cmlj6gcbr005112p2optqqud9",
-      "date": "2026-02-11T00:00:00.000Z",
-      "machineId": "cmlj5u7s7000372g98xiq3bn9",
-      "machineNo": 295,
-      "diff": -3500,
-      "big": null,
-      "games": null,
-      "reg": null,
-      "createdAt": "2026-02-12T08:08:56.679Z",
-      "updatedAt": "2026-02-12T08:08:56.679Z"
-    },
-    {
-      "id": "cmljcr7ks0001tcr6r51p00gd",
-      "date": "2026-02-10T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 238,
-      "diff": -726,
-      "big": 26,
-      "games": 2770,
-      "reg": 6,
-      "createdAt": "2026-02-12T11:05:21.437Z",
-      "updatedAt": "2026-02-12T11:05:21.437Z"
-    },
-    {
-      "id": "cmljcr7l40003tcr6odcaqe54",
-      "date": "2026-02-10T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 239,
-      "diff": 491,
-      "big": 14,
-      "games": 911,
-      "reg": 4,
-      "createdAt": "2026-02-12T11:05:21.448Z",
-      "updatedAt": "2026-02-12T11:05:21.448Z"
-    },
-    {
-      "id": "cmljcr7ld0005tcr6f5obgxmr",
-      "date": "2026-02-10T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 240,
-      "diff": -976,
-      "big": 7,
-      "games": 1259,
-      "reg": 3,
-      "createdAt": "2026-02-12T11:05:21.457Z",
-      "updatedAt": "2026-02-12T11:05:21.457Z"
-    },
-    {
-      "id": "cmljcr7lj0007tcr6n8hl304q",
-      "date": "2026-02-10T00:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 241,
-      "diff": -2001,
-      "big": 22,
-      "games": 3256,
-      "reg": 6,
-      "createdAt": "2026-02-12T11:05:21.463Z",
-      "updatedAt": "2026-02-12T11:05:21.463Z"
-    },
-    {
-      "id": "cmll0qlil000bq195ggpx2hlr",
-      "date": "2026-02-13T00:00:00.000Z",
-      "machineId": "cmlj5u7s7000372g98xiq3bn9",
-      "machineNo": 294,
-      "diff": -4000,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-13T15:04:27.904Z",
-      "updatedAt": "2026-02-13T15:04:27.904Z"
-    },
-    {
-      "id": "cmll0qwrj000dq195t71fpat3",
-      "date": "2026-02-13T00:00:00.000Z",
-      "machineId": "cmlj5u7s7000372g98xiq3bn9",
-      "machineNo": 295,
-      "diff": -3700,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-13T15:04:44.383Z",
-      "updatedAt": "2026-02-13T15:04:44.383Z"
-    },
-    {
-      "id": "cmll0retk000fq195c2pzofa3",
-      "date": "2026-02-13T00:00:00.000Z",
-      "machineId": "cmlj5u7s1000272g9w1gibj3e",
-      "machineNo": 296,
-      "diff": -300,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-13T15:05:07.436Z",
-      "updatedAt": "2026-02-13T15:05:07.436Z"
-    },
-    {
-      "id": "cmll0s6tj000jq1953hl3apfy",
-      "date": "2026-02-13T00:00:00.000Z",
-      "machineId": "cmlj5u7s1000272g9w1gibj3e",
-      "machineNo": 298,
-      "diff": 200,
-      "big": 0,
-      "games": 0,
-      "reg": 0,
-      "createdAt": "2026-02-13T15:05:41.346Z",
-      "updatedAt": "2026-02-13T15:05:41.346Z"
-    },
-    {
-      "id": "cmlvfs9zf0001wo2wllcmfilr",
-      "date": "2026-02-16T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 238,
-      "diff": -932,
-      "big": 25,
-      "games": 2817,
-      "reg": 7,
-      "createdAt": "2026-02-20T22:03:24.168Z",
-      "updatedAt": "2026-02-20T22:03:24.168Z"
-    },
-    {
-      "id": "cmlvfsa9u0003wo2w06wptxxj",
-      "date": "2026-02-16T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 239,
-      "diff": -381,
-      "big": 3,
-      "games": 515,
-      "reg": 1,
-      "createdAt": "2026-02-20T22:03:24.546Z",
-      "updatedAt": "2026-02-20T22:03:24.546Z"
-    },
-    {
-      "id": "cmlvfsaf10005wo2we0maxhfv",
-      "date": "2026-02-16T15:00:00.000Z",
-      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 240,
-      "diff": -1736,
+      "diff": -1005,
       "big": 5,
-      "games": 1583,
+      "games": 1102,
       "reg": 2,
-      "createdAt": "2026-02-20T22:03:24.733Z",
-      "updatedAt": "2026-02-20T22:03:24.733Z"
+      "createdAt": "2026-03-03T14:50:13.478Z",
+      "updatedAt": "2026-03-03T14:50:13.478Z",
+      "season": 2
     },
     {
-      "id": "cmlvfsak50007wo2w5izz43le",
-      "date": "2026-02-16T15:00:00.000Z",
+      "id": "cmmaq5m25000ngb86wvy7oa27",
+      "date": "2026-03-02T15:00:00.000Z",
       "machineId": "cmlj5u7rv000172g9pyrlc8tu",
-      "machineNo": 241,
-      "diff": 3000,
-      "big": 33,
-      "games": 1164,
+      "machineNo": 251,
+      "diff": -2930,
+      "big": 9,
+      "games": 2721,
+      "reg": 4,
+      "createdAt": "2026-03-03T14:50:15.150Z",
+      "updatedAt": "2026-03-03T14:50:15.150Z",
+      "season": 2
+    },
+    {
+      "id": "cmmaq5my3000rgb86s97h1ajc",
+      "date": "2026-03-02T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 252,
+      "diff": -279,
+      "big": 4,
+      "games": 536,
       "reg": 3,
-      "createdAt": "2026-02-20T22:03:24.918Z",
-      "updatedAt": "2026-02-20T22:03:24.918Z"
+      "createdAt": "2026-03-03T14:50:16.299Z",
+      "updatedAt": "2026-03-03T14:50:16.299Z",
+      "season": 2
+    },
+    {
+      "id": "cmmaq5nu1000vgb86nqwotel5",
+      "date": "2026-03-02T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 253,
+      "diff": 2319,
+      "big": 87,
+      "games": 6144,
+      "reg": 20,
+      "createdAt": "2026-03-03T14:50:17.449Z",
+      "updatedAt": "2026-03-03T14:50:17.449Z",
+      "season": 2
+    },
+    {
+      "id": "cmmaq5oqi000zgb86tqu8dovc",
+      "date": "2026-03-02T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 254,
+      "diff": -887,
+      "big": 2,
+      "games": 760,
+      "reg": 2,
+      "createdAt": "2026-03-03T14:50:18.618Z",
+      "updatedAt": "2026-03-03T14:50:18.618Z",
+      "season": 2
+    },
+    {
+      "id": "cmmaq5q970013gb8673mcelek",
+      "date": "2026-03-02T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 255,
+      "diff": 1497,
+      "big": 68,
+      "games": 5010,
+      "reg": 20,
+      "createdAt": "2026-03-03T14:50:20.587Z",
+      "updatedAt": "2026-03-03T14:50:20.587Z",
+      "season": 2
+    },
+    {
+      "id": "cmmaq5rbn0017gb86bszp0xfo",
+      "date": "2026-03-02T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 256,
+      "diff": -234,
+      "big": 21,
+      "games": 2005,
+      "reg": 7,
+      "createdAt": "2026-03-03T14:50:21.771Z",
+      "updatedAt": "2026-03-03T14:50:21.771Z",
+      "season": 2
     },
     {
       "id": "cmljcr7nh000ntcr6vlmtbup5",
@@ -2273,7 +696,8 @@
       "games": 804,
       "reg": 2,
       "createdAt": "2026-02-12T11:05:21.533Z",
-      "updatedAt": "2026-02-12T11:05:21.533Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcr7nt000ptcr66theihz1",
@@ -2285,7 +709,8 @@
       "games": 2574,
       "reg": 11,
       "createdAt": "2026-02-12T11:05:21.545Z",
-      "updatedAt": "2026-02-12T11:05:21.545Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcu4oy0001upyqyauibwqs",
@@ -2297,7 +722,8 @@
       "games": 3040,
       "reg": 5,
       "createdAt": "2026-02-12T11:07:37.666Z",
-      "updatedAt": "2026-02-12T11:07:37.666Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcu4ph0003upyqkwb9ckwg",
@@ -2309,7 +735,8 @@
       "games": 1856,
       "reg": 5,
       "createdAt": "2026-02-12T11:07:37.685Z",
-      "updatedAt": "2026-02-12T11:07:37.685Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcu4pq0005upyq61g75q18",
@@ -2321,7 +748,8 @@
       "games": 2059,
       "reg": 5,
       "createdAt": "2026-02-12T11:07:37.694Z",
-      "updatedAt": "2026-02-12T11:07:37.694Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcu4py0007upyqvqpywrnk",
@@ -2333,7 +761,2205 @@
       "games": 4282,
       "reg": 11,
       "createdAt": "2026-02-12T11:07:37.702Z",
-      "updatedAt": "2026-02-12T11:07:37.702Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmll0nqyt0001q195vhptgf7g",
+      "date": "2026-02-13T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": -200,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T15:02:16.546Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmll0pgbf0007q195vntfxgbz",
+      "date": "2026-02-13T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 302,
+      "diff": -3300,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T15:03:36.055Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqks48x000d7gsm18766zho",
+      "date": "2026-02-15T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 244,
+      "diff": -2921,
+      "big": 19,
+      "games": 3597,
+      "reg": 8,
+      "createdAt": "2026-02-17T12:24:23.938Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqks4dl000f7gsm4w1kgo1d",
+      "date": "2026-02-15T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 245,
+      "diff": -2961,
+      "big": 11,
+      "games": 2918,
+      "reg": 5,
+      "createdAt": "2026-02-17T12:24:24.105Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqks4i7000h7gsmgq4cuqh8",
+      "date": "2026-02-15T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 246,
+      "diff": 750,
+      "big": 75,
+      "games": 6245,
+      "reg": 24,
+      "createdAt": "2026-02-17T12:24:24.272Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqks4mw000j7gsmwcauwoba",
+      "date": "2026-02-15T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 247,
+      "diff": -8,
+      "big": 37,
+      "games": 3267,
+      "reg": 10,
+      "createdAt": "2026-02-17T12:24:24.440Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqks4rj000l7gsm2jzscpiv",
+      "date": "2026-02-15T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 248,
+      "diff": -190,
+      "big": 49,
+      "games": 4445,
+      "reg": 12,
+      "createdAt": "2026-02-17T12:24:24.607Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqks58f000n7gsmq8yrzw92",
+      "date": "2026-02-15T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 249,
+      "diff": -528,
+      "big": 5,
+      "games": 788,
+      "reg": 2,
+      "createdAt": "2026-02-17T12:24:25.215Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqks5f1000p7gsm6sultfk1",
+      "date": "2026-02-15T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 250,
+      "diff": 5700,
+      "big": 92,
+      "games": 5264,
+      "reg": 17,
+      "createdAt": "2026-02-17T12:24:25.453Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsapb0009wo2wvsrmpk6d",
+      "date": "2026-02-16T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 242,
+      "diff": 195,
+      "big": 13,
+      "games": 1018,
+      "reg": 4,
+      "createdAt": "2026-02-20T22:03:25.104Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsauh000bwo2wsxlo5ntc",
+      "date": "2026-02-16T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 243,
+      "diff": -756,
+      "big": 15,
+      "games": 1820,
+      "reg": 5,
+      "createdAt": "2026-02-20T22:03:25.290Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsazm000dwo2wix08dggn",
+      "date": "2026-02-16T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 244,
+      "diff": 818,
+      "big": 33,
+      "games": 2371,
+      "reg": 8,
+      "createdAt": "2026-02-20T22:03:25.474Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsb4t000fwo2w0hntq2ru",
+      "date": "2026-02-16T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 245,
+      "diff": -229,
+      "big": 4,
+      "games": 503,
+      "reg": 1,
+      "createdAt": "2026-02-20T22:03:25.661Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsba1000hwo2w4t3ui8ie",
+      "date": "2026-02-16T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 246,
+      "diff": -312,
+      "big": 9,
+      "games": 999,
+      "reg": 2,
+      "createdAt": "2026-02-20T22:03:25.849Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsbf7000jwo2wfhj15dkh",
+      "date": "2026-02-16T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 247,
+      "diff": -438,
+      "big": 4,
+      "games": 641,
+      "reg": 1,
+      "createdAt": "2026-02-20T22:03:26.035Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsbkc000lwo2w5a7cgtb4",
+      "date": "2026-02-16T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 248,
+      "diff": 7200,
+      "big": 73,
+      "games": 1810,
+      "reg": 4,
+      "createdAt": "2026-02-20T22:03:26.220Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsbph000nwo2wvg1showq",
+      "date": "2026-02-16T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 249,
+      "diff": -353,
+      "big": 6,
+      "games": 761,
+      "reg": 1,
+      "createdAt": "2026-02-20T22:03:26.405Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsbum000pwo2wn0edspws",
+      "date": "2026-02-16T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 250,
+      "diff": -1509,
+      "big": 15,
+      "games": 2315,
+      "reg": 7,
+      "createdAt": "2026-02-20T22:03:26.591Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi3dnr000130z1vo67nuwa",
+      "date": "2026-02-18T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 238,
+      "diff": -5350,
+      "big": 9,
+      "games": 4313,
+      "reg": 5,
+      "createdAt": "2026-02-20T23:08:01.383Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi3dx0000330z1nw2igsos",
+      "date": "2026-02-18T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 239,
+      "diff": -751,
+      "big": 6,
+      "games": 1023,
+      "reg": 1,
+      "createdAt": "2026-02-20T23:08:01.717Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi3e1o000530z1baxu4eoz",
+      "date": "2026-02-18T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 240,
+      "diff": -993,
+      "big": 18,
+      "games": 2240,
+      "reg": 8,
+      "createdAt": "2026-02-20T23:08:01.884Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi3e6a000730z1pxsd77z1",
+      "date": "2026-02-18T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 241,
+      "diff": 400,
+      "big": 92,
+      "games": 7902,
+      "reg": 29,
+      "createdAt": "2026-02-20T23:08:02.051Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi3eax000930z1mrpt6xtc",
+      "date": "2026-02-18T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 242,
+      "diff": -3023,
+      "big": 9,
+      "games": 2782,
+      "reg": 4,
+      "createdAt": "2026-02-20T23:08:02.217Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi3efj000b30z1v66smz76",
+      "date": "2026-02-18T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 243,
+      "diff": -1639,
+      "big": 4,
+      "games": 1431,
+      "reg": 2,
+      "createdAt": "2026-02-20T23:08:02.384Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi3ek7000d30z1ksddwf1l",
+      "date": "2026-02-18T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 244,
+      "diff": -2994,
+      "big": 6,
+      "games": 2499,
+      "reg": 3,
+      "createdAt": "2026-02-20T23:08:02.551Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi3eou000f30z1ld5eqsvf",
+      "date": "2026-02-18T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 245,
+      "diff": -1414,
+      "big": 5,
+      "games": 1371,
+      "reg": 3,
+      "createdAt": "2026-02-20T23:08:02.718Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi3etj000h30z19gj3adx5",
+      "date": "2026-02-18T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 246,
+      "diff": -32,
+      "big": 14,
+      "games": 1255,
+      "reg": 2,
+      "createdAt": "2026-02-20T23:08:02.888Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi3ey7000j30z112eit9yh",
+      "date": "2026-02-18T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 247,
+      "diff": -197,
+      "big": 34,
+      "games": 3127,
+      "reg": 9,
+      "createdAt": "2026-02-20T23:08:03.055Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi3f2u000l30z1js4539e1",
+      "date": "2026-02-18T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 248,
+      "diff": 2200,
+      "big": 47,
+      "games": 2264,
+      "reg": 8,
+      "createdAt": "2026-02-20T23:08:03.222Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi3f7i000n30z1838gr34x",
+      "date": "2026-02-18T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 249,
+      "diff": -923,
+      "big": 3,
+      "games": 872,
+      "reg": 1,
+      "createdAt": "2026-02-20T23:08:03.390Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi3fc6000p30z1gpm5f2tw",
+      "date": "2026-02-18T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 250,
+      "diff": -810,
+      "big": 52,
+      "games": 5117,
+      "reg": 11,
+      "createdAt": "2026-02-20T23:08:03.559Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi951e00011hk6b73k6o49",
+      "date": "2026-02-18T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": -500,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-20T23:12:30.079Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi9nbn00031hk6yxcrhn7q",
+      "date": "2026-02-18T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 300,
+      "diff": 5300,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-20T23:12:53.779Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlviae8x00011c8vn5m58wfx",
+      "date": "2026-02-18T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 302,
+      "diff": -200,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-20T23:13:28.734Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlviczia00031c8v8lpfigx4",
+      "date": "2026-02-20T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 301,
+      "diff": -500,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-20T23:15:29.550Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvidb8f0009ccfmmf3bwy6r",
+      "date": "2026-02-20T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 302,
+      "diff": -600,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-20T23:15:44.685Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlwxhc3c000f128mzp4vwlet",
+      "date": "2026-02-20T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 245,
+      "diff": -1462,
+      "big": 6,
+      "games": 1491,
+      "reg": 2,
+      "createdAt": "2026-02-21T23:06:32.953Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlwxhc81000h128mki60k3m8",
+      "date": "2026-02-20T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 246,
+      "diff": -1370,
+      "big": 15,
+      "games": 2224,
+      "reg": 6,
+      "createdAt": "2026-02-21T23:06:33.122Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlwxhccr000j128m5i3dkoo0",
+      "date": "2026-02-20T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 247,
+      "diff": 1900,
+      "big": 60,
+      "games": 4886,
+      "reg": 11,
+      "createdAt": "2026-02-21T23:06:33.291Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlwxhchh000l128mwyxc4fhg",
+      "date": "2026-02-20T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 248,
+      "diff": -1024,
+      "big": 26,
+      "games": 2966,
+      "reg": 8,
+      "createdAt": "2026-02-21T23:06:33.462Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlwxhcm7000n128mnq49no8e",
+      "date": "2026-02-20T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 249,
+      "diff": -2089,
+      "big": 10,
+      "games": 2256,
+      "reg": 3,
+      "createdAt": "2026-02-21T23:06:33.631Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlwxhcqv000p128metd98xuk",
+      "date": "2026-02-20T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 250,
+      "diff": -1034,
+      "big": 37,
+      "games": 3942,
+      "reg": 7,
+      "createdAt": "2026-02-21T23:06:33.800Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm5j2xyn0001wj7swudf8j7l",
+      "date": "2026-02-24T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 238,
+      "diff": -1935,
+      "big": 18,
+      "games": 2860,
+      "reg": 8,
+      "createdAt": "2026-02-27T23:33:22.415Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm5j2y7t0003wj7so2dtgflz",
+      "date": "2026-02-24T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 239,
+      "diff": -1725,
+      "big": 34,
+      "games": 4132,
+      "reg": 13,
+      "createdAt": "2026-02-27T23:33:22.746Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm5j2ycf0005wj7s4pk7jeel",
+      "date": "2026-02-24T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 240,
+      "diff": 1475,
+      "big": 23,
+      "games": 1057,
+      "reg": 2,
+      "createdAt": "2026-02-27T23:33:22.911Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm5j2yh00007wj7szc91oij4",
+      "date": "2026-02-24T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 241,
+      "diff": -1383,
+      "big": 21,
+      "games": 2761,
+      "reg": 7,
+      "createdAt": "2026-02-27T23:33:23.077Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm5j2ylm0009wj7s62jifnv9",
+      "date": "2026-02-24T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 242,
+      "diff": 389,
+      "big": 42,
+      "games": 3447,
+      "reg": 11,
+      "createdAt": "2026-02-27T23:33:23.242Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm5j2yq8000bwj7sogvrclyn",
+      "date": "2026-02-24T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 243,
+      "diff": -1199,
+      "big": 6,
+      "games": 1318,
+      "reg": 3,
+      "createdAt": "2026-02-27T23:33:23.408Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm5j2yut000dwj7sk3pzmp1o",
+      "date": "2026-02-24T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 244,
+      "diff": -1400,
+      "big": 7,
+      "games": 1538,
+      "reg": 3,
+      "createdAt": "2026-02-27T23:33:23.574Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm5j2yzh000fwj7s200lnneg",
+      "date": "2026-02-24T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 245,
+      "diff": -1186,
+      "big": 5,
+      "games": 1221,
+      "reg": 2,
+      "createdAt": "2026-02-27T23:33:23.742Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm5j2zdw000hwj7shx6jbca0",
+      "date": "2026-02-24T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 246,
+      "diff": 920,
+      "big": 38,
+      "games": 2745,
+      "reg": 6,
+      "createdAt": "2026-02-27T23:33:24.260Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm5j2zlm000jwj7sheszqnug",
+      "date": "2026-02-24T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 247,
+      "diff": -967,
+      "big": 25,
+      "games": 2840,
+      "reg": 11,
+      "createdAt": "2026-02-27T23:33:24.539Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm5j2zq9000lwj7stx6pbw4x",
+      "date": "2026-02-24T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 248,
+      "diff": 739,
+      "big": 27,
+      "games": 1894,
+      "reg": 5,
+      "createdAt": "2026-02-27T23:33:24.705Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmll0odln0003q1957kxswfze",
+      "date": "2026-02-13T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 300,
+      "diff": 1800,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T15:02:45.866Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmll0oxml0005q195dv49wwwh",
+      "date": "2026-02-13T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 301,
+      "diff": -800,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T15:03:11.822Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmll0q75c0009q195lektybno",
+      "date": "2026-02-13T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 257,
+      "diff": 200,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T15:04:10.816Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmll0rr9v000hq195cugr6yae",
+      "date": "2026-02-13T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 297,
+      "diff": -1700,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T15:05:23.923Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqkz3yn0001gwo1ehd35hsg",
+      "date": "2026-02-16T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 238,
+      "diff": -1240,
+      "big": 34,
+      "games": 3813,
+      "reg": 9,
+      "createdAt": "2026-02-17T12:29:50.159Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqkz47s0003gwo1fk1tofdt",
+      "date": "2026-02-16T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 239,
+      "diff": -1197,
+      "big": 9,
+      "games": 1581,
+      "reg": 4,
+      "createdAt": "2026-02-17T12:29:50.489Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqkz4cd0005gwo1zcs8q5eo",
+      "date": "2026-02-16T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 240,
+      "diff": 77,
+      "big": 6,
+      "games": 478,
+      "reg": 1,
+      "createdAt": "2026-02-17T12:29:50.654Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqkz4gz0007gwo10ztjre6g",
+      "date": "2026-02-16T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 241,
+      "diff": -1792,
+      "big": 15,
+      "games": 2501,
+      "reg": 5,
+      "createdAt": "2026-02-17T12:29:50.819Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqkz4li0009gwo1jib4iqsj",
+      "date": "2026-02-16T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 242,
+      "diff": 1018,
+      "big": 19,
+      "games": 1005,
+      "reg": 4,
+      "createdAt": "2026-02-17T12:29:50.982Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqkz4q2000bgwo1h78f5zvc",
+      "date": "2026-02-16T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 243,
+      "diff": -1789,
+      "big": 19,
+      "games": 2852,
+      "reg": 6,
+      "createdAt": "2026-02-17T12:29:51.146Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqkz4ul000dgwo12kcibr00",
+      "date": "2026-02-16T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 244,
+      "diff": -1572,
+      "big": 4,
+      "games": 1387,
+      "reg": 3,
+      "createdAt": "2026-02-17T12:29:51.309Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqkz4z5000fgwo1luy8f6to",
+      "date": "2026-02-16T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 245,
+      "diff": 3900,
+      "big": 27,
+      "games": 855,
+      "reg": 2,
+      "createdAt": "2026-02-17T12:29:51.473Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqkz53o000hgwo120te92im",
+      "date": "2026-02-16T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 246,
+      "diff": 5300,
+      "big": 52,
+      "games": 805,
+      "reg": 2,
+      "createdAt": "2026-02-17T12:29:51.636Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqkz587000jgwo1jazcfoem",
+      "date": "2026-02-16T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 247,
+      "diff": -1953,
+      "big": 7,
+      "games": 1902,
+      "reg": 5,
+      "createdAt": "2026-02-17T12:29:51.800Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqkz5cr000lgwo1syxpsp73",
+      "date": "2026-02-16T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 248,
+      "diff": -2167,
+      "big": 8,
+      "games": 2131,
+      "reg": 4,
+      "createdAt": "2026-02-17T12:29:51.964Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqkz5ha000ngwo17ohhddku",
+      "date": "2026-02-16T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 249,
+      "diff": 741,
+      "big": 8,
+      "games": 218,
+      "reg": 1,
+      "createdAt": "2026-02-17T12:29:52.127Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlqkz5lu000pgwo1t1yg2khu",
+      "date": "2026-02-16T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 250,
+      "diff": 5000,
+      "big": 47,
+      "games": 1728,
+      "reg": 6,
+      "createdAt": "2026-02-17T12:29:52.290Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsn4y0001nvx2yfgqkyr9",
+      "date": "2026-02-17T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 238,
+      "diff": 376,
+      "big": 16,
+      "games": 1163,
+      "reg": 4,
+      "createdAt": "2026-02-20T22:03:41.218Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsnlf0003nvx2hwsbdisz",
+      "date": "2026-02-17T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 239,
+      "diff": 1400,
+      "big": 28,
+      "games": 677,
+      "reg": 3,
+      "createdAt": "2026-02-20T22:03:41.812Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsnto0005nvx22b21ccao",
+      "date": "2026-02-17T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 240,
+      "diff": -644,
+      "big": 8,
+      "games": 1129,
+      "reg": 4,
+      "createdAt": "2026-02-20T22:03:42.109Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfso1z0007nvx20q9pgjcx",
+      "date": "2026-02-17T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 241,
+      "diff": 121,
+      "big": 4,
+      "games": 273,
+      "reg": 1,
+      "createdAt": "2026-02-20T22:03:42.407Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsoa60009nvx22r19psbn",
+      "date": "2026-02-17T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 242,
+      "diff": -609,
+      "big": 10,
+      "games": 1282,
+      "reg": 2,
+      "createdAt": "2026-02-20T22:03:42.703Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsoif000bnvx2f1phsxx2",
+      "date": "2026-02-17T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 243,
+      "diff": -371,
+      "big": 5,
+      "games": 685,
+      "reg": 2,
+      "createdAt": "2026-02-20T22:03:42.999Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsoqp000dnvx28tuh0y5q",
+      "date": "2026-02-17T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 244,
+      "diff": 4600,
+      "big": 33,
+      "games": 785,
+      "reg": 4,
+      "createdAt": "2026-02-20T22:03:43.298Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsoyx000fnvx28dk6lhcg",
+      "date": "2026-02-17T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 245,
+      "diff": 1000,
+      "big": 52,
+      "games": 3210,
+      "reg": 17,
+      "createdAt": "2026-02-20T22:03:43.594Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsp77000hnvx2iudai9ch",
+      "date": "2026-02-17T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 246,
+      "diff": 2200,
+      "big": 24,
+      "games": 675,
+      "reg": 4,
+      "createdAt": "2026-02-20T22:03:43.892Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfspff000jnvx2t20fh0vb",
+      "date": "2026-02-17T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 247,
+      "diff": -188,
+      "big": 2,
+      "games": 300,
+      "reg": 1,
+      "createdAt": "2026-02-20T22:03:44.188Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfspns000lnvx2zefa6u1y",
+      "date": "2026-02-17T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 248,
+      "diff": -620,
+      "big": 43,
+      "games": 4199,
+      "reg": 10,
+      "createdAt": "2026-02-20T22:03:44.489Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsqpf000nnvx2mfmrp8j6",
+      "date": "2026-02-17T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 249,
+      "diff": -968,
+      "big": 8,
+      "games": 1342,
+      "reg": 4,
+      "createdAt": "2026-02-20T22:03:45.843Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsqxo000pnvx2gjgzkv9i",
+      "date": "2026-02-17T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 250,
+      "diff": 700,
+      "big": 41,
+      "games": 3413,
+      "reg": 12,
+      "createdAt": "2026-02-20T22:03:46.140Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi6pj80001kx5u7kg8tqpm",
+      "date": "2026-02-19T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 238,
+      "diff": -2496,
+      "big": 5,
+      "games": 2083,
+      "reg": 3,
+      "createdAt": "2026-02-20T23:10:36.740Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi6psk0003kx5u8ztpn91s",
+      "date": "2026-02-19T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 239,
+      "diff": 2000,
+      "big": 31,
+      "games": 1572,
+      "reg": 6,
+      "createdAt": "2026-02-20T23:10:37.076Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi6px70005kx5urwwiot3t",
+      "date": "2026-02-19T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 240,
+      "diff": -61,
+      "big": 1,
+      "games": 128,
+      "reg": 1,
+      "createdAt": "2026-02-20T23:10:37.244Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi6q1t0007kx5u0bgfug6t",
+      "date": "2026-02-19T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 241,
+      "diff": 6500,
+      "big": 47,
+      "games": 1180,
+      "reg": 4,
+      "createdAt": "2026-02-20T23:10:37.410Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi6q6e0009kx5ub3frody2",
+      "date": "2026-02-19T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 242,
+      "diff": -534,
+      "big": 4,
+      "games": 704,
+      "reg": 1,
+      "createdAt": "2026-02-20T23:10:37.574Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi6qay000bkx5uiwtk15rj",
+      "date": "2026-02-19T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 243,
+      "diff": 92,
+      "big": 27,
+      "games": 2320,
+      "reg": 7,
+      "createdAt": "2026-02-20T23:10:37.739Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi6qfj000dkx5unghl1zf4",
+      "date": "2026-02-19T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 244,
+      "diff": -40,
+      "big": 19,
+      "games": 1701,
+      "reg": 4,
+      "createdAt": "2026-02-20T23:10:37.903Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi6qk4000fkx5ul8bwwtm2",
+      "date": "2026-02-19T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 245,
+      "diff": -1220,
+      "big": 4,
+      "games": 1155,
+      "reg": 3,
+      "createdAt": "2026-02-20T23:10:38.068Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi6qop000hkx5u9cheow78",
+      "date": "2026-02-19T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 246,
+      "diff": -413,
+      "big": 22,
+      "games": 2211,
+      "reg": 6,
+      "createdAt": "2026-02-20T23:10:38.233Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi6qta000jkx5u2twp2p3v",
+      "date": "2026-02-19T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 247,
+      "diff": -794,
+      "big": 12,
+      "games": 1580,
+      "reg": 4,
+      "createdAt": "2026-02-20T23:10:38.398Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi6qxu000lkx5uiitvjacr",
+      "date": "2026-02-19T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 248,
+      "diff": 3000,
+      "big": 58,
+      "games": 2934,
+      "reg": 6,
+      "createdAt": "2026-02-20T23:10:38.562Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi6r2e000nkx5u90tkr1g0",
+      "date": "2026-02-19T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 249,
+      "diff": -480,
+      "big": 3,
+      "games": 580,
+      "reg": 1,
+      "createdAt": "2026-02-20T23:10:38.727Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvi6r6x000pkx5utjvo70mr",
+      "date": "2026-02-19T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 250,
+      "diff": 38,
+      "big": 33,
+      "games": 2884,
+      "reg": 7,
+      "createdAt": "2026-02-20T23:10:38.890Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvia0zi0001l4ija6r4l2bd",
+      "date": "2026-02-18T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 301,
+      "diff": 100,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-20T23:13:11.547Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlviaqoc0001ccfmctte25mg",
+      "date": "2026-02-19T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 302,
+      "diff": 1000,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-20T23:13:44.844Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvib3jy0003l4ij118xxoaz",
+      "date": "2026-02-19T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 301,
+      "diff": 200,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-20T23:14:01.463Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvibhlr0005l4ijqg3zfoc5",
+      "date": "2026-02-19T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 300,
+      "diff": 650,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-20T23:14:19.638Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvibvxj0003ccfmibwwaquf",
+      "date": "2026-02-19T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": -50,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-20T23:14:38.246Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvic7p70005ccfmn5ce0nh9",
+      "date": "2026-02-20T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": 400,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-20T23:14:53.499Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvicjvk0007ccfmnacaamge",
+      "date": "2026-02-20T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 300,
+      "diff": -150,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-20T23:15:09.276Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlwxhb1d0001128mul1wovft",
+      "date": "2026-02-20T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 238,
+      "diff": 4400,
+      "big": 93,
+      "games": 5194,
+      "reg": 21,
+      "createdAt": "2026-02-21T23:06:31.585Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlwxhbas0003128ml7uze6lw",
+      "date": "2026-02-20T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 239,
+      "diff": -1821,
+      "big": 44,
+      "games": 5077,
+      "reg": 13,
+      "createdAt": "2026-02-21T23:06:31.924Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlwxhbfi0005128mub3ycztm",
+      "date": "2026-02-20T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 240,
+      "diff": -1508,
+      "big": 61,
+      "games": 6370,
+      "reg": 22,
+      "createdAt": "2026-02-21T23:06:32.095Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlwxhbk70007128myb4xt1yo",
+      "date": "2026-02-20T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 241,
+      "diff": -104,
+      "big": 10,
+      "games": 950,
+      "reg": 2,
+      "createdAt": "2026-02-21T23:06:32.264Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlwxhbox0009128mpc35km0f",
+      "date": "2026-02-20T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 242,
+      "diff": 7500,
+      "big": 94,
+      "games": 5932,
+      "reg": 19,
+      "createdAt": "2026-02-21T23:06:32.433Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlwxhbts000b128mb2lzp2v0",
+      "date": "2026-02-20T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 243,
+      "diff": -2206,
+      "big": 41,
+      "games": 5066,
+      "reg": 16,
+      "createdAt": "2026-02-21T23:06:32.608Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlwxhbyh000d128mkvofjovb",
+      "date": "2026-02-20T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 244,
+      "diff": 14500,
+      "big": 118,
+      "games": 4139,
+      "reg": 20,
+      "createdAt": "2026-02-21T23:06:32.777Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlk609of000bjt4567vu4ciy",
+      "date": "2026-02-12T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 297,
+      "diff": 100,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T00:44:11.788Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlk60mur000djt45lgrovq0u",
+      "date": "2026-02-12T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 298,
+      "diff": -1100,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T00:44:29.788Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlk61lk7000hjt45qhk7q82y",
+      "date": "2026-02-12T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 294,
+      "diff": -2600,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T00:45:14.984Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlk61xmx000jjt45wxfqkoxn",
+      "date": "2026-02-12T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 295,
+      "diff": -1600,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T00:45:30.633Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6arxw001312p2zoztm4l8",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": 1500,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:04:36.980Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6arzn001512p2drcsua6v",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 300,
+      "diff": 0,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:04:37.043Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6as0y001712p228f42isy",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 301,
+      "diff": -1000,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:04:37.090Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6as28001912p2t8bkkvxv",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 302,
+      "diff": 0,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:04:37.137Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6b6zn001b12p22gvvosnq",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": 0,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:04:56.483Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6b71g001d12p2nqd83shm",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 300,
+      "diff": 0,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:04:56.549Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6b733001f12p2v417xe9z",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 301,
+      "diff": -500,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:04:56.607Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6b749001h12p2u66t22ra",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 302,
+      "diff": 8000,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:04:56.649Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6bn5n001j12p2vjzz36yq",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 299,
+      "diff": 500,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:05:17.436Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6bn7a001l12p26vy0c9mn",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 300,
+      "diff": -2000,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:05:17.494Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6bn8o001n12p29l6tliii",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 301,
+      "diff": 1000,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:05:17.544Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6bn9z001p12p2eichyf9v",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7rm000072g9bayz8lo1",
+      "machineNo": 302,
+      "diff": -500,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:05:17.591Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6cq3u001r12p2qfu4flk4",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 238,
+      "diff": -4000,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:06:07.914Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6cq59001t12p2bpuqq6nq",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 239,
+      "diff": -1000,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:06:07.965Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6cq6h001v12p2xr4e3mrd",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 240,
+      "diff": -500,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:06:08.009Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6cq7p001x12p28tii1y5z",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 241,
+      "diff": -750,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:06:08.053Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6cq8v001z12p2merrs22l",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 242,
+      "diff": -500,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:06:08.096Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6cqa2002112p2jo93qgym",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 243,
+      "diff": -2000,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:06:08.138Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6cqbi002312p257e2vwo4",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 244,
+      "diff": 7000,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:06:08.191Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6cqcp002512p2lfbldeuz",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 245,
+      "diff": 0,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:06:08.233Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6cqdx002712p210m48kqx",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 246,
+      "diff": 0,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:06:08.277Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6cqf6002912p2f3nw9i6q",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 247,
+      "diff": 1000,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:06:08.322Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6cqgj002b12p2s2uyj7sr",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 248,
+      "diff": -500,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:06:08.372Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6cqhu002d12p2t93c7559",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 249,
+      "diff": 0,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:06:08.418Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6cqj4002f12p2hxt75d65",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 250,
+      "diff": 1000,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:06:08.465Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6egvx003x12p21irxoixl",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 296,
+      "diff": 0,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:07:29.277Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6egxg003z12p2lsxfqo4i",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 297,
+      "diff": -750,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:07:29.333Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6egyq004112p28xnrh3re",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 298,
+      "diff": 0,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:07:29.378Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6ewof004312p2ggqcn0hw",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 296,
+      "diff": 2000,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:07:49.743Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6ewpy004512p21ycs5zzm",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 297,
+      "diff": -500,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:07:49.798Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6ewra004712p25crrasga",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 298,
+      "diff": -500,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:07:49.846Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6f7gy004912p2hoafsins",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 296,
+      "diff": -1500,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:08:03.730Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6f7i7004b12p2p96p64nx",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 297,
+      "diff": -1500,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:08:03.775Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6f7jr004d12p2xluhpzmv",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 298,
+      "diff": 0,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:08:03.831Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6fmgk004l12p2mcjo9qxn",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 257,
+      "diff": 0,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:08:23.156Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6fmi1004n12p2nobgydqm",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 294,
+      "diff": -2500,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:08:23.209Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6fmja004p12p28huhrxa1",
+      "date": "2026-02-09T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 295,
+      "diff": -3500,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:08:23.254Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6fvgh004r12p2ap41okfv",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 257,
+      "diff": -2500,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:08:34.817Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6fvi3004t12p2382tf34o",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 294,
+      "diff": -1000,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:08:34.875Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6fvjp004v12p2zc2erfq7",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 295,
+      "diff": -4000,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:08:34.933Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6gc8q004x12p2j91sm5wa",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 257,
+      "diff": -4000,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:08:56.570Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6gcaf004z12p2to91l74q",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 294,
+      "diff": -5000,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:08:56.631Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlj6gcbr005112p2optqqud9",
+      "date": "2026-02-11T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 295,
+      "diff": -3500,
+      "big": null,
+      "games": null,
+      "reg": null,
+      "createdAt": "2026-02-12T08:08:56.679Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmljcr7ks0001tcr6r51p00gd",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 238,
+      "diff": -726,
+      "big": 26,
+      "games": 2770,
+      "reg": 6,
+      "createdAt": "2026-02-12T11:05:21.437Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmljcr7l40003tcr6odcaqe54",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 239,
+      "diff": 491,
+      "big": 14,
+      "games": 911,
+      "reg": 4,
+      "createdAt": "2026-02-12T11:05:21.448Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmljcr7ld0005tcr6f5obgxmr",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 240,
+      "diff": -976,
+      "big": 7,
+      "games": 1259,
+      "reg": 3,
+      "createdAt": "2026-02-12T11:05:21.457Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmljcr7lj0007tcr6n8hl304q",
+      "date": "2026-02-10T00:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 241,
+      "diff": -2001,
+      "big": 22,
+      "games": 3256,
+      "reg": 6,
+      "createdAt": "2026-02-12T11:05:21.463Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmll0qlil000bq195ggpx2hlr",
+      "date": "2026-02-13T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 294,
+      "diff": -4000,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T15:04:27.904Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmll0qwrj000dq195t71fpat3",
+      "date": "2026-02-13T00:00:00.000Z",
+      "machineId": "cmlj5u7s7000372g98xiq3bn9",
+      "machineNo": 295,
+      "diff": -3700,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T15:04:44.383Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmll0retk000fq195c2pzofa3",
+      "date": "2026-02-13T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 296,
+      "diff": -300,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T15:05:07.436Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmll0s6tj000jq1953hl3apfy",
+      "date": "2026-02-13T00:00:00.000Z",
+      "machineId": "cmlj5u7s1000272g9w1gibj3e",
+      "machineNo": 298,
+      "diff": 200,
+      "big": 0,
+      "games": 0,
+      "reg": 0,
+      "createdAt": "2026-02-13T15:05:41.346Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfs9zf0001wo2wllcmfilr",
+      "date": "2026-02-16T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 238,
+      "diff": -932,
+      "big": 25,
+      "games": 2817,
+      "reg": 7,
+      "createdAt": "2026-02-20T22:03:24.168Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsa9u0003wo2w06wptxxj",
+      "date": "2026-02-16T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 239,
+      "diff": -381,
+      "big": 3,
+      "games": 515,
+      "reg": 1,
+      "createdAt": "2026-02-20T22:03:24.546Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsaf10005wo2we0maxhfv",
+      "date": "2026-02-16T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 240,
+      "diff": -1736,
+      "big": 5,
+      "games": 1583,
+      "reg": 2,
+      "createdAt": "2026-02-20T22:03:24.733Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmlvfsak50007wo2w5izz43le",
+      "date": "2026-02-16T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 241,
+      "diff": 3000,
+      "big": 33,
+      "games": 1164,
+      "reg": 3,
+      "createdAt": "2026-02-20T22:03:24.918Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcu4q60009upyq15rfnmye",
@@ -2345,7 +2971,8 @@
       "games": 1868,
       "reg": 5,
       "createdAt": "2026-02-12T11:07:37.710Z",
-      "updatedAt": "2026-02-12T11:07:37.710Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk2xy3o000bm41keunf86kv",
@@ -2357,7 +2984,8 @@
       "games": 4090,
       "reg": 9,
       "createdAt": "2026-02-12T23:18:25.764Z",
-      "updatedAt": "2026-02-12T23:18:25.764Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk2xy8c000dm41kar0obpd6",
@@ -2369,7 +2997,8 @@
       "games": 1161,
       "reg": 2,
       "createdAt": "2026-02-12T23:18:25.933Z",
-      "updatedAt": "2026-02-12T23:18:25.933Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk2xyd2000fm41kgimwt9tv",
@@ -2381,7 +3010,8 @@
       "games": 2823,
       "reg": 4,
       "createdAt": "2026-02-12T23:18:26.102Z",
-      "updatedAt": "2026-02-12T23:18:26.102Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk2xyhp000hm41ko0ctpj85",
@@ -2393,7 +3023,8 @@
       "games": 954,
       "reg": 3,
       "createdAt": "2026-02-12T23:18:26.269Z",
-      "updatedAt": "2026-02-12T23:18:26.269Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk2xymf000jm41ktc8r4cx3",
@@ -2405,7 +3036,8 @@
       "games": 983,
       "reg": 3,
       "createdAt": "2026-02-12T23:18:26.439Z",
-      "updatedAt": "2026-02-12T23:18:26.439Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk2xz1z000lm41k36b8ey2v",
@@ -2417,7 +3049,8 @@
       "games": 608,
       "reg": 2,
       "createdAt": "2026-02-12T23:18:26.999Z",
-      "updatedAt": "2026-02-12T23:18:26.999Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk2xzxo000nm41k4h6z0cmd",
@@ -2429,7 +3062,8 @@
       "games": 1674,
       "reg": 5,
       "createdAt": "2026-02-12T23:18:28.141Z",
-      "updatedAt": "2026-02-12T23:18:28.141Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk2y02c000pm41kqyya0azi",
@@ -2441,7 +3075,8 @@
       "games": 1531,
       "reg": 4,
       "createdAt": "2026-02-12T23:18:28.309Z",
-      "updatedAt": "2026-02-12T23:18:28.309Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmll0ajqz00018bo2jodixr4u",
@@ -2453,7 +3088,8 @@
       "games": 3906,
       "reg": 14,
       "createdAt": "2026-02-13T14:52:01.020Z",
-      "updatedAt": "2026-02-13T14:53:07.196Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmll0ak1o00038bo2ulsxgxte",
@@ -2465,7 +3101,8 @@
       "games": 2452,
       "reg": 7,
       "createdAt": "2026-02-13T14:52:01.404Z",
-      "updatedAt": "2026-02-13T14:53:08.162Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmll0ak7000058bo21ncl0ppo",
@@ -2477,7 +3114,8 @@
       "games": 2717,
       "reg": 7,
       "createdAt": "2026-02-13T14:52:01.596Z",
-      "updatedAt": "2026-02-13T14:53:08.473Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmll0akcd00078bo2toythiho",
@@ -2489,7 +3127,8 @@
       "games": 5837,
       "reg": 13,
       "createdAt": "2026-02-13T14:52:01.790Z",
-      "updatedAt": "2026-02-13T14:53:08.780Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmll0akhq00098bo27cr1va1k",
@@ -2501,7 +3140,8 @@
       "games": 6195,
       "reg": 14,
       "createdAt": "2026-02-13T14:52:01.983Z",
-      "updatedAt": "2026-02-13T14:53:09.090Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmll0akn5000b8bo2jap5t19k",
@@ -2513,7 +3153,8 @@
       "games": 2395,
       "reg": 7,
       "createdAt": "2026-02-13T14:52:02.178Z",
-      "updatedAt": "2026-02-13T14:53:09.400Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmll0aksi000d8bo2kkij92ej",
@@ -2525,7 +3166,8 @@
       "games": 1810,
       "reg": 5,
       "createdAt": "2026-02-13T14:52:02.370Z",
-      "updatedAt": "2026-02-13T14:53:09.711Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmll0akxw000f8bo2qagctlrc",
@@ -2537,7 +3179,8 @@
       "games": 1898,
       "reg": 3,
       "createdAt": "2026-02-13T14:52:02.564Z",
-      "updatedAt": "2026-02-13T14:53:10.021Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcr7lq0009tcr6nrcamlux",
@@ -2549,7 +3192,8 @@
       "games": 1692,
       "reg": 6,
       "createdAt": "2026-02-12T11:05:21.471Z",
-      "updatedAt": "2026-02-12T11:05:21.471Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcr7m1000btcr6qn7xnlwo",
@@ -2561,7 +3205,8 @@
       "games": 743,
       "reg": 1,
       "createdAt": "2026-02-12T11:05:21.481Z",
-      "updatedAt": "2026-02-12T11:05:21.481Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcr7md000dtcr6pspnlaec",
@@ -2573,7 +3218,8 @@
       "games": 1656,
       "reg": 6,
       "createdAt": "2026-02-12T11:05:21.493Z",
-      "updatedAt": "2026-02-12T11:05:21.493Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcr7mk000ftcr64nzqf0bi",
@@ -2585,7 +3231,8 @@
       "games": 2459,
       "reg": 13,
       "createdAt": "2026-02-12T11:05:21.500Z",
-      "updatedAt": "2026-02-12T11:05:21.500Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcr7ms000htcr6msc00xsv",
@@ -2597,7 +3244,8 @@
       "games": 1010,
       "reg": 1,
       "createdAt": "2026-02-12T11:05:21.509Z",
-      "updatedAt": "2026-02-12T11:05:21.509Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcr7mz000jtcr6fiwdfoqa",
@@ -2609,7 +3257,8 @@
       "games": 2067,
       "reg": 7,
       "createdAt": "2026-02-12T11:05:21.515Z",
-      "updatedAt": "2026-02-12T11:05:21.515Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcr7na000ltcr676og5q4s",
@@ -2621,7 +3270,8 @@
       "games": 3997,
       "reg": 10,
       "createdAt": "2026-02-12T11:05:21.526Z",
-      "updatedAt": "2026-02-12T11:10:35.354Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcu4qd000bupyq60oa507i",
@@ -2633,7 +3283,8 @@
       "games": 2950,
       "reg": 6,
       "createdAt": "2026-02-12T11:07:37.717Z",
-      "updatedAt": "2026-02-12T11:07:37.717Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcu4ql000dupyqnfpdcgcx",
@@ -2645,7 +3296,8 @@
       "games": 3212,
       "reg": 8,
       "createdAt": "2026-02-12T11:07:37.725Z",
-      "updatedAt": "2026-02-12T11:07:37.725Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcu4qs000fupyqqx3erls6",
@@ -2657,7 +3309,8 @@
       "games": 1184,
       "reg": 2,
       "createdAt": "2026-02-12T11:07:37.732Z",
-      "updatedAt": "2026-02-12T11:07:37.732Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcu4r1000hupyqz32a5wfn",
@@ -2669,7 +3322,8 @@
       "games": 2920,
       "reg": 5,
       "createdAt": "2026-02-12T11:07:37.741Z",
-      "updatedAt": "2026-02-12T11:07:37.741Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcu4r8000jupyqsqi023hq",
@@ -2681,7 +3335,8 @@
       "games": 2953,
       "reg": 5,
       "createdAt": "2026-02-12T11:07:37.748Z",
-      "updatedAt": "2026-02-12T11:07:37.748Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcu4rg000lupyq5082ezko",
@@ -2693,7 +3348,8 @@
       "games": 2677,
       "reg": 7,
       "createdAt": "2026-02-12T11:07:37.756Z",
-      "updatedAt": "2026-02-12T11:07:37.756Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcu4ro000nupyqfnz5x1l1",
@@ -2705,7 +3361,8 @@
       "games": 1965,
       "reg": 3,
       "createdAt": "2026-02-12T11:07:37.764Z",
-      "updatedAt": "2026-02-12T11:07:37.764Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmljcu4rv000pupyqsxic6og6",
@@ -2717,7 +3374,8 @@
       "games": 3981,
       "reg": 12,
       "createdAt": "2026-02-12T11:07:37.771Z",
-      "updatedAt": "2026-02-12T11:07:37.771Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk2xxbf0001m41kq1rov61g",
@@ -2729,7 +3387,8 @@
       "games": 3181,
       "reg": 10,
       "createdAt": "2026-02-12T23:18:24.747Z",
-      "updatedAt": "2026-02-12T23:18:24.747Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk2xxkt0003m41kks8566pi",
@@ -2741,7 +3400,8 @@
       "games": 2470,
       "reg": 4,
       "createdAt": "2026-02-12T23:18:25.086Z",
-      "updatedAt": "2026-02-12T23:18:25.086Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk2xxpk0005m41ksu0hisgw",
@@ -2753,7 +3413,8 @@
       "games": 2453,
       "reg": 6,
       "createdAt": "2026-02-12T23:18:25.256Z",
-      "updatedAt": "2026-02-12T23:18:25.256Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk2xxu90007m41kjerm2sa4",
@@ -2765,7 +3426,8 @@
       "games": 680,
       "reg": 1,
       "createdAt": "2026-02-12T23:18:25.426Z",
-      "updatedAt": "2026-02-12T23:18:25.426Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlk2xxyx0009m41ku36u2ahh",
@@ -2777,7 +3439,8 @@
       "games": 2208,
       "reg": 6,
       "createdAt": "2026-02-12T23:18:25.593Z",
-      "updatedAt": "2026-02-12T23:18:25.593Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmll0al3e000h8bo2uay5ql4h",
@@ -2789,7 +3452,8 @@
       "games": 2840,
       "reg": 10,
       "createdAt": "2026-02-13T14:52:02.762Z",
-      "updatedAt": "2026-02-13T14:53:10.329Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmll0al8q000j8bo26rwwmzfq",
@@ -2801,7 +3465,8 @@
       "games": 3772,
       "reg": 12,
       "createdAt": "2026-02-13T14:52:02.954Z",
-      "updatedAt": "2026-02-13T14:53:10.641Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmll0ale3000l8bo2tydwre0r",
@@ -2813,7 +3478,8 @@
       "games": 2696,
       "reg": 10,
       "createdAt": "2026-02-13T14:52:03.147Z",
-      "updatedAt": "2026-02-13T14:53:10.952Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmll0aljj000n8bo2a42r5358",
@@ -2825,7 +3491,8 @@
       "games": 5065,
       "reg": 13,
       "createdAt": "2026-02-13T14:52:03.343Z",
-      "updatedAt": "2026-02-13T14:53:11.262Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmll0alou000p8bo2e33agn4s",
@@ -2837,7 +3504,8 @@
       "games": 3367,
       "reg": 13,
       "createdAt": "2026-02-13T14:52:03.534Z",
-      "updatedAt": "2026-02-13T14:53:11.570Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlqks3br00017gsm6haovg7j",
@@ -2849,7 +3517,8 @@
       "games": 6740,
       "reg": 15,
       "createdAt": "2026-02-17T12:24:22.734Z",
-      "updatedAt": "2026-02-17T12:24:22.734Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlqks3le00037gsmdeq6xmri",
@@ -2861,7 +3530,8 @@
       "games": 2604,
       "reg": 5,
       "createdAt": "2026-02-17T12:24:23.090Z",
-      "updatedAt": "2026-02-17T12:24:23.090Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlqks3q400057gsm8tvai3ew",
@@ -2873,7 +3543,8 @@
       "games": 4389,
       "reg": 11,
       "createdAt": "2026-02-17T12:24:23.260Z",
-      "updatedAt": "2026-02-17T12:24:23.260Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlqks3uu00077gsmq0wkqsw1",
@@ -2885,7 +3556,8 @@
       "games": 4608,
       "reg": 15,
       "createdAt": "2026-02-17T12:24:23.431Z",
-      "updatedAt": "2026-02-17T12:24:23.431Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlqks3zk00097gsmtxwxyf08",
@@ -2897,7 +3569,8 @@
       "games": 3161,
       "reg": 10,
       "createdAt": "2026-02-17T12:24:23.600Z",
-      "updatedAt": "2026-02-17T12:24:23.600Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmlqks447000b7gsmynghjr5d",
@@ -2909,7 +3582,8 @@
       "games": 5132,
       "reg": 17,
       "createdAt": "2026-02-17T12:24:23.767Z",
-      "updatedAt": "2026-02-17T12:24:23.767Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j2zuu000nwj7sap0zvje6",
@@ -2921,7 +3595,8 @@
       "games": 590,
       "reg": 2,
       "createdAt": "2026-02-27T23:33:24.870Z",
-      "updatedAt": "2026-02-27T23:33:24.870Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j2zzh000pwj7sx3hb94we",
@@ -2933,7 +3608,8 @@
       "games": 3316,
       "reg": 11,
       "createdAt": "2026-02-27T23:33:25.038Z",
-      "updatedAt": "2026-02-27T23:33:25.038Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j5rxs0001sh2tlml3hune",
@@ -2945,7 +3621,8 @@
       "games": 7263,
       "reg": 22,
       "createdAt": "2026-02-27T23:35:34.576Z",
-      "updatedAt": "2026-02-27T23:35:34.576Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j5s770003sh2t2xxj6hhj",
@@ -2957,7 +3634,8 @@
       "games": 1277,
       "reg": 5,
       "createdAt": "2026-02-27T23:35:34.915Z",
-      "updatedAt": "2026-02-27T23:35:34.915Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j5sbx0005sh2tr65uhzqu",
@@ -2969,7 +3647,8 @@
       "games": 2891,
       "reg": 9,
       "createdAt": "2026-02-27T23:35:35.086Z",
-      "updatedAt": "2026-02-27T23:35:35.086Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j5sgn0007sh2tfu45zdzg",
@@ -2981,7 +3660,8 @@
       "games": 2314,
       "reg": 8,
       "createdAt": "2026-02-27T23:35:35.256Z",
-      "updatedAt": "2026-02-27T23:35:35.256Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j5sld0009sh2tyw654gox",
@@ -2993,7 +3673,8 @@
       "games": 3846,
       "reg": 12,
       "createdAt": "2026-02-27T23:35:35.425Z",
-      "updatedAt": "2026-02-27T23:35:35.425Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j5sq4000bsh2tld7svw9o",
@@ -3005,7 +3686,8 @@
       "games": 5515,
       "reg": 20,
       "createdAt": "2026-02-27T23:35:35.596Z",
-      "updatedAt": "2026-02-27T23:35:35.596Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j5sut000dsh2tg3jib5wj",
@@ -3017,7 +3699,8 @@
       "games": 3619,
       "reg": 8,
       "createdAt": "2026-02-27T23:35:35.765Z",
-      "updatedAt": "2026-02-27T23:35:35.765Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j5szj000fsh2taf1mnkaz",
@@ -3029,7 +3712,8 @@
       "games": 6341,
       "reg": 19,
       "createdAt": "2026-02-27T23:35:35.935Z",
-      "updatedAt": "2026-02-27T23:35:35.935Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j5t4a000hsh2tl2ntg11t",
@@ -3041,7 +3725,8 @@
       "games": 2325,
       "reg": 6,
       "createdAt": "2026-02-27T23:35:36.106Z",
-      "updatedAt": "2026-02-27T23:35:36.106Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j5t8z000jsh2t7v26ekak",
@@ -3053,7 +3738,8 @@
       "games": 1826,
       "reg": 4,
       "createdAt": "2026-02-27T23:35:36.276Z",
-      "updatedAt": "2026-02-27T23:35:36.276Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j5tdp000lsh2ti2spcf59",
@@ -3065,7 +3751,8 @@
       "games": 1550,
       "reg": 5,
       "createdAt": "2026-02-27T23:35:36.445Z",
-      "updatedAt": "2026-02-27T23:35:36.445Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j5tig000nsh2t2cb5eo5x",
@@ -3077,7 +3764,8 @@
       "games": 4967,
       "reg": 16,
       "createdAt": "2026-02-27T23:35:36.616Z",
-      "updatedAt": "2026-02-27T23:35:36.616Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j5tnf000psh2tnh0vg6jv",
@@ -3089,7 +3777,8 @@
       "games": 1602,
       "reg": 3,
       "createdAt": "2026-02-27T23:35:36.795Z",
-      "updatedAt": "2026-02-27T23:35:36.795Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j8us50001rsbor4dmreny",
@@ -3101,7 +3790,8 @@
       "games": 4228,
       "reg": 8,
       "createdAt": "2026-02-27T23:37:58.230Z",
-      "updatedAt": "2026-02-27T23:37:58.230Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j8v150003rsbocj38yn3p",
@@ -3113,7 +3803,8 @@
       "games": 3150,
       "reg": 8,
       "createdAt": "2026-02-27T23:37:58.553Z",
-      "updatedAt": "2026-02-27T23:37:58.553Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j8v5s0005rsbozqoc2blc",
@@ -3125,7 +3816,8 @@
       "games": 817,
       "reg": 2,
       "createdAt": "2026-02-27T23:37:58.721Z",
-      "updatedAt": "2026-02-27T23:37:58.721Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j8vac0007rsbo31o23wip",
@@ -3137,7 +3829,8 @@
       "games": 2967,
       "reg": 10,
       "createdAt": "2026-02-27T23:37:58.884Z",
-      "updatedAt": "2026-02-27T23:37:58.884Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j8vey0009rsboas3yvbpx",
@@ -3149,7 +3842,8 @@
       "games": 4264,
       "reg": 14,
       "createdAt": "2026-02-27T23:37:59.050Z",
-      "updatedAt": "2026-02-27T23:37:59.050Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j8vjh000brsbowgux3fzt",
@@ -3161,7 +3855,8 @@
       "games": 2066,
       "reg": 3,
       "createdAt": "2026-02-27T23:37:59.213Z",
-      "updatedAt": "2026-02-27T23:37:59.213Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j8vo0000drsbohvb9w2nf",
@@ -3173,7 +3868,8 @@
       "games": 1034,
       "reg": 2,
       "createdAt": "2026-02-27T23:37:59.376Z",
-      "updatedAt": "2026-02-27T23:37:59.376Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j8vsi000frsbovdnrxfe2",
@@ -3185,7 +3881,8 @@
       "games": 5532,
       "reg": 15,
       "createdAt": "2026-02-27T23:37:59.538Z",
-      "updatedAt": "2026-02-27T23:37:59.538Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j8vx0000hrsbo8bitqt1w",
@@ -3197,7 +3894,8 @@
       "games": 2705,
       "reg": 6,
       "createdAt": "2026-02-27T23:37:59.700Z",
-      "updatedAt": "2026-02-27T23:37:59.700Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j8w1h000jrsboitm9wala",
@@ -3209,7 +3907,8 @@
       "games": 1383,
       "reg": 3,
       "createdAt": "2026-02-27T23:37:59.862Z",
-      "updatedAt": "2026-02-27T23:37:59.862Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j8w5z000lrsbopnbbme9h",
@@ -3221,7 +3920,8 @@
       "games": 866,
       "reg": 3,
       "createdAt": "2026-02-27T23:38:00.023Z",
-      "updatedAt": "2026-02-27T23:38:00.023Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j8wah000nrsbopgsls8rb",
@@ -3233,7 +3933,8 @@
       "games": 4903,
       "reg": 10,
       "createdAt": "2026-02-27T23:38:00.186Z",
-      "updatedAt": "2026-02-27T23:38:00.186Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm5j8wez000prsbo51h7gccb",
@@ -3245,7 +3946,8 @@
       "games": 3251,
       "reg": 7,
       "createdAt": "2026-02-27T23:38:00.347Z",
-      "updatedAt": "2026-02-27T23:38:00.347Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm6h7i3m0001yqe4cnnlo81p",
@@ -3257,7 +3959,8 @@
       "games": 4206,
       "reg": 10,
       "createdAt": "2026-02-28T15:28:42.082Z",
-      "updatedAt": "2026-02-28T15:28:42.082Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm6h7ilt0003yqe4k8phhq7f",
@@ -3269,7 +3972,8 @@
       "games": 4368,
       "reg": 15,
       "createdAt": "2026-02-28T15:28:42.737Z",
-      "updatedAt": "2026-02-28T15:28:42.737Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm6h7iqo0005yqe4worx0jfw",
@@ -3281,7 +3985,8 @@
       "games": 5082,
       "reg": 16,
       "createdAt": "2026-02-28T15:28:42.912Z",
-      "updatedAt": "2026-02-28T15:28:42.912Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm6h7jev0007yqe42po2zzqq",
@@ -3293,7 +3998,8 @@
       "games": 4527,
       "reg": 9,
       "createdAt": "2026-02-28T15:28:43.783Z",
-      "updatedAt": "2026-02-28T15:28:43.783Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm6h7k3t0009yqe4zy3zc0uu",
@@ -3305,7 +4011,8 @@
       "games": 4373,
       "reg": 16,
       "createdAt": "2026-02-28T15:28:44.681Z",
-      "updatedAt": "2026-02-28T15:28:44.681Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm6h7lh9000byqe46hayy07w",
@@ -3317,7 +4024,8 @@
       "games": 5430,
       "reg": 19,
       "createdAt": "2026-02-28T15:28:46.462Z",
-      "updatedAt": "2026-02-28T15:28:46.462Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm6h7m42000dyqe4qq31mmlg",
@@ -3329,7 +4037,8 @@
       "games": 4602,
       "reg": 8,
       "createdAt": "2026-02-28T15:28:47.283Z",
-      "updatedAt": "2026-02-28T15:28:47.283Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm6h7o1l000fyqe4ctb1dtcu",
@@ -3341,7 +4050,8 @@
       "games": 4498,
       "reg": 14,
       "createdAt": "2026-02-28T15:28:49.785Z",
-      "updatedAt": "2026-02-28T15:28:49.785Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm6h7qn0000hyqe4uxh7505z",
@@ -3353,7 +4063,8 @@
       "games": 3324,
       "reg": 7,
       "createdAt": "2026-02-28T15:28:53.148Z",
-      "updatedAt": "2026-02-28T15:28:53.148Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm6h7qrn000jyqe4jxov3fzg",
@@ -3365,7 +4076,8 @@
       "games": 6482,
       "reg": 14,
       "createdAt": "2026-02-28T15:28:53.315Z",
-      "updatedAt": "2026-02-28T15:28:53.315Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm6h7qwb000lyqe4lhsz8imh",
@@ -3377,7 +4089,8 @@
       "games": 5783,
       "reg": 16,
       "createdAt": "2026-02-28T15:28:53.483Z",
-      "updatedAt": "2026-02-28T15:28:53.483Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm6h7r11000nyqe4j76javlx",
@@ -3389,7 +4102,8 @@
       "games": 5160,
       "reg": 16,
       "createdAt": "2026-02-28T15:28:53.653Z",
-      "updatedAt": "2026-02-28T15:28:53.653Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
     },
     {
       "id": "cmm6h7r5o000pyqe4edpdlwnh",
@@ -3401,7 +4115,268 @@
       "games": 4959,
       "reg": 14,
       "createdAt": "2026-02-28T15:28:53.820Z",
-      "updatedAt": "2026-02-28T15:28:53.820Z"
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm8c7qnw0001wqibdy2u9qrs",
+      "date": "2026-02-28T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 238,
+      "diff": -50,
+      "big": 44,
+      "games": 3912,
+      "reg": 14,
+      "createdAt": "2026-03-01T22:44:27.451Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm8c7qyr0003wqibx1q6yjz8",
+      "date": "2026-02-28T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 239,
+      "diff": 4108,
+      "big": 88,
+      "games": 5055,
+      "reg": 21,
+      "createdAt": "2026-03-01T22:44:27.844Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm8c7r410005wqibjb8xe0rd",
+      "date": "2026-02-28T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 240,
+      "diff": -1691,
+      "big": 15,
+      "games": 2435,
+      "reg": 5,
+      "createdAt": "2026-03-01T22:44:28.034Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm8c7r9b0007wqibrslzoxnp",
+      "date": "2026-02-28T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 241,
+      "diff": -1062,
+      "big": 14,
+      "games": 1933,
+      "reg": 6,
+      "createdAt": "2026-03-01T22:44:28.223Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm8c7rem0009wqibef6z2tzk",
+      "date": "2026-02-28T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 242,
+      "diff": -1280,
+      "big": 24,
+      "games": 2958,
+      "reg": 5,
+      "createdAt": "2026-03-01T22:44:28.414Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm8c7rpr000bwqibcbgtonyf",
+      "date": "2026-02-28T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 243,
+      "diff": 6037,
+      "big": 69,
+      "games": 2111,
+      "reg": 7,
+      "createdAt": "2026-03-01T22:44:28.816Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm8c7rzb000dwqibyjeh2hjg",
+      "date": "2026-02-28T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 244,
+      "diff": -2773,
+      "big": 17,
+      "games": 3323,
+      "reg": 7,
+      "createdAt": "2026-03-01T22:44:29.160Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm8c7s4l000fwqibea0f69kj",
+      "date": "2026-02-28T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 245,
+      "diff": -1728,
+      "big": 21,
+      "games": 2988,
+      "reg": 7,
+      "createdAt": "2026-03-01T22:44:29.349Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm8c7s9v000hwqibkw12s0tt",
+      "date": "2026-02-28T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 246,
+      "diff": 2590,
+      "big": 74,
+      "games": 4820,
+      "reg": 14,
+      "createdAt": "2026-03-01T22:44:29.540Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm8c7sf5000jwqibsb0whp9y",
+      "date": "2026-02-28T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 247,
+      "diff": -687,
+      "big": 45,
+      "games": 4419,
+      "reg": 10,
+      "createdAt": "2026-03-01T22:44:29.730Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm8c7skj000lwqibll0xt3xu",
+      "date": "2026-02-28T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 248,
+      "diff": -770,
+      "big": 64,
+      "games": 6149,
+      "reg": 20,
+      "createdAt": "2026-03-01T22:44:29.923Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm8c7sps000nwqibkszwxz6q",
+      "date": "2026-02-28T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 249,
+      "diff": -1221,
+      "big": 36,
+      "games": 3977,
+      "reg": 11,
+      "createdAt": "2026-03-01T22:44:30.113Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm8c7sv3000pwqibdbr3je4w",
+      "date": "2026-02-28T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 250,
+      "diff": -2082,
+      "big": 14,
+      "games": 2604,
+      "reg": 5,
+      "createdAt": "2026-03-01T22:44:30.303Z",
+      "updatedAt": "2026-03-02T15:48:15.942Z",
+      "season": 1
+    },
+    {
+      "id": "cmm9d4btn0003109z6qykjqaz",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 246,
+      "diff": -580,
+      "big": 16,
+      "games": 1792,
+      "reg": 6,
+      "createdAt": "2026-03-02T15:57:34.044Z",
+      "updatedAt": "2026-03-02T15:57:34.044Z",
+      "season": 2
+    },
+    {
+      "id": "cmm9d4cp60007109z3hoz3ys3",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 247,
+      "diff": -1818,
+      "big": 7,
+      "games": 1813,
+      "reg": 2,
+      "createdAt": "2026-03-02T15:57:35.178Z",
+      "updatedAt": "2026-03-02T15:57:35.178Z",
+      "season": 2
+    },
+    {
+      "id": "cmm9d4dg0000b109zdglv1u4z",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 248,
+      "diff": -2989,
+      "big": 43,
+      "games": 5757,
+      "reg": 14,
+      "createdAt": "2026-03-02T15:57:36.144Z",
+      "updatedAt": "2026-03-02T15:57:36.144Z",
+      "season": 2
+    },
+    {
+      "id": "cmm9d4e7x000f109zpw4458mu",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 249,
+      "diff": 1368,
+      "big": 12,
+      "games": 158,
+      "reg": 1,
+      "createdAt": "2026-03-02T15:57:37.149Z",
+      "updatedAt": "2026-03-02T15:57:37.149Z",
+      "season": 2
+    },
+    {
+      "id": "cmm9d4eyr000j109z782mlzfc",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 250,
+      "diff": -1587,
+      "big": 25,
+      "games": 3248,
+      "reg": 7,
+      "createdAt": "2026-03-02T15:57:38.116Z",
+      "updatedAt": "2026-03-02T15:57:38.116Z",
+      "season": 2
+    },
+    {
+      "id": "cmm9d4fpp000n109zm07tl0k7",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 251,
+      "diff": -2272,
+      "big": 48,
+      "games": 5726,
+      "reg": 11,
+      "createdAt": "2026-03-02T15:57:39.086Z",
+      "updatedAt": "2026-03-02T15:57:39.086Z",
+      "season": 2
+    },
+    {
+      "id": "cmm9d4ggi000r109z09g8ce5o",
+      "date": "2026-03-01T15:00:00.000Z",
+      "machineId": "cmlj5u7rv000172g9pyrlc8tu",
+      "machineNo": 252,
+      "diff": -367,
+      "big": 8,
+      "games": 947,
+      "reg": 4,
+      "createdAt": "2026-03-02T15:57:40.050Z",
+      "updatedAt": "2026-03-02T15:57:40.050Z",
+      "season": 2
     }
   ],
   "eventDays": []

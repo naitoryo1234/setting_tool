@@ -21,6 +21,7 @@ export default function MachineModelSummaryClient({ analysis: initialAnalysis }:
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState(getTodayJst())
     const [isFiltered, setIsFiltered] = useState(false)
+    const [selectedSeason, setSelectedSeason] = useState<number | 'all'>('all')
     const [isPending, startTransition] = useTransition()
 
     const handleSort = (key: SortKey) => {
@@ -41,7 +42,8 @@ export default function MachineModelSummaryClient({ analysis: initialAnalysis }:
     const handleFilterApply = () => {
         if (!startDate || !endDate) return
         startTransition(async () => {
-            const result = await getAnalysis(analysis.machineId, new Date(startDate), new Date(endDate))
+            const seasonParam = selectedSeason === 'all' ? undefined : selectedSeason
+            const result = await getAnalysis(analysis.machineId, new Date(startDate), new Date(endDate), 'all', seasonParam)
             if (result) {
                 setAnalysis(result)
                 setIsFiltered(true)
@@ -58,6 +60,24 @@ export default function MachineModelSummaryClient({ analysis: initialAnalysis }:
                 setIsFiltered(false)
                 setStartDate('')
                 setEndDate('')
+                setSelectedSeason('all')
+            }
+        })
+    }
+
+    const handleSeasonChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const val = e.target.value
+        const newSeason = val === 'all' ? 'all' : parseInt(val, 10)
+        setSelectedSeason(newSeason)
+
+        startTransition(async () => {
+            const seasonParam = newSeason === 'all' ? undefined : newSeason
+            const startParam = isFiltered && startDate ? new Date(startDate) : undefined
+            const endParam = isFiltered && endDate ? new Date(endDate) : undefined
+
+            const result = await getAnalysis(analysis.machineId, startParam, endParam, 'all', seasonParam)
+            if (result) {
+                setAnalysis(result)
             }
         })
     }
@@ -92,19 +112,37 @@ export default function MachineModelSummaryClient({ analysis: initialAnalysis }:
 
             <div className="card-static p-0 overflow-hidden border border-[var(--border-color)]">
                 <div className="px-5 py-4 border-b border-[var(--border-color)] bg-[var(--bg-elevated)]">
-                    <div className="flex justify-between items-center">
-                        <h2 className="text-sm font-bold text-[var(--text-primary)]">
-                            パフォーマンス一覧 ({analysis.records.length}台)
-                        </h2>
-                        <div className="flex items-center gap-3">
-                            <div className="text-xs text-[var(--text-muted)] hidden sm:flex gap-4">
-                                <span>総稼働: {analysis.overall.totalGames.toLocaleString()}G</span>
-                                <span>平均RB: 1/{analysis.overall.regProb}</span>
-                                <span>機械割: {analysis.overall.payoutRate}%</span>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+                        <div className="flex flex-col gap-1">
+                            <h2 className="text-sm font-bold text-[var(--text-primary)]">
+                                パフォーマンス一覧 ({analysis.records.length}台)
+                            </h2>
+                            <div className="text-xs text-[var(--text-muted)] mt-1 leading-relaxed">
+                                <span className="inline-block">総稼働: {analysis.overall.totalGames.toLocaleString()}G&nbsp;&nbsp;&nbsp;</span>
+                                <span className="inline-block">平均RB: 1/{analysis.overall.regProb}&nbsp;&nbsp;&nbsp;</span>
+                                <span className="inline-block">機械割: {analysis.overall.payoutRate}%</span>
                             </div>
+                        </div>
+
+                        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                            {/* Season Filter Dropdown */}
+                            {analysis.availableSeasons && analysis.availableSeasons.length > 0 && (
+                                <select
+                                    value={selectedSeason}
+                                    onChange={handleSeasonChange}
+                                    disabled={isPending}
+                                    className="select-modern text-xs py-1.5 px-2 flex-grow sm:flex-grow-0 sm:w-auto border-[var(--border-color)] text-[var(--text-primary)] min-w-[140px]"
+                                >
+                                    <option value="all">最新の設置状態 (全体)</option>
+                                    {analysis.availableSeasons.map((s) => (
+                                        <option key={s} value={s}>第{s}シーズン (全台)</option>
+                                    ))}
+                                </select>
+                            )}
+
                             <button
                                 onClick={() => setShowFilter(!showFilter)}
-                                className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md border transition-colors ${isFiltered
+                                className={`flex items-center justify-center gap-1.5 text-xs px-3 py-1.5 rounded-md border flex-grow sm:flex-grow-0 transition-colors ${isFiltered
                                     ? 'border-[var(--primary)] text-[var(--primary)] bg-[var(--primary)]/10'
                                     : 'border-[var(--border-color)] text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-[var(--text-muted)]'
                                     }`}
@@ -118,28 +156,28 @@ export default function MachineModelSummaryClient({ analysis: initialAnalysis }:
                     {/* 期間フィルターパネル */}
                     {showFilter && (
                         <div className="mt-4 pt-4 border-t border-[var(--border-color)] flex flex-wrap items-end gap-3">
-                            <div>
+                            <div className="w-full sm:w-auto">
                                 <label className="text-[10px] text-[var(--text-muted)] mb-1 block">開始日</label>
                                 <input
                                     type="date"
                                     value={startDate}
                                     onChange={(e) => setStartDate(e.target.value)}
-                                    className="input-modern text-xs tabular-nums"
+                                    className="input-modern text-xs tabular-nums w-full sm:w-auto"
                                 />
                             </div>
-                            <div>
+                            <div className="w-full sm:w-auto">
                                 <label className="text-[10px] text-[var(--text-muted)] mb-1 block">終了日</label>
                                 <input
                                     type="date"
                                     value={endDate}
                                     onChange={(e) => setEndDate(e.target.value)}
-                                    className="input-modern text-xs tabular-nums"
+                                    className="input-modern text-xs tabular-nums w-full sm:w-auto"
                                 />
                             </div>
                             <button
                                 onClick={handleFilterApply}
                                 disabled={!startDate || !endDate || isPending}
-                                className="btn-primary text-xs px-4 py-2 disabled:opacity-50"
+                                className="btn-primary text-xs px-4 py-2 disabled:opacity-50 w-full sm:w-auto"
                             >
                                 {isPending ? '読込中...' : '適用'}
                             </button>
@@ -147,7 +185,7 @@ export default function MachineModelSummaryClient({ analysis: initialAnalysis }:
                                 <button
                                     onClick={handleFilterClear}
                                     disabled={isPending}
-                                    className="flex items-center gap-1 text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors px-2 py-2"
+                                    className="flex items-center justify-center gap-1 text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors px-2 py-2 w-full sm:w-auto"
                                 >
                                     <X size={12} />
                                     全期間に戻す
@@ -166,18 +204,46 @@ export default function MachineModelSummaryClient({ analysis: initialAnalysis }:
                             { key: 'totalDiff', label: '差枚' },
                             { key: 'payoutRate', label: '機械割' },
                             { key: 'hitProb', label: '合算' },
-                        ] as { key: SortKey; label: string }[]).map((s) => (
-                            <button
-                                key={s.key}
-                                onClick={() => handleSort(s.key)}
-                                className={`text-[10px] px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors ${sortKey === s.key
-                                    ? 'border-[var(--primary)] text-[var(--primary)] bg-[var(--primary)]/10'
-                                    : 'border-[var(--border-color)] text-[var(--text-muted)]'
-                                    }`}
-                            >
-                                {s.label} {sortKey === s.key && (sortAsc ? '↑' : '↓')}
-                            </button>
-                        ))}
+                        ] as { key: SortKey; label: string }[]).map((s) => {
+                            const isActive = sortKey === s.key;
+                            let activeClass = 'border-[var(--primary)] text-white bg-[var(--primary)]';
+                            let activeStyle: React.CSSProperties | undefined = undefined;
+
+                            // 差枚・機械割 (大きい順/降順が赤系)
+                            if (s.key === 'totalDiff' || s.key === 'payoutRate') {
+                                activeClass = 'text-white';
+                                activeStyle = {
+                                    backgroundColor: !sortAsc ? 'var(--color-plus)' : 'var(--color-minus)',
+                                    borderColor: !sortAsc ? 'var(--color-plus)' : 'var(--color-minus)'
+                                };
+                            }
+                            // 合算 (分母が小さい順/昇順が赤系)
+                            else if (s.key === 'hitProb') {
+                                activeClass = 'text-white';
+                                activeStyle = {
+                                    backgroundColor: sortAsc ? 'var(--color-plus)' : 'var(--color-minus)',
+                                    borderColor: sortAsc ? 'var(--color-plus)' : 'var(--color-minus)'
+                                };
+                            }
+
+                            return (
+                                <button
+                                    key={s.key}
+                                    onClick={() => handleSort(s.key)}
+                                    style={isActive && activeStyle ? activeStyle : undefined}
+                                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all border shadow-sm whitespace-nowrap
+                                    ${isActive
+                                            ? activeClass
+                                            : 'bg-[var(--bg-card)] text-[var(--text-secondary)] border-[var(--border-color)] hover:border-[var(--text-muted)] hover:bg-[var(--bg-card-hover)]'
+                                        }`}
+                                >
+                                    {s.label}
+                                    {isActive && (
+                                        <ArrowUpDown size={12} className={`transition-transform duration-300 ${sortAsc ? 'rotate-180' : ''}`} />
+                                    )}
+                                </button>
+                            );
+                        })}
                     </div>
 
                     {/* 2段組みロウ */}

@@ -33,32 +33,46 @@ export default async function Home() {
       </div>
 
       {/* ===== モバイル: コンパクトメニューグリッド ===== */}
-      <div className="md:hidden px-4 mb-6">
-        <div className="grid grid-cols-3 gap-2">
-          {menuItems.slice(0, 3).map((item) => (
+      <div className="md:hidden px-4 mb-6 space-y-3">
+        {/* 最優先アクション (狙い台) */}
+        {menuItems.filter(i => i.href === '/targets').map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className="flex items-center gap-4 p-4 rounded-xl border border-[var(--primary)]/30 bg-[var(--bg-card)] active:bg-[var(--bg-card-solid)] active:scale-[0.98] transition-all shadow-[0_0_15px_rgba(239,68,68,0.1)]"
+          >
+            <div className={`p-3 rounded-full ${item.color} ${item.bg}`}>
+              <item.Icon size={28} strokeWidth={2} />
+            </div>
+            <div>
+              <h2 className="text-lg font-black text-[var(--text-primary)] tracking-wide mb-0.5">
+                {item.label}
+              </h2>
+              <p className="text-xs text-[var(--text-muted)] font-medium">
+                {item.description}
+              </p>
+            </div>
+            <ChevronRight size={20} className="text-[var(--primary)] ml-auto opacity-70" />
+          </Link>
+        ))}
+
+        {/* メインボード (2x2 グリッド) */}
+        <div className="grid grid-cols-2 gap-2">
+          {menuItems.filter(i => i.href !== '/targets').map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="flex flex-col items-center justify-center p-3 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] active:bg-[var(--bg-card-solid)] transition-all"
+              className="flex flex-col p-3.5 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] active:bg-[var(--bg-card-solid)] active:scale-[0.98] transition-all"
             >
-              <div className={`p-2 rounded-full mb-2 ${item.color} ${item.bg}`}>
-                <item.Icon size={20} />
+              <div className="flex items-center gap-2.5 mb-2">
+                <div className={`p-2 rounded-lg ${item.color} ${item.bg}`}>
+                  <item.Icon size={18} strokeWidth={2} />
+                </div>
+                <span className="text-sm font-bold text-[var(--text-primary)]">{item.label}</span>
               </div>
-              <span className="text-xs font-bold text-[var(--text-primary)]">{item.label}</span>
-            </Link>
-          ))}
-        </div>
-        <div className="grid grid-cols-2 gap-2 mt-2">
-          {menuItems.slice(3).map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="flex items-center gap-2.5 p-3 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] active:bg-[var(--bg-card-solid)] transition-all"
-            >
-              <div className={`p-1.5 rounded-full ${item.color} ${item.bg}`}>
-                <item.Icon size={16} />
-              </div>
-              <span className="text-xs font-bold text-[var(--text-primary)]">{item.label}</span>
+              <p className="text-[10px] text-[var(--text-muted)] leading-tight pl-0.5">
+                {item.description}
+              </p>
             </Link>
           ))}
         </div>
@@ -136,24 +150,50 @@ export default async function Home() {
 
       {/* ===== PC: メニューカード & 機種リンク ===== */}
       <div className="hidden md:block container mx-auto px-4">
-        <div className="grid grid-cols-3 lg:grid-cols-5 gap-4 max-w-5xl mx-auto mb-16">
-          {menuItems.map((item) => (
+        {/* Bento Grid (作戦司令室レイアウト) */}
+        <div className="grid grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
+
+          {/* 左側の最優先アクション (狙い台) */}
+          {menuItems.filter(i => i.href === '/targets').map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="group flex flex-col items-center justify-center p-6 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] hover:border-[var(--primary)] hover:bg-[var(--bg-card-solid)] transition-all duration-300 shadow-sm"
+              className="col-span-1 flex flex-col items-center justify-center p-8 rounded-2xl border border-[var(--primary)]/30 bg-[var(--bg-card)] hover:border-[var(--primary)] hover:bg-[var(--bg-card-solid)] transition-all duration-300 shadow-[0_0_15px_rgba(239,68,68,0.1)] hover:shadow-[0_0_25px_rgba(239,68,68,0.2)]"
             >
-              <div className={`p-4 rounded-full mb-4 ${item.color} ${item.bg} group-hover:scale-110 transition-transform`}>
-                <item.Icon size={32} />
+              <div className={`p-5 rounded-full mb-6 ${item.color} ${item.bg} scale-110`}>
+                <item.Icon size={36} strokeWidth={1.5} />
               </div>
-              <h2 className="text-lg font-bold mb-1 text-[var(--text-primary)]">
+              <h2 className="text-2xl font-black mb-2 text-[var(--text-primary)] tracking-wide">
                 {item.label}
               </h2>
-              <p className="text-xs text-[var(--text-muted)] text-center">
+              <p className="text-sm text-[var(--text-muted)] text-center font-medium">
                 {item.description}
               </p>
             </Link>
           ))}
+
+          {/* 右側のメインボード (2x2 グリッド) */}
+          <div className="col-span-2 grid grid-cols-2 gap-4">
+            {menuItems.filter(i => i.href !== '/targets').map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group flex flex-col items-start justify-center p-6 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] hover:border-[var(--primary)]/50 hover:bg-[var(--bg-card-solid)] transition-all duration-300 shadow-sm"
+              >
+                <div className="flex items-center gap-4 mb-3">
+                  <div className={`p-3 rounded-xl ${item.color} ${item.bg}`}>
+                    <item.Icon size={24} strokeWidth={2} />
+                  </div>
+                  <h2 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--primary)] transition-colors">
+                    {item.label}
+                  </h2>
+                </div>
+                <p className="text-xs text-[var(--text-muted)] pl-1">
+                  {item.description}
+                </p>
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Machine Links Section */}

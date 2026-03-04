@@ -701,7 +701,7 @@ body>* {
 
 /* グロー数値 */
 .glow-value {
-  text-shadow: 0 0 20px currentColor;
+  text-shadow: 0 0 5px currentColor;
 }
 
 /* サマリーカード統計値のグロー */

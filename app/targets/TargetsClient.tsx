@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useTransition } from 'react'
+import { useState, useTransition, useEffect } from 'react'
 import { MachineWithNumbers, getTargetMachines, MachineTargetData } from '@/lib/actions'
 import { PageHeader } from '@/components/PageHeader'
 import { Calendar, Crosshair, Search, TrendingDown } from 'lucide-react'
@@ -11,19 +11,91 @@ type Props = {
 }
 
 export function TargetsClient({ machines }: Props) {
-    const [startDate, setStartDate] = useState(() => {
-        const d = new Date()
-        d.setDate(d.getDate() - 7)
-        return d.toISOString().split('T')[0]
-    })
+    const [startDate, setStartDate] = useState(() => new Date().toISOString().split('T')[0])
     const [endDate, setEndDate] = useState(() => new Date().toISOString().split('T')[0])
     const [results, setResults] = useState<MachineTargetData[]>([])
     const [isPending, startTransition] = useTransition()
     const [hasSearched, setHasSearched] = useState(false)
+    const [preset, setPreset] = useState<string>('3')
+    const [isInitialized, setIsInitialized] = useState(false)
+
+    // 初回マウント時の自動集計と状態復元
+    useEffect(() => {
+        const savedPreset = localStorage.getItem('targets_preset') || '3'
+        setPreset(savedPreset)
+
+        let startStr = startDate
+        let endStr = endDate
+
+        if (savedPreset !== 'custom') {
+            const todayJST = new Date()
+            todayJST.setUTCHours(todayJST.getUTCHours() + 9)
+
+            // データ取得の基準日（endDate）を「前日」に設定
+            const baseDate = new Date(todayJST)
+            baseDate.setUTCDate(baseDate.getUTCDate() - 1)
+            endStr = baseDate.toISOString().split('T')[0]
+
+            const days = parseInt(savedPreset, 10)
+            const startDateCalc = new Date(baseDate)
+            startDateCalc.setUTCDate(startDateCalc.getUTCDate() - (days - 1))
+            startStr = startDateCalc.toISOString().split('T')[0]
+
+            setStartDate(startStr)
+            setEndDate(endStr)
+        } else {
+            const savedStart = localStorage.getItem('targets_start_date')
+            const savedEnd = localStorage.getItem('targets_end_date')
+            if (savedStart) { startStr = savedStart; setStartDate(savedStart) }
+            if (savedEnd) { endStr = savedEnd; setEndDate(savedEnd) }
+        }
+
+        // 自動フェッチ
+        startTransition(async () => {
+            const data = await getTargetMachines(new Date(`${startStr}T00:00:00+09:00`), new Date(`${endStr}T00:00:00+09:00`))
+            setResults(data)
+            setHasSearched(true)
+            setIsInitialized(true)
+        })
+    }, [])
 
     const handleSearch = () => {
+        if (preset === 'custom') {
+            localStorage.setItem('targets_start_date', startDate)
+            localStorage.setItem('targets_end_date', endDate)
+        }
         startTransition(async () => {
-            const data = await getTargetMachines(new Date(startDate), new Date(endDate))
+            const data = await getTargetMachines(new Date(`${startDate}T00:00:00+09:00`), new Date(`${endDate}T00:00:00+09:00`))
+            setResults(data)
+            setHasSearched(true)
+        })
+    }
+
+    const selectPreset = (p: string) => {
+        setPreset(p)
+        localStorage.setItem('targets_preset', p)
+
+        if (p === 'custom') return
+
+        const todayJST = new Date()
+        todayJST.setUTCHours(todayJST.getUTCHours() + 9)
+
+        // データ取得の基準日（endDate）を「前日」に設定
+        const baseDate = new Date(todayJST)
+        baseDate.setUTCDate(baseDate.getUTCDate() - 1)
+        const endStr = baseDate.toISOString().split('T')[0]
+
+        const days = parseInt(p, 10)
+        const startDateCalc = new Date(baseDate)
+        startDateCalc.setUTCDate(startDateCalc.getUTCDate() - (days - 1))
+        const startStr = startDateCalc.toISOString().split('T')[0]
+
+        setStartDate(startStr)
+        setEndDate(endStr)
+
+        // プリセット変更時に自動で集計開始
+        startTransition(async () => {
+            const data = await getTargetMachines(new Date(`${startStr}T00:00:00+09:00`), new Date(`${endStr}T00:00:00+09:00`))
             setResults(data)
             setHasSearched(true)
         })
@@ -52,46 +124,72 @@ export function TargetsClient({ machines }: Props) {
 
             {/* コントロールパネル */}
             <section className="card-static border-[var(--border-color)]">
-                <div className="flex flex-col md:flex-row gap-4 items-end">
-                    <div className="grid grid-cols-2 gap-4 w-full md:w-auto">
-                        <div>
-                            <label className="flex items-center gap-1.5 text-xs font-medium mb-1.5 text-[var(--text-secondary)]">
-                                <Calendar size={12} /> 開始日
-                            </label>
-                            <input
-                                type="date"
-                                value={startDate}
-                                onChange={(e) => setStartDate(e.target.value)}
-                                className="input-modern tabular-nums"
-                            />
-                        </div>
-                        <div>
-                            <label className="flex items-center gap-1.5 text-xs font-medium mb-1.5 text-[var(--text-secondary)]">
-                                <Calendar size={12} /> 終了日
-                            </label>
-                            <input
-                                type="date"
-                                value={endDate}
-                                onChange={(e) => setEndDate(e.target.value)}
-                                className="input-modern tabular-nums"
-                            />
-                        </div>
-                    </div >
-                    <button
-                        onClick={handleSearch}
-                        disabled={isPending}
-                        className="btn-primary flex items-center justify-center gap-2 h-[42px] px-8 w-full md:w-auto"
-                    >
-                        {isPending ? (
-                            <div className="animate-spin rounded-full h-4 w-4 border-2 border-white/20 border-t-white" />
-                        ) : (
-                            <Search size={16} />
-                        )}
-                        <span>集計実行</span>
-                    </button>
+                <div className="flex flex-col gap-4">
+                    {/* プリセット選択 */}
+                    <div className="flex flex-wrap gap-2">
+                        {[
+                            { value: '1', label: '前日' },
+                            { value: '2', label: '直近2日' },
+                            { value: '3', label: '直近3日' },
+                            { value: '7', label: '直近7日' },
+                            { value: 'custom', label: 'カスタム' },
+                        ].map(p => (
+                            <button
+                                key={p.value}
+                                onClick={() => selectPreset(p.value)}
+                                className={`px-4 py-2 text-sm font-bold rounded-lg border transition-all ${preset === p.value
+                                    ? 'bg-[var(--primary)] text-white border-[var(--primary)] shadow-md'
+                                    : 'bg-[var(--bg-card)] text-[var(--secondary)] border-[var(--border-color)] hover:border-[var(--primary)]/50 text-[var(--text-secondary)]'
+                                    }`}
+                            >
+                                {p.label}
+                            </button>
+                        ))}
+                    </div>
 
-                </div >
-            </section >
+                    {/* カスタム日付指定 (カスタム時のみ表示) */}
+                    {preset === 'custom' && (
+                        <div className="flex flex-col md:flex-row gap-4 items-end pt-2 border-t border-[var(--border-color)]">
+                            <div className="grid grid-cols-2 gap-4 w-full md:w-auto">
+                                <div>
+                                    <label className="flex items-center gap-1.5 text-xs font-medium mb-1.5 text-[var(--text-secondary)]">
+                                        <Calendar size={12} /> 開始日
+                                    </label>
+                                    <input
+                                        type="date"
+                                        value={startDate}
+                                        onChange={(e) => setStartDate(e.target.value)}
+                                        className="input-modern tabular-nums"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="flex items-center gap-1.5 text-xs font-medium mb-1.5 text-[var(--text-secondary)]">
+                                        <Calendar size={12} /> 終了日
+                                    </label>
+                                    <input
+                                        type="date"
+                                        value={endDate}
+                                        onChange={(e) => setEndDate(e.target.value)}
+                                        className="input-modern tabular-nums"
+                                    />
+                                </div>
+                            </div>
+                            <button
+                                onClick={handleSearch}
+                                disabled={isPending}
+                                className="btn-primary flex items-center justify-center gap-2 h-[42px] px-8 w-full md:w-auto"
+                            >
+                                {isPending ? (
+                                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-white/20 border-t-white" />
+                                ) : (
+                                    <Search size={16} />
+                                )}
+                                <span>集計実行</span>
+                            </button>
+                        </div>
+                    )}
+                </div>
+            </section>
 
             {/* 結果表示 */}
             < div className="space-y-4" >
@@ -132,6 +230,11 @@ export function TargetsClient({ machines }: Props) {
                                                         {rank.machineNo}
                                                     </span>
                                                     <span className="text-[10px] text-[var(--text-muted)]">番台</span>
+                                                    {rank.season > 1 && (
+                                                        <span className="text-[10px] font-medium text-[var(--primary)] border border-[var(--primary)] px-1 py-0.5 rounded-sm">
+                                                            第{rank.season}期
+                                                        </span>
+                                                    )}
                                                 </div>
                                                 <div className="flex items-center gap-3 text-xs">
                                                     <div className="flex items-center gap-1">

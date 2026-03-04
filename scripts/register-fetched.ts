@@ -13,6 +13,8 @@ import * as fs from 'fs'
 import { execSync } from 'child_process'
 import minimist from 'minimist'
 
+import { DEFAULT_STORE } from '../lib/pscube-config.ts'
+
 const prisma = new PrismaClient()
 
 interface ParsedRecord {
@@ -39,18 +41,36 @@ function parseMarkdown(filePath: string): { date: string; machineName: string; r
 
     // テーブル行をパース
     const records: ParsedRecord[] = []
+    const isKabaneri = machineName.includes('カバネリ')
+
     for (const line of lines) {
-        // "| 238 | 2817 | 25 | 7 | -932 | +1000 | 備考 |" のような行
-        const match = line.match(/^\|\s*(\d+)\s*\|\s*(\d+)\s*\|\s*(\d+)\s*\|\s*(\d+)\s*\|\s*([+-]?\d+)\s*\|\s*([+-]?\d+)?\s*\|/)
-        if (match) {
-            records.push({
-                machineNo: parseInt(match[1]),
-                games: parseInt(match[2]),
-                big: parseInt(match[3]),
-                reg: parseInt(match[4]),
-                diffCalc: parseInt(match[5]),
-                diffFinal: match[6]?.trim() ? parseInt(match[6]) : null,
-            })
+        if (isKabaneri) {
+            // カバネリ用: | 台番号 | G数 | BIG | REG | 最大放出 | 差枚(確定) | 備考 |
+            // 5列目(最大放出)はDBに保存しないため無視し、6列目を diffFinal として取得
+            const match = line.match(/^\|\s*(\d+)\s*\|\s*(\d+)\s*\|\s*(\d+)\s*\|\s*(\d+)\s*\|\s*([+-]?\d+)?\s*\|\s*([+-]?\d+)?\s*\|/)
+            if (match) {
+                records.push({
+                    machineNo: parseInt(match[1]),
+                    games: parseInt(match[2]),
+                    big: parseInt(match[3]),
+                    reg: parseInt(match[4]),
+                    diffCalc: 0, // カバネリは計算不可
+                    diffFinal: match[6]?.trim() ? parseInt(match[6]) : null,
+                })
+            }
+        } else {
+            // 北斗等通常用: | 台番号 | G数 | BIG | REG | 差枚(計算) | 差枚(確定) | 備考 |
+            const match = line.match(/^\|\s*(\d+)\s*\|\s*(\d+)\s*\|\s*(\d+)\s*\|\s*(\d+)\s*\|\s*([+-]?\d+)\s*\|\s*([+-]?\d+)?\s*\|/)
+            if (match) {
+                records.push({
+                    machineNo: parseInt(match[1]),
+                    games: parseInt(match[2]),
+                    big: parseInt(match[3]),
+                    reg: parseInt(match[4]),
+                    diffCalc: parseInt(match[5]),
+                    diffFinal: match[6]?.trim() ? parseInt(match[6]) : null,
+                })
+            }
         }
     }
 
@@ -125,7 +145,11 @@ async function main() {
         process.exit(1)
     }
 
-    console.log(`DB機種: ${machine.name} (${machine.id})\n`)
+    // 機種設定からseasonを取得（見つからない場合はデフォルトで1とする）
+    const machineConfig = DEFAULT_STORE.machines.find((m: any) => machineName.includes(m.dbName) || machineName.includes(m.searchName))
+    const season = machineConfig?.season || 1
+
+    console.log(`DB機種: ${machine.name} (${machine.id}), Season: ${season}\n`)
 
     const targetDate = new Date(`${date}T00:00:00+09:00`)
 
@@ -134,12 +158,30 @@ async function main() {
         // 差枚(確定)があればそちらを使用、なければ計算値
         const diff = r.diffFinal !== null ? r.diffFinal : r.diffCalc
 
+        // MachineNumber の UPSERT も連動して行う（既存に無い台番の場合に自動生成するため）
+        await prisma.machineNumber.upsert({
+            where: {
+                machineId_machineNo_season: {
+                    machineId: machine.id,
+                    machineNo: r.machineNo,
+                    season: season,
+                }
+            },
+            update: {},
+            create: {
+                machineId: machine.id,
+                machineNo: r.machineNo,
+                season: season,
+            }
+        })
+
         await prisma.record.upsert({
             where: {
-                date_machineId_machineNo: {
+                date_machineId_machineNo_season: {
                     date: targetDate,
                     machineId: machine.id,
                     machineNo: r.machineNo,
+                    season: season,
                 },
             },
             update: { diff, games: r.games, big: r.big, reg: r.reg },
@@ -147,6 +189,7 @@ async function main() {
                 date: targetDate,
                 machineId: machine.id,
                 machineNo: r.machineNo,
+                season: season,
                 diff,
                 games: r.games,
                 big: r.big,

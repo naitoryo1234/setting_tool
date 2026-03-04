@@ -24,3 +24,5 @@ export default async function MachineModelSummaryPage({ params }: Props) {
         <MachineModelSummaryClient analysis={analysis} />
     )
 }
+
+// force recompile
